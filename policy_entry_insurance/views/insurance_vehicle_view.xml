@@ -1,0 +1,148 @@
+<odoo>
+    <record id="view_insurance_vehicle_form" model="ir.ui.view">
+        <field name="name">insurance.vehicle.form</field>
+        <field name="model">insurance.vehicle</field>
+        <field name="arch" type="xml">
+            <form string="Vehicle Detail">
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="vehicle_type_id"/>
+                            <field name="plate_no"/>
+                            <field name="plate_no_ar"/>
+                            <field name="model_no"/>
+                            <field name="chassis"/>
+                            <field name="capacity"/>
+                            <field name="driver_insurance"/>
+                            <field name="covering_maintenance"/>
+                            <field name="value"/>
+                            <field name="owener_name"/>
+                        </group>
+                        <group>
+                            <field name="owner_id" optional="hide"/>
+                            <field name="custom_id" optional="hide"/>
+                            <field name="seq_no" optional="hide"/>
+                            <field name="user_id_no" optional="hide"/>
+                            <field name="user_name" optional="hide"/>
+                            <field name="building_no" optional="hide"/>
+                            <field name="additional_no" optional="hide"/>
+                            <field name="street" optional="hide"/>
+                            <field name="city" optional="hide"/>
+                            <field name="unit_no" optional="hide"/>
+                        </group>
+                        <group>
+                            <field name="po_box" optional="hide"/>
+                            <field name="zip_code" optional="hide"/>
+                            <field name="neighbour_head" optional="hide"/>
+                            <field name="mobile_no" optional="hide"/>
+                            <field name="istamara_expiry" optional="hide"/>
+                            <field name="vehicle_color" optional="hide"/>
+                            <field name="vehicle_make_id" optional="hide"/>
+                            <field name="vehicle_model_id" optional="hide"/>
+                            <field name="gcc_cover" optional="hide"/>
+                            <field name="natural_peril_cover" optional="hide"/>
+                            <field name="dob_owner" optional="hide"/>
+                            <field name="nationality" optional="hide"/>
+                            <field name="premium" optional="hide"/>
+                        </group>
+                    </group>
+                </sheet>
+
+            </form>
+        </field>
+    </record>
+
+    <record id="view_insurance_vehicle_tree" model="ir.ui.view">
+        <field name="name">insurance.vehicle.tree</field>
+        <field name="model">insurance.vehicle</field>
+        <field name="arch" type="xml">
+            <tree string="Vehicle Detail">
+                <field name="vehicle_type_id"/>
+                <field name="plate_no"/>
+                <field name="plate_no_ar"/>
+                <field name="model_no"/>
+                <field name="chassis"/>
+                <field name="capacity"/>
+                <field name="driver_insurance"/>
+                <field name="covering_maintenance"/>
+                <field name="value"/>
+                <field name="owener_name"/>
+                <field name="owner_id" optional="hide"/>
+                <field name="custom_id" optional="hide"/>
+                <field name="seq_no" optional="hide"/>
+                <field name="user_id_no" optional="hide"/>
+                <field name="user_name" optional="hide"/>
+                <field name="building_no" optional="hide"/>
+                <field name="additional_no" optional="hide"/>
+                <field name="street" optional="hide"/>
+                <field name="city" optional="hide"/>
+                <field name="unit_no" optional="hide"/>
+                <field name="po_box" optional="hide"/>
+                <field name="zip_code" optional="hide"/>
+                <field name="neighbour_head" optional="hide"/>
+                <field name="mobile_no" optional="hide"/>
+                <field name="istamara_expiry" optional="hide"/>
+                <field name="vehicle_color" optional="hide"/>
+                <field name="vehicle_make_id" optional="hide"/>
+                <field name="vehicle_model_id" optional="hide"/>
+                <field name="gcc_cover" optional="hide"/>
+                <field name="natural_peril_cover" optional="hide"/>
+                <field name="dob_owner" optional="hide"/>
+                <field name="nationality" optional="hide"/>
+                <field name="premium" optional="hide"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="view_insurance_vehicle_search" model="ir.ui.view">
+        <field name="name">insurance.vehicle.tree</field>
+        <field name="model">insurance.vehicle</field>
+        <field name="arch" type="xml">
+            <search string="Vehicle Detail">
+                <field name="vehicle_type_id"/>
+                <field name="plate_no"/>
+                <field name="plate_no_ar"/>
+                <field name="model_no"/>
+                <field name="chassis"/>
+                <field name="capacity"/>
+                <field name="driver_insurance"/>
+                <field name="covering_maintenance"/>
+                <field name="value"/>
+                <field name="owener_name"/>
+                <field name="owner_id" optional="hide"/>
+                <field name="custom_id" optional="hide"/>
+                <field name="seq_no" optional="hide"/>
+                <field name="user_id_no" optional="hide"/>
+                <field name="user_name" optional="hide"/>
+                <field name="building_no" optional="hide"/>
+                <field name="additional_no" optional="hide"/>
+                <field name="street" optional="hide"/>
+                <field name="city" optional="hide"/>
+                <field name="unit_no" optional="hide"/>
+                <field name="po_box" optional="hide"/>
+                <field name="zip_code" optional="hide"/>
+                <field name="neighbour_head" optional="hide"/>
+                <field name="mobile_no" optional="hide"/>
+                <field name="istamara_expiry" optional="hide"/>
+                <field name="vehicle_color" optional="hide"/>
+                <field name="vehicle_make_id" optional="hide"/>
+                <field name="vehicle_model_id" optional="hide"/>
+                <field name="gcc_cover" optional="hide"/>
+                <field name="natural_peril_cover" optional="hide"/>
+                <field name="dob_owner" optional="hide"/>
+                <field name="nationality" optional="hide"/>
+                <field name="premium" optional="hide"/>
+            </search>
+        </field>
+    </record>
+
+
+    <record id="act_insurance_vehicle" model="ir.actions.act_window">
+        <field name="name">Vehicle Data</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">insurance.vehicle</field>
+        <field name="view_mode">tree,form</field>
+        <field name="view_id" ref="view_insurance_vehicle_tree"/>
+
+    </record>
+</odoo>

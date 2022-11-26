@@ -1,0 +1,45 @@
+<odoo>
+     <record id="view_insurance_region_form" model="ir.ui.view">
+            <field name="name">insurance.region.form</field>
+            <field name="model">insurance.region</field>
+            <field name="arch" type="xml">
+                <form string="Region Master">
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="name"/>
+                            </group>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+     </record>
+    <record id="view_insurance_region_tree" model="ir.ui.view">
+            <field name="name">insurance.region.tree</field>
+            <field name="model">insurance.region</field>
+            <field name="arch" type="xml">
+                <tree string="Region Master">
+                    <field name="name"/>
+                </tree>
+            </field>
+    </record>
+
+     <record id="view_insurance_region_search" model="ir.ui.view">
+            <field name="name">insurance.region.search</field>
+            <field name="model">insurance.region</field>
+            <field name="arch" type="xml">
+                <search string="Region Master">
+                    <field name="name"/>
+                </search>
+            </field>
+    </record>
+
+     <record id="act_insurance_insurance_region" model="ir.actions.act_window">
+            <field name="name">Region Master </field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">insurance.region</field>
+            <field name="view_mode">tree,form</field>
+            <field name="view_id" ref="view_insurance_region_tree"/>
+
+        </record>
+</odoo>

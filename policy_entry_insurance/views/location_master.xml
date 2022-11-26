@@ -1,0 +1,45 @@
+<odoo>
+     <record id="view_insurance_location_form" model="ir.ui.view">
+            <field name="name">insurance.location.form</field>
+            <field name="model">insurance.location</field>
+            <field name="arch" type="xml">
+                <form string="Brand Master">
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="name"/>
+                            </group>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+     </record>
+    <record id="view_insurance_location_tree" model="ir.ui.view">
+            <field name="name">insurance.location.tree</field>
+            <field name="model">insurance.location</field>
+            <field name="arch" type="xml">
+                <tree string="Location Master">
+                    <field name="name"/>
+                </tree>
+            </field>
+    </record>
+
+     <record id="view_insurance_location_search" model="ir.ui.view">
+            <field name="name">vehicle.brand.search</field>
+            <field name="model">insurance.location</field>
+            <field name="arch" type="xml">
+                <search string="Brand Master">
+                    <field name="name"/>
+                </search>
+            </field>
+    </record>
+
+     <record id="act_insurance_location_master" model="ir.actions.act_window">
+            <field name="name">Brand Master </field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">insurance.location</field>
+            <field name="view_mode">tree,form</field>
+            <field name="view_id" ref="view_insurance_location_tree"/>
+
+        </record>
+</odoo>

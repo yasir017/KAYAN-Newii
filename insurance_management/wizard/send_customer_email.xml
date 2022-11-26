@@ -1,0 +1,53 @@
+<?xml version="1.0"?>
+<odoo>
+
+	<record id="form_customer_email_wizard_view" model="ir.ui.view">
+		<field name="name">customer.email.wizard.form.view</field>
+		<field name="model">customer.email.wizard</field>
+		<field name="arch" type="xml">
+			<form string="Customer Email Wizard">
+				<sheet>
+					<group>
+						<field name="medical_visibility_check" invisible="1"/>
+                    	<field name="vehicle_visibility_check" invisible="1"/>
+						<group string="Client">
+							<field name="client_id" readonly="1" nolabel="1"/>
+						</group>
+						<group string="Select Insurance Quotations" attrs="{'invisible': [('medical_visibility_check', '=', False)]}">
+							<field name="insurance_quotation_ids" widget="many2many_tags" nolabel="1"/>
+						</group>
+						<group string="Select Vehicle Quotations" attrs="{'invisible': [('vehicle_visibility_check', '=', False)]}">
+							<field name="vehicle_quotation_ids" widget="many2many_tags" nolabel="1"/>
+						</group>
+					</group>
+					<group>
+						<field name="subject" nolabel="1" placeholder="Subject..." required="True"/>
+					</group>
+					<group>
+						<field name="cc" nolabel="1" placeholder="CC... write separate email with comma" required="True"/>
+					</group>
+                    <field name="body" class="oe-bordered-editor" options="{'style-inline': true}" force_save="1"/>
+					<group col="4">
+                        <field name="attachment_ids" widget="many2many_binary" string="Attach a file" nolabel="1" colspan="2"/>
+						<field name="template_id" options="{'no_create': True}"/>
+                    </group>
+				</sheet>
+				<footer>
+					<button name="action_confirm" type="object" string="Confirm"
+					class="oe_highlight"/>
+					<button string="Cancel" class="btn-secondary" special="cancel"/>
+				</footer>
+			</form>
+		</field>
+	</record>
+
+	<record id="action_customer_email_wizard" model="ir.actions.act_window">
+		<field name="name">Customer Email</field>
+		<field name="type">ir.actions.act_window</field>
+		<field name="res_model">customer.email.wizard</field>
+		<field name="view_mode">form</field>
+		<field name="view_id" ref="form_customer_email_wizard_view"/>
+		<field name="target">new</field>
+	</record>
+
+</odoo>

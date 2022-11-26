@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+
+    <record id="ins_client_report_export_template" model="ir.actions.report">
+        <field name="name">Print to Client XLSX</field>
+        <field name="model">client.branch</field>
+        <field name="report_type">xlsx</field>
+        <field name="report_name">report_client_export_uploader</field>
+        <field name="report_file">Client Lines Export Report</field>
+        <field name="binding_type">report</field>
+    </record>
+
+</odoo>

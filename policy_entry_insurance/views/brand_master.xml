@@ -1,0 +1,45 @@
+<odoo>
+     <record id="view_vehicle_brand_form" model="ir.ui.view">
+            <field name="name">vehicle.brand.form</field>
+            <field name="model">vehicle.brand</field>
+            <field name="arch" type="xml">
+                <form string="Brand Master">
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="name"/>
+                            </group>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+     </record>
+    <record id="view_vehicle_brand_tree" model="ir.ui.view">
+            <field name="name">vehicle.brand.tree</field>
+            <field name="model">vehicle.brand</field>
+            <field name="arch" type="xml">
+                <tree string="Brand Master">
+                    <field name="name"/>
+                </tree>
+            </field>
+    </record>
+
+     <record id="view_vehicle_brand_search" model="ir.ui.view">
+            <field name="name">vehicle.brand.search</field>
+            <field name="model">vehicle.brand</field>
+            <field name="arch" type="xml">
+                <search string="Brand Master">
+                    <field name="name"/>
+                </search>
+            </field>
+    </record>
+
+     <record id="act_branch_master" model="ir.actions.act_window">
+            <field name="name">Brand Master </field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">vehicle.brand</field>
+            <field name="view_mode">tree,form</field>
+            <field name="view_id" ref="view_vehicle_brand_tree"/>
+
+        </record>
+</odoo>

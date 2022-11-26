@@ -1,0 +1,142 @@
+<odoo>
+      <record id="view_health_data_tree" model="ir.ui.view">
+        <field name="name">insurance.employee.data.tree</field>
+        <field name="model">insurance.employee.data</field>
+        <field name="arch" type="xml">
+            <tree string="Health Data">
+
+                                        <field name="member_id"/>
+                                        <field name="dependent_id"/>
+                                        <field name="name"/>
+                                        <field name="client_image"/>
+                                        <field name="arabic_name"/>
+                                        <field name="gender"/>
+                                        <field name="dob"/>
+                                        <field name="dob_hijra"/>
+                                        <field name="age"/>
+                                        <field name="member_type"/>
+                                        <field name="class_no"/>
+                                        <field name="rate"/>
+                                        <field name="vat"/>
+                                        <field name="total"/>
+                                        <field name="age_category" optional="hide"/>
+                                        <field name="risk_no" optional="hide"/>
+                                        <field name="nationality" optional="hide"/>
+                                        <field name="staff_no" optional="hide"/>
+                                        <field name="member_category" optional="hide"/>
+                                        <field name="mobile1" optional="hide"/>
+                                        <field name="mobile2" optional="hide"/>
+                                        <field name="dep_no" optional="hide"/>
+                                        <field name="sponser_id" optional="hide"/>
+                                        <field name="occupation" optional="hide"/>
+                                        <field name="marital_status" optional="hide"/>
+                                        <field name="elm_relation" optional="hide"/>
+                                        <field name="vip" optional="hide"/>
+                                        <field name="as_vip" optional="hide"/>
+                                        <field name="bank_id" optional="hide"/>
+                                        <field name="branch_id" optional="hide"/>
+
+            </tree>
+        </field>
+      </record>
+
+    <record id="view_health_data_form" model="ir.ui.view">
+        <field name="name">insurance.employee.data.tree</field>
+        <field name="model">insurance.employee.data</field>
+        <field name="arch" type="xml">
+            <form string="Health Data">
+                <sheet>
+                     <group>
+                                                <group>
+                                                    <field name="member_id"/>
+                                                    <field name="dependent_id"/>
+                                                    <field name="name"/>
+                                                    <field name="client_image"/>
+                                                    <field name="arabic_name"/>
+                                                    <field name="gender"/>
+                                                    <field name="dob"/>
+                                                    <field name="dob_hijra"/>
+                                                    <field name="age"/>
+                                                    <field name="member_type"/>
+                                                    <field name="class_no"/>
+                                                </group>
+                                                <group>
+                                                    <field name="age_category" optional="hide"/>
+                                                    <field name="risk_no" optional="hide"/>
+                                                    <field name="nationality" optional="hide"/>
+                                                    <field name="staff_no" optional="hide"/>
+                                                    <field name="member_category" optional="hide"/>
+                                                    <field name="mobile1" optional="hide"/>
+                                                    <field name="mobile2" optional="hide"/>
+                                                    <field name="dep_no" optional="hide"/>
+                                                    <field name="sponser_id" optional="hide"/>
+                                                    <field name="occupation" optional="hide"/>
+                                                    <field name="marital_status" optional="hide"/>
+                                                </group>
+                                                <group>
+                                                    <field name="elm_relation" optional="hide"/>
+                                                    <field name="vip" optional="hide"/>
+                                                    <field name="as_vip" optional="hide"/>
+                                                    <field name="bank_id" optional="hide"/>
+                                                    <field name="branch_id" optional="hide"/>
+                                                    <field name="rate"/>
+                                                    <field name="vat"/>
+                                                    <field name="total"/>
+                                                </group>
+                                            </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+     <record id="view_health_data_search" model="ir.ui.view">
+        <field name="name">insurance.employee.data.search</field>
+        <field name="model">insurance.employee.data</field>
+        <field name="arch" type="xml">
+            <search string="Health Data">
+                <field name="member_id"/>
+                                        <field name="dependent_id"/>
+                                        <field name="name"/>
+                                        <field name="client_image"/>
+                                        <field name="arabic_name"/>
+                                        <field name="gender"/>
+                                        <field name="dob"/>
+                                        <field name="dob_hijra"/>
+                                        <field name="age"/>
+                                        <field name="member_type"/>
+                                        <field name="class_no"/>
+                                        <field name="rate"/>
+                                        <field name="vat"/>
+                                        <field name="total"/>
+                                        <field name="age_category" optional="hide"/>
+                                        <field name="risk_no" optional="hide"/>
+                                        <field name="nationality" optional="hide"/>
+                                        <field name="staff_no" optional="hide"/>
+                                        <field name="member_category" optional="hide"/>
+                                        <field name="mobile1" optional="hide"/>
+                                        <field name="mobile2" optional="hide"/>
+                                        <field name="dep_no" optional="hide"/>
+                                        <field name="sponser_id" optional="hide"/>
+                                        <field name="occupation" optional="hide"/>
+                                        <field name="marital_status" optional="hide"/>
+                                        <field name="elm_relation" optional="hide"/>
+                                        <field name="vip" optional="hide"/>
+                                        <field name="as_vip" optional="hide"/>
+                                        <field name="bank_id" optional="hide"/>
+                                        <field name="branch_id" optional="hide"/>
+            </search>
+        </field>
+     </record>
+
+    <record id="act_health_data" model="ir.actions.act_window">
+        <field name="name">Health Data</field>
+        <field name="res_model">insurance.employee.data</field>
+        <field name="view_mode">tree,form</field>
+         <field name="help" type="html">
+            <p class="oe_view_nocontent_create">
+                Click to create a new Benefit Name.
+            </p>
+        </field>
+    </record>
+
+</odoo>

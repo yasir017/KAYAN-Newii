@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+<!--************ INSURANCE TYPE VIEWS  ************-->
+    <record id="insurance_type_view_tree" model="ir.ui.view">
+        <field name="name">insurance.type.tree</field>
+        <field name="model">insurance.type</field>
+        <field name="arch" type="xml">
+            <tree string="Insurance Type">
+                <field name="name"/>
+                <field name="ins_type_select"/>
+                <field name="id" string="Code"/>
+                <field name="insurance_subtype_ids"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="insurance_type_view_form" model="ir.ui.view">
+        <field name="name">insurance.type.form</field>
+        <field name="model">insurance.type</field>
+        <field name="arch" type="xml">
+            <form string="Insurance Type">
+                 <sheet>
+                    <div class="oe_title">
+                        <label for="name" class="oe_edit_only"/>
+                        <h1><field name="name" class="oe_inline"/></h1>
+                    </div>
+                    <group>
+                        <group>
+                            <field name="id" string="Code"/>
+                        </group>
+                         <group>
+                             <field name="ins_type_select" widget="radio"/>
+                        </group>
+                    </group>
+                     <notebook>
+                         <page string="Sub Types">
+                             <field name="insurance_subtype_ids" mode="tree,form" nolabel="1">
+                                 <tree editable="bottom">
+                                     <field name="sequence" widget="handle"/>
+                                     <field name="name"/>
+                                     <field name="id" string="Code"/>
+                                     <field name="insurance_type_id" invisible="1"/>
+                                 </tree>
+                             </field>
+                         </page>
+                         <page string="Required Documents List">
+                             <field name="list_required_docs_ids" mode="tree" nolabel="1">
+                                 <tree editable="bottom">
+                                     <field name="sequence" widget="handle"/>
+                                     <field name="name"/>
+                                     <field name="is_required" widget="boolean_toggle"/>
+                                     <field name="insurance_type_id" invisible="1"/>
+                                 </tree>
+                             </field>
+                         </page>
+                     </notebook>
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids" widget="mail_followers" groups="base.group_user"/>
+                    <field name="activity_ids" widget="mail_activity"/>
+                    <field name="message_ids" widget="mail_thread"/>
+                </div>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_insurance_type" model="ir.actions.act_window">
+        <field name="name">Insurance Type</field>
+        <field name="res_model">insurance.type</field>
+        <field name="view_mode">tree,form</field>
+        <field name="search_view_id" ref="insurance_type_view_tree"/>
+         <field name="help" type="html">
+            <p class="oe_view_nocontent_create">
+                Click to create a new Insurance Type.
+            </p>
+        </field>
+    </record>
+
+<!--************ INSURANCE SUB TYPE VIEWS  ************-->
+    <record id="insurance_sub_type_view_tree" model="ir.ui.view">
+        <field name="name">insurance.sub.type.tree</field>
+        <field name="model">insurance.sub.type</field>
+        <field name="arch" type="xml">
+            <tree string="Insurance Type">
+                <field name="sequence" widget="handle"/>
+                <field name="name"/>
+                <field name="id" string="Code"/>
+                <field name="insurance_type_id" string="Parent Type"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="insurance_sub_type_view_form" model="ir.ui.view">
+        <field name="name">insurance.sub.type.form</field>
+        <field name="model">insurance.sub.type</field>
+        <field name="arch" type="xml">
+            <form string="Insurance Sub Type">
+                 <sheet>
+                    <div class="oe_title">
+                        <label for="name" class="oe_edit_only"/>
+                        <h1><field name="name" class="oe_inline"/></h1>
+                    </div>
+                    <group>
+                        <group>
+                            <field name="sequence" invisible="1"/>
+                            <field name="id" string="Code"/>
+                            <field name="insurance_type_id" string="Parent Type"/>
+                        </group>
+                         <group>
+                        </group>
+                    </group>
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids" widget="mail_followers" groups="base.group_user"/>
+                    <field name="activity_ids" widget="mail_activity"/>
+                    <field name="message_ids" widget="mail_thread"/>
+                </div>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_insurance_sub_type" model="ir.actions.act_window">
+        <field name="name">Insurance Sub Type</field>
+        <field name="res_model">insurance.sub.type</field>
+        <field name="view_mode">tree,form</field>
+        <field name="search_view_id" ref="insurance_sub_type_view_tree"/>
+         <field name="help" type="html">
+            <p class="oe_view_nocontent_create">
+                Click to create a new Insurance Sub Type.
+            </p>
+        </field>
+    </record>
+
+
+</odoo>

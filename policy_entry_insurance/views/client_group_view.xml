@@ -1,0 +1,116 @@
+<odoo>
+    <record id="view_client_group_form" model="ir.ui.view">
+            <field name="name">client.group.form</field>
+            <field name="model">client.group</field>
+            <field name="arch" type="xml">
+                <form string="Customer">
+                    <sheet>
+                        <group col="4" string="Customer">
+                            <field name="name"/>
+                            <field name="english_name"/>
+                            <field name="arabic_name"/>
+
+                        </group>
+                        <group string="Insurance Company">
+                            <field name="insurance_id"/>
+                            <field name="insurance_english_name"/>
+                            <field name="insurance_arabic_name"/>
+                            <field name="trade_name"/>
+                            <field name="contact_dear"/>
+                            <field name="contact_person"/>
+                            <field name="phone"/>
+                            <field name="ext"/>
+                            <field name="fax_no"/>
+                            <field name="mobile_no"/>
+                            <field name="email_adress"/>
+                            <field name="website"/>
+                            <field name="city"/>
+                            <field name="region"/>
+                            <field name="affliated_co"/>
+                            <field name="public"/>
+                            <field name="bank_id"/>
+                            <field name="income_account_id"/>
+                            <field name="recivable_acc"/>
+                            <field name="other_income_account_id"/>
+                            <field name="pre_paid_tax_acc"/>
+                            <field name="billing_address"/>
+                        </group>
+                        <notebook>
+                            <page string="Insurance Department">
+                             <field name="department_ids"/>
+
+                            </page>
+                        </notebook>
+
+
+
+                    </sheet>
+                    <div class="o_attachment_preview"/>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids"/>
+                    <field name="message_ids"/>
+                </div>
+                </form>
+            </field>
+    </record>
+
+
+           <record id="view_client_group_tree" model="ir.ui.view">
+            <field name="name">client.group.form</field>
+            <field name="model">client.group</field>
+            <field name="arch" type="xml">
+                    <tree>
+                        <field name="name"/>
+                            <field name="english_name"/>
+                            <field name="arabic_name"/>
+                        <field name="insurance_id"/>
+                            <field name="insurance_english_name"/>
+                            <field name="insurance_arabic_name"/>
+                            <field name="trade_name"/>
+                            <field name="contact_dear"/>
+                            <field name="contact_person"/>
+                            <field name="phone"/>
+                            <field name="ext"/>
+                            <field name="fax_no"/>
+                            <field name="mobile_no"/>
+                    </tree>
+            </field>
+           </record>
+
+
+        <record id="view_client_group_search" model="ir.ui.view">
+            <field name="name">client.group.search</field>
+            <field name="model">client.group</field>
+            <field name="arch" type="xml">
+                    <search>
+                          <field name="name"/>
+                            <field name="english_name"/>
+                            <field name="arabic_name"/>
+                        <field name="insurance_id"/>
+                            <field name="insurance_english_name"/>
+                            <field name="insurance_arabic_name"/>
+                            <field name="trade_name"/>
+                            <field name="contact_dear"/>
+                            <field name="contact_person"/>
+                            <field name="phone"/>
+                            <field name="ext"/>
+                            <field name="fax_no"/>
+                            <field name="mobile_no"/>
+                    </search>
+            </field>
+           </record>
+
+
+        <record id="act_client_group_class" model="ir.actions.act_window">
+            <field name="name">Customer</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">client.group</field>
+            <field name="view_mode">tree,form</field>
+            <field name="view_id" ref="view_client_group_tree"/>
+            <!--            <f/ield name="context">{}</field>-->
+            <!--        <field name="target">new</field>-->
+            <!--            <field name="binding_model_id" ref="hr_payroll.model_hr_payslip"/>-->
+            <!--            <field name="binding_view_types">list</field>-->
+        </record>
+
+</odoo>

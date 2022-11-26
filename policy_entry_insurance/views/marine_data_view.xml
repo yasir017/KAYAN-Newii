@@ -1,0 +1,106 @@
+<odoo>
+
+    <record id="view_marine_data_form" model="ir.ui.view">
+        <field name="name">insurance.marine.form</field>
+        <field name="model">insurance.marine</field>
+        <field name="arch" type="xml">
+            <form string="Marine Data">
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="cargo_description"/>
+                            <field name="vessel_name"/>
+                            <field name="loading_port"/>
+                            <field name="credit_letter_no"/>
+                            <field name="sailing_date"/>
+                            <field name="parcel_no"/>
+                            <field name="cardo_sum_insured"/>
+                        </group>
+                        <group>
+                            <field name="currency_id"/>
+                            <field name="packing_type"/>
+                            <field name="nationality"/>
+                            <field name="discharge_port"/>
+                            <field name="average_percentage"/>
+                            <field name="package_no"/>
+                            <field name="deductible"/>
+                        </group>
+                        <group>
+                            <field name="good_type"/>
+                            <field name="vessel_build_date"/>
+                            <field name="single_policy"/>
+                            <field name="cover_cluase"/>
+                            <field name="clause_type"/>
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_marine_data_tree" model="ir.ui.view">
+        <field name="name">insurance.marine.form</field>
+        <field name="model">insurance.marine</field>
+        <field name="arch" type="xml">
+            <tree string="Marine Data">
+                <field name="cargo_description"/>
+                <field name="vessel_name"/>
+                <field name="loading_port"/>
+                <field name="credit_letter_no"/>
+                <field name="sailing_date"/>
+                <field name="parcel_no"/>
+                <field name="cardo_sum_insured"/>
+                <field name="currency_id"/>
+                <field name="packing_type" optional="hide"/>
+                <field name="nationality" optional="hide"/>
+                <field name="discharge_port" optional="hide"/>
+                <field name="average_percentage" optional="hide"/>
+                <field name="package_no" optional="hide"/>
+                <field name="deductible" optional="hide"/>
+                <field name="good_type" optional="hide"/>
+                <field name="vessel_build_date" optional="hide"/>
+                <field name="single_policy" optional="hide"/>
+                <field name="cover_cluase" optional="hide"/>
+                <field name="clause_type" optional="hide"/>
+            </tree>
+        </field>
+    </record>
+
+
+    <record id="view_marine_data_search" model="ir.ui.view">
+        <field name="name">insurance.marine.search</field>
+        <field name="model">insurance.marine</field>
+        <field name="arch" type="xml">
+            <search string="Marine Data">
+                <field name="vessel_name"/>
+                <field name="loading_port"/>
+                <field name="credit_letter_no"/>
+                <field name="sailing_date"/>
+                <field name="parcel_no"/>
+                <field name="cardo_sum_insured"/>
+                <field name="currency_id"/>
+                <field name="packing_type"/>
+                <field name="nationality"/>
+                <field name="discharge_port"/>
+                <field name="average_percentage"/>
+                <field name="package_no"/>
+                <field name="deductible"/>
+                <field name="good_type"/>
+                <field name="vessel_build_date"/>
+                <field name="single_policy"/>
+                <field name="cover_cluase"/>
+                <field name="clause_type"/>
+            </search>
+        </field>
+    </record>
+
+    <record id="act_marine_data" model="ir.actions.act_window">
+        <field name="name">Marine Data</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">insurance.marine</field>
+        <field name="view_mode">tree,form</field>
+        <field name="view_id" ref="view_marine_data_tree"/>
+
+    </record>
+
+</odoo>

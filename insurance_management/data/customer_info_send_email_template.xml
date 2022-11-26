@@ -1,0 +1,42 @@
+<?xml version="1.0" ?>
+<odoo>
+    <data>
+
+        <!--  Customer Info Report Email Template -->
+        <record id="email_template_info_report_customer" model="mail.template">
+            <field name="name">Customer Information...!!</field>
+            <field name="subject">Customer Information Is Sent to you {{object.document_no or ''}} !</field>
+            <field name="model_id" ref="insurance_management.model_client_branch"/>
+            <field name="auto_delete" eval="False"/>
+            <field name="body_html" type="html">
+                <div style="font-family: 'Lucica Grande', Ubuntu, Arial, Verdana, sans-serif; font-size: 12px; color: rgb(34, 34, 34); background-color: rgb(255, 255, 255); ">
+                    <p>The Customer Information...!</p>
+                    <p>You can find the Customer Information in Attachments!</p>
+                    <p> Hope you have a great Day Ahead. Stay Healthy, Stay Happy.</p>
+                   <br/>
+                    Best Wishes,
+<!--                    <p><t t-out="object.company_id.name or ''"/></p>-->
+                </div>
+            </field>
+        </record>
+
+        <record id="email_template_quotation_report_to" model="mail.template">
+            <field name="name">Customer Quotations...!!</field>
+            <field name="subject">Insurance Quotations Is Sent to you {{object.document_no or ''}} !</field>
+            <field name="model_id" ref="insurance_management.model_client_branch"/>
+            <field name="auto_delete" eval="False"/>
+            <field name="body_html" type="html">
+                <div style="font-family: 'Lucica Grande', Ubuntu, Arial, Verdana, sans-serif; font-size: 12px; color: rgb(34, 34, 34); background-color: rgb(255, 255, 255); ">
+                    <p>The Customer Information...!</p>
+                    <p>You can find the Customer Quotations in Attachments! Let us know about the Ihe insurance Company you go with, With Replying back to this email.</p>
+                    <p> Hope you have a great Day Ahead. Stay Healthy, Stay Happy.</p>
+                   <br/>
+                    Best Wishes,
+<!--                    <p><t t-out="object.company_id.name or ''"/></p>-->
+                </div>
+            </field>
+        </record>
+        
+        
+    </data>
+</odoo>

@@ -1,0 +1,54 @@
+<odoo>
+
+    <record id="view_insurance_category_form" model="ir.ui.view">
+            <field name="name">insurance.category.form</field>
+            <field name="model">insurance.category</field>
+            <field name="arch" type="xml">
+                <form string="Class Configuration">
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="code"/>
+                                <field name="name"/>
+                                <field name="arabic_name"/>
+
+                            </group>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+     </record>
+    <record id="view_insurance_category_tree" model="ir.ui.view">
+            <field name="name">insurance.category.tree</field>
+            <field name="model">insurance.category</field>
+            <field name="arch" type="xml">
+                <tree editable="top" string="Category Config">
+
+                                    <field name="code"/>
+                                <field name="name"/>
+                                <field name="arabic_name"/>
+                </tree>
+            </field>
+    </record>
+
+     <record id="view_insurance_category_search" model="ir.ui.view">
+            <field name="name">insurance.category.search</field>
+            <field name="model">insurance.category</field>
+            <field name="arch" type="xml">
+                <search string="Category">
+                       <field name="code"/>
+                                <field name="name"/>
+                                <field name="arabic_name"/>
+                </search>
+            </field>
+    </record>
+
+     <record id="act_insurance_category" model="ir.actions.act_window">
+            <field name="name">Category </field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">insurance.category</field>
+            <field name="view_mode">tree,form</field>
+            <field name="view_id" ref="view_insurance_category_tree"/>
+
+        </record>
+</odoo>

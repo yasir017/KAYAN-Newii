@@ -1,0 +1,158 @@
+<odoo>
+
+    <record id="view_insurance_business_class_form" model="ir.ui.view">
+            <field name="name">insurance.business.class.form</field>
+            <field name="model">insurance.business.class</field>
+            <field name="arch" type="xml">
+                <form string="Bussiness Class">
+                    <sheet>
+                        <group col="4" string="Policy Information">
+                            <field name="policy_id"/>
+                            <field name="currency_id"/>
+                        </group>
+                        <notebook>
+                            <page string="Trucks">
+                             <field name="vehicle_line_ids">
+                                 <tree editable="bottom">
+                                     <field name="truck_type"/>
+                                     <field name="no_of_truck"/>
+                                     <field name="insurance_amount"/>
+
+                                 </tree>
+                             </field>
+                            </page>
+                            <page string="Vehicle">
+                                <field name="driver_line">
+                                    <tree editable="bottom">
+                                        <field name="type_of"/>
+                                        <field name="limit_person"/>
+<!--                                        <field name="limit_person"/>-->
+                                        <field name="permium"/>
+                                        <field name="ded"/>
+                                        <field name="no"/>
+                                    </tree>
+                                </field>
+
+                            </page>
+                            <page string="Deduction">
+                                <field name="deducation_line">
+                                    <tree editable="bottom">
+                                        <field name="ded_type"/>
+                                        <field name="ded_percentage"/>
+                                        <field name="ded_amount"/>
+                                        <field name="ded_description"/>
+                                    </tree>
+                                </field>
+                            </page>
+                            <page string="Vehicle Detail">
+                                      <button name="action_import_vehicle_data" type="object" string="Import Vehicle Data" class="oe_highlight" />
+                                <button name="export_vehicle" type="object" string="Export Vehicle Data" class="oe_highlight" />
+
+                                <field name="vehicle_ids">
+                                    <tree>
+                                         <field name="policy_id"/>
+                            <field name="currency_id"/>
+                            <field name="effective_date"/>
+                            <field name="ben_name"/>
+                            <field name="ben_address"/>
+                            <field name="owener_name"/>
+                            <field name="owener_address"/>
+                            <field name="chassis" optional="hide"/>
+                            <field name="motor_no" optional="hide"/>
+                            <field name="plate_no" optional="hide"/>
+                                        <field name="plate_no_ar" optional="hide"/>
+                            <field name="brand_name" optional="hide"/>
+                            <field name="model_no" optional="hide"/>
+                            <field name="contact_person" optional="hide"/>
+                            <field name="contacy_phone_no" optional="hide"/>
+                            <field name="location" optional="hide"/>
+                            <field name="insurance_amount" optional="hide"/>
+                            <field name="net_premium" optional="hide"/>
+                            <field name="over_age_am" optional="hide"/>
+                            <field name="current_net_premium" optional="hide"/>
+                            <field name="total_net_premium" optional="hide"/>
+                            <field name="include_eq" optional="hide"/>
+                            <field name="eq_description" optional="hide"/>
+                            <field name="eq_net_premium" optional="hide"/>
+                            <field name="eq_insurance_am" optional="hide"/>
+                            <field name="exclusion_survey" optional="hide"/>
+                                    </tree>
+                                    <form>
+                                         <sheet>
+                        <group col="4" string="Policy Information">
+                            <field name="policy_id"/>
+                            <field name="currency_id"/>
+                            <field name="effective_date"/>
+                            <field name="ben_name"/>
+                            <field name="ben_address"/>
+                            <field name="owener_name"/>
+                            <field name="owener_address"/>
+                            <field name="chassis"/>
+                            <field name="motor_no"/>
+                            <field name="plate_no"/>
+                            <field name="plate_no_ar"/>
+                            <field name="brand_name"/>
+                            <field name="model_no"/>
+                            <field name="contact_person"/>
+                            <field name="contacy_phone_no"/>
+                            <field name="location"/>
+                            <field name="insurance_amount"/>
+                            <field name="net_premium"/>
+                            <field name="over_age_am"/>
+                            <field name="current_net_premium"/>
+                            <field name="total_net_premium"/>
+                            <field name="include_eq"/>
+                            <field name="eq_description"/>
+                            <field name="eq_net_premium"/>
+                            <field name="eq_insurance_am"/>
+                            <field name="exclusion_survey"/>
+                        </group>
+                    </sheet>
+                                    </form>
+                                </field>
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+    </record>
+
+
+           <record id="view_insurance_business_class_tree" model="ir.ui.view">
+            <field name="name">insurance.business.class.form</field>
+            <field name="model">insurance.business.class</field>
+            <field name="arch" type="xml">
+                    <tree>
+                         <field name="policy_id"/>
+                            <field name="currency_id"/>
+                    </tree>
+            </field>
+           </record>
+
+
+        <record id="view_insurance_business_class_search" model="ir.ui.view">
+            <field name="name">insurance.business.class.search</field>
+            <field name="model">insurance.business.class</field>
+            <field name="arch" type="xml">
+                    <search>
+                         <field name="policy_id"/>
+                            <field name="currency_id"/>
+                    </search>
+            </field>
+           </record>
+
+
+        <record id="act_bussiness_class" model="ir.actions.act_window">
+            <field name="name">Bussines Class</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">insurance.business.class</field>
+            <field name="view_mode">tree,form</field>
+            <field name="view_id" ref="view_insurance_business_class_tree"/>
+            <!--            <f/ield name="context">{}</field>-->
+            <!--        <field name="target">new</field>-->
+            <!--            <field name="binding_model_id" ref="hr_payroll.model_hr_payslip"/>-->
+            <!--            <field name="binding_view_types">list</field>-->
+        </record>
+
+
+</odoo>

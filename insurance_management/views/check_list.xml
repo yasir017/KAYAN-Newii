@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+<!--************ CHECK LIST VIEWS  ************-->
+    <record id="client_checklist_view_tree" model="ir.ui.view">
+        <field name="name">client.checklist.tree</field>
+        <field name="model">client.checklist</field>
+        <field name="arch" type="xml">
+            <tree string="Check List">
+                <field name="check_list" widget="html"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="client_checklist_view_form" model="ir.ui.view">
+        <field name="name">client.checklist.form</field>
+        <field name="model">client.checklist</field>
+        <field name="arch" type="xml">
+            <form string="Check List">
+                <sheet>
+                    <group string="Client Check List">
+                        <field name="check_list" nolabel="1" widget="html" class="oe-bordered-editor" options="{'style-inline': true, 'codeview': true,'safe': True}"/>
+                    </group>
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids" widget="mail_followers" groups="base.group_user"/>
+                    <field name="activity_ids" widget="mail_activity"/>
+                    <field name="message_ids" widget="mail_thread"/>
+                </div>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_client_checklist" model="ir.actions.act_window">
+        <field name="name">Check List</field>
+        <field name="res_model">client.checklist</field>
+        <field name="view_mode">tree,form</field>
+        <field name="search_view_id" ref="client_checklist_view_tree"/>
+         <field name="help" type="html">
+            <p class="oe_view_nocontent_create">
+                Click to create a new Check List.
+            </p>
+        </field>
+    </record>
+
+
+</odoo>

@@ -1,0 +1,51 @@
+<?xml version="1.0"?>
+<odoo>
+
+	<record id="form_comparison_benefit_wizard_view" model="ir.ui.view">
+		<field name="name">select.quotation.wizard.form.view</field>
+		<field name="model">select.quotation.wizard</field>
+		<field name="arch" type="xml">
+			<form string="Select Quotation Wizard">
+				<sheet>
+					<group>
+						<field name="medical_visibility_check" invisible="1"/>
+                    	<field name="vehicle_visibility_check" invisible="1"/>
+						<group string="Client">
+							<field name="client_id" readonly="1" nolabel="1"/>
+						</group>
+						<group string="Select Insurance Quotation" attrs="{'invisible': [('medical_visibility_check', '=', False)]}">
+							<field name="insurance_quotation_id" nolabel="1" widget="many2many_tags"/>
+						</group>
+						<group string="Select Vehicle Quotations" attrs="{'invisible': [('vehicle_visibility_check', '=', False)]}">
+							<field name="vehicle_quotation_id" nolabel="1" widget="many2many_tags"/>
+						</group>
+					</group>
+				</sheet>
+				<footer>
+					<button name="action_confirm" type="object" string="Confirm"
+					class="oe_highlight"/>
+					<button string="Cancel" class="btn-secondary" special="cancel"/>
+				</footer>
+			</form>
+		</field>
+	</record>
+
+	<record id="action_comparison_benefit_wizard" model="ir.actions.act_window">
+		<field name="name">Compare Benefit Wizard</field>
+		<field name="type">ir.actions.act_window</field>
+		<field name="res_model">benefit.comparison.wizard</field>
+		<field name="view_mode">form</field>
+		<field name="view_id" ref="form_comparison_benefit_wizard_view"/>
+		<field name="target">new</field>
+	</record>
+
+	<record id="action_benefits_comparison" model="ir.actions.server">
+		<field name="name">Benefits Comparison</field>
+		<field name="model_id" ref="insurance_management.model_client_branch"/>
+		<field name="binding_model_id" ref="insurance_management.model_client_branch"/>
+		<field name="binding_view_types">form</field>
+		<field name="state">code</field>
+		<field name="code">action = records.action_open_benefits_wizard()</field>
+	</record>
+
+</odoo>

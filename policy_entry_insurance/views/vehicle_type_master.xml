@@ -1,0 +1,45 @@
+<odoo>
+     <record id="view_vehicle_type_form" model="ir.ui.view">
+            <field name="name">vehicle.type.form</field>
+            <field name="model">vehicle.type</field>
+            <field name="arch" type="xml">
+                <form string="Vehcile Type">
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="name"/>
+                            </group>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+     </record>
+    <record id="view_vehicle_type_tree" model="ir.ui.view">
+            <field name="name">vehicle.type.tree</field>
+            <field name="model">vehicle.type</field>
+            <field name="arch" type="xml">
+                <tree string="Vehicle Type Master">
+                    <field name="name"/>
+                </tree>
+            </field>
+    </record>
+
+     <record id="view_vehicle_type_search" model="ir.ui.view">
+            <field name="name">vehicle.type.search</field>
+            <field name="model">vehicle.type</field>
+            <field name="arch" type="xml">
+                <search string="Vehicle Type Master">
+                    <field name="name"/>
+                </search>
+            </field>
+    </record>
+
+     <record id="act_vehicle_type" model="ir.actions.act_window">
+            <field name="name">Vehicle Type Master </field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">vehicle.type</field>
+            <field name="view_mode">tree,form</field>
+            <field name="view_id" ref="view_vehicle_type_tree"/>
+
+        </record>
+</odoo>

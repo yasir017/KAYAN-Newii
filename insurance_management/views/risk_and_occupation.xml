@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+<!--************ RISK VIEWS  ************-->
+    <record id="risk_location_view_tree" model="ir.ui.view">
+        <field name="name">risk.location.tree</field>
+        <field name="model">risk.location</field>
+        <field name="arch" type="xml">
+            <tree string="Risk (Location)">
+                <field name="code"/>
+                <field name="country"/>
+                <field name="region"/>
+                <field name="city"/>
+                <field name="risk"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="risk_location_view_form" model="ir.ui.view">
+        <field name="name">risk.location.form</field>
+        <field name="model">risk.location</field>
+        <field name="arch" type="xml">
+            <form string="Risk (Location)">
+                <header>
+                </header>
+                <sheet>
+                    <div class="oe_title">
+                        <label for="code" class="oe_edit_only"/>
+                        <h1><field name="code" class="oe_inline"/></h1>
+                    </div>
+                    <group>
+                        <group>
+                            <field name="country"/>
+                            <field name="region"/>
+                        </group>
+                         <group>
+                            <field name="city"/>
+                            <field name="risk"/>
+                        </group>
+                    </group>
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids" widget="mail_followers" groups="base.group_user"/>
+                    <field name="activity_ids" widget="mail_activity"/>
+                    <field name="message_ids" widget="mail_thread"/>
+                </div>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_risk_location" model="ir.actions.act_window">
+        <field name="name">Risk (Location)</field>
+        <field name="res_model">risk.location</field>
+        <field name="view_mode">tree,form</field>
+        <field name="search_view_id" ref="risk_location_view_tree"/>
+         <field name="help" type="html">
+            <p class="oe_view_nocontent_create">
+                Click to create a new Risk (Location).
+            </p>
+        </field>
+    </record>
+
+
+    <!--************ OCCUPATION VIEWS  ************-->
+    <record id="ins_occupation_view_tree" model="ir.ui.view">
+        <field name="name">ins.occupation.tree</field>
+        <field name="model">ins.occupation</field>
+        <field name="arch" type="xml">
+            <tree string="Occupation">
+                <field name="code"/>
+                <field name="name"/>
+                <field name="gender"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="ins_occupation_view_form" model="ir.ui.view">
+        <field name="name">ins.occupation.form</field>
+        <field name="model">ins.occupation</field>
+        <field name="arch" type="xml">
+            <form string="Occupation">
+                <header>
+                </header>
+                <sheet>
+                    <div class="oe_title">
+                        <label for="code" class="oe_edit_only"/>
+                        <h1><field name="code" class="oe_inline"/></h1>
+                    </div>
+                    <group>
+                        <group>
+                            <field name="name"/>
+                            <field name="gender"/>
+                        </group>
+                         <group>
+                        </group>
+                    </group>
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids" widget="mail_followers" groups="base.group_user"/>
+                    <field name="activity_ids" widget="mail_activity"/>
+                    <field name="message_ids" widget="mail_thread"/>
+                </div>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_ins_occupation" model="ir.actions.act_window">
+        <field name="name">Occupation</field>
+        <field name="res_model">ins.occupation</field>
+        <field name="view_mode">tree,form</field>
+        <field name="search_view_id" ref="ins_occupation_view_tree"/>
+         <field name="help" type="html">
+            <p class="oe_view_nocontent_create">
+                Click to create a new Occupation.
+            </p>
+        </field>
+    </record>
+
+
+</odoo>

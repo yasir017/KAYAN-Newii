@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="action_benefits_comparison_report" model="ir.actions.report">
+            <field name="name">Benefits Comparison</field>
+            <field name="model">report.insurance_management.comparison_benefits</field>
+            <field name="report_type">qweb-html</field>
+            <field name="report_name">insurance_management.comparison_benefits</field>
+            <field name="report_file">insurance_management.comparison_benefits</field>
+        </record>
+    </data>
+</odoo>

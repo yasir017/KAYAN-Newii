@@ -1,0 +1,53 @@
+<odoo>
+    <record id="view_customer_attachment_tree" model="ir.ui.view">
+        <field name="name">customer.attachment.tree</field>
+        <field name="model">customer.attachment</field>
+        <field name="arch" type="xml">
+            <tree string="Customer Attachment"  delete="0">
+                <field name="name" invisible="1"/>
+                <field name="is_required" readonly="1"/>
+                <field name="file"/>
+                <field name="state"/>
+                <field name="client_branch_id"/>
+<!--                <field name="benefit_value"/>-->
+                <field name="policy_id"/>
+            </tree>
+        </field>
+    </record>
+    <record id="view_customer_attachment_form" model="ir.ui.view">
+        <field name="name">customer.attachment.form</field>
+        <field name="model">customer.attachment</field>
+        <field name="arch" type="xml">
+            <form string="Customer Attachment">
+                <sheet>
+                     <group>
+                                        <group>
+                                            <field name="name"/>
+                                            <field name="file_type"/>
+                                            <field name="list_required_docs_ids" widget="many2many_tags" invisible="1"/>
+                                        </group>
+                                        <group>
+                                            <field name="file" widget="pdf_viewer"/>
+<!--                                            <field name="image_file" widget="image" attrs="{'invisible': [('file_type', '!=', 'image')]}"/>-->
+<!--                                            <field name="other_file" attrs="{'invisible': [('file_type', '!=', 'other')]}"/>-->
+                                            <field name="client_branch_id" invisible="1"/>
+                                        </group>
+                                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+        <record id="view_customer_attachment_search" model="ir.ui.view">
+        <field name="name">customer.attachment.form</field>
+        <field name="model">customer.attachment</field>
+        <field name="arch" type="xml">
+            <search>
+                 <field name="client_branch_id"/>
+<!--               ? <field name="benefit_value"/>-->
+                <field name="policy_id"/>
+            </search>
+        </field>
+        </record>
+
+</odoo>

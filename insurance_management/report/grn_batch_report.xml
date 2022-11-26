@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="grn_batch_print_report" model="ir.actions.report">
+        <field name="name">Print Barcode</field>
+        <field name="model">lsc.grn</field>
+        <field name="report_type">qweb-html</field>
+        <field name="report_name">lsc_wms.print_grn_sku_batch</field>
+        <field name="report_file">lsc_wms.print_grn_sku_batch</field>
+        <field name="print_report_name">'Print Barcode - %s' % (object.name).replace('/', '')</field>
+        <field name="binding_model_id" ref="model_lsc_grn"/>
+        <field name="binding_type">report</field>
+    </record>
+
+    <template id="print_grn_sku_batch">
+        <t t-call="web.basic_layout">
+            <div class="page">
+                <t t-foreach="docs" t-as="grn">
+                    <t t-foreach="grn.grn_line_ids.filtered(lambda b: b.recieved_qty > 0)" t-as="grn_line">
+                        <div class="col-md-6">
+                            <table style="width:243pt; height:153pt; border: 1pt solid black; border-collapse:separate; border-radius:8pt; margin:5pt">
+<!--                                <td style="width:33%;" valign="center">-->
+<!--                                    <table style="width:77pt; height:150pt">-->
+<!--                                        <tr style="height:30%">-->
+<!--                                            <td align="center" valign="center">-->
+<!--                                                <img t-if="env.user.company_id.logo" t-att-src="image_data_uri(env.user.company_id.logo)" style="max-height:45pt;max-width:90%" alt="Company Logo"/>-->
+<!--                                            </td>-->
+<!--                                        </tr>-->
+<!--                                        <tr style="height:70%;">-->
+<!--                                            <td align="center" valign="center">-->
+<!--                                                <img t-if="grn_line.sku_id.image" t-att-src="image_data_uri(grn_line.sku_id.image)" style="max-height:85pt;max-width:90%" alt="SKU Image"/>-->
+<!--                                            </td>-->
+<!--                                        </tr>-->
+<!--                                    </table>-->
+<!--                                </td>-->
+                                <td>
+                                    <table>
+                                        <tr>
+                                            <img alt="barcode" t-if="grn_line.lot" t-att-src="'/report/barcode/?type=%s&amp;value=%s&amp;width=%s&amp;height=%s' % ('Code128', grn_line.lot, 600, 120)" style="max-height: 76pt;max-width: 154%;margin-left: -85px;" align="center"/>
+                                        </tr>
+                                        <tr>
+                                            <div style="font-size:24pt; margin-bottom:0pt;margin-top:0pt;" align="center"><t t-esc="grn_line.sku_id.code"/></div>
+                                        </tr>
+                                        <tr style="border-top: 1px solid black;">
+                                            <div style="font-size:15pt; margin-bottom:0pt;margin-top:0pt;border-top: 1px solid red;" align="center"><t t-esc="grn_line.sku_id.description"/></div>
+                                        </tr>
+                                        <table style="border-top: 1px solid black;width:100%;">
+                                            <tr style="border-top: 1px solid red;">
+                                                <th><div style="font-size:15pt; margin-bottom:0pt;margin-top:0pt;margin-right:95px;margin-left:20px;" align="center">MMID</div></th>
+                                                <th><div style="font-size:15pt; margin-bottom:0pt;margin-top:0pt;" align="center">Business Unit</div></th>
+                                            </tr>
+                                            <tr>
+                                                <td><div style="font-size:15pt; margin-bottom:0pt;margin-top:0pt;margin-right:95px;margin-left:20px;" align="center">MMID</div></td>
+                                                <td><div style="font-size:15pt; margin-bottom:0pt;margin-top:0pt;" align="center"><t t-esc="grn_line.bussines_unit_id.name"/></div></td>
+                                            </tr>
+                                        </table>
+                                        <table style="border-top: 1px solid black;width:100%;">
+                                            <tr t-if="grn_line.serial_no">
+                                                <span>
+                                                    <img alt="barcode" t-if="grn_line.serial_no" t-att-src="'/report/barcode/?type=%s&amp;value=%s&amp;width=%s&amp;height=%s' % ('Code128', grn_line.serial_no, 600, 120)" style="max-height: 55pt;max-width: 101%;" align="center"/>
+                                                </span>
+
+                                            </tr>
+                                            <tr t-if="grn_line.batch_no">
+                                                <span>
+                                                    <img alt="barcode" t-if="grn_line.batch_no" t-att-src="'/report/barcode/?type=%s&amp;value=%s&amp;width=%s&amp;height=%s' % ('Code128', grn_line.batch_no, 600, 120)" style="max-height: 55pt;max-width: 101%;" align="center"/>
+                                                </span>
+
+                                            </tr>
+
+                                        </table>
+                                        <tr t-if="grn_line.serial_no"><td><div align="center" style="font-size:15pt;margin-bottom:0pt;"><t t-esc="grn_line.serial_no"/></div></td></tr>
+                                        <tr t-if="grn_line.batch_no"><td><div align="center" style="font-size:15pt;margin-bottom:0pt;"><t t-esc="grn_line.batch_no.name"/></div></td></tr>
+                                    </table>
+                                </td>
+                            </table>
+                        </div>
+                    </t>
+                </t>
+            </div>
+        </t>
+    </template>
+</odoo>

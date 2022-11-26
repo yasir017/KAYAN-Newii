@@ -1,0 +1,45 @@
+<odoo>
+     <record id="view_insurance_city_form" model="ir.ui.view">
+            <field name="name">insurance.city.form</field>
+            <field name="model">insurance.city</field>
+            <field name="arch" type="xml">
+                <form string="City Master">
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="name"/>
+                            </group>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+     </record>
+    <record id="view_insurance_city_tree" model="ir.ui.view">
+            <field name="name">insurance.city.tree</field>
+            <field name="model">insurance.city</field>
+            <field name="arch" type="xml">
+                <tree string="City Master">
+                    <field name="name"/>
+                </tree>
+            </field>
+    </record>
+
+     <record id="view_insurance_city_search" model="ir.ui.view">
+            <field name="name">insurance.city.search</field>
+            <field name="model">insurance.city</field>
+            <field name="arch" type="xml">
+                <search string="City Master">
+                    <field name="name"/>
+                </search>
+            </field>
+    </record>
+
+     <record id="act_insurance_city" model="ir.actions.act_window">
+            <field name="name">City Master </field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">insurance.city</field>
+            <field name="view_mode">tree,form</field>
+            <field name="view_id" ref="view_insurance_branch_tree"/>
+
+        </record>
+</odoo>

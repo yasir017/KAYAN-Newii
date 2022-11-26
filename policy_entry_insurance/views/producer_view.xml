@@ -1,0 +1,54 @@
+<odoo>
+     <record id="view_producer_form" model="ir.ui.view">
+            <field name="name">insurance.producer.form</field>
+            <field name="model">insurance.producer</field>
+            <field name="arch" type="xml">
+                <form string="Producer Data">
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="policy_id"/>
+                                <field name="employee_id"/>
+                                <field name="amount"/>
+                                <field name="percentage"/>
+                            </group>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+     </record>
+<record id="view_producer_tree" model="ir.ui.view">
+            <field name="name">insurance.producer.tree</field>
+            <field name="model">insurance.producer</field>
+            <field name="arch" type="xml">
+                <tree string="Producer">
+                     <field name="policy_id"/>
+                                <field name="employee_id"/>
+                                <field name="amount"/>
+                                <field name="percentage"/>
+                </tree>
+            </field>
+    </record>
+
+     <record id="view_producer_search" model="ir.ui.view">
+            <field name="name">insurance.producer.search</field>
+            <field name="model">insurance.producer</field>
+            <field name="arch" type="xml">
+                <search string="Producer">
+                     <field name="policy_id"/>
+                                <field name="employee_id"/>
+                                <field name="amount"/>
+                                <field name="percentage"/>
+                </search>
+            </field>
+    </record>
+
+     <record id="act_producer" model="ir.actions.act_window">
+            <field name="name">Producer Data </field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">insurance.producer</field>
+            <field name="view_mode">tree,form</field>
+            <field name="view_id" ref="view_producer_tree"/>
+
+        </record>
+</odoo>

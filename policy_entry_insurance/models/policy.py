@@ -1,0 +1,254 @@
+# -*- coding: utf-8 -*-
+
+from odoo import api, fields, models, _
+from odoo.exceptions import UserError, ValidationError
+from datetime import datetime
+from datetime import timedelta
+from collections import namedtuple
+from calendar import monthrange
+from datetime import datetime
+
+import calendar
+
+class Policy(models.Model):
+    _name = 'insurance.policy'
+
+    _rec_name = 'policy_id'
+
+    _inherit = ['mail.thread', 'mail.activity.mixin']
+    partner_id = fields.Many2one('res.partner',string='Customer')
+    policy_no = fields.Char("Policy No",)
+    branch_id = fields.Many2one('insurance.branch',"Branch Name")
+    start_date = fields.Date('Start Date')
+    expiry_date = fields.Date('Expiry Date')
+    issuance_date = fields.Date('issuance Date')
+    policy_id = fields.Char('policy ID',readonly=1)
+    prev_policy = fields.Many2one('insurance.policy',"Policy")
+    insurance_company_id = fields.Char('Insurance Company')
+    business_class = fields.Many2one('business.class.config','Business Class')
+
+    currency_id = fields.Many2one('res.currency','Currency')
+    sum_insured = fields.Float('Sum Insured')
+    basic_prem = fields.Float('Premium')
+    net_premium = fields.Float('Net Premium')
+    net_pr_percentage = fields.Float('Net Premium Percentage')
+    basic_amount = fields.Float('Basic Amount')
+    basic_amount_percentage = fields.Float("Basic Amount Percentage")
+    gross_return = fields.Float('Gross Return')
+    net_return_amount = fields.Float('Net Return')
+    issuening_fee = fields.Float('Issuing Fee')
+    gross_premium = fields.Float('Gross Premium')
+    calculated_gross = fields.Float('Calculated Gross')
+    premium_due = fields.Float('Premium Due')
+    return_end_no = fields.Float('Return End No')
+
+    is_renewel_policy  = fields.Boolean('Is Renewal Policy')
+    is_extra_benfit = fields.Boolean('Is Extra Benefit')
+    is_under_agreement = fields.Boolean('Is Under Agreement')
+    agreement_file = fields.Binary("Agreement File")
+
+    terms=fields.Selection([('long_term','Long Term'),('short_term','Short Term')],string="Terms",default='long_term')
+    net_prem_percent = fields.Float()
+    basic_percent = fields.Float()
+    benefits_ids = fields.One2many('insurance.benefit.line','policy_id',string="Benefits Line")
+
+    installment_ids = fields.One2many('insurance.installment','policy_id',string="Installment")
+    paid = fields.Float('Paid Amount')
+    # bussines_class_id = fields.Many2one('insurance.business.class',"Go Business Class")
+    vehicle_detail = fields.One2many('insurance.vehicle','policy_id',"Vehicle detail")
+
+    producer_ids = fields.One2many('insurance.producer','policy_id','Producer')
+    marine_ids = fields.One2many('insurance.marine','policy_id',"Marine Details")
+    health_ids = fields.One2many('insurance.health','policy_id','Health Detail')
+    health_endors_ids = fields.Many2many('insurance.employee.data', string='Health Detail')
+    # ******************scheduled Policy****************
+    vat_premium = fields.Float('Vat Premium')
+    total_premium_after_vat = fields.Float("Total After Vat")
+
+    premium_percent_am = fields.Float("Premium Percent")
+    premium_percent_vat = fields.Float("Premium Percent Vat")
+    premium_percent_am_total = fields.Float("Premium Percent total")
+
+    issuening_fee_percent = fields.Float("Issueing Fee Percent")
+    issuening_fee_total = fields.Float("Issuenc Fee total")
+
+    additional_fee_am = fields.Float("Add Fee amount")
+    additional_fee_am_vat = fields.Float("Additional Fee Vat")
+    additional_fee_am_total = fields.Float("Additional Fee Total")
+
+    ded_fee_am = fields.Float("Ded Amount")
+    ded_fee_am_vat = fields.Float("Ded Fee vat")
+    ded_fee_am_total = fields.Float("Ded Fee total")
+
+    total_policy_am = fields.Float("Total Policy")
+    total_policy_vat = fields.Float("Total Policy Vat",compute='_total_vat',store=True)
+    total_policy_am_after_vat=  fields.Float("Total Policy after Vat")
+
+    move_ids = fields.One2many('account.move','policy_id',string="Invoices")
+    journal_id = fields.Many2one('account.journal',string="Journal ")
+    payment_term_id = fields.Many2one('account.payment.term',"Payment Term")
+    policy_type = fields.Selection([('policy','Policy'),('endors','Endorsement')],default='policy',string="Type")
+    endorsment_ref = fields.Char("Endorsement Ref")
+
+     # def action_create_invoice(self):
+    #     invoice_lst = []
+    #     product_id = self.env['product.product'].search([('insurance_product','=',True)],limit=1)
+    #     invoice_lst.append((0,0,{
+    #         'product_id':product_id.id,
+    #         'name':product_id.name,
+    #         'quantity':1,
+    #         'price_unit':self.total_policy_am_after_vat
+    #
+    #     }))
+    #     account_move = self.env['account.move'].create({
+    #         'partner_id':self.partner_id.id,
+    #         'policy_id':self.id,
+    #         'journal_id':self.journal_id.id,
+    #         'invoice_payment_term_id':self.payment_term_id.id,
+    #         'move_type':'out_invoice',
+    #         'policy_no':self.policy_no,
+    #         'insurance_company_id':self.insurance_company_id.id
+    #
+    #     })
+    #     account_move.invoice_line_ids = invoice_lst
+
+
+    @api.depends('total_policy_am','total_policy_am_after_vat')
+    def _total_vat(self):
+        for rec in self:
+            rec.total_policy_vat=abs(rec.total_policy_am-rec.total_policy_am_after_vat)
+
+
+    # *****************Broker Commission************
+    base_amount = fields.Float("Base Amount")
+    approved_amount = fields.Float("Approved Amount")
+
+    approve_percentage = fields.Float("Approve Percentage")
+    broker_commision = fields.Float("Broker Commission")
+    actual_sum_insured = fields.Float("Actual Sum Insured Amount",store=True,compute='_compute_insurance_amount')
+    difference_sum_insured = fields.Float("Difference Sum Insured",store=True,compute='_compute_insurance_amount')
+    premium_actual = fields.Float("Premium Actual",store=True,compute='_compute_insurance_amount')
+    premium_difference = fields.Float("Premium Difference",compute='_compute_insurance_amount',store=True)
+
+    # ******************vehicle Covering Page*******************
+
+    sum_insured_vehicle = fields.Float("Sum Insured Vehicle")
+    premium_car = fields.Float("Premium Car")
+    issuance_fee_car = fields.Float("Issuance Fee")
+    personal_accident_driver = fields.Float("Personal Accident For Driver")
+    personal_accident_for_passenger = fields.Float("Personal Accident For Passengers")
+    car_hire=  fields.Float("Car Hire")
+    geo_ext = fields.Float("Geographical Extension")
+    zero_dep = fields.Float("Zero Depreciation")
+    towing_vehicle = fields.Float("Towing Vehicle")
+    key_loss_thef_coverage=  fields.Float('Coverage for key loss or theft')
+    glass_coverage = fields.Float('Glass Coverage')
+    personal_holding_in_vehicle = fields.Float('Personal holdings in vehicle')
+    employee_ids = fields.One2many('insurance.employee.data','policy_id',"Health Data")
+    state = fields.Selection([('draft','Draft'),('submitted','Submitted'),('posted','Posted')],string='State',default='draft')
+
+
+    @api.onchange('sum_insured','basic_prem')
+    def _onchange_sum_insured(self):
+        if self.sum_insured>0 and self.basic_prem:
+         self.premium_percent_am=self.sum_insured/self.basic_prem
+
+
+
+
+    @api.onchange('base_amount','approved_amount','approve_percentage')
+    def _broker_comission_calculation(self):
+        if self.approved_amount>0:
+            if self.approve_percentage>0:
+                self.broker_commision=(self.approved_amount*(self.approve_percentage/100))
+        else:
+            if self.approve_percentage>0:
+                self.broker_commision=(self.base_amount*(self.approve_percentage/100))
+    @api.onchange('basic_prem','vat_premium')
+    def _onchange_premium(self):
+        self.base_amount=self.basic_prem
+        if self.vat_premium>0:
+            self.total_premium_after_vat =self.basic_prem+(self.basic_prem*(self.vat_premium/100))
+        else:
+            self.total_premium_after_vat = self.basic_prem
+
+    @api.onchange('issuening_fee','issuening_fee_percent')
+    def _onchange_issueng_fee(self):
+        if self.issuening_fee_percent>0:
+            self.issuening_fee_total = self.issuening_fee+(self.issuening_fee*(self.issuening_fee_percent/100))
+        else:
+            self.issuening_fee_total = self.issuening_fee
+
+    @api.onchange('basic_prem','issuening_fee','additional_fee_am','ded_fee_am')
+    def _onchange_prem_ded_issue(self):
+        self.total_policy_am = (self.basic_prem+self.issuening_fee+self.additional_fee_am)-self.ded_fee_am
+
+    @api.onchange('total_premium_after_vat','issuening_fee_total','additional_fee_am_total','ded_fee_am_total')
+    def _calculate_total(self):
+        self.total_policy_am_after_vat = (self.total_premium_after_vat+self.issuening_fee_total+self.additional_fee_am_total)-self.ded_fee_am_total
+    @api.onchange('additional_fee_am','additional_fee_am_vat')
+    def _onchange_addi_fee(self):
+        if self.additional_fee_am_vat>0:
+            self.additional_fee_am_total = self.additional_fee_am+(self.additional_fee_am*(self.additional_fee_am_vat/100))
+        else:
+            self.additional_fee_am_total=self.additional_fee_am
+    @api.onchange('ded_fee_am','ded_fee_am_vat')
+    def _onchange_ded_am(self):
+        if self.ded_fee_am_vat>0:
+            self.ded_fee_am_total = self.ded_fee_am+(self.ded_fee_am*(self.ded_fee_am_vat/100))
+        else:
+            self.ded_fee_am_total = self.ded_fee_am
+
+    # @api.onchange('basic_amount_percentage')
+    # def _onchange_basic_percentage(self):
+    #     if self.basic_amount_percentage:
+    #         self.basic_amount = self.net_premium*(self.basic_amount_percentage/100)
+
+    # @api.onchange('net_premium','issuening_fee')
+    # def _gross_premium(self):
+    #     self.gross_premium = self.net_premium+self.issuening_fee
+    @api.onchange('business_class')
+    def onchange_bussiness_class(self):
+        contract = self.env['insurance.contract'].search([('insurance_company_id','=',self.insurance_company_id.id)])
+        if contract:
+            self.basic_amount_percentage = contract.basic_line_ids.filtered(lambda mo: mo.business_class_id.id==self.business_class.id).basic_comission
+    @api.model
+    def create(self, vals):
+
+        if vals['policy_type']=='policy':
+            vals['policy_id'] = self.env['ir.sequence'].next_by_code(
+                'policy.seq')
+        if vals['policy_type']=='endors':
+            vals['policy_id'] = self.env['ir.sequence'].next_by_code(
+                'endors.seq')
+
+
+
+        return super(Policy, self).create(vals)
+class BenfitLine(models.Model):
+    _name = 'insurance.benefit.line'
+
+    policy_id = fields.Many2one('insurance.policy','Policy ID')
+    benefit_id = fields.Many2one('insurance.benefit','Benefits')
+    amount = fields.Float("Amount")
+    description = fields.Char("Description")
+
+
+
+class Benefit(models.Model):
+    _name = 'insurance.benefit'
+
+    name = fields.Char('Name')
+
+
+class Installment(models.Model):
+    _name = 'insurance.installment'
+
+    policy_id = fields.Many2one('insurance.policy', 'REL')
+    cash_mode = fields.Many2one('cash.mode','Cash Mode')
+    installment_date = fields.Date("Installment Date")
+    amount_paid = fields.Float('Amount Paid')
+    percentage = fields.Float("Percentage %")
+class CashMode(models.Model):
+    _name = 'cash.mode'
+    name = fields.Char("Name")

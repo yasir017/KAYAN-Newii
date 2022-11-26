@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+<!--    COMPANY BENEFITS VIEWS-->
+    <record id="insurance_company_benefit_view_tree" model="ir.ui.view">
+        <field name="name">insurance.company.benefit.tree</field>
+        <field name="model">insurance.company.benefit</field>
+        <field name="arch" type="xml">
+            <tree string="Insurance Company Benefit" create="0" edit="0" delete="0">
+                <field name="display_type" invisible="1"/>
+                <field name="insurance_company_id"/>
+                <field name="category_type"/>
+                <field name="ins_type_select"/>
+                <field name="benefit_id"/>
+                <field name="benefit_value"/>
+                <field name="name"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="insurance_company_benefit_view_form" model="ir.ui.view">
+        <field name="name">insurance.company.benefit.form</field>
+        <field name="model">insurance.company.benefit</field>
+        <field name="arch" type="xml">
+            <form string="Insurance Company Benefit" create="0" edit="0" delete="0">
+                <header>
+                </header>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="insurance_company_id"/>
+                            <field name="category_type"/>
+                            <field name="display_type" invisible="1"/>
+                            <label for="name" string="Label" attrs="{'invisible': [('display_type', '!=', False)]}"/>
+                                    <label for="name" string="Section Name" attrs="{'invisible': [('display_type', '!=', 'line_section')]}"/>
+                                    <label for="name" string="Note" attrs="{'invisible': [('display_type', '!=', 'line_note')]}"/>
+                                    <field name="name"/>
+                        </group>
+                         <group>
+                             <field name="ins_type_select"/>
+                             <field name="benefit_id"/>
+                             <field name="benefit_value"/>
+                        </group>
+                    </group>
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids" widget="mail_followers" groups="base.group_user"/>
+                    <field name="activity_ids" widget="mail_activity"/>
+                    <field name="message_ids" widget="mail_thread"/>
+                </div>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_insurance_company_benefit" model="ir.actions.act_window">
+        <field name="name">Insurance Company Benefit</field>
+        <field name="res_model">insurance.company.benefit</field>
+        <field name="view_mode">tree,form,graph,pivot</field>
+         <field name="help" type="html">
+            <p class="oe_view_nocontent_create">
+                Click to create a new Insurance Company Benefit.
+            </p>
+        </field>
+    </record>
+
+
+<!--   BENEFITS NAME VIEWS-->
+    <record id="benefit_name_view_tree" model="ir.ui.view">
+        <field name="name">benefit.name.tree</field>
+        <field name="model">benefit.name</field>
+        <field name="arch" type="xml">
+            <tree string="Benefit Name" editable="bottom">
+                <field name="name"/>
+                <field name="ins_type_select"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="benefit_name_view_form" model="ir.ui.view">
+        <field name="name">benefit.name.form</field>
+        <field name="model">benefit.name</field>
+        <field name="arch" type="xml">
+            <form string="Benefit Name">
+                <header>
+                </header>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="name"/>
+                            <field name="ins_type_select"/>
+                        </group>
+                         <group>
+                        </group>
+                    </group>
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids" widget="mail_followers" groups="base.group_user"/>
+                    <field name="activity_ids" widget="mail_activity"/>
+                    <field name="message_ids" widget="mail_thread"/>
+                </div>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_benefit_name" model="ir.actions.act_window">
+        <field name="name">Benefit Name</field>
+        <field name="res_model">benefit.name</field>
+        <field name="view_mode">tree,form</field>
+         <field name="help" type="html">
+            <p class="oe_view_nocontent_create">
+                Click to create a new Benefit Name.
+            </p>
+        </field>
+    </record>
+
+
+
+
+</odoo>

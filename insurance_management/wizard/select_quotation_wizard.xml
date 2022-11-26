@@ -1,0 +1,42 @@
+<?xml version="1.0"?>
+<odoo>
+
+	<record id="form_select_quotation_wizard_view" model="ir.ui.view">
+		<field name="name">select.quotation.wizard.form.view</field>
+		<field name="model">select.quotation.wizard</field>
+		<field name="arch" type="xml">
+			<form string="Select Quotation Wizard">
+				<sheet>
+					<group>
+						<field name="medical_visibility_check" invisible="1"/>
+                    	<field name="vehicle_visibility_check" invisible="1"/>
+						<group string="Client">
+							<field name="client_id" readonly="1" nolabel="1"/>
+						</group>
+						<group string="Select Insurance Quotation" attrs="{'invisible': [('medical_visibility_check', '=', False)]}">
+							<field name="insurance_quotation_id" nolabel="1"/>
+						</group>
+						<group string="Select Vehicle Quotations" attrs="{'invisible': [('vehicle_visibility_check', '=', False)]}">
+							<field name="vehicle_quotation_id" nolabel="1"/>
+						</group>
+					</group>
+				</sheet>
+				<footer>
+					<button name="action_confirm" type="object" string="Confirm"
+					class="oe_highlight"/>
+					<button string="Cancel" class="btn-secondary" special="cancel"/>
+				</footer>
+			</form>
+		</field>
+	</record>
+
+	<record id="action_select_quotation_wizard" model="ir.actions.act_window">
+		<field name="name">Select Quotation Wizard</field>
+		<field name="type">ir.actions.act_window</field>
+		<field name="res_model">select.quotation.wizard</field>
+		<field name="view_mode">form</field>
+		<field name="view_id" ref="form_select_quotation_wizard_view"/>
+		<field name="target">new</field>
+	</record>
+
+</odoo>

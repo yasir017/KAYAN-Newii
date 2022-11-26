@@ -1,0 +1,339 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+<!--************ MEDICAL QUOTATION VIEWS  ************-->
+    <record id="insurance_quotation_view_tree" model="ir.ui.view">
+        <field name="name">insurance.quotation.tree</field>
+        <field name="model">insurance.quotation</field>
+        <field name="arch" type="xml">
+            <tree string="Medical Quotation" create="0" edit="0" delete="0">
+                <field name="document_no"/>
+                <field name="insurance_company_id"/>
+                <field name="date"/>
+                <field name="email"/>
+                <field name="quotation_no"/>
+                <field name="client_branch_id" invisible="1"/>
+                <field name="quotation_line_ids" invisible="1"/>
+                <field name="total_lines"/>
+                <field name="total_rate"/>
+                <field name="total_tax"/>
+                <field name="amount"/>
+                <field name="select" readonly="1"/>
+                <field name="state" widget="badge" decoration-success="state == 'selected'" decoration-info="state not in ('selected', 'draft')" decoration-muted="state == 'draft'"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="insurance_quotation_view_form" model="ir.ui.view">
+        <field name="name">insurance.quotation.form</field>
+        <field name="model">insurance.quotation</field>
+        <field name="arch" type="xml">
+            <form string="Medical Quotation" create="0" edit="0" delete="0">
+                <sheet>
+                    <header>
+                        <field name="state" widget="statusbar" statusbar_visible="draft,selected,cancel"/>
+                    </header>
+                    <group>
+                        <group>
+                            <field name="document_no"/>
+                            <field name="insurance_company_id"/>
+                            <field name="date"/>
+                            <field name="total_tax"/>
+                            <field name="amount"/>
+                            <field name="total_rate"/>
+                            <field name="select" readonly="1"/>
+                        </group>
+                        <group>
+                            <field name="quotation_no"/>
+                            <field name="email"/>
+                            <field name="client_branch_id"/>
+                            <field name="quotation_file"/>
+                            <button name="upload_quotation" type="object" string="Import" class="oe_highlight"/>
+                            <field name="total_lines"/>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="Quotation Lines">
+                            <field name="quotation_line_ids">
+                                <tree>
+                                    <field name="name"/>
+                                    <field name="arabic_name" optional="1"/>
+                                    <field name="gender"/>
+                                    <field name="dob" optional="1"/>
+                                    <field name="age"/>
+                                    <field name="member_type"/>
+                                    <field name="nationality"/>
+                                    <field name="member_category"/>
+                                    <field name="mobile1" optional="1"/>
+                                    <field name="occupation"/>
+                                    <field name="marital_status" optional="1"/>
+<!--                                    <field name="elm_relation" optional="1"/>-->
+                                    <field name="vip"/>
+                                    <field name="rate"/>
+                                    <field name="vat"/>
+                                    <field name="total"/>
+                                    <field name="as_vip" optional="1"/>
+                                </tree>
+                                <form>
+                                    <div class="oe_title">
+                                        <label for="name" class="oe_edit_only"/>
+                                        <h1><field name="name" class="oe_inline"/></h1>
+                                    </div>
+                                    <group>
+                                        <group string="Given Rate">
+                                            <field name="rate"/>
+                                            <field name="vat"/>
+                                            <field name="total"/>
+                                        </group>
+                                        <group string="Client ID">
+                                            <field name="client_id" nolabel="1" domain="[('id','in',related_client_ids)]"/>
+                                            <field name="client_branch_id" invisible="1"/>
+                                            <field name="related_client_ids" nolabel="1" invisible="1"/>
+                                        </group>
+                                    </group>
+                                    <group>
+                                        <group>
+                                            <field name="group_id"/>
+                                            <field name="member_id"/>
+                                            <field name="dependent_id"/>
+                                        </group>
+                                         <group>
+                                            <field name="arabic_name"/>
+                                            <field name="gender"/>
+                                            <field name="dob"/>
+                                        </group>
+                                    </group>
+                                    <group>
+                                        <group>
+                                            <field name="dob_hijra"/>
+                                            <field name="age"/>
+                                            <field name="member_type"/>
+                                        </group>
+                                        <group>
+                                            <field name="class_no"/>
+                                            <field name="age_category"/>
+                                            <field name="risk_no"/>
+                                            <field name="nationality"/>
+                                        </group>
+                                    </group>
+                                    <group>
+                                        <group>
+                                            <field name="staff_no"/>
+                                            <field name="member_category"/>
+                                            <field name="mobile1"/>
+                                            <field name="mobile2"/>
+                                        </group>
+                                        <group>
+                                            <field name="dep_no"/>
+                                            <field name="sponser_id"/>
+                                            <field name="occupation"/>
+                                            <field name="marital_status"/>
+                                        </group>
+                                    </group>
+                                    <group>
+                                        <group>
+<!--                                            <field name="elm_relation"/>-->
+                                            <field name="vip"/>
+                                            <field name="as_vip"/>
+                                        </group>
+                                        <group>
+                                            <field name="bank_id"/>
+                                            <field name="branch_id"/>
+                                        </group>
+                                    </group>
+                                </form>
+                            </field>
+                        </page>
+                        <page string="Benefits" name="medical_benefits">
+                                            <field name="custom_benefits_ids" mode="tree,form" widget="section_and_note_one2many" nolabel="1">
+                                                <tree editable="bottom">
+                                                     <control>
+                                                            <create name="add_line_control" string="Add a line"/>
+                                                            <create name="add_section_control" string="Add a section" context="{'default_display_type': 'line_section'}"/>
+                                                            <create name="add_note_control" string="Add a note" context="{'default_display_type': 'line_note'}"/>
+                                                     </control>
+                                                     <field name="sequence" widget="handle"/>
+                                                     <field name="display_type" invisible="1"/>
+                                                     <field name="insurance_company_id" invisible="1"/>
+                                                     <field name="category_type"/>
+                                                     <field name="benefit_id" options="{'no_open': True, 'no_create': True}"/>
+                                                     <field name="included" widget="boolean_toggle"/>
+                                                     <field name="vary" attrs="{'readonly': [('included', '=', False)]}" widget="boolean_toggle"/>
+                                                     <field name="from_value" attrs="{'readonly': [('vary', '=', False)]}"/>
+                                                     <field name="to_value" attrs="{'readonly': [('vary', '=', False)]}"/>
+                                                     <field name="benefit_value" attrs="{'readonly': [('included', '=', False)]}"/>
+                                                     <field name="client_branch_id" invisible="1"/>
+                                                     <field name="insurance_quotation_id" invisible="1"/>
+                                                     <field name="benefit_name" invisible="1"/>
+                                                     <field name="name" widget="section_and_note_text" string="Description"/>
+                                                 </tree>
+                                                <form>
+                                                    <group>
+                                                        <field name="sequence" widget="handle"/>
+                                                         <field name="display_type" invisible="1"/>
+                                                         <field name="insurance_company_id" invisible="1"/>
+                                                         <field name="category_type"/>
+                                                         <field name="benefit_id" options="{'no_open': True, 'no_create': True}"/>
+                                                         <field name="included" widget="radio"/>
+                                                         <field name="vary" attrs="{'readonly': [('included', '=', False)]}" widget="radio"/>
+                                                         <field name="from_value" attrs="{'readonly': [('vary', '=', False)]}"/>
+                                                         <field name="to_value" attrs="{'readonly': [('vary', '=', False)]}"/>
+                                                         <field name="benefit_value"/>
+                                                         <field name="client_branch_id" invisible="1"/>
+                                                         <field name="insurance_quotation_id" invisible="1"/>
+                                                         <field name="benefit_name" invisible="1"/>
+                                                    </group>
+                                                </form>
+                                            </field>
+                                        </page>
+                    </notebook>
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids" widget="mail_followers" groups="base.group_user"/>
+                    <field name="activity_ids" widget="mail_activity"/>
+                    <field name="message_ids" widget="mail_thread"/>
+                </div>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_insurance_quotation" model="ir.actions.act_window">
+        <field name="name">Medical Quotation</field>
+        <field name="res_model">insurance.quotation</field>
+        <field name="view_mode">tree,form</field>
+        <field name="search_view_id" ref="insurance_quotation_view_tree"/>
+         <field name="help" type="html">
+            <p class="oe_view_nocontent_create">
+                Click to create a new Medical Quotation.
+            </p>
+        </field>
+    </record>
+
+
+<!--************ MEDICAL QUOTATION LINES VIEWS  ************-->
+    <record id="quotation_line_view_tree" model="ir.ui.view">
+        <field name="name">quotation.line.tree</field>
+        <field name="model">quotation.line</field>
+        <field name="arch" type="xml">
+            <tree string="Medical Quotation Line" create="0" edit="0" delete="0">
+                <field name="name"/>
+                <field name="arabic_name" optional="1"/>
+                <field name="gender"/>
+                <field name="dob" optional="1"/>
+                <field name="age"/>
+                <field name="member_type"/>
+                <field name="nationality"/>
+                <field name="member_category"/>
+                <field name="mobile1" optional="1"/>
+                <field name="occupation"/>
+                <field name="marital_status" optional="1"/>
+<!--                <field name="elm_relation" optional="1"/>-->
+                <field name="vip"/>
+                <field name="insurance_quotation_id"/>
+                <field name="insurance_company_id"/>
+                <field name="rate"/>
+                <field name="vat"/>
+                <field name="total"/>
+                <field name="as_vip" optional="1"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="quotation_line_view_form" model="ir.ui.view">
+        <field name="name">quotation.line.form</field>
+        <field name="model">quotation.line</field>
+        <field name="arch" type="xml">
+            <form string="Medical Quotation Line" create="0" edit="0" delete="0">
+                <sheet>
+                    <div class="oe_title">
+                        <label for="name" class="oe_edit_only"/>
+                        <h1><field name="name" class="oe_inline"/></h1>
+                    </div>
+                    <group>
+                        <group string="Given Premium">
+                            <field name="rate"/>
+                            <field name="vat"/>
+                            <field name="total"/>
+                        </group>
+                        <group string="Client ID">
+                            <field name="client_id" nolabel="1" domain="[('id','in',related_client_ids)]"/>
+                            <field name="client_branch_id" invisible="1"/>
+                            <field name="related_client_ids" nolabel="1" invisible="1"/>
+                        </group>
+                    </group>
+                    <group>
+                        <group>
+                            <field name="group_id"/>
+                            <field name="member_id"/>
+                            <field name="dependent_id"/>
+                        </group>
+                         <group>
+                            <field name="arabic_name"/>
+                            <field name="gender"/>
+                            <field name="dob"/>
+                        </group>
+                    </group>
+                    <group>
+                        <group>
+                            <field name="dob_hijra"/>
+                            <field name="age"/>
+                            <field name="member_type"/>
+                        </group>
+                        <group>
+                            <field name="class_no"/>
+                            <field name="age_category"/>
+                            <field name="risk_no"/>
+                            <field name="nationality"/>
+                        </group>
+                    </group>
+                    <group>
+                        <group>
+                            <field name="staff_no"/>
+                            <field name="member_category"/>
+                            <field name="mobile1"/>
+                            <field name="mobile2"/>
+                        </group>
+                        <group>
+                            <field name="dep_no"/>
+                            <field name="sponser_id"/>
+                            <field name="occupation"/>
+                            <field name="marital_status"/>
+                        </group>
+                    </group>
+                    <group>
+                        <group>
+<!--                            <field name="elm_relation"/>-->
+                            <field name="vip"/>
+                            <field name="as_vip"/>
+                        </group>
+                        <group>
+                            <field name="bank_id"/>
+                            <field name="branch_id"/>
+                            <field name="insurance_quotation_id"/>
+                            <field name="insurance_company_id"/>
+                        </group>
+                    </group>
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids" widget="mail_followers" groups="base.group_user"/>
+                    <field name="activity_ids" widget="mail_activity"/>
+                    <field name="message_ids" widget="mail_thread"/>
+                </div>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_quotation_line" model="ir.actions.act_window">
+        <field name="name">Medical Quotation Line</field>
+        <field name="res_model">quotation.line</field>
+        <field name="view_mode">tree,form</field>
+        <field name="search_view_id" ref="quotation_line_view_tree"/>
+         <field name="help" type="html">
+            <p class="oe_view_nocontent_create">
+                Click to create a new Medical Quotation Line.
+            </p>
+        </field>
+    </record>
+
+
+</odoo>

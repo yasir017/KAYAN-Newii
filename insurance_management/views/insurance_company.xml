@@ -1,0 +1,198 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+<!--************ INSURANCE COMPANY VIEWS  ************-->
+    <record id="insurance_company_view_tree" model="ir.ui.view">
+        <field name="name">insurance.company.tree</field>
+        <field name="model">insurance.company</field>
+        <field name="arch" type="xml">
+            <tree string="Insurance Company">
+                <field name="name"/>
+                <field name="arabic_name"/>
+                <field name="branch_name"/>
+                <field name="location"/>
+                <field name="country"/>
+                <field name="city"/>
+                <field name="website"/>
+                <field name="mobile"/>
+                <field name="ins_company_partner_id" invisible="1"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="insurance_company_view_form" model="ir.ui.view">
+        <field name="name">insurance.company.form</field>
+        <field name="model">insurance.company</field>
+        <field name="arch" type="xml">
+            <form string="Insurance Company">
+                 <sheet>
+                    <div class="oe_title">
+                        <label for="name" class="oe_edit_only"/>
+                        <h1><field name="name" class="oe_inline"/></h1>
+                        <field name="ins_company_partner_id" invisible="1"/>
+                    </div>
+                    <group>
+                        <group>
+                            <field name="arabic_name"/>
+                            <field name="branch_name"/>
+                            <field name="location"/>
+                            <field name="email"/>
+                        </group>
+                         <group>
+                             <field name="country"/>
+                             <field name="city"/>
+                             <field name="website"/>
+                             <field name="mobile"/>
+                        </group>
+                        <group>
+                            <field name="trade_name"/>
+                            <field name="contact_dear"/>
+                            <field name="contact_person"/>
+                            <field name="phone"/>
+                            <field name="ext"/>
+                            <field name="fax_no"/>
+                        </group>
+                        <group>
+                            <field name="region"/>
+                            <field name="affliated_co"/>
+                            <field name="public"/>
+                            <field name="bank_id"/>
+                            <field name="billing_address"/>
+                            <field name="auto_map_benefits_to_quotation"/>
+                        </group>
+                    </group>
+                     <notebook>
+                         <page string="Benefits">
+                             <field name="company_benefit_ids" mode="tree,form" widget="section_and_note_one2many" nolabel="1">
+                                 <tree editable="bottom">
+                                     <control>
+                                            <create name="add_line_control" string="Add a line"/>
+                                            <create name="add_section_control" string="Add a section" context="{'default_display_type': 'line_section'}"/>
+                                            <create name="add_note_control" string="Add a note" context="{'default_display_type': 'line_note'}"/>
+                                     </control>
+                                     <field name="sequence" widget="handle"/>
+                                     <field name="display_type" invisible="1"/>
+                                     <field name="insurance_company_id" invisible="1"/>
+                                     <field name="category_type"/>
+                                     <field name="ins_type_select"/>
+                                     <field name="benefit_id"  options="{'no_open': True, 'no_create': True}"/>
+                                     <field name="benefit_value"/>
+                                     <field name="name" widget="section_and_note_text" string="Description"/>
+                                 </tree>
+                             </field>
+                         </page>
+                         <page string="Account Information">
+                             <group>
+                                 <field name="income_account_id"/>
+                                 <field name="recivable_acc"/>
+                                 <field name="other_income_account_id"/>
+                                 <field name="pre_paid_tax_acc"/>
+                             </group>
+                         </page>
+                         <page string="Class Type Standard">
+                             <field name="company_class_standard_ids">
+                                 <tree editable="bottom">
+                                     <field name="name"/>
+                                     <field name="standard_type"/>
+                                     <field name="class_standard_id"/>
+                                     <field name="insurance_company_id" invisible="1"/>
+                                 </tree>
+                                 <form>
+                                     <group>
+                                         <group>
+                                            <field name="name"/>
+                                             <field name="standard_type"/>
+                                             <field name="class_standard_id"/>
+                                             <field name="insurance_company_id" invisible="1"/>
+                                         </group>
+                                         <group>
+                                        </group>
+                                     </group>
+                                 </form>
+                             </field>
+                         </page>
+                         <page string="Member Type Standard">
+                             <field name="company_member_standard_ids">
+                                 <tree editable="bottom">
+                                     <field name="name"/>
+                                     <field name="standard_type"/>
+                                     <field name="member_type_standard_id"/>
+                                     <field name="insurance_company_id" invisible="1"/>
+                                 </tree>
+                                  <form>
+                                     <group>
+                                         <group>
+                                             <field name="name"/>
+                                             <field name="standard_type"/>
+                                             <field name="member_type_standard_id"/>
+                                             <field name="insurance_company_id" invisible="1"/>
+                                         </group>
+                                         <group>
+                                        </group>
+                                     </group>
+                                 </form>
+                             </field>
+                         </page>
+                         <page string="Age Category Standard">
+                             <field name="company_age_catogory_standard_ids">
+                                 <tree editable="bottom">
+                                     <field name="name"/>
+                                     <field name="standard_type"/>
+                                     <field name="age_category_standard_id"/>
+                                     <field name="insurance_company_id" invisible="1"/>
+                                 </tree>
+                                 <form>
+                                     <group>
+                                         <group>
+                                             <field name="name"/>
+                                             <field name="standard_type"/>
+                                             <field name="age_category_standard_id"/>
+                                             <field name="insurance_company_id" invisible="1"/>
+                                         </group>
+                                         <group>
+                                        </group>
+                                     </group>
+                                 </form>
+                             </field>
+                         </page>
+<!--                         <page string="Contract Information">-->
+<!--                             <field name="name_contract"/>-->
+<!--                             <field name="starting_date"/>-->
+<!--                             <field name="expiry_date"/>-->
+<!--                             <field name="issuance_date"/>-->
+<!--                             <field name="file_path"/>-->
+<!--                             <notebook>-->
+<!--                                 <page string="Commission Percentage">-->
+<!--                                     <field name="basic_line_ids">-->
+<!--                                         <tree editable="bottom">-->
+<!--                                             <field-->
+<!--                                         </tree>-->
+<!--                                     </field>-->
+<!--                                 </page>-->
+<!--                             </notebook>-->
+<!--                         </page>-->
+                     </notebook>
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids" widget="mail_followers" groups="base.group_user"/>
+                    <field name="activity_ids" widget="mail_activity"/>
+                    <field name="message_ids" widget="mail_thread"/>
+                </div>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_insurance_company" model="ir.actions.act_window">
+        <field name="name">Insurance Company</field>
+        <field name="res_model">insurance.company</field>
+        <field name="view_mode">tree,form</field>
+        <field name="search_view_id" ref="insurance_company_view_tree"/>
+         <field name="help" type="html">
+            <p class="oe_view_nocontent_create">
+                Click to create a new Insurance Company.
+            </p>
+        </field>
+    </record>
+
+
+</odoo>

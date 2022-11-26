@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+<!--************ CLASS NAME STANDARD VIEWS  ************-->
+    <record id="class_name_standard_view_tree" model="ir.ui.view">
+        <field name="name">class.name.standard.tree</field>
+        <field name="model">class.name.standard</field>
+        <field name="arch" type="xml">
+            <tree string=" Class Name standard" editable="bottom">
+                <field name="name"/>
+                <field name="standard_type"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="class_name_standard_view_form" model="ir.ui.view">
+        <field name="name">class.name.standard.form</field>
+        <field name="model">class.name.standard</field>
+        <field name="arch" type="xml">
+            <form string=" Class Name standard">
+                 <sheet>
+                    <div class="oe_title">
+                        <label for="name" class="oe_edit_only"/>
+                        <h1><field name="name" class="oe_inline"/></h1>
+                    </div>
+                    <group>
+                        <group>
+                            <field name="standard_type"/>
+                        </group>
+                         <group>
+                        </group>
+                    </group>
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids" widget="mail_followers" groups="base.group_user"/>
+                    <field name="activity_ids" widget="mail_activity"/>
+                    <field name="message_ids" widget="mail_thread"/>
+                </div>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_class_name_standard" model="ir.actions.act_window">
+        <field name="name">Class Name Standard</field>
+        <field name="res_model">class.name.standard</field>
+        <field name="view_mode">tree,form</field>
+        <field name="search_view_id" ref="class_name_standard_view_tree"/>
+         <field name="help" type="html">
+            <p class="oe_view_nocontent_create">
+                Click to create a new  Class Name standard.
+            </p>
+        </field>
+    </record>
+
+
+    <!--************ MEMBER TYPE STANDARD VIEWS  ************-->
+    <record id="member_type_standard_view_tree" model="ir.ui.view">
+        <field name="name">member.type.standard.tree</field>
+        <field name="model">member.type.standard</field>
+        <field name="arch" type="xml">
+            <tree string="Member Type Standard" editable="bottom">
+                <field name="name"/>
+                <field name="standard_type"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="member_type_standard_view_form" model="ir.ui.view">
+        <field name="name">member.type.standard.form</field>
+        <field name="model">member.type.standard</field>
+        <field name="arch" type="xml">
+            <form string="Member Type Standard">
+                 <sheet>
+                    <div class="oe_title">
+                        <label for="name" class="oe_edit_only"/>
+                        <h1><field name="name" class="oe_inline"/></h1>
+                    </div>
+                    <group>
+                        <group>
+                            <field name="standard_type"/>
+                        </group>
+                         <group>
+                        </group>
+                    </group>
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids" widget="mail_followers" groups="base.group_user"/>
+                    <field name="activity_ids" widget="mail_activity"/>
+                    <field name="message_ids" widget="mail_thread"/>
+                </div>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_member_type_standard" model="ir.actions.act_window">
+        <field name="name">Member Type Standard</field>
+        <field name="res_model">member.type.standard</field>
+        <field name="view_mode">tree,form</field>
+        <field name="search_view_id" ref="member_type_standard_view_tree"/>
+         <field name="help" type="html">
+            <p class="oe_view_nocontent_create">
+                Click to create a new Member Type Standard.
+            </p>
+        </field>
+    </record>
+
+
+<!--************ AGE CATEGORY STANDARD VIEWS  ************-->
+    <record id="age_category_standard_view_tree" model="ir.ui.view">
+        <field name="name">age.category.standard.tree</field>
+        <field name="model">age.category.standard</field>
+        <field name="arch" type="xml">
+            <tree string="Age Category Standard" editable="bottom">
+                <field name="name"/>
+                <field name="standard_type"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="age_category_standard_view_form" model="ir.ui.view">
+        <field name="name">age.category.standard.form</field>
+        <field name="model">age.category.standard</field>
+        <field name="arch" type="xml">
+            <form string="Age Category Standard">
+                 <sheet>
+                    <div class="oe_title">
+                        <label for="name" class="oe_edit_only"/>
+                        <h1><field name="name" class="oe_inline"/></h1>
+                    </div>
+                    <group>
+                        <group>
+                            <field name="standard_type"/>
+                        </group>
+                         <group>
+                        </group>
+                    </group>
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids" widget="mail_followers" groups="base.group_user"/>
+                    <field name="activity_ids" widget="mail_activity"/>
+                    <field name="message_ids" widget="mail_thread"/>
+                </div>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_age_category_standard" model="ir.actions.act_window">
+        <field name="name">Age Category Standard</field>
+        <field name="res_model">age.category.standard</field>
+        <field name="view_mode">tree,form</field>
+        <field name="search_view_id" ref="age_category_standard_view_tree"/>
+         <field name="help" type="html">
+            <p class="oe_view_nocontent_create">
+                Click to create a new Age Category Standard.
+            </p>
+        </field>
+    </record>
+
+
+</odoo>

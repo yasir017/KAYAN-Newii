@@ -1,0 +1,57 @@
+<odoo>
+     <record id="view_business_class_config_form" model="ir.ui.view">
+            <field name="name">business.class.config.form</field>
+            <field name="model">business.class.config</field>
+            <field name="arch" type="xml">
+                <form string="Class Configuration">
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="class_id"/>
+                                <field name="name"/>
+                                <field name="arabic_name"/>
+                                <field name="code"/>
+                                <field name="account_no"/>
+                            </group>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+     </record>
+    <record id="view_business_class_config_tree" model="ir.ui.view">
+            <field name="name">business.class.config.tree</field>
+            <field name="model">business.class.config</field>
+            <field name="arch" type="xml">
+                <tree editable="top" string="Class Config">
+                    <field name="class_id"/>
+                                <field name="name"/>
+                                <field name="arabic_name"/>
+                                <field name="code"/>
+                                <field name="account_no"/>
+                </tree>
+            </field>
+    </record>
+
+     <record id="view_business_class_config_search" model="ir.ui.view">
+            <field name="name">business.class.config.search</field>
+            <field name="model">business.class.config</field>
+            <field name="arch" type="xml">
+                <search string="Business Class configuration">
+                    <field name="class_id"/>
+                                <field name="name"/>
+                                <field name="arabic_name"/>
+                                <field name="code"/>
+                                <field name="account_no"/>
+                </search>
+            </field>
+    </record>
+
+     <record id="act_business_class_config" model="ir.actions.act_window">
+            <field name="name">Business Class </field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">business.class.config</field>
+            <field name="view_mode">tree,form</field>
+            <field name="view_id" ref="view_business_class_config_tree"/>
+
+        </record>
+</odoo>

@@ -1,0 +1,82 @@
+<odoo>
+
+    <record id="view_insurance_contract_form" model="ir.ui.view">
+            <field name="name">insurance.contract</field>
+            <field name="model">insurance.contract</field>
+            <field name="arch" type="xml">
+                <form string="Insurance Contract">
+                    <sheet>
+                        <group col="4" string="Insurance Contract">
+
+                            <field name="name"/>
+
+                            <field name="starting_date"/>
+                            <field name="expiry_date"/>
+                            <field name="issuance_date"/>
+                            <field name="file_path"/>
+
+                        </group>
+                        <notebook>
+                            <page string="Basic And Complementray">
+                             <field name="basic_line_ids">
+                                 <tree editable="bottom">
+                                     <field name="business_class_id"/>
+                                     <field name="department_id"/>
+                                     <field name="basic_comission"/>
+                                 </tree>
+                             </field>
+                            </page>
+                        </notebook>
+                    </sheet>
+                    <div class="o_attachment_preview"/>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids"/>
+                    <field name="message_ids"/>
+                </div>
+                </form>
+            </field>
+    </record>
+
+
+           <record id="view_insurance_contract_tree" model="ir.ui.view">
+            <field name="name">insurance.contract.form</field>
+            <field name="model">insurance.contract</field>
+            <field name="arch" type="xml">
+                    <tree>
+                         <field name="name"/>
+                            <field name="starting_date"/>
+                            <field name="expiry_date"/>
+                            <field name="issuance_date"/>
+                    </tree>
+            </field>
+           </record>
+
+
+        <record id="view_insurance_contract_search" model="ir.ui.view">
+            <field name="name">insurance.contract.search</field>
+            <field name="model">insurance.contract</field>
+            <field name="arch" type="xml">
+                    <search>
+                         <field name="name"/>
+                            <field name="starting_date"/>
+                            <field name="expiry_date"/>
+                            <field name="issuance_date"/>
+                    </search>
+            </field>
+           </record>
+
+
+        <record id="act_insurance_contract_class" model="ir.actions.act_window">
+            <field name="name">Insurance Contract</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">insurance.contract</field>
+            <field name="view_mode">tree,form</field>
+            <field name="view_id" ref="view_insurance_contract_tree"/>
+            <!--            <f/ield name="context">{}</field>-->
+            <!--        <field name="target">new</field>-->
+            <!--            <field name="binding_model_id" ref="hr_payroll.model_hr_payslip"/>-->
+            <!--            <field name="binding_view_types">list</field>-->
+        </record>
+
+
+</odoo>

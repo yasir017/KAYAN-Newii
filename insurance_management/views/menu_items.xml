@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <menuitem name="Insurance Management"
+              id="menu_insurance_management"
+              web_icon="insurance_management,static/description/insurance.png"
+              sequence="1"/>
+
+
+    <menuitem id="ins_client_data" name="Client Data Collection" parent="menu_insurance_management" sequence="3"/>
+    <menuitem id="ins_client_branch" name="Customer Information" parent="ins_client_data" sequence="1" action="action_client_branch"/>
+    <menuitem id="ins_insurance_members" name="Client Medical Information" parent="ins_client_data" sequence="2" action="action_client_basic_info"/>
+    <menuitem id="ins_client_vehicle_info" name="Client Vehicle Information" parent="ins_client_data" sequence="3" action="action_client_vehicle_info"/>
+
+    <menuitem id="ins_insurance_quotation_main" name="Quotations" parent="menu_insurance_management" sequence="4"/>
+    <menuitem id="ins_insurance_quotation_medical_label" name="Medical" parent="ins_insurance_quotation_main" sequence="1"/>
+    <menuitem id="ins_insurance_quotation_medical" name="Medical Quotation" parent="ins_insurance_quotation_medical_label" sequence="1" action="action_insurance_quotation"/>
+    <menuitem id="ins_insurance_quotation_medical_line" name="Medical Quotation Line" parent="ins_insurance_quotation_medical_label" sequence="2" action="action_quotation_line"/>
+
+    <menuitem id="ins_insurance_quotation_vehicle_label" name="Vehicle" parent="ins_insurance_quotation_main" sequence="2"/>
+    <menuitem id="ins_insurance_quotation_vehicle" name="Vehicle Quotation" parent="ins_insurance_quotation_vehicle_label" sequence="1" action="action_vehicle_quotation"/>
+    <menuitem id="ins_insurance_quotation_vehicle_line" name="Vehicle Quotation Line" parent="ins_insurance_quotation_vehicle_label" sequence="2" action="action_vehicle_quotation_line"/>
+
+    <menuitem id="ins_insurance_company" name="Insurance Company" parent="menu_insurance_management" sequence="5" action="action_insurance_company"/>
+
+
+    <menuitem id="ins_configuration" name="Configuration" parent="menu_insurance_management" sequence="100"/>
+    <menuitem id="ins_risk_location" name="Risk (Location)" parent="ins_configuration" sequence="1" action="action_risk_location"/>
+    <menuitem id="ins_occupation" name="Occupation" parent="ins_configuration" sequence="2" action="action_ins_occupation"/>
+<!--    <menuitem id="ins_check_list" name="Check List" parent="ins_configuration" sequence="3" action="action_client_checklist"/>-->
+    <menuitem id="ins_company_benefit" name="Insurance Company Benefit" parent="ins_configuration" sequence="4" action="action_insurance_company_benefit"/>
+    <menuitem id="ins_company_benefit_name" name="Benefit Name" parent="ins_configuration" sequence="5" action="action_benefit_name"/>
+    <menuitem id="ins_insurance_type" name="Insurance Type" parent="ins_configuration" sequence="6" action="action_insurance_type"/>
+    <menuitem id="ins_insurance_sub_type" name="Insurance Sub Type" parent="ins_configuration" sequence="7" action="action_insurance_sub_type"/>
+    <menuitem id="menu_bussinss_client_group" parent="policy_entry_insurance.menu_insurance_data" action="action_insurance_company"
+              name="Customer"/>
+
+    <menuitem id="menu_broker_standards" parent="ins_configuration" sequence="8"
+              name="Standards"/>
+    <menuitem id="ins_class_name_standard" name="Class Name Standard" parent="menu_broker_standards" sequence="1" action="action_class_name_standard"/>
+    <menuitem id="ins_member_type_standard" name="Member Type Standard" parent="menu_broker_standards" sequence="1" action="action_member_type_standard"/>
+    <menuitem id="ins_age_category_standard" name="Age Category Standard" parent="menu_broker_standards" sequence="1" action="action_age_category_standard"/>
+
+    <menuitem id="menu_vehicle_mark_main" parent="ins_configuration" sequence="9"
+              name="Vehicle"/>
+    <menuitem id="ins_vehicle_mark" name="Vehicle Mark" parent="menu_vehicle_mark_main" sequence="1" action="fleet.fleet_vehicle_model_brand_action"/>
+    <menuitem id="ins_vehicle_model" name="Vehicle Model" parent="menu_vehicle_mark_main" sequence="2" action="fleet.fleet_vehicle_model_action"/>
+            <menuitem id="invoice_menu_commission" parent="account.menu_finance_receivables" sequence="1" action="action_move_out_invoice_type_commission"/>
+
+
+
+<!--    Maked fleet module invisible-->
+    <record id="make_invisible_fleet" model="res.groups">
+        <field name="name">Fleet Invisible</field>
+    </record>
+    <menuitem name="Fleet" id="fleet.menu_root" groups="make_invisible_fleet,base.group_no_one"/>
+
+</odoo>

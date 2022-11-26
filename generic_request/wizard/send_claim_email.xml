@@ -1,0 +1,59 @@
+<?xml version="1.0"?>
+<odoo>
+
+	<record id="form_claim_email_wizard_view" model="ir.ui.view">
+		<field name="name">claim.email.wizard.form.view</field>
+		<field name="model">claim.email.wizard</field>
+		<field name="arch" type="xml">
+			<form string="Claim Email Wizard">
+				<sheet>
+					<group>
+						<group>
+							<field name="client_id" readonly="1"/>
+							<field name="claim_request_id" readonly="1"/>
+						</group>
+<!--						<group>-->
+<!--							<field name="claim_request_attachment_ids">-->
+<!--								<tree>-->
+<!--									<field name="name" invisible="1"/>-->
+<!--									<field name="datas" filename="name" widget="binary" string="Name"/>-->
+<!--								</tree>-->
+<!--								<form>-->
+<!--									<field name="name"/>-->
+<!--									<field name="datas" filename="name" widget="binary"/>-->
+<!--								</form>-->
+<!--							</field>-->
+<!--						</group>-->
+						<group string="Insurance Company">
+							<field name="insurance_company_id" nolabel="1" readonly="1"/>
+						</group>
+					</group>
+					<group>
+						<field name="subject" nolabel="1" placeholder="Subject..." required="True"/>
+						<field name="cc" nolabel="1" placeholder="CC.....Write Emails Separately with comma"/>
+					</group>
+                    <field name="body" class="oe-bordered-editor" options="{'style-inline': true}" force_save="1"/>
+					<group col="4">
+                        <field name="attachment_ids" widget="many2many_binary" string="Attach a file" nolabel="1" colspan="2"/>
+						<field name="template_id" options="{'no_create': True}"/>
+                    </group>
+				</sheet>
+				<footer>
+					<button name="action_confirm" type="object" string="Confirm"
+					class="oe_highlight"/>
+					<button string="Cancel" class="btn-secondary" special="cancel"/>
+				</footer>
+			</form>
+		</field>
+	</record>
+
+	<record id="action_claim_email_wizard" model="ir.actions.act_window">
+		<field name="name">Claim Email</field>
+		<field name="type">ir.actions.act_window</field>
+		<field name="res_model">claim.email.wizard</field>
+		<field name="view_mode">form</field>
+		<field name="view_id" ref="form_claim_email_wizard_view"/>
+		<field name="target">new</field>
+	</record>
+
+</odoo>

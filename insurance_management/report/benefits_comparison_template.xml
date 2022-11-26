@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+<template id="comparison_benefits">
+    <t t-call="web.html_container">
+    <t t-call="web.external_layout">
+<!--        <t t-set="docs" t-value="docs.with_context()"/>-->
+        <div class="page">
+            <div class="oe_structure"/>
+            <div align="center"> 
+                <br/>                  
+                <h2> Comparing Tables of benefits</h2>
+            </div>
+            <br/>
+            <table border="1" class="table table-condensed" style="border-style:solid">
+                <tr style="height:30%">
+                    <td style="border: 1px solid black" align="center">Date</td>
+                    <td style="border: 1px solid black" align="center"><span t-esc="context_timestamp(datetime.datetime.now()).strftime('%d-%m-%Y %H:%M')"/></td>
+                </tr>
+            </table>
+            <br/>
+<!--            <div width="100%" style="border-bottom: 5px solid red;"></div>-->
+
+            <table border="1" class="table table-condensed" style="border-style:solid;background: #c0d754;color: #8631ec;">
+                <tr style="height:30%">
+                    <td style="border: 1px solid black;font-size:20px;" align="center">Category Name: VIP</td>
+                </tr>
+            </table>
+            <table class="table table-condensed">
+                <thead>
+                    <tr>
+                        <th>Benefit</th>
+                        <t t-foreach="insurance_quotations" t-as="quot">
+                        <th><span t-esc="quot.insurance_company_id.name"/></th>
+                        </t>
+                    </tr>
+                </thead>
+
+                <t t-if="len(vip_dict_benefit_wise)>0">
+                    <tbody class="sale_tbody">
+                        <t t-foreach="vip_dict_benefit_wise" t-as="benefit">
+                            <tr>
+                                <td><span t-esc="vip_dict_benefit_wise[benefit].get('benefit_id').name"/></td>
+                                <t t-foreach="vip_dict_benefit_wise[benefit].get('company_value_list')" t-as="value">
+                                <td><span t-esc="value.get('value')"/></td>
+                                </t>
+                            </tr>
+                        </t>
+                    </tbody>
+                </t>
+            </table>
+<!--            <div width="100%" style="border-bottom: 5px solid red;"></div>-->
+            <table border="1" class="table table-condensed" style="border-style:solid;background: #c0d754;color: #8631ec;">
+                <tr style="height:30%">
+                    <td style="border: 1px solid black;font-size:20px;" align="center">Category Name: A+</td>
+                </tr>
+            </table>
+            <table class="table table-condensed">
+                <thead>
+                    <tr>
+                        <th>Benefit</th>
+                        <t t-foreach="insurance_quotations" t-as="quot">
+                        <th><span t-esc="quot.insurance_company_id.name"/></th>
+                        </t>
+                    </tr>
+                </thead>
+
+                <t t-if="len(a_plus_dict_benefit_wise)>0">
+                    <tbody class="sale_tbody">
+                        <t t-foreach="a_plus_dict_benefit_wise" t-as="benefit">
+                            <tr>
+                                <td><span t-esc="a_plus_dict_benefit_wise[benefit].get('benefit_id').name"/></td>
+                                <t t-foreach="a_plus_dict_benefit_wise[benefit].get('company_value_list')" t-as="value">
+                                <td><span t-esc="value.get('value')"/></td>
+                                </t>
+                            </tr>
+                        </t>
+                    </tbody>
+                </t>
+<!--                <div width="100%" style="border-bottom: 5px solid red;"></div>-->
+            </table>
+
+            <br/>
+            <br/>
+        </div>
+    </t>
+    </t>
+</template>
+</odoo>

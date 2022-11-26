@@ -1,0 +1,94 @@
+<!--<?xml version="1.0" encoding="UTF-8"?>-->
+<!--<odoo>-->
+
+<!--    <record id='fleet_vehicle_model_brand_insurance_view_tree' model='ir.ui.view'>-->
+<!--        <field name="name">fleet.vehicle.model.brand.insurance.tree</field>-->
+<!--        <field name="model">fleet.vehicle.model.brand.insurance</field>-->
+<!--        <field name="arch" type="xml">-->
+<!--            <tree string="Model Make">-->
+<!--                <field name="name" />-->
+<!--            </tree>-->
+<!--        </field>-->
+<!--    </record>-->
+
+<!--    <record id='fleet_vehicle_model_brand_insurance_view_form' model='ir.ui.view'>-->
+<!--        <field name="name">fleet.vehicle.model.brand.insurance.form</field>-->
+<!--        <field name="model">fleet.vehicle.model.brand.insurance</field>-->
+<!--        <field name="arch" type="xml">-->
+<!--            <form string="Model Make">-->
+<!--                <sheet>-->
+<!--                    <group>-->
+<!--                        <div>-->
+<!--                            <field name="image_128" widget="image" class="oe_avatar"/>-->
+<!--                            <h1>-->
+<!--                                <field name="name"/>-->
+<!--                            </h1>-->
+<!--                        </div>-->
+<!--                    </group>-->
+<!--                </sheet>-->
+<!--            </form>-->
+<!--        </field>-->
+<!--    </record>-->
+
+<!--    <record id='fleet_vehicle_model_brand_insurance_view_kanban' model='ir.ui.view'>-->
+<!--        <field name="name">fleet.vehicle.model.brand.insurancekanban</field>-->
+<!--        <field name="model">fleet.vehicle.model.brand.insurance</field>-->
+<!--        <field name="arch" type="xml">-->
+<!--            <kanban default_order="name">-->
+<!--                <field name="id"/>-->
+<!--                <field name="name" />-->
+<!--                <templates>-->
+<!--                    <t t-name="kanban-box">-->
+<!--                        <div class="oe_kanban_vignette oe_semantic_html_override oe_kanban_global_click">-->
+<!--                            <div class="o_dropdown_kanban dropdown">-->
+<!--                                <a class="dropdown-toggle o-no-caret btn" role="button" data-toggle="dropdown" href="#" aria-label="Dropdown menu" title="Dropdown menu">-->
+<!--                                    <span class="fa fa-ellipsis-v"/>-->
+<!--                                </a>-->
+<!--                                <div class="dropdown-menu" role="menu">-->
+<!--                                    <a role="menuitem" type="open" class="dropdown-item">Properties</a>-->
+<!--                                </div>-->
+<!--                            </div>-->
+<!--                            <div class="o_kanban_image">-->
+<!--                                <img alt="img" t-att-src="kanban_image('fleet.vehicle.model.brand.insurance', 'image_128', record.id.raw_value)" class="o_image_64_max" height="52"/>-->
+<!--                            </div>-->
+<!--                            <div class="oe_kanban_details">-->
+<!--                                <h4 class="oe_partner_heading">-->
+<!--                                    <a type="open" class="o_kanban_record_title">-->
+<!--                                        <field name="name"/>-->
+<!--                                    </a>-->
+<!--                                </h4>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                    </t>-->
+<!--                </templates>-->
+<!--            </kanban>-->
+<!--        </field>-->
+<!--    </record>-->
+
+<!--    <record id="fleet_vehicle_model_brand_insurance_view_search" model="ir.ui.view">-->
+<!--        <field name="name">fleet.vehicle.model.brand.insurance.view.search</field>-->
+<!--        <field name="model">fleet.vehicle.model.brand.insurance</field>-->
+<!--        <field name="arch" type="xml">-->
+<!--            <search>-->
+<!--                <field name="name"/>-->
+<!--            </search>-->
+<!--        </field>-->
+<!--    </record>-->
+
+<!--    <record id='fleet_vehicle_model_brand_insurance_action' model='ir.actions.act_window'>-->
+<!--        <field name="name">Manufacturers</field>-->
+<!--        <field name="res_model">fleet.vehicle.model.brand.insurance</field>-->
+<!--        <field name="view_mode">kanban,tree,form</field>-->
+<!--        <field name="help" type="html">-->
+<!--          <p class="o_view_nocontent_smiling_face">-->
+<!--            Create a new manufacturer-->
+<!--          </p>-->
+<!--        </field>-->
+<!--    </record>-->
+
+
+
+
+
+<!--&lt;!&ndash;    <menuitem action="fleet_vehicle_model_brand_insurance_action" parent="fleet_configuration" id="fleet_vehicle_model_brand_insurance_menu" sequence="2"/>&ndash;&gt;-->
+<!--</odoo>-->

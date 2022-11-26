@@ -1,0 +1,19 @@
+<odoo>
+    <data>
+           <record id="seq_policy" model="ir.sequence">
+            <field name="name">Policy seq</field>
+            <field name="code">policy.seq</field>
+            <field name="prefix">POL/%(year)s/</field>
+            <field name="padding">4</field>
+            <field name="company_id" eval="False"/>
+        </record>
+
+         <record id="seq_endor" model="ir.sequence">
+            <field name="name">Endorsement seq</field>
+            <field name="code">endors.seq</field>
+            <field name="prefix">ENDORS/%(year)s/</field>
+            <field name="padding">4</field>
+            <field name="company_id" eval="False"/>
+        </record>
+    </data>
+</odoo>

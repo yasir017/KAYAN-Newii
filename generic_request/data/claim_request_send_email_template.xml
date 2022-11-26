@@ -1,0 +1,25 @@
+<?xml version="1.0" ?>
+<odoo>
+    <data>
+
+        <!--  Claim Request Email Template -->
+        <record id="email_template_claim_request" model="mail.template">
+            <field name="name">Claim Request Information...!!</field>
+            <field name="subject">Customer Information Is Sent to you {{object.name or ''}} !</field>
+            <field name="model_id" ref="generic_request.model_request_request"/>
+            <field name="auto_delete" eval="True"/>
+            <field name="body_html" type="html">
+                <div style="font-family: 'Lucica Grande', Ubuntu, Arial, Verdana, sans-serif; font-size: 12px; color: rgb(34, 34, 34); background-color: rgb(255, 255, 255); ">
+                    <p>The Claim Request Information...!</p>
+                    <p>You can find the Claim Request Information in Attachments!</p>
+                    <p> Hope you have a great Day Ahead. Stay Healthy, Stay Happy.</p>
+                   <br/>
+                    Best Wishes,
+<!--                    <p><t t-out="object.company_id.name or ''"/></p>-->
+                </div>
+            </field>
+        </record>
+        
+        
+    </data>
+</odoo>
