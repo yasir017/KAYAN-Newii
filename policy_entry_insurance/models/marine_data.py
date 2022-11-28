@@ -24,7 +24,15 @@ class InsuranceMarine(models.Model):
     cover_cluase = fields.Char("Cover Clause")
     clause_type = fields.Selection([('store_port','Store - Port'),('port_store','Port Store')],string="Clause Type")
     policy_id = fields.Many2one('insurance.policy', 'Policy ID')
+
     premium = fields.Float("Premium")
+    vat = fields.Float('Vat')
+    total= fields.Float('Total',compute='_compute_total')
+
+    @api.depends('premium','vat')
+    def _compute_total(self):
+            for rec in self:
+                rec.total = rec.premium + (rec.premium * (rec.vat / 100))
 class GoodType(models.Model):
     _name = 'insurance.good.type'
 

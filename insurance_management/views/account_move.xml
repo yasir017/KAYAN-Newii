@@ -26,7 +26,7 @@
                   </button>
               </xpath>
               <xpath expr="//field[@name='payment_reference']" position="after">
-                  <field name="insurance_company_id"/>
+                  <field name="insurance_company_id" attrs="{'invisible':[('invoice_type','!=','commission_iv')]}"/>
                   <field name="endorsment_ref" attrs="{'invisible':['|',('move_type','in',['in_invoice','in_refund']),('invoice_type','!=','endors')]}"/>
                   <field name="invoice_ref" attrs="{'invisible':[('invoice_type','!=','commission_inv')],'required':[('invoice_type','=','commission_inv')]}"/>
 

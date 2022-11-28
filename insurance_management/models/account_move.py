@@ -101,7 +101,7 @@ class AccountMove(models.Model):
         params = self.env['ir.config_parameter'].sudo()
         gov_rel_email = params.get_param('gov_rel_email', default='')
         account_move = self.env['account.move'].create({
-            'partner_id': self.partner_id.id,
+            'partner_id': self.insurance_company_id.ins_company_partner_id.id,
             'policy_id': self.policy_id.id,
             'invoice_date':due_date,
             'invoice_type':'commission_inv',
@@ -111,7 +111,7 @@ class AccountMove(models.Model):
             'policy_no': self.policy_no,
             'invoice_date_due':due_date,
             'invoice_ref':self.id,
-            'insurance_company_id': self.insurance_company_id.id
+            # 'insurance_company_id': self.insurance_company_id.id
 
         })
         self.commission_boolean = True

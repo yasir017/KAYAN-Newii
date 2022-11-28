@@ -165,9 +165,9 @@ class client_branch(models.Model):
                     'dob':client.dob,
                     'dob_hijra':client.dob_hijra,
                     'age':client.age,
-                    'member_type':client.member_type,
-                    'class_no':client.class_no,
-                    'age_category':client.age_category,
+                    'member_type':client.member_type.id,
+                    'class_no':client.class_no.id,
+                    'age_category':client.age_category.id,
                     'risk_no':client.risk_no,
                     'nationality':client.nationality.id,
                     'staff_no':client.staff_no,
@@ -218,7 +218,7 @@ class client_branch(models.Model):
                     'capacity':quo_line.capacity,
                     'driver_insurance':quo_line.driver_insurance,
                     'insurance_management':quo_line.covering_maintenance,
-                    'value':quo_line.value,
+                    'value':quo_line.sum_insured,
                     'owener_name':quo_line.owner_name,
                     'owner_id':quo_line.owner_id_no,
                     'custom_id':quo_line.custom_id,
@@ -240,6 +240,10 @@ class client_branch(models.Model):
                     'natural_peril_cover':quo_line.natural_peril_cover,
                     'dob_owner':quo_line.dob_owner,
                     'nationality':quo_line.nationality.id,
+                    'vehicle_make_id':quo_line.vehicle_make_id.id,
+                    'vehicle_model_id':quo_line.vehicle_model_id.id,
+                    'premium':quo_line.rate,
+                    'vat':quo_line.vat
                 })
             policy.update({
                 'issuance_fee_car':quotation_vehicle.issuance_fee_car,
@@ -854,15 +858,15 @@ class client_basic_info(models.Model):
     sponser_id = fields.Char(string='Sponser ID')
     occupation = fields.Many2one('ins.occupation',string='Occupation')
     marital_status = fields.Selection([('Single','Single'),('Married','Married'),('Divorced','Divorced'),('Widowed','Widowed')],string='Relation')
-    # elm_relation = fields.Selection([('not_specified','Not Specified'),('son','Son'),('daughter','Daughter'),
-    #                                  ('wife','Wife'),
-    #                                  ('brother','Brother'),
-    #                                  ('sister','Sister'),
-    #                                  ('parent','Parent'),
-    #                                  ('grand_parent','Grand Parent'),
-    #                                  ('husband','Husband'),
-    #                                  ('other','Other'),
-    #                                  ('hoh','HOH')],string='ELM Relation')
+    elm_relation = fields.Selection([('not_specified','Not Specified'),('son','Son'),('daughter','Daughter'),
+                                     ('wife','Wife'),
+                                     ('brother','Brother'),
+                                     ('sister','Sister'),
+                                     ('parent','Parent'),
+                                     ('grand_parent','Grand Parent'),
+                                     ('husband','Husband'),
+                                     ('other','Other'),
+                                     ('hoh','HOH')],string='ELM Relation')
     vip = fields.Selection([('yes','Yes'),('no','No')],string='VIP?')
     as_vip = fields.Selection([('yes','Yes'),('no','No')],string='AS VIP?')
     bank_id = fields.Many2one('res.bank', string='Bank')

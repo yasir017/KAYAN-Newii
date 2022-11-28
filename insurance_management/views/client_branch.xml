@@ -381,7 +381,7 @@
                                     <field name="capacity"/>
                                     <field name="driver_insurance"/>
                                     <field name="covering_maintenance"/>
-                                    <field name="value"/>
+<!--                                    <field name="value"/>-->
                                     <field name="owner_name"/>
                                     <field name="owner_id_no"/>
                                     <field name="custom_id" optional="1"/>
@@ -459,7 +459,7 @@
                                                     <field name="capacity" optional="1"/>
                                                     <field name="driver_insurance" optional="1"/>
                                                     <field name="covering_maintenance" optional="1"/>
-                                                    <field name="value"/>
+<!--                                                    <field name="value"/>-->
                                                     <field name="owner_name"/>
                                                     <field name="owner_id_no"/>
                                                     <field name="custom_id" optional="1"/>
@@ -501,6 +501,9 @@
                                                             <field name="vat"/>
                                                             <field name="total"/>
                                                         </group>
+                                                        <group string="Sum Insured">
+                                                            <field name="sum_insured"/>
+                                                        </group>
                                                         <group string="Client ID">
                                                             <field name="vehicle_client_id" nolabel="1" domain="[('id','in',related_vehicle_client_ids)]"/>
                                                             <field name="client_branch_id" invisible="1"/>
@@ -521,7 +524,7 @@
                                                             <field name="capacity"/>
                                                             <field name="driver_insurance"/>
                                                             <field name="covering_maintenance"/>
-                                                            <field name="value"/>
+<!--                                                            <field name="value"/>-->
                                                         </group>
                                                     </group>
                                                     <group>

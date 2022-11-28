@@ -45,6 +45,13 @@
                                 <span class="o_stat_text">Endorsement Health Detail</span>
                             </div>
                   </button>
+                        <button attrs="{'invisible':['|',('policy_type','!=','endors'),('vehicle_boolean','=',False)]}" name="action_vehicle_endors" type="object"
+                            class="oe_stat_button" icon="fa-truck"  >
+                            <div class="o_stat_info">
+                                <field name="count_endors_vehicle" class="o_stat_value"/>
+                                <span class="o_stat_text">Endorsement Vehicle Detail</span>
+                            </div>
+                  </button>
 
                        <button attrs="{'invisible':[('hide_credit_note_button','=',True)]}" name="action_open_invoices" type="object"
                             class="oe_stat_button" icon="fa-pencil-square-o" >
@@ -63,6 +70,23 @@
                   </button>
 
 
+                        <button  name="action_commission_invoices" type="object"
+                            class="oe_stat_button" icon="fa-pencil-square-o" >
+                            <div class="o_stat_info">
+                                <field name="count_commission_invoice" class="o_stat_value"/>
+                                <span class="o_stat_text">Commission  Invoice</span>
+                            </div>
+                  </button>
+
+                      <button  name="action_govt_fee" type="object"
+                            class="oe_stat_button" icon="fa-pencil-square-o" >
+                            <div class="o_stat_info">
+                                <field name="count_govt_fee" class="o_stat_value"/>
+                                <span class="o_stat_text">Govt Fee</span>
+                            </div>
+                  </button>
+
+
 
                   </div>
                     <div class="oe_title">
@@ -71,13 +95,16 @@
                         </div>
               </xpath>
               <xpath expr="//field[@name='partner_id']" position="after">
-                     <field name="insurance_company_id"/>
+                     <field name="insurance_company_id" force_save="1" attrs="{'readonly':[('policy_type','=','endors')]}"/>
               </xpath>
               <xpath expr="//notebook/page[@name='vehicle']" position="attributes">
                    <attribute name="attrs">{'invisible':['|',('policy_type','=','endors'),('vehicle_boolean','=',False)]}</attribute>
               </xpath>
                <xpath expr="//notebook/page[@name='health_endors']" position="attributes">
                    <attribute name="attrs">{'invisible':['|',('medical_boolean','=',False),('policy_type','=','policy')]}</attribute>
+              </xpath>
+               <xpath expr="//notebook/page[@name='endors_vehicle']" position="attributes">
+                   <attribute name="attrs">{'invisible':['|',('vehicle_boolean','=',False),('policy_type','=','policy')]}</attribute>
               </xpath>
 
               <xpath expr="//notebook/page[@name='vehicle_coverage']" position="attributes">
@@ -90,10 +117,10 @@
                    <attribute name="attrs">{'invisible':['|',('policy_type','=','endors'),('medical_boolean','=',False)]}</attribute>
               </xpath>
               <xpath expr="//field[@name='policy_no']" position="after">
-                     <field name="insurance_type_id"/>
-                  <field name="insurance_sub_type_id"/>
-                  <field name="company_standard"/>
-                  <field name="type_of_business"/>
+                     <field name="insurance_type_id" force_save="1" attrs="{'readonly':[('policy_type','=','endors')]}"/>
+                  <field name="insurance_sub_type_id" force_save="1" attrs="{'readonly':[('policy_type','=','endors')]}"/>
+                  <field name="company_standard" force_save="1" attrs="{'readonly':[('policy_type','=','endors')]}"/>
+                  <field name="type_of_business" force_save="1" attrs="{'readonly':[('policy_type','=','endors')]}"/>
                   <field name="medical_boolean" invisible="1"/>
                   <field name="vehicle_boolean" invisible="1"/>
                   <field name="marine_boolean" invisible="1"/>
@@ -119,6 +146,24 @@
                                                  </tree>
                       </field>
                   </page>
+              </xpath>
+              <xpath expr="//field[@name='health_endors_ids']/tree/field[@name='age']" position="after">
+                   <field name="member_type" optional="hide"/>
+                  <field name="class_no" optional="hide"/>
+                  <field name="occupation" optional="hide"/>
+                  <field name="branch_id" optional="hide"/>
+              </xpath>
+              <xpath expr="//field[@name='employee_ids']/tree/field[@name='age']" position="after">
+                    <field name="member_type" optional="hide"/>
+                  <field name="class_no" optional="hide"/>
+                  <field name="occupation" optional="hide"/>
+                  <field name="branch_id" optional="hide"/>
+              </xpath>
+               <xpath expr="//field[@name='employee_ids']/form" position="inside">
+                    <field name="member_type" optional="hide"/>
+                  <field name="class_no" optional="hide"/>
+                  <field name="occupation" optional="hide"/>
+                  <field name="branch_id" optional="hide"/>
               </xpath>
           </field>
       </record>

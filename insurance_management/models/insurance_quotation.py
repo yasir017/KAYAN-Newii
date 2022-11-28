@@ -405,7 +405,7 @@ class vehicle_quotation_line(models.Model):
     capacity = fields.Char(string='Capacity')
     driver_insurance = fields.Char(string='Driver Insurance')
     covering_maintenance = fields.Selection([('work_shop', 'Workshop'),('agency', 'Agency')], string="Covering Maintenance")
-    value = fields.Char(string='Value')
+    # value = fields.Char(string='Value')
     owner_name = fields.Char(string='Owner Name')
     owner_id_no = fields.Char(string='Owner ID No')
     custom_id = fields.Char(string='Custom ID')
@@ -429,7 +429,7 @@ class vehicle_quotation_line(models.Model):
     nationality = fields.Many2one('res.country', string='Nationality')
     vehicle_make_id = fields.Many2one('fleet.vehicle.model.brand', string='Vehicle Make')
     vehicle_model_id = fields.Many2one('fleet.vehicle.model', string='Vehicle Model')
-
+    sum_insured = fields.Float("Sum Insured")
     @api.depends('vat', 'rate')
     def _get_q_line_total(self):
         for rec in self:

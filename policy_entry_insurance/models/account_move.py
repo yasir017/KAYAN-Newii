@@ -9,3 +9,5 @@ class AccountMove(models.Model):
 
     sales_person = fields.Many2one('hr.employee',string="Sales Person")
     policy_no = fields.Char("Policy No")
+    insurance_co_ref = fields.Char('Insurance Co.reference')
+

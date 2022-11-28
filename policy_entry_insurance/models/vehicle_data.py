@@ -9,6 +9,7 @@ class Vehicle(models.Model):
     class_id = fields.Many2one('insurance.business.class', 'Rel')
     policy_id = fields.Many2one('insurance.policy', 'Policy ID')
     currency_id = fields.Many2one('res.currency','Currency')
+    vehicle_image = fields.Binary(string='Vehicle Image')
 
     vehicle_type_id = fields.Many2one('vehicle.type',"Vehicle Type")
     plate_no = fields.Char("Plate No. (En)")
@@ -43,6 +44,16 @@ class Vehicle(models.Model):
     dob_owner = fields.Date("DOB Owner")
     nationality = fields.Many2one('res.country',"Nationality")
     premium = fields.Float("Premium")
+    vat = fields.Float(string='VAT', default=15)
+    total = fields.Float(string='Total',store=True, compute='_get_q_line_total')
+    endorsment_am = fields.Float("Endorsement Amount")
+    endorsment_type = fields.Selection([('add', 'Upgrade'), ('sub', 'Downgrade'), ('remove', 'Cancel')],
+                                       string='Operation Type')
+    @api.depends('vat', 'premium')
+    def _get_q_line_total(self):
+        for rec in self:
+            rec.total = rec.premium+(rec.premium*(rec.vat/100))
+    # rate = fields.Float(string='Premium')
     # effective_date = fields.Date('Effective Date')
     # ben_name = fields.Char('Ben.Name')
     # ben_address = fields.Char('Ben.Address')

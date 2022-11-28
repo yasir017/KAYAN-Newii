@@ -1,6 +1,6 @@
 from odoo import api, fields, models, _
 from odoo.exceptions import UserError, ValidationError
-
+from datetime import date
 class HealthData(models.Model):
     _name = 'insurance.health'
 
@@ -65,15 +65,16 @@ class EmployeeData(models.Model):
     member_id = fields.Char(string='Member ID')
     dependent_id = fields.Char(string='Dependent ID')
     name = fields.Char(string='Name', tracking=True)
+
     client_image = fields.Binary(string='Client Image')
     arabic_name = fields.Char(string='Arabic Name', tracking=True)
     gender = fields.Selection([('male', 'Male'), ('female', 'Female')], string='Gender')
     dob = fields.Date(string='Birth Date')
     dob_hijra = fields.Char(string='Birth Date(Hijra)')
-    age = fields.Float(string='Age')
-    member_type = fields.Char(string='Member Type')
-    class_no = fields.Char( string='Class No')
-    age_category = fields.Char(string='Age Category')
+    age = fields.Float(string='Age',compute='get_member_age')
+    # member_type = fields.Char(string='Member Type')
+    # class_no = fields.Char( string='Class No')
+    # age_category = fields.Char(string='Age Category')
     risk_no = fields.Char(string='Risk No')
     nationality = fields.Many2one('res.country', 'Nationality')
     staff_no = fields.Char(string='Staff No')
@@ -84,7 +85,7 @@ class EmployeeData(models.Model):
     mobile2 = fields.Char(string='Mobile No (2)')
     dep_no = fields.Char(string='Dep No')
     sponser_id = fields.Char(string='Sponser ID')
-    occupation = fields.Char(string='Occupation')
+    # occupation = fields.Char(string='Occupation')
     marital_status = fields.Selection(
         [('single', 'Single'), ('married', 'Married'), ('divorced', 'Divorced'), ('widowed', 'Widowed')],
         string='Marital Status')
@@ -100,14 +101,22 @@ class EmployeeData(models.Model):
     vip = fields.Selection([('yes', 'Yes'), ('no', 'No')], string='VIP?')
     as_vip = fields.Selection([('yes', 'Yes'), ('no', 'No')], string='AS VIP?')
     bank_id = fields.Many2one('res.bank', string='Bank')
-    branch_id = fields.Many2one('insurance.branch', string='Branch ID')
-    rate = fields.Float("Rate")
+    # branch_id = fields.Many2one('insurance.branch', string='Branch ID')
+    rate = fields.Float("Premium")
     vat = fields.Float("Vat")
     total = fields.Float("Total After Vat",compute='_compute_total',store=True)
     endorsment_am = fields.Float("Endorsement Amount")
-    endorsment_type = fields.Selection([('add','Upgrade'),('sub','Downgrade'),('remove','Remove')],string='Operation Type')
+    endorsment_type = fields.Selection([('add','Upgrade'),('sub','Downgrade'),('remove','Cancel')],string='Operation Type')
 
-
+    @api.depends('dob')
+    def get_member_age(self):
+        for rec in self:
+            if rec.dob:
+                born = rec.dob
+                today = date.today()
+                rec.age = today.year - born.year - ((today.month, today.day) < (born.month, born.day))
+            else:
+                rec.age = 0
 
     @api.depends('rate','vat')
     def _compute_total(self):

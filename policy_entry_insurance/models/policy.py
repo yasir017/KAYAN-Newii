@@ -21,7 +21,7 @@ class Policy(models.Model):
     branch_id = fields.Many2one('insurance.branch',"Branch Name")
     start_date = fields.Date('Start Date')
     expiry_date = fields.Date('Expiry Date')
-    issuance_date = fields.Date('issuance Date')
+    issuance_date = fields.Date('Issuance Date')
     policy_id = fields.Char('policy ID',readonly=1)
     prev_policy = fields.Many2one('insurance.policy',"Policy")
     insurance_company_id = fields.Char('Insurance Company')
@@ -56,7 +56,7 @@ class Policy(models.Model):
     paid = fields.Float('Paid Amount')
     # bussines_class_id = fields.Many2one('insurance.business.class',"Go Business Class")
     vehicle_detail = fields.One2many('insurance.vehicle','policy_id',"Vehicle detail")
-
+    endors_vehicle_ids = fields.Many2many('insurance.vehicle',string="Endorsement Vehicle Detail")
     producer_ids = fields.One2many('insurance.producer','policy_id','Producer')
     marine_ids = fields.One2many('insurance.marine','policy_id',"Marine Details")
     health_ids = fields.One2many('insurance.health','policy_id','Health Detail')
@@ -89,7 +89,30 @@ class Policy(models.Model):
     payment_term_id = fields.Many2one('account.payment.term',"Payment Term")
     policy_type = fields.Selection([('policy','Policy'),('endors','Endorsement')],default='policy',string="Type")
     endorsment_ref = fields.Char("Endorsement Ref")
+    total_instalment_am = fields.Float('Total Installment',compute='compute_installment')
+    difference_instalment = fields.Float('Difference',compute='compute_installment')
 
+    @api.depends('installment_ids','total_policy_am_after_vat')
+    def compute_installment(self):
+        instalment_am = 0.0
+        for rec in self:
+            if rec.installment_ids:
+                for amount in rec.installment_ids:
+                    if amount.type_installement=='fixed':
+                        instalment_am+=amount.fix_amount
+                    elif amount.type_installement=='percentage':
+                        instalment_am+=amount.amount_paid
+                rec.total_instalment_am=instalment_am
+            rec.difference_instalment=rec.total_policy_am_after_vat-rec.total_instalment_am
+
+    @api.constrains('start_date','expiry_date','issuance_date')
+    def constrainst_date(self):
+        for rec in self:
+            if rec.expiry_date<rec.start_date:
+                raise  ValidationError("Expiry Date should be greater then start date")
+            elif rec.issuance_date<rec.expiry_date:
+                raise ValidationError("Issuence date should be greater then start date")
+            # elif rec.expiry_date<rec.issuance_date
      # def action_create_invoice(self):
     #     invoice_lst = []
     #     product_id = self.env['product.product'].search([('insurance_product','=',True)],limit=1)
@@ -245,10 +268,23 @@ class Installment(models.Model):
     _name = 'insurance.installment'
 
     policy_id = fields.Many2one('insurance.policy', 'REL')
+    type_installement = fields.Selection([('fixed','Fixed'),('percentage','Percentage')],string="Type",default='fixed')
     cash_mode = fields.Many2one('cash.mode','Cash Mode')
     installment_date = fields.Date("Installment Date")
-    amount_paid = fields.Float('Amount Paid')
+    amount_paid = fields.Float('Amount After  Percentage',store=True,compute='_compute_percentage')
+    fix_amount = fields.Float('Fixed Amount')
     percentage = fields.Float("Percentage %")
+
+    @api.depends('policy_id','type_installement','percentage')
+    def _compute_percentage(self):
+        for rec in self:
+            percentage_am = 0.0
+            if rec.type_installement=='percentage':
+                if rec.percentage:
+                    percentage_am = rec.policy_id.total_policy_am_after_vat*(rec.percentage/100)
+                    rec.amount_paid=percentage_am
+            else:
+                rec.amount_paid=percentage_am
 class CashMode(models.Model):
     _name = 'cash.mode'
     name = fields.Char("Name")

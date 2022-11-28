@@ -26,7 +26,24 @@ class Policy(models.Model):
     count_endors_health = fields.Integer(compute='endors_health_count')
     invoice_count = fields.Integer(compute='_count_invoices',store=True)
     count_credit_notes = fields.Integer(compute='_count_credit_notes',store=True)
+    count_endors_vehicle = fields.Integer(compute='endors_vehicle_count')
+    count_commission_invoice = fields.Integer("Count Commission Invoice",compute='_commission_inv')
+    count_govt_fee = fields.Integer("Govt Fee",compute='compute_govt')
 
+    @api.depends('move_ids')
+    def compute_govt(self):
+        for rec in self:
+            invoices = rec.move_ids.filtered(lambda b: b.move_type == 'in_invoice')
+            rec.count_govt_fee = len(invoices)
+    @api.depends('move_ids')
+    def _commission_inv(self):
+        for rec in self:
+            invoices = rec.move_ids.filtered(lambda b: b.move_type == 'out_invoice' and b.invoice_type=='commission_inv')
+            rec.count_commission_invoice=len(invoices)
+    @api.depends('endors_vehicle_ids')
+    def endors_vehicle_count(self):
+        for rec in self:
+            rec.count_endors_vehicle = len(rec.endors_vehicle_ids)
     @api.depends('move_ids')
     def _count_credit_notes(self):
         for rec in self:
@@ -58,6 +75,21 @@ class Policy(models.Model):
             'domain': [('id', 'in', self.health_endors_ids.ids)],
         }
 
+    def action_vehicle_endors(self):
+        return {
+            'name': 'Endors Vehicle Details',
+            'type': 'ir.actions.act_window',
+            'res_model': 'insurance.vehicle',
+            'views': [
+                [self.env.ref('policy_entry_insurance.view_insurance_vehicle_tree').id, 'list'],
+                [self.env.ref('policy_entry_insurance.view_insurance_vehicle_form').id, 'form']],
+            'view_mode': 'tree,form,kanban',
+            'context': {
+                # 'default_policy_id': self.id,
+            },
+            'domain': [('id', 'in', self.endors_vehicle_ids.ids)],
+        }
+
     def action_open_invoices(self):
         return {
             'name': 'Invoice',
@@ -70,12 +102,53 @@ class Policy(models.Model):
                 'default_insurance_company_id':self.insurance_company_id.id,
                 'default_move_type': 'out_invoice',
                 'default_partner_id':self.partner_id.id,
-                'default_policy_no':self.policy_no
+                'default_policy_no':self.policy_no,
+                'default_invoice_type': 'endors' if self.policy_type == 'endors' else 'policy'
                 # 'default_commission_boolean': True
 
             },
             'domain': [('move_type','=','out_invoice'),('id', '=', self.move_ids.ids)],
         }
+
+    def action_commission_invoices(self):
+        return {
+            'name': 'Commission Invoice',
+            'type': 'ir.actions.act_window',
+            'res_model': 'account.move',
+            'view_mode': 'tree,form',
+            'context': {
+                'default_policy_id': self.id,
+                # 'default_invoice_ref': self.id,
+                'default_insurance_company_id':self.insurance_company_id.id,
+                'default_move_type': 'out_invoice',
+                'default_partner_id':self.insurance_company_id.ins_company_partner_id.id,
+                'default_policy_no':self.policy_no,
+                'default_invoice_type': 'commission_inv',
+                'default_commission_boolean': True
+
+            },
+            'domain': [('move_type','=','out_invoice'),('id', '=', self.move_ids.ids),('invoice_type','=','commission_inv')],
+        }
+
+
+    def action_govt_fee(self):
+        params = self.env['ir.config_parameter'].sudo()
+        govt_partnr = params.get_param('insurance_management.govt_partner', )
+        return {
+                'name': 'Bills',
+                'type': 'ir.actions.act_window',
+                'res_model': 'account.move',
+                'view_mode': 'tree,form',
+                'context': {
+                    'default_policy_id': self.id,
+                    # 'default_invoice_ref':self.id,
+                    'default_partner_id':govt_partnr,
+                    'default_move_type':'in_invoice',
+                    'default_govt_boolean':True
+
+                },
+                'domain': [('move_type', '=', 'in_invoice'),('id', '=', self.move_ids.ids)],
+            }
     def action_credit_invoices(self):
         return {
             'name': 'Invoice',
@@ -88,7 +161,8 @@ class Policy(models.Model):
                 'default_insurance_company_id':self.insurance_company_id.id,
                 'default_move_type': 'out_invoice',
                 'default_partner_id':self.partner_id.id,
-                'default_policy_no':self.policy_no
+                'default_policy_no':self.policy_no,
+                'default_invoice_type':'endors' if self.policy_type=='endors' else 'policy'
                 # 'default_commission_boolean': True
 
             },
@@ -200,6 +274,7 @@ class Policy(models.Model):
             'invoice_payment_term_id':self.payment_term_id.id,
             'move_type':'out_invoice',
             'policy_no':self.policy_no,
+            'invoice_type': 'endors' if self.policy_type == 'endors' else 'policy',
             'insurance_company_id':self.insurance_company_id.id
 
         })
@@ -213,7 +288,7 @@ class Policy(models.Model):
             'res_id':account_move.id,
             # 'domain': [('move_type', '=', 'out_invoice'), ('invoice_ref', '=', self.id)],
         }
-    @api.depends('vehicle_detail','policy_type','health_endors_ids', 'sum_insured', 'marine_ids', 'basic_prem', 'employee_ids')
+    @api.depends('vehicle_detail','endors_vehicle_ids','policy_type','health_endors_ids', 'sum_insured', 'marine_ids', 'basic_prem', 'employee_ids')
     def _compute_insurance_amount(self):
         net_premium = 0.0
         amount = 0.0
@@ -223,21 +298,25 @@ class Policy(models.Model):
                     if rec.vehicle_detail:
                         for line in rec.vehicle_detail:
                             amount += line.value
-                            net_premium += line.premium
+                            net_premium += line.total
                 elif rec.insurance_type_id.ins_type_select=='is_marine':
                     for line in rec.marine_ids:
-                        net_premium += line.premium
+                        net_premium += line.total
                         amount += line.cardo_sum_insured
                 elif rec.insurance_type_id.ins_type_select == 'is_medical':
                     if rec.employee_ids:
                         for health in rec.employee_ids:
-                            net_premium += health.rate
+                            net_premium += health.total
 
             elif rec.policy_type=='endors':
                 if rec.insurance_type_id.ins_type_select == 'is_medical':
-                    if rec.employee_ids:
+                    if rec.health_endors_ids:
                         for health in rec.health_endors_ids:
                             net_premium += health.endorsment_am
+                if rec.insurance_type_id.ins_type_select == 'is_vehicle':
+                    if rec.endors_vehicle_ids:
+                        for vehicle_endors in rec.endors_vehicle_ids:
+                            net_premium+=vehicle_endors.endorsment_am
             rec.actual_sum_insured = amount
             rec.premium_actual = net_premium
             rec.premium_difference = abs(rec.basic_prem - net_premium)

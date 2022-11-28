@@ -14,12 +14,12 @@
                                         <field name="dob"/>
                                         <field name="dob_hijra"/>
                                         <field name="age"/>
-                                        <field name="member_type"/>
-                                        <field name="class_no"/>
+<!--                                        <field name="member_type"/>-->
+<!--                                        <field name="class_no"/>-->
                                         <field name="rate"/>
                                         <field name="vat"/>
                                         <field name="total"/>
-                                        <field name="age_category" optional="hide"/>
+<!--                                        <field name="age_category" optional="hide"/>-->
                                         <field name="risk_no" optional="hide"/>
                                         <field name="nationality" optional="hide"/>
                                         <field name="staff_no" optional="hide"/>
@@ -28,13 +28,13 @@
                                         <field name="mobile2" optional="hide"/>
                                         <field name="dep_no" optional="hide"/>
                                         <field name="sponser_id" optional="hide"/>
-                                        <field name="occupation" optional="hide"/>
+<!--                                        <field name="occupation" optional="hide"/>-->
                                         <field name="marital_status" optional="hide"/>
                                         <field name="elm_relation" optional="hide"/>
                                         <field name="vip" optional="hide"/>
                                         <field name="as_vip" optional="hide"/>
                                         <field name="bank_id" optional="hide"/>
-                                        <field name="branch_id" optional="hide"/>
+<!--                                        <field name="branch_id" optional="hide"/>-->
 
             </tree>
         </field>
@@ -57,11 +57,11 @@
                                                     <field name="dob"/>
                                                     <field name="dob_hijra"/>
                                                     <field name="age"/>
-                                                    <field name="member_type"/>
-                                                    <field name="class_no"/>
+
+<!--                                                    <field name="class_no"/>-->
                                                 </group>
                                                 <group>
-                                                    <field name="age_category" optional="hide"/>
+<!--                                                    <field name="age_category" optional="hide"/>-->
                                                     <field name="risk_no" optional="hide"/>
                                                     <field name="nationality" optional="hide"/>
                                                     <field name="staff_no" optional="hide"/>
@@ -70,7 +70,7 @@
                                                     <field name="mobile2" optional="hide"/>
                                                     <field name="dep_no" optional="hide"/>
                                                     <field name="sponser_id" optional="hide"/>
-                                                    <field name="occupation" optional="hide"/>
+<!--                                                    <field name="occupation" optional="hide"/>-->
                                                     <field name="marital_status" optional="hide"/>
                                                 </group>
                                                 <group>
@@ -78,7 +78,7 @@
                                                     <field name="vip" optional="hide"/>
                                                     <field name="as_vip" optional="hide"/>
                                                     <field name="bank_id" optional="hide"/>
-                                                    <field name="branch_id" optional="hide"/>
+<!--                                                    <field name="branch_id" optional="hide"/>-->
                                                     <field name="rate"/>
                                                     <field name="vat"/>
                                                     <field name="total"/>
@@ -103,12 +103,12 @@
                                         <field name="dob"/>
                                         <field name="dob_hijra"/>
                                         <field name="age"/>
-                                        <field name="member_type"/>
-                                        <field name="class_no"/>
+<!--                                        <field name="member_type"/>-->
+<!--                                        <field name="class_no"/>-->
                                         <field name="rate"/>
                                         <field name="vat"/>
                                         <field name="total"/>
-                                        <field name="age_category" optional="hide"/>
+<!--                                        <field name="age_category" optional="hide"/>-->
                                         <field name="risk_no" optional="hide"/>
                                         <field name="nationality" optional="hide"/>
                                         <field name="staff_no" optional="hide"/>
@@ -117,13 +117,13 @@
                                         <field name="mobile2" optional="hide"/>
                                         <field name="dep_no" optional="hide"/>
                                         <field name="sponser_id" optional="hide"/>
-                                        <field name="occupation" optional="hide"/>
+<!--                                        <field name="occupation" optional="hide"/>-->
                                         <field name="marital_status" optional="hide"/>
                                         <field name="elm_relation" optional="hide"/>
                                         <field name="vip" optional="hide"/>
                                         <field name="as_vip" optional="hide"/>
                                         <field name="bank_id" optional="hide"/>
-                                        <field name="branch_id" optional="hide"/>
+<!--                                        <field name="branch_id" optional="hide"/>-->
             </search>
         </field>
      </record>
