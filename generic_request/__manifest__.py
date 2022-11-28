@@ -34,7 +34,8 @@
         'policy_entry_insurance',
         'report_xlsx',
         'account',
-        'account_accountant'
+        'account_accountant',
+        'documents',
     ],
 
     # always loaded
@@ -53,6 +54,7 @@
         'data/request_timesheet_activity.xml',
         'data/request_channel.xml',
         'data/claim_request_send_email_template.xml',
+        'data/claim_document_data.xml',
 
         'views/request_views.xml',
         'views/res_config_settings_view.xml',

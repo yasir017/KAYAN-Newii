@@ -257,6 +257,18 @@ class CustomerEmailWizard(models.TransientModel):
                 'is_medical': True,
                 'description': self.client_id.customer_id.name + "sent quotations to customer",
             })
+            document = self.env['documents.document'].create({
+                'name': attachment.name,
+                'attachment_id': attachment.id,
+                'description': attachment.description,
+                'type': 'empty',
+                'folder_id': self.env.ref('insurance_management.documents_client_data_folder').id,
+                'tag_ids': [(6, 0, [self.env.ref('insurance_management.documents_document_data_tag').id] or [])],
+                'owner_id': self.env.user.id,
+                'partner_id': self.client_id.id if self.client_id else False,
+                'res_model': self.client_id._name,
+                'res_id': self.client_id.id,
+            })
 
             client_insurance_attachments += attachment
         if self.client_id.insurance_type_id.ins_type_select == 'is_vehicle':
@@ -388,6 +400,18 @@ class CustomerEmailWizard(models.TransientModel):
                 'name': "Vehicle Quotations"+ str(self.id) + '.xls',
                 'datas': encodebytes(file_data.getvalue()),
                 'is_vehicle': True,
+            })
+            document = self.env['documents.document'].create({
+                'name': attachment.name,
+                'attachment_id': attachment.id,
+                'description': attachment.description,
+                'type': 'empty',
+                'folder_id': self.env.ref('insurance_management.documents_client_data_folder').id,
+                'tag_ids': [(6, 0, [self.env.ref('insurance_management.documents_document_data_tag').id] or [])],
+                'owner_id': self.env.user.id,
+                'partner_id': self.client_id.id if self.client_id else False,
+                'res_model': self.client_id._name,
+                'res_id': self.client_id.id,
             })
 
             client_insurance_attachments += attachment

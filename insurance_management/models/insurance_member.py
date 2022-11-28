@@ -665,6 +665,18 @@ class client_branch(models.Model):
                 'description': company.name,
             })
 
+            document = self.env['documents.document'].create({
+                'name': attachment.name,
+                'attachment_id': attachment.id,
+                'type': 'empty',
+                'folder_id': self.env.ref('insurance_management.documents_client_data_folder').id,
+                'tag_ids': [(6, 0, [self.env.ref('insurance_management.documents_document_data_tag').id] or [])],
+                'owner_id': self.env.user.id,
+                'partner_id': company.ins_company_partner_id.id if company.ins_company_partner_id else False,
+                'res_model': self._name,
+                'res_id': self.id,
+            })
+
             client_insurance_attachments += attachment
         if self.insurance_type_id.ins_type_select == 'is_vehicle':
             style = xlwt.easyxf('font:bold True;borders:left thin, right thin, top thin, bottom thin;')
@@ -763,6 +775,17 @@ class client_branch(models.Model):
                 'datas': encodebytes(file_data.getvalue()),
                 'is_vehicle': True,
                 'insurance_company_id': company._origin.id,
+            })
+            document = self.env['documents.document'].create({
+                'name': attachment.name,
+                'attachment_id': attachment.id,
+                'type': 'empty',
+                'folder_id': self.env.ref('insurance_management.documents_client_data_folder').id,
+                'tag_ids': [(6, 0, [self.env.ref('insurance_management.documents_document_data_tag').id] or [])],
+                'owner_id': self.env.user.id,
+                'partner_id': company.ins_company_partner_id.id if company.ins_company_partner_id else False,
+                'res_model': self._name,
+                'res_id': self.id,
             })
 
             client_insurance_attachments += attachment

@@ -12,7 +12,7 @@
     'author': 'Kayan IT team',
     'license': 'AGPL-3',
     'website': 'http://kayan.com/',
-    'depends': ['base','hr','mail','report_xlsx','policy_entry_insurance','fleet'],
+    'depends': ['base','hr','mail','report_xlsx','policy_entry_insurance','fleet','documents'],
     'data': [
         'security/ir.model.access.csv',
         'views/client_branch.xml',
@@ -40,6 +40,7 @@
         'report/benefits_comparison_template.xml',
         'report/export_client_for_uploader.xml',
         'data/customer_info_send_email_template.xml',
+        'data/client_document_data.xml',
         'data/ir_sequence.xml',
         'views/menu_items.xml',
 
