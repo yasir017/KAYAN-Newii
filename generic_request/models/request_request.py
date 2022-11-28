@@ -334,6 +334,7 @@ class RequestRequest(models.Model):
     repair_deductible_cost = fields.Float(string='Repair Deductible Cost',help='(It’s supposed to be in the policy)(this cost will be covered by client to the work shop directely)')
     other_repair_cost_ids = fields.One2many('other.repair.cost','request_id',string='Other Repair Costs',ondelete='cascade')
     approved_letter_file = fields.Binary(string='Approved Letter File')
+    net_amount_repair = fields.Float(string='Net Amount', help='Net Amount', compute='get_net_amount_repaired')
 
     t_lost_deductible_cost = fields.Float(string='Deductible Cost')
     t_lost_depreciation_cost = fields.Float(string='Depreciation Cost')
@@ -345,6 +346,12 @@ class RequestRequest(models.Model):
                                             domain="[('insurance_type_id','=',insurance_type_id)]")
     total_claim_invoice = fields.Integer(string='Total Invoice', compute='get_total_claim_invoice')
     account_move_ids = fields.Many2many('account.move',string="Claim Invoices")
+
+    @api.depends('repair_labour_cost', 'repair_parts_cost','repair_deductible_cost', 'other_repair_cost_ids.cost')
+    def get_net_amount_repaired(self):
+        for rec in self:
+            rec.net_amount_repair = rec.repair_labour_cost + rec.repair_parts_cost + rec.repair_deductible_cost + sum(
+                rec.other_repair_cost_ids.mapped('cost'))
 
     def action_open_claim_invoice(self):
         return {
@@ -369,6 +376,18 @@ class RequestRequest(models.Model):
             'view_mode': 'form',
             'view_type': 'form',
             'res_model': 'claim.invoice.wizard',
+            'views': [(False, 'form')],
+            'context': {'default_claim_request_id': self.id},
+            'target': 'new',
+        }
+
+    def create_claim_credit_note_wizard(self):
+        return {
+            'name': "Create Claim Credit-Note",
+            'type': 'ir.actions.act_window',
+            'view_mode': 'form',
+            'view_type': 'form',
+            'res_model': 'claim.credit.note.wizard',
             'views': [(False, 'form')],
             'context': {'default_claim_request_id': self.id},
             'target': 'new',

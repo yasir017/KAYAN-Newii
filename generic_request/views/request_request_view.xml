@@ -21,6 +21,7 @@
                     </div>
                     <button name="send_claim_email_insurance_company" type="object" string="Send Email to Insurance Company" class="oe_highlight"/>
                     <button name="create_claim_invoice_wizard" type="object" string="Create Invoice" class="oe_highlight"/>
+                    <button name="create_claim_credit_note_wizard" type="object" string="Create Credit-Note" class="oe_highlight"/>
                     <field name="stage_id" widget="statusbar"
                            required="0"
                            attrs="{'readonly': True}"
@@ -235,6 +236,7 @@
                                             <field name="repair_labour_cost"/>
                                             <field name="repair_deductible_cost"/>
                                             <field name="approved_letter_file"/>
+                                            <field name="net_amount_repair"/>
                                         </group>
                                         <group>
                                             <field name="repair_parts_cost"/>

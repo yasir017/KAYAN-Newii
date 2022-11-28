@@ -73,7 +73,7 @@ class client_branch(models.Model):
     todos_list = fields.Html(string="To Do's", default=_default_get_todos_list)
     state = fields.Selection([('gather_info','Gather Info'),
                               ('review','Review'),
-                              ('sent_to_insurance','Sent to Insurance Companies'),
+                              ('sent_to_insurance','Sent to Vendor'),
                               ('sent_to_customer','Sent to Customer'),('validate','Validate'),
                               ('cancel','Cancel')],string='state',default='gather_info')
     import_client_file = fields.Binary(string='Upload Clients Data (.xls')

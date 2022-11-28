@@ -36,6 +36,7 @@
         'account',
         'account_accountant',
         'documents',
+        'account_predictive_bills',
     ],
 
     # always loaded
@@ -82,6 +83,7 @@
         'wizard/request_wizard_stop_work.xml',
         'wizard/request_wizard_set_parent.xml',
         'wizard/send_claim_email.xml',
+        'wizard/claim_credit_note_wizard.xml',
         'wizard/claim_invoice_wizard.xml',
 
         'reports/request_timesheet_report.xml',

@@ -1,11 +1,11 @@
 <?xml version="1.0"?>
 <odoo>
 
-	<record id="form_claim_invoice_wizard_view" model="ir.ui.view">
-		<field name="name">claim.invoice.wizard.form.view</field>
-		<field name="model">claim.invoice.wizard</field>
+	<record id="form_claim_credit_note_wizard_view" model="ir.ui.view">
+		<field name="name">claim.credit.note.wizard.form.view</field>
+		<field name="model">claim.credit.note.wizard</field>
 		<field name="arch" type="xml">
-			<form string="Claim Invoice Wizard">
+			<form string="Claim Credit Note">
 				<sheet>
 					<group>
 						<group>
@@ -20,7 +20,7 @@
 					</group>
 				</sheet>
 				<footer>
-					<button name="create_claim_invoice" type="object" string="Confirm"
+					<button name="create_claim_credit_note" type="object" string="Confirm"
 					class="oe_highlight"/>
 					<button string="Cancel" class="btn-secondary" special="cancel"/>
 				</footer>
@@ -28,12 +28,12 @@
 		</field>
 	</record>
 
-	<record id="action_claim_invoice_wizard" model="ir.actions.act_window">
-		<field name="name">Claim Invoice Wizard</field>
+	<record id="action_claim_credit_note_wizard" model="ir.actions.act_window">
+		<field name="name">Claim Credit-Note Wizard</field>
 		<field name="type">ir.actions.act_window</field>
-		<field name="res_model">claim.invoice.wizard</field>
+		<field name="res_model">claim.credit.note.wizard</field>
 		<field name="view_mode">form</field>
-		<field name="view_id" ref="form_claim_invoice_wizard_view"/>
+		<field name="view_id" ref="form_claim_credit_note_wizard_view"/>
 		<field name="target">new</field>
 	</record>
 
