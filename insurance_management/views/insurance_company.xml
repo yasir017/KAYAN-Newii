@@ -27,39 +27,37 @@
             <form string="Insurance Company">
                  <sheet>
                     <div class="oe_title">
-                        <label for="name" class="oe_edit_only"/>
-                        <h1><field name="name" class="oe_inline"/></h1>
-                        <field name="ins_company_partner_id" invisible="1"/>
+                        <label for="ins_company_partner_id" class="oe_edit_only"/>
+                        <h1><field name="ins_company_partner_id" class="oe_inline" options="{'no_create': True, 'no_create_edit': True}"/></h1>
+<!--                        <field name="ins_company_partner_id" invisible="1"/>-->
                     </div>
                     <group>
                         <group>
-                            <field name="arabic_name"/>
-                            <field name="branch_name"/>
-                            <field name="location"/>
+                            <field name="name" invisible="1"/>
                             <field name="email"/>
+                            <field name="country"/>
+                             <field name="city"/>
                         </group>
                          <group>
-                             <field name="country"/>
-                             <field name="city"/>
                              <field name="website"/>
                              <field name="mobile"/>
                         </group>
-                        <group>
-                            <field name="trade_name"/>
-                            <field name="contact_dear"/>
-                            <field name="contact_person"/>
-                            <field name="phone"/>
-                            <field name="ext"/>
-                            <field name="fax_no"/>
-                        </group>
-                        <group>
-                            <field name="region"/>
-                            <field name="affliated_co"/>
-                            <field name="public"/>
-                            <field name="bank_id"/>
-                            <field name="billing_address"/>
-                            <field name="auto_map_benefits_to_quotation"/>
-                        </group>
+<!--                        <group>-->
+<!--                            <field name="trade_name"/>-->
+<!--                            <field name="contact_dear"/>-->
+<!--                            <field name="contact_person"/>-->
+<!--                            <field name="phone"/>-->
+<!--                            <field name="ext"/>-->
+<!--                            <field name="fax_no"/>-->
+<!--                        </group>-->
+<!--                        <group>-->
+<!--                            <field name="region"/>-->
+<!--                            <field name="affliated_co"/>-->
+<!--                            <field name="public"/>-->
+<!--                            <field name="bank_id"/>-->
+<!--                            <field name="billing_address"/>-->
+<!--                            <field name="auto_map_benefits_to_quotation"/>-->
+<!--                        </group>-->
                     </group>
                      <notebook>
                          <page string="Benefits">
@@ -89,7 +87,7 @@
                                  <field name="pre_paid_tax_acc"/>
                              </group>
                          </page>
-                         <page string="Class Type Standard">
+                         <page string="Medical Class-Type Standard">
                              <field name="company_class_standard_ids">
                                  <tree editable="bottom">
                                      <field name="name"/>
@@ -111,7 +109,7 @@
                                  </form>
                              </field>
                          </page>
-                         <page string="Member Type Standard">
+                         <page string="Medical Member-Type Standard">
                              <field name="company_member_standard_ids">
                                  <tree editable="bottom">
                                      <field name="name"/>
@@ -133,7 +131,7 @@
                                  </form>
                              </field>
                          </page>
-                         <page string="Age Category Standard">
+                         <page string="Medical Age-Category Standard">
                              <field name="company_age_catogory_standard_ids">
                                  <tree editable="bottom">
                                      <field name="name"/>

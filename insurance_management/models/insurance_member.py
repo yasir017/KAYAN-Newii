@@ -949,7 +949,7 @@ class risk_location(models.Model):
     code = fields.Char(string='Code', tracking=True)
     country = fields.Many2one('res.country', 'Country')
     region = fields.Char(string='Region', tracking=True)
-    city = fields.Char(string='City')
+    city = fields.Many2one('res.country.state',string='City')
     risk = fields.Char(string='Risk')
 
 class ins_occupation(models.Model):
@@ -958,7 +958,7 @@ class ins_occupation(models.Model):
     _description = 'ins_occupation'
 
     code = fields.Char(string='Occupation Code', tracking=True)
-    name = fields.Char(string='Occupation Name')
+    name = fields.Char(string='Occupation Name', translate=True)
     gender = fields.Selection([('Male','Male'),('Female','Female')],string='Gender')
 
 

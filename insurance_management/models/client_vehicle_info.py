@@ -35,7 +35,7 @@ class client_vehicle_info(models.Model):
     building_no = fields.Char(string='Building No')
     additional_no = fields.Char(string='Additional No')
     street = fields.Char(string='Street')
-    city = fields.Char(string='City')
+    city = fields.Many2one('res.country.state',string='City')
     unit_no = fields.Char(string='Unit No')
     po_box = fields.Char(string='PO. BOX')
     zip_code = fields.Char(string='Zip Code')

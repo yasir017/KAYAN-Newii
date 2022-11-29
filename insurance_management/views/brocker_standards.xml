@@ -6,7 +6,7 @@
         <field name="name">class.name.standard.tree</field>
         <field name="model">class.name.standard</field>
         <field name="arch" type="xml">
-            <tree string=" Class Name standard" editable="bottom">
+            <tree string="Medical Class Name standard" editable="bottom">
                 <field name="name"/>
                 <field name="standard_type"/>
             </tree>
@@ -17,7 +17,7 @@
         <field name="name">class.name.standard.form</field>
         <field name="model">class.name.standard</field>
         <field name="arch" type="xml">
-            <form string=" Class Name standard">
+            <form string="Medical Class Name standard">
                  <sheet>
                     <div class="oe_title">
                         <label for="name" class="oe_edit_only"/>
@@ -41,13 +41,13 @@
     </record>
 
     <record id="action_class_name_standard" model="ir.actions.act_window">
-        <field name="name">Class Name Standard</field>
+        <field name="name">Medical Class Name Standard</field>
         <field name="res_model">class.name.standard</field>
         <field name="view_mode">tree,form</field>
         <field name="search_view_id" ref="class_name_standard_view_tree"/>
          <field name="help" type="html">
             <p class="oe_view_nocontent_create">
-                Click to create a new  Class Name standard.
+                Click to create a new  Medical Class Name standard.
             </p>
         </field>
     </record>
@@ -58,7 +58,7 @@
         <field name="name">member.type.standard.tree</field>
         <field name="model">member.type.standard</field>
         <field name="arch" type="xml">
-            <tree string="Member Type Standard" editable="bottom">
+            <tree string="Medical Member Type Standard" editable="bottom">
                 <field name="name"/>
                 <field name="standard_type"/>
             </tree>
@@ -69,7 +69,7 @@
         <field name="name">member.type.standard.form</field>
         <field name="model">member.type.standard</field>
         <field name="arch" type="xml">
-            <form string="Member Type Standard">
+            <form string="Medical Member Type Standard">
                  <sheet>
                     <div class="oe_title">
                         <label for="name" class="oe_edit_only"/>
@@ -93,7 +93,7 @@
     </record>
 
     <record id="action_member_type_standard" model="ir.actions.act_window">
-        <field name="name">Member Type Standard</field>
+        <field name="name">Medical Member Type Standard</field>
         <field name="res_model">member.type.standard</field>
         <field name="view_mode">tree,form</field>
         <field name="search_view_id" ref="member_type_standard_view_tree"/>
@@ -110,7 +110,7 @@
         <field name="name">age.category.standard.tree</field>
         <field name="model">age.category.standard</field>
         <field name="arch" type="xml">
-            <tree string="Age Category Standard" editable="bottom">
+            <tree string="Medical Age Category Standard" editable="bottom">
                 <field name="name"/>
                 <field name="standard_type"/>
             </tree>
@@ -121,7 +121,7 @@
         <field name="name">age.category.standard.form</field>
         <field name="model">age.category.standard</field>
         <field name="arch" type="xml">
-            <form string="Age Category Standard">
+            <form string="Medical Age Category Standard">
                  <sheet>
                     <div class="oe_title">
                         <label for="name" class="oe_edit_only"/>
@@ -145,7 +145,7 @@
     </record>
 
     <record id="action_age_category_standard" model="ir.actions.act_window">
-        <field name="name">Age Category Standard</field>
+        <field name="name">Medical Age Category Standard</field>
         <field name="res_model">age.category.standard</field>
         <field name="view_mode">tree,form</field>
         <field name="search_view_id" ref="age_category_standard_view_tree"/>

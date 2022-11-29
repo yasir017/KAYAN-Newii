@@ -18,8 +18,8 @@ class insurance_company_benefit(models.Model):
     name = fields.Char()
     insurance_company_id = fields.Many2one('insurance.company',string='Insurance Company',readonly=False)
     category_type = fields.Selection([('vip','VIP'),('a+','A+'),('a','A'),('b','B'),('c','C')],string='Category Type')
-    ins_type_select = fields.Selection([('is_medical', 'Medical'), ('is_vehicle', 'Vehicle'), ('is_marine', 'Marine')],
-                                       string='Type')
+    ins_type_select = fields.Selection([('is_medical', 'Medical'), ('is_vehicle', 'Vehicle'), ('is_marine', 'Marine'), ('other', 'Other')],
+                                       string='Technical Type',required=True)
     benefit_id = fields.Many2one('benefit.name',string='Benefit',domain="[('ins_type_select','=',ins_type_select)]")
     benefit_value = fields.Char(string='Value')
     display_type = fields.Selection([
@@ -35,5 +35,5 @@ class benefit_name(models.Model):
     _description = 'benefit_name'
 
     name = fields.Char(string='Benefit Name')
-    ins_type_select = fields.Selection([('is_medical', 'Medical'), ('is_vehicle', 'Vehicle'), ('is_marine', 'Marine')],
-                                       string='Type')
+    ins_type_select = fields.Selection([('is_medical', 'Medical'), ('is_vehicle', 'Vehicle'), ('is_marine', 'Marine'), ('other', 'Other')],
+                                       string='Technical Type',required=True)

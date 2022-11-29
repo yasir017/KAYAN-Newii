@@ -35,7 +35,7 @@
               name="Customer"/>
 
     <menuitem id="menu_broker_standards" parent="ins_configuration" sequence="8"
-              name="Standards"/>
+              name="Medical Standards"/>
     <menuitem id="ins_class_name_standard" name="Class Name Standard" parent="menu_broker_standards" sequence="1" action="action_class_name_standard"/>
     <menuitem id="ins_member_type_standard" name="Member Type Standard" parent="menu_broker_standards" sequence="1" action="action_member_type_standard"/>
     <menuitem id="ins_age_category_standard" name="Age Category Standard" parent="menu_broker_standards" sequence="1" action="action_age_category_standard"/>

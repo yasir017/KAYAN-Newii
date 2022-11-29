@@ -14,9 +14,9 @@ class insurance_type(models.Model):
     _inherit = ['mail.thread', 'mail.activity.mixin', 'mail.render.mixin']
     _description = 'insurance_type'
 
-    name = fields.Char(string='Name')
+    name = fields.Char(string='Type Name')
     insurance_subtype_ids = fields.One2many('insurance.sub.type','insurance_type_id',string='Insurance Sub-Types')
-    ins_type_select = fields.Selection([('is_medical','Medical'),('is_vehicle','Vehicle'),('is_marine','Marine')],string='Type')
+    ins_type_select = fields.Selection([('is_medical','Medical'),('is_vehicle','Vehicle'),('is_marine','Marine'), ('other', 'Other')],string='Technical Type',required=True)
     # is_medical = fields.Boolean(string='Is Medical?')
     # is_vehicle = fields.Boolean(string='Is Vehicle?')
     list_required_docs_ids = fields.One2many('list.required.docs', 'insurance_type_id', string='Required Document List')

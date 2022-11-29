@@ -10,7 +10,7 @@
                 <field name="name"/>
                 <field name="ins_type_select"/>
                 <field name="id" string="Code"/>
-                <field name="insurance_subtype_ids"/>
+                <field name="insurance_subtype_ids" widget="many2many_tags"/>
             </tree>
         </field>
     </record>

@@ -12,18 +12,19 @@ import logging
 class insurance_company(models.Model):
     _name = 'insurance.company'
     _inherit = ['mail.thread', 'mail.activity.mixin', 'mail.render.mixin']
-    _description = 'client_branch'
+    _description = 'Insurance company'
+    _rec_name = 'ins_company_partner_id'
 
-    name = fields.Char(string='Name',required=True)
-    ins_company_partner_id = fields.Many2one('res.partner',string='Insurance Company Partner')
+    ins_company_partner_id = fields.Many2one('res.partner', string='Insurance Company Partner',required=True)
+    name = fields.Char(string='Name')
+    country = fields.Many2one(related='ins_company_partner_id.country_id',string='Country')
+    city = fields.Many2one(related='ins_company_partner_id.state_id',string='City')
+    website = fields.Char(related='ins_company_partner_id.website',string='Website')
+    mobile = fields.Char(related='ins_company_partner_id.mobile',string='Mobile')
+    email = fields.Char(related='ins_company_partner_id.email',string='Email')
     arabic_name = fields.Char(string='Arabic Name')
     branch_name = fields.Char(string='Company(Branch)')
     location = fields.Char(string='Location')
-    country = fields.Many2one('res.country',string='Country')
-    city = fields.Char(string='City')
-    website = fields.Char(string='Website')
-    mobile = fields.Char(string='Mobile')
-    email = fields.Char(string='Email')
     company_benefit_ids = fields.One2many('insurance.company.benefit','insurance_company_id',string='Benefits')
     trade_name = fields.Char('Trade Name')
     contact_dear = fields.Char("Contract Dear")
@@ -64,14 +65,9 @@ class insurance_company(models.Model):
     def create(self, vals):
         res = super(insurance_company, self).create(vals)
         for rec in res:
-            vals = {
-                'name': rec.name,
-                'is_insurance_company': rec.id,
-                'supplier_rank': 1,
-
-            }
-            partner = self.env['res.partner'].create(vals)
-            rec.ins_company_partner_id = partner.id
+            rec.ins_company_partner_id.is_insurance_company = True
+            rec.ins_company_partner_id.supplier_rank = 1
+            rec.name = rec.ins_company_partner_id.name
         return res
 
 
