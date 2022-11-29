@@ -91,6 +91,26 @@ class Policy(models.Model):
     endorsment_ref = fields.Char("Endorsement Ref")
     total_instalment_am = fields.Float('Total Installment',compute='compute_installment')
     difference_instalment = fields.Float('Difference',compute='compute_installment')
+    total_document_number = fields.Integer(string='Total Documents', compute='get_total_documents')
+
+    def action_open_policy_documents(self):
+        return {
+            'name': _('Documents'),
+            'type': 'ir.actions.act_window',
+            'res_model': 'documents.document',
+            'view_mode': 'kanban',
+            'context': {
+                'default_res_id': self.id,
+                'default_res_model': self._name,
+                'default_folder_id': self.env.ref('policy_entry_insurance.documents_policy_data_folder').id,
+                'default_tag_ids': [
+                    (6, 0, [self.env.ref('policy_entry_insurance.documents_document_policy_data_tag').id] or [])],
+            },
+            'domain': [('res_id', '=', self.id), ('res_model', '=', self._name)],
+        }
+    def get_total_documents(self):
+        for rec in self:
+            rec.total_document_number = len(self.env['documents.document'].search([('res_id', '=', self.id),('res_model', '=', self._name)]))
 
     @api.depends('installment_ids','total_policy_am_after_vat')
     def compute_installment(self):

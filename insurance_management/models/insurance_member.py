@@ -92,7 +92,8 @@ class client_branch(models.Model):
                                          ],string='Type of Business')
     renewal_policy_id = fields.Many2one('insurance.policy',string='Renewal Policy No')
     list_required_docs_ids = fields.One2many(related='insurance_type_id.list_required_docs_ids')
-    total_clients_number = fields.Integer(string='Total Clients',compute='get_total_clients')
+    total_clients_number = fields.Integer(string='Total Lines',compute='get_total_clients')
+    total_document_number = fields.Integer(string='Total Documents',compute='get_total_documents')
     total_medical_quotation = fields.Integer(string='Medical Quotations',compute='get_total_medical_quotation')
     total_vehicle_quotation = fields.Integer(string='Vehicle Quotations',compute='get_total_vehicle_quotation')
     total_medical_line = fields.Integer(string='Medical Lines',compute='get_total_medical_lines')
@@ -387,6 +388,38 @@ class client_branch(models.Model):
     def get_total_medical_quotation(self):
         for rec in self:
             rec.total_medical_quotation = len(rec.insurance_quotation_ids)
+
+    def action_open_client_documents(self):
+        return {
+            'name': _('Documents'),
+            'type': 'ir.actions.act_window',
+            'res_model': 'documents.document',
+            # 'views': [
+            #     [self.env.ref('insurance_management.documents_view_list_c').id, 'list'],
+            #     [self.env.ref('	insurance_management.documents_view_form_c').id, 'form'],
+            #     [false, 'kanban'],
+            # ],
+            # 'views': [[self.env.ref('insurance_management.documents_view_list_c').id, 'list'],
+            #           [self.env.ref('insurance_management.documents_view_form_c').id, 'form'],
+            #           [self.env.ref('insurance_management.document_view_kanban_c').id, 'Kanban'],
+            #           ],
+            # 'view_ids': [(self.env.ref('insurance_management.documents_view_list_c').id, 'list'),
+            #              (self.env.ref('insurance_management.documents_view_form_c').id, 'form'),
+            #              (self.env.ref('insurance_management.document_view_kanban_c').id, 'kanban')],
+            # 'views': [(self.env.ref('insurance_management.document_view_kanban_c').id, 'kanban')],
+            'view_mode': 'kanban',
+            'context': {
+                'default_res_id': self.id,
+                'default_res_model': self._name,
+                'default_folder_id': self.env.ref('insurance_management.documents_client_data_folder').id,
+                'default_tag_ids': [(6, 0, [self.env.ref('insurance_management.documents_document_data_tag').id] or [])],
+            },
+            'domain': [('res_id', '=', self.id),('res_model', '=', self._name)],
+        }
+
+    def get_total_documents(self):
+        for rec in self:
+            rec.total_document_number = len(self.env['documents.document'].search([('res_id', '=', self.id),('res_model', '=', self._name)]))
     @api.depends('client_ids')
     def get_total_clients(self):
         for rec in self:
@@ -927,3 +960,25 @@ class ins_occupation(models.Model):
     code = fields.Char(string='Occupation Code', tracking=True)
     name = fields.Char(string='Occupation Name')
     gender = fields.Selection([('Male','Male'),('Female','Female')],string='Gender')
+
+
+class Document(models.Model):
+    _inherit = 'documents.document'
+
+
+    @api.model
+    def create(self, vals):
+        if 'res_id' in vals:
+            source_ids = vals['res_id']
+            x = source_ids.split(",")
+            source_all = self.env[x[0]].search([])
+            source_id = int(x[1])
+            source = self.env[x[0]].search([('id','=',source_id)])
+            if source:
+                vals['res_id'] = source.id
+                vals['res_model'] = source._name
+        if 'uid' in self.env.context:
+            vals['owner_id'] = self.env.context.get('uid')
+        res = super(Document, self).create(vals)
+
+        return res

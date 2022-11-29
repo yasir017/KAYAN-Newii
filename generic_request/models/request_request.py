@@ -346,6 +346,26 @@ class RequestRequest(models.Model):
                                             domain="[('insurance_type_id','=',insurance_type_id)]")
     total_claim_invoice = fields.Integer(string='Total Invoice', compute='get_total_claim_invoice')
     account_move_ids = fields.Many2many('account.move',string="Claim Invoices")
+    total_document_number = fields.Integer(string='Total Documents', compute='get_total_documents')
+
+    def action_open_claim_documents(self):
+        return {
+            'name': _('Documents'),
+            'type': 'ir.actions.act_window',
+            'res_model': 'documents.document',
+            'view_mode': 'kanban',
+            'context': {
+                'default_res_id': self.id,
+                'default_res_model': self._name,
+                'default_folder_id': self.env.ref('generic_request.documents_claim_data_folder').id,
+                'default_tag_ids': [(6, 0, [self.env.ref('generic_request.documents_document_claim_data_tag').id] or [])],
+            },
+            'domain': [('res_id', '=', self.id),('res_model', '=', self._name)],
+        }
+
+    def get_total_documents(self):
+        for rec in self:
+            rec.total_document_number = len(self.env['documents.document'].search([('res_id', '=', self.id),('res_model', '=', self._name)]))
 
     @api.depends('repair_labour_cost', 'repair_parts_cost','repair_deductible_cost', 'other_repair_cost_ids.cost')
     def get_net_amount_repaired(self):

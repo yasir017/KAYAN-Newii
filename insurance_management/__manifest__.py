@@ -50,7 +50,7 @@
     'auto_install': False,
     'assets': {
         'web.assets_backend': [
-
+            ('replace', 'documents/static/src/js/documents_controller_mixin.js', 'insurance_management/static/src/js/documents_controller_mixin.js'),
         ],
         'web.assets_qweb': [
 

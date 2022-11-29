@@ -1,24 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
 
-    <record id="client_branch_view_tree" model="ir.ui.view">
-        <field name="name">client.branch.tree</field>
-        <field name="model">client.branch</field>
-        <field name="arch" type="xml">
-            <tree string="Client Branch">
-                <field name="document_no"/>
-                <field name="customer_id"/>
-                <field name="insurance_type_id"/>
-                <field name="insurance_sub_type_id"/>
-                <field name="sales_employee"/>
-                <field name="supervisor"/>
-                <field name="country"/>
-                <field name="state_id"/>
-                <field name="client_ids"/>
-            </tree>
-        </field>
-    </record>
-
     <record model="ir.ui.view" id="view_client_branch_search_mmmm">
         <field name="name">client.branch.search</field>
         <field name="model">client.branch</field>
@@ -48,9 +30,6 @@
             </search>
         </field>
     </record>
-
-
-
 <!--    <record model="ir.ui.view" id="view_client_branch_searchpanel">-->
 <!--        <field name="model">client.branch</field>-->
 <!--        <field name="inherit_id" ref="view_client_branch_search"/>-->
@@ -60,6 +39,66 @@
 <!--            </xpath>-->
 <!--        </field>-->
 <!--    </record>-->
+    <record id="documents_view_list_c" model="ir.ui.view">
+        <field name="name">documents list</field>
+        <field name="model">documents.document</field>
+        <field name="arch" type="xml">
+            <tree
+                  create="1" edit="1"
+                  decoration-info="type == 'empty'"
+                  sample="1">
+                <field name="id" optional="hide" groups="base.group_no_one"/>
+                <field name="name" string="Document" required="True"/>
+                <field name="url" optional="hide"/>
+                <field name="tag_ids" widget="documents_tree_many2many_tags"/>
+                <field name="partner_id"/>
+                <field name="owner_id" widget="many2one_avatar_user"/>
+                <field name="lock_uid" optional="hide"/>
+                <field name="res_id"/>
+                <field name="res_model"/>
+                <field name="folder_id"/>
+                <field name="tag_ids"/>
+                <field name="type"/>
+                <field name="create_date" widget="date"/>
+                <field name="activity_exception_decoration" widget="activity_exception"/>
+            </tree>
+        </field>
+    </record>
+    <record id="documents_view_form_c" model="ir.ui.view">
+        <field name="name">documents Form</field>
+        <field name="model">documents.document</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <field name="name" string="Document" required="True"/>
+                    </group>
+                    <group>
+                        <field name="datas"/>
+                    </group>
+                    <group>
+                        <field name="res_id"/>
+                        <field name="res_model"/>
+                        <field name="folder_id"/>
+                        <field name="tag_ids"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="document_action" model="ir.actions.act_window">
+      <field name="name">Documents</field>
+      <field name="res_model">documents.document</field>
+      <field name="view_mode">kanban,tree</field>
+      <field name="domain">[]</field>
+      <field name="view_ids" eval="[(5, 0, 0),
+        (0, 0, {'view_mode': 'kanban', 'view_id': ref('documents.document_view_kanban')}),
+        (0, 0, {'view_mode': 'tree', 'view_id': False})]"/>
+      <field name="help" type="html">
+        <p class="o_view_nocontent_smiling_face">Upload <span class="font-weight-normal">a file or</span> drag <span class="font-weight-normal">it here.</span></p>
+      </field>
+    </record>
 
     <record id="client_branch_view_form" model="ir.ui.view">
         <field name="name">client.branch.form</field>
@@ -81,6 +120,13 @@
                 </header>
                 <sheet>
                     <div class="oe_button_box" name="button_box">
+                        <button name="action_open_client_documents" type="object"
+                            class="oe_stat_button" icon="fa-star">
+                            <div class="o_stat_info">
+                                <field name="total_document_number" class="o_stat_value"/>
+                                <span class="o_stat_text">Documents</span>
+                            </div>
+                        </button>
                         <button name="action_open_client_details" type="object"
                             class="oe_stat_button" icon="fa-star" attrs="{'invisible': [('medical_visibility_check', '=', False)]}">
                             <div class="o_stat_info">
@@ -737,20 +783,16 @@
                                 </group>
                             </group>
                         </page>
-                        <page string="Attachment@ Insurance">
-                            <field name="insurance_sent_attachment_ids" readonly="1">
-                                <tree>
-									<field name="name" invisible="1"/>
-									<field name="datas" filename="name" widget="binary" string="File"/>
-                                    <field name="description" string="Company Name"/>
-                                    <field name="create_date"/>
-								</tree>
-<!--								<form>-->
-<!--									<field name="name"/>-->
-<!--									<field name="datas" filename="name" widget="binary"/>-->
-<!--								</form>-->
-                            </field>
-                        </page>
+<!--                        <page string="Attachment@ Insurance">-->
+<!--                            <field name="insurance_sent_attachment_ids" readonly="1">-->
+<!--                                <tree>-->
+<!--									<field name="name" invisible="1"/>-->
+<!--									<field name="datas" filename="name" widget="binary" string="File"/>-->
+<!--                                    <field name="description" string="Company Name"/>-->
+<!--                                    <field name="create_date"/>-->
+<!--								</tree>-->
+<!--                            </field>-->
+<!--                        </page>-->
                         <page string="Customer Attachments">
                             <field name="customer_attachment_ids">
                                 <tree editable="bottom">
