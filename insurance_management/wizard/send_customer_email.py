@@ -214,7 +214,7 @@ class CustomerEmailWizard(models.TransientModel):
                     worksheet.write(rows, 17, line.dep_no or '')
                     worksheet.write(rows, 18, line.sponser_id or '')
                     worksheet.write(rows, 19, line.occupation.name or '')
-                    # worksheet.write(rows, 20, line.marital_status or '')
+                    worksheet.write(rows, 20, line.marital_status.name or '')
                     worksheet.write(rows, 21, line.vat)
                     worksheet.write(rows, 22, line.rate)
 

@@ -88,6 +88,7 @@ class EmployeeData(models.Model):
     # marital_status = fields.Selection(
     #     [('single', 'Single'), ('married', 'Married'), ('divorced', 'Divorced'), ('widowed', 'Widowed')],
     #     string='Marital Status')
+    marital_status = fields.Many2one('member.relation',string='Relation')
     elm_relation = fields.Selection([('not_specified', 'Not Specified'), ('son', 'Son'), ('daughter', 'Daughter'),
                                      ('wife', 'Wife'),
                                      ('brother', 'Brother'),

@@ -149,7 +149,7 @@ class insurance_quotation(models.Model):
                     dep_code = sheet.cell(row, 17).value
                     sponser_id = sheet.cell(row, 18).value
                     occupation = sheet.cell(row, 19).value
-                    # marital_status = sheet.cell(row, 20).value
+                    marital_status = sheet.cell(row, 20).value
                     vat = sheet.cell(row, 21).value
                     rate = sheet.cell(row, 22).value
                     vals = {
@@ -171,12 +171,15 @@ class insurance_quotation(models.Model):
                         'dep_no': dep_code,
                         'sponser_id': sponser_id,
                         # 'occupation': occupation,
-                        # 'marital_status': marital_status,
                         'vat': vat,
                         'branch_id': self.client_branch_id.id,
                         'rate': rate,
                         # 'insurance_quotation_id': self.id,
                     }
+                    if marital_status != '':
+                        marital_status = self.env['member.relation'].search([('name', '=', marital_status)], limit=1)
+                        if marital_status:
+                            vals.update({'marital_status': marital_status.id})
                     member_category = self.env['member.category'].search([('name', '=', str(member_category))], limit=1)
                     if member_category:
                         vals.update({'member_category': member_category.id})
@@ -251,6 +254,7 @@ class quotation_line(models.Model):
     # marital_status = fields.Selection(
     #     [('Single', 'Single'), ('Married', 'Married'), ('Divorced', 'Divorced'), ('Widowed', 'Widowed')],
     #     string='Relation')
+    marital_status = fields.Many2one('member.relation', string='Relation')
     vip = fields.Selection([('yes', 'Yes'), ('no', 'No')], string='VIP?')
     as_vip = fields.Selection([('yes', 'Yes'), ('no', 'No')], string='AS VIP?')
     bank_id = fields.Many2one('res.bank', string='Bank')
