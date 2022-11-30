@@ -438,9 +438,8 @@
                                 <field name="client_vehicle_ids" widget="section_and_note_one2many" mode="tree,form" nolabel="1">
                                 <tree>
                                     <field name="vehicle_type"/>
-                                    <field name="plate_no"/>
+                                    <field name="plate_no" placeholder="1234 A-B-C"/>
                                     <field name="plate_no_ar"/>
-                                    <field name="model"/>
                                     <field name="chasis_no"/>
                                     <field name="capacity"/>
                                     <field name="driver_insurance"/>
@@ -455,6 +454,7 @@
                                     <field name="building_no" optional="1"/>
                                     <field name="additional_no" optional="1"/>
                                     <field name="street" optional="1"/>
+                                    <field name="country" optional="1"/>
                                     <field name="city" optional="1"/>
                                     <field name="unit_no" optional="1"/>
                                     <field name="po_box" optional="1"/>
@@ -462,9 +462,11 @@
                                     <field name="neighborhead" optional="1"/>
                                     <field name="mobile_no" optional="1"/>
                                     <field name="exp_date_istemara_hijry" optional="1"/>
+                                    <field name="exp_date_en" optional="1"/>
                                     <field name="vehicle_color" optional="1"/>
                                     <field name="vehicle_make_id" optional="1"/>
                                     <field name="vehicle_model_id" optional="1"/>
+                                    <field name="model" optional="1"/>
                                     <field name="gcc_covering" optional="1"/>
                                     <field name="natural_peril_cover" optional="1"/>
                                     <field name="dob_owner" optional="1"/>
@@ -517,9 +519,8 @@
                                             <field name="vehicle_quotation_line_ids">
                                                 <tree>
                                                     <field name="vehicle_type"/>
-                                                    <field name="plate_no"/>
+                                                    <field name="plate_no" placeholder="1234 A-B-C"/>
                                                     <field name="plate_no_ar"/>
-                                                    <field name="model"/>
                                                     <field name="chasis_no"/>
                                                     <field name="capacity" optional="1"/>
                                                     <field name="driver_insurance" optional="1"/>
@@ -533,9 +534,11 @@
                                                     <field name="user_name"/>
                                                     <field name="vehicle_make_id" optional="1"/>
                                                     <field name="vehicle_model_id" optional="1"/>
+                                                    <field name="model" optional="1"/>
                                                     <field name="building_no" optional="1"/>
                                                     <field name="additional_no" optional="1"/>
                                                     <field name="street" optional="1"/>
+                                                    <field name="country" optional="1"/>
                                                     <field name="city" optional="1"/>
                                                     <field name="unit_no" optional="1"/>
                                                     <field name="po_box" optional="1"/>
@@ -543,6 +546,7 @@
                                                     <field name="neighborhead" optional="1"/>
                                                     <field name="mobile_no" optional="1"/>
                                                     <field name="exp_date_istemara_hijry" optional="1"/>
+                                                    <field name="exp_date_en" optional="1"/>
                                                     <field name="vehicle_color" optional="1"/>
                                                     <field name="gcc_covering" optional="1"/>
                                                     <field name="natural_peril_cover" optional="1"/>
@@ -577,12 +581,12 @@
                                                     </group>
                                                     <group>
                                                         <group>
-                                                            <field name="vehicle_type"/>
-                                                            <field name="plate_no"/>
                                                             <field name="vehicle_make_id"/>
                                                             <field name="vehicle_model_id"/>
-                                                            <field name="plate_no_ar"/>
                                                             <field name="model"/>
+                                                            <field name="vehicle_type"/>
+                                                            <field name="plate_no" placeholder="1234 A-B-C"/>
+                                                            <field name="plate_no_ar"/>
                                                             <field name="chasis_no"/>
                                                         </group>
                                                          <group>
@@ -608,6 +612,7 @@
                                                     <group>
                         <group>
                             <field name="street"/>
+                            <field name="country" optional="1"/>
                             <field name="city"/>
                             <field name="unit_no"/>
                             <field name="po_box"/>
@@ -617,6 +622,7 @@
                             <field name="neighborhead"/>
                             <field name="mobile_no"/>
                             <field name="exp_date_istemara_hijry"/>
+                            <field name="exp_date_en"/>
                         </group>
                     </group>
                                                     <group>

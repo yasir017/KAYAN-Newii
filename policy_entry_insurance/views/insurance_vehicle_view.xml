@@ -8,7 +8,7 @@
                     <group>
                         <group>
                             <field name="vehicle_type_id"/>
-                            <field name="plate_no"/>
+                            <field name="plate_no" placeholder="1234 A-B-C"/>
                             <field name="plate_no_ar"/>
                             <field name="model_no"/>
                             <field name="chassis"/>
@@ -31,14 +31,14 @@
                             <field name="unit_no" optional="hide"/>
                         </group>
                         <group>
+                            <field name="vehicle_make_id" optional="hide"/>
+                            <field name="vehicle_model_id" optional="hide"/>
                             <field name="po_box" optional="hide"/>
                             <field name="zip_code" optional="hide"/>
                             <field name="neighbour_head" optional="hide"/>
                             <field name="mobile_no" optional="hide"/>
                             <field name="istamara_expiry" optional="hide"/>
                             <field name="vehicle_color" optional="hide"/>
-                            <field name="vehicle_make_id" optional="hide"/>
-                            <field name="vehicle_model_id" optional="hide"/>
                             <field name="gcc_cover" optional="hide"/>
                             <field name="natural_peril_cover" optional="hide"/>
                             <field name="dob_owner" optional="hide"/>
@@ -58,7 +58,7 @@
         <field name="arch" type="xml">
             <tree string="Vehicle Detail">
                 <field name="vehicle_type_id"/>
-                <field name="plate_no"/>
+                <field name="plate_no" placeholder="1234 A-B-C"/>
                 <field name="plate_no_ar"/>
                 <field name="model_no"/>
                 <field name="chassis"/>
@@ -100,7 +100,7 @@
         <field name="arch" type="xml">
             <search string="Vehicle Detail">
                 <field name="vehicle_type_id"/>
-                <field name="plate_no"/>
+                <field name="plate_no" placeholder="1234 A-B-C"/>
                 <field name="plate_no_ar"/>
                 <field name="model_no"/>
                 <field name="chassis"/>

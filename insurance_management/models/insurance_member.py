@@ -992,6 +992,7 @@ class client_basic_info(models.Model):
     branch_id = fields.Many2one('client.branch',string='Branch ID')
     document_no = fields.Char(related='branch_id.document_no', string='Document No')
     state = fields.Selection(related='branch_id.state', store=True)
+    note = fields.Text(string='Note')
 
     @api.depends('dob')
     def get_member_age(self):

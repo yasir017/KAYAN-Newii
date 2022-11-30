@@ -97,7 +97,7 @@
                             <field name="as_vip"/>
                         </group>
                         <group>
-<!--                            <field name="bank_id"/>-->
+                            <field name="note"/>
                             <field name="branch_id" invisible="1"/>
                         </group>
                     </group>
@@ -221,6 +221,7 @@
                         </group>
                         <group>
 <!--                            <field name="bank_id"/>-->
+                            <field name="note"/>
                             <field name="branch_id" invisible="1"/>
                         </group>
                     </group>

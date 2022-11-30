@@ -89,7 +89,7 @@
                             <field name="owener_address"/>
                             <field name="chassis"/>
                             <field name="motor_no"/>
-                            <field name="plate_no"/>
+                            <field name="plate_no" placeholder="1234 A-B-C"/>
                             <field name="plate_no_ar"/>
                             <field name="brand_name"/>
                             <field name="model_no"/>
