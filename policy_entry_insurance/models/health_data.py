@@ -56,12 +56,10 @@ class Services(models.Model):
     name = fields.Char('Service')
 class EmployeeData(models.Model):
     _name = 'insurance.employee.data'
-
     _description = 'Employee Data'
 
     health_id = fields.Many2one('insurance.health','Health')
     policy_id = fields.Many2one('insurance.policy', 'REL')
-    group_id = fields.Char(string='Group ID', tracking=True)
     member_id = fields.Char(string='Member ID')
     dependent_id = fields.Char(string='Dependent ID')
     name = fields.Char(string='Name', tracking=True)
@@ -78,12 +76,14 @@ class EmployeeData(models.Model):
     risk_no = fields.Char(string='Risk No')
     nationality = fields.Many2one('res.country', 'Nationality')
     staff_no = fields.Char(string='Staff No')
-    member_category = fields.Selection(
-        [('manager', 'Manager'), ('staff', 'Staff'), ('skilled_worker', 'Skilled Worker'),
-         ('supervisor', 'Supervisor')], string='Member Category')
+    # member_category = fields.Selection(
+    #     [('manager', 'Manager'), ('staff', 'Staff'), ('skilled_worker', 'Skilled Worker'),
+    #      ('supervisor', 'Supervisor')], string='Member Category')
+    # member_category = fields.Many2one('member.category', string='Member Category')
+    # member_category = fields.Char(string='Member Category')
     mobile1 = fields.Char(string='Mobile No (1)')
     mobile2 = fields.Char(string='Mobile No (2)')
-    dep_no = fields.Char(string='Dep No')
+    dep_no = fields.Char(string='Dep Code')
     sponser_id = fields.Char(string='Sponser ID')
     # occupation = fields.Char(string='Occupation')
     marital_status = fields.Selection(

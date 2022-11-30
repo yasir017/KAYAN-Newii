@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+<!--    Member Category VIEWS-->
+    <record id="member_category_view_tree" model="ir.ui.view">
+        <field name="name">member.category.tree</field>
+        <field name="model">member.category</field>
+        <field name="arch" type="xml">
+            <tree string="Member Category" editable="bottom">
+                <field name="name"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="member_category_view_form" model="ir.ui.view">
+        <field name="name">member.category.form</field>
+        <field name="model">member.category</field>
+        <field name="arch" type="xml">
+            <form string="Member Category">
+                <header>
+                </header>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="name"/>
+                        </group>
+                         <group>
+                        </group>
+                    </group>
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids" widget="mail_followers" groups="base.group_user"/>
+                    <field name="activity_ids" widget="mail_activity"/>
+                    <field name="message_ids" widget="mail_thread"/>
+                </div>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_member_category" model="ir.actions.act_window">
+        <field name="name">Member Category</field>
+        <field name="res_model">member.category</field>
+        <field name="view_mode">tree,form</field>
+         <field name="help" type="html">
+            <p class="oe_view_nocontent_create">
+                Click to create a new Member Category.
+            </p>
+        </field>
+    </record>
+
+
+<!--   Member Relation VIEWS-->
+    <record id="member_relation_view_tree" model="ir.ui.view">
+        <field name="name">member.relation.tree</field>
+        <field name="model">member.relation</field>
+        <field name="arch" type="xml">
+            <tree string="Member Relation" editable="bottom">
+                <field name="name"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="member_relation_view_form" model="ir.ui.view">
+        <field name="name">member.relation.form</field>
+        <field name="model">member.relation</field>
+        <field name="arch" type="xml">
+            <form string="Member Relation">
+                <header>
+                </header>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="name"/>
+                        </group>
+                         <group>
+                        </group>
+                    </group>
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids" widget="mail_followers" groups="base.group_user"/>
+                    <field name="activity_ids" widget="mail_activity"/>
+                    <field name="message_ids" widget="mail_thread"/>
+                </div>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_member_relation" model="ir.actions.act_window">
+        <field name="name">Member Relation</field>
+        <field name="res_model">member.relation</field>
+        <field name="view_mode">tree,form</field>
+         <field name="help" type="html">
+            <p class="oe_view_nocontent_create">
+                Click to create a new Member Relation.
+            </p>
+        </field>
+    </record>
+
+
+
+
+</odoo>

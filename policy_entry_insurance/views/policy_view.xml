@@ -347,7 +347,7 @@
                                         <field name="risk_no" readonly="1" optional="hide"/>
                                         <field name="nationality" readonly="1" optional="hide"/>
                                         <field name="staff_no" readonly="1" optional="hide"/>
-                                        <field name="member_category" optional="hide"/>
+<!--                                        <field name="member_category" optional="hide"/>-->
                                         <field name="mobile1" readonly="1" optional="hide"/>
                                         <field name="mobile2" readonly="1" optional="hide"/>
                                         <field name="dep_no" readonly="1" optional="hide"/>
@@ -357,7 +357,7 @@
                                         <field name="elm_relation" readonly="1" optional="hide"/>
                                         <field name="vip" readonly="1" optional="hide"/>
                                         <field name="as_vip" readonly="1" optional="hide"/>
-                                        <field name="bank_id" readonly="1" optional="hide"/>
+<!--                                        <field name="bank_id" readonly="1" optional="hide"/>-->
 <!--                                        <field name="branch_id" readonly="1" optional="hide"/>-->
 
                                         </tree>
@@ -582,7 +582,7 @@
                                         <field name="risk_no" optional="hide"/>
                                         <field name="nationality" optional="hide"/>
                                         <field name="staff_no" optional="hide"/>
-                                        <field name="member_category" optional="hide"/>
+<!--                                        <field name="member_category" optional="hide"/>-->
                                         <field name="mobile1" optional="hide"/>
                                         <field name="mobile2" optional="hide"/>
                                         <field name="dep_no" optional="hide"/>
@@ -592,7 +592,7 @@
                                         <field name="elm_relation" optional="hide"/>
                                         <field name="vip" optional="hide"/>
                                         <field name="as_vip" optional="hide"/>
-                                        <field name="bank_id" optional="hide"/>
+<!--                                        <field name="bank_id" optional="hide"/>-->
 <!--                                        <field name="branch_id" optional="hide"/>-->
 
 
@@ -618,7 +618,7 @@
                                                     <field name="risk_no" optional="hide"/>
                                                     <field name="nationality" optional="hide"/>
                                                     <field name="staff_no" optional="hide"/>
-                                                    <field name="member_category" optional="hide"/>
+<!--                                                    <field name="member_category" optional="hide"/>-->
                                                     <field name="mobile1" optional="hide"/>
                                                     <field name="mobile2" optional="hide"/>
                                                     <field name="dep_no" optional="hide"/>
@@ -630,7 +630,7 @@
                                                     <field name="elm_relation" optional="hide"/>
                                                     <field name="vip" optional="hide"/>
                                                     <field name="as_vip" optional="hide"/>
-                                                    <field name="bank_id" optional="hide"/>
+<!--                                                    <field name="bank_id" optional="hide"/>-->
 <!--                                                    <field name="branch_id" optional="hide"/>-->
                                                     <field name="rate"/>
                                                     <field name="vat"/>

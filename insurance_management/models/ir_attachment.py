@@ -14,4 +14,8 @@ class IrAttachment(models.Model):
 
     is_medical = fields.Boolean(string='Is Medical?')
     is_vehicle = fields.Boolean(string='Is Vehicle?')
+    is_client_quoit_temp = fields.Boolean(string='Is C Quoit temp?')
+    is_vehicle_quoit_temp = fields.Boolean(string='Is Vehicle Quoit temp?')
+    is_medical_info_temp = fields.Boolean(string='Is Medical Info temp?')
+    is_vehicle_info_temp = fields.Boolean(string='Is Vehicle Info temp?')
     insurance_company_id = fields.Many2one('insurance.company', string='Insurance Company')

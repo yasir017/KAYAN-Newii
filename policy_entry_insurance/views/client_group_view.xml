@@ -28,7 +28,7 @@
                             <field name="region"/>
                             <field name="affliated_co"/>
                             <field name="public"/>
-                            <field name="bank_id"/>
+<!--                            <field name="bank_id"/>-->
                             <field name="income_account_id"/>
                             <field name="recivable_acc"/>
                             <field name="other_income_account_id"/>

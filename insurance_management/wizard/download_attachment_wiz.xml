@@ -1,0 +1,56 @@
+<?xml version="1.0"?>
+<odoo>
+	<record id="view_attachment_form_ccc" model="ir.ui.view">
+            <field name="name">ir.attachment.form.ccc</field>
+            <field name="model">ir.attachment</field>
+            <field name="arch" type="xml">
+                <form string="Attachments">
+                   <sheet>
+                    <label for="name"/>
+                    <h1>
+                        <field name="name" readonly="1"/>
+                    </h1>
+                    <group>
+                        <group>
+                            <field name="type" readonly="1"/>
+                            <field name="datas" filename="name" attrs="{'invisible':[('type','=','url')]}" readonly="1"/>
+                            <field name="url" widget="url" attrs="{'invisible':[('type','=','binary')]}" readonly="1"/>
+                            <field name="mimetype" groups="base.group_no_one" readonly="1"/>
+                        </group>
+                    </group>
+                  </sheet>
+                </form>
+            </field>
+        </record>
+
+	<record id="form_download_attachment_wizard_view_ccc" model="ir.ui.view">
+		<field name="name">download.attachment.wiz.form.view</field>
+		<field name="model">download.attachment.wiz</field>
+		<field name="arch" type="xml">
+			<form string="Download Attachment Wizard">
+				<sheet>
+					<group>
+						<group string="Download Template">
+							<field name="attachment_id" nolabel="1" widget="binary"/>
+						</group>
+						<group>
+						</group>
+					</group>
+				</sheet>
+				<footer>
+					<button string="Cancel" class="btn-secondary" special="cancel"/>
+				</footer>
+			</form>
+		</field>
+	</record>
+
+	<record id="action_download_attachment_wizard" model="ir.actions.act_window">
+		<field name="name">Download Attachment Wizard</field>
+		<field name="type">ir.actions.act_window</field>
+		<field name="res_model">download.attachment.wiz</field>
+		<field name="view_mode">form</field>
+		<field name="view_id" ref="form_download_attachment_wizard_view_ccc"/>
+		<field name="target">new</field>
+	</record>
+
+</odoo>

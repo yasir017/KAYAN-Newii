@@ -138,7 +138,7 @@
                                                      <field name="vary" attrs="{'readonly': [('included', '=', False)]}" widget="boolean_toggle"/>
                                                      <field name="from_value" attrs="{'readonly': [('vary', '=', False)]}"/>
                                                      <field name="to_value" attrs="{'readonly': [('vary', '=', False)]}"/>
-                                                     <field name="benefit_value" attrs="{'readonly': [('included', '=', False)]}"/>
+                                                     <field name="benefit_value" attrs="{'readonly': ['|',('included', '=', False),('vary', '=', True)]}"/>
                                                      <field name="client_branch_id" invisible="1"/>
 <!--                                                     <field name="insurance_quotation_id" invisible="1"/>-->
                                                      <field name="benefit_name" invisible="1"/>

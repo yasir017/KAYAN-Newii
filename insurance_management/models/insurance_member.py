@@ -46,18 +46,18 @@ class client_branch(models.Model):
         check_list = self.env['client.checklist'].search([])
         if check_list:
             return check_list[0].check_list
-    def _default_get_client_ifo_temp(self):
-        file_temp = file_open(
-            'insurance_management/data/temp_client_info.xlsx', "rb"
-        ).read()
-        encoded_file = base64.b64encode(file_temp)
-        return encoded_file
-    def _default_get_vehicle_ifo_temp(self):
-        file_temp = file_open(
-            'insurance_management/data/vehicle_info_template.xlsx', "rb"
-        ).read()
-        encoded_file = base64.b64encode(file_temp)
-        return encoded_file
+    # def _default_get_client_ifo_temp(self):
+    #     file_temp = file_open(
+    #         'insurance_management/data/temp_client_info.xlsx', "rb"
+    #     ).read()
+    #     encoded_file = base64.b64encode(file_temp)
+    #     return encoded_file
+    # def _default_get_vehicle_ifo_temp(self):
+    #     file_temp = file_open(
+    #         'insurance_management/data/vehicle_info_template.xlsx', "rb"
+    #     ).read()
+    #     encoded_file = base64.b64encode(file_temp)
+    #     return encoded_file
 
     document_no = fields.Char(string='Document No')
     customer_id = fields.Many2one('res.partner',string='Customer',required='1')
@@ -77,8 +77,8 @@ class client_branch(models.Model):
                               ('sent_to_customer','Sent to Customer'),('validate','Validate'),
                               ('cancel','Cancel')],string='state',default='gather_info')
     import_client_file = fields.Binary(string='Upload Clients Data (.xls')
-    template_client_info_file = fields.Binary(string='Client Info Template',default=_default_get_client_ifo_temp)
-    template_vehicle_info_file = fields.Binary(string='Vehicle Info Template',default=_default_get_vehicle_ifo_temp)
+    # template_client_info_file = fields.Binary(string='Client Info Template',default=_default_get_client_ifo_temp)
+    # template_vehicle_info_file = fields.Binary(string='Vehicle Info Template',default=_default_get_vehicle_ifo_temp)
     insurance_sent_attachment_ids = fields.Many2many('ir.attachment',string="Insurance Sent Attachment")
     insurance_quotation_ids = fields.One2many('insurance.quotation','client_branch_id',string='Medical Quotations')
     vehicle_quotation_ids = fields.One2many('vehicle.quotation','client_branch_id',string='Vehicle Quotations')
@@ -99,6 +99,61 @@ class client_branch(models.Model):
     total_medical_line = fields.Integer(string='Medical Lines',compute='get_total_medical_lines')
     total_vehicle_detail = fields.Integer(string='Total Lines',compute='get_total_vehicle_detail')
     total_vehicle_line = fields.Integer(string='Total Vehicle Lines',compute='get_total_vehicle_line')
+    is_selected_quotation = fields.Boolean(string='Is Quotation Selected?')
+
+    def export_client_info_file_template(self):
+        medical_info_template = self.env['ir.attachment'].search([('is_medical_info_temp','=',True)],limit=1)
+        if not medical_info_template:
+            file_temp = file_open(
+                'insurance_management/data/temp_client_info.xlsx', "rb"
+            ).read()
+            encoded_file = base64.b64encode(file_temp)
+            medical_info_template = self.env['ir.attachment'].create({
+                'type': 'binary',
+                'name': "Medical Information Template"+'.xls',
+                'datas': encoded_file,
+                'is_medical_info_temp': True,
+                'description': 'Medical Information Template',
+            })
+        # wizard_data = self.env['download.attachment.wiz'].create({'attachment_id':client_quoite_template.id})
+        return {
+            'name': 'Download Template',
+            'views': [
+                (self.env.ref('insurance_management.view_attachment_form_ccc').id, 'form'),
+            ],
+            'type': 'ir.actions.act_window',
+            'res_model': 'ir.attachment',
+            'view_mode': 'form',
+            'res_id': medical_info_template.id,
+            'target': 'new',
+        }
+
+    def export_vehicle_info_file_template(self):
+        vehicle_info_template = self.env['ir.attachment'].search([('is_vehicle_info_temp','=',True)],limit=1)
+        if not vehicle_info_template:
+            file_temp = file_open(
+                'insurance_management/data/vehicle_info_template.xlsx', "rb"
+            ).read()
+            encoded_file = base64.b64encode(file_temp)
+            vehicle_info_template = self.env['ir.attachment'].create({
+                'type': 'binary',
+                'name': "Client Vehicle Information Template"+'.xls',
+                'datas': encoded_file,
+                'is_vehicle_info_temp': True,
+                'description': 'Client Vehicle Information Template',
+            })
+        # wizard_data = self.env['download.attachment.wiz'].create({'attachment_id':client_quoite_template.id})
+        return {
+            'name': 'Download Template',
+            'views': [
+                (self.env.ref('insurance_management.view_attachment_form_ccc').id, 'form'),
+            ],
+            'type': 'ir.actions.act_window',
+            'res_model': 'ir.attachment',
+            'view_mode': 'form',
+            'res_id': vehicle_info_template.id,
+            'target': 'new',
+        }
 
     def action_open_benefits_wizard(self):
         action = self.env['ir.actions.act_window']._for_xml_id('insurance_management.action_comparison_benefit_wizard')
@@ -156,7 +211,7 @@ class client_branch(models.Model):
                 employee_data = self.env['insurance.employee.data'].create({
 
                     'policy_id':policy.id,
-                    'group_id':client.group_id,
+                    # 'group_id':client.group_id,
                     'member_id':client.member_id,
                     'dependent_id':client.dependent_id,
                     'name':client.name,
@@ -172,7 +227,7 @@ class client_branch(models.Model):
                     'risk_no':client.risk_no,
                     'nationality':client.nationality.id,
                     'staff_no':client.staff_no,
-                    'member_category':client.member_category,
+                    # 'member_category':client.member_category.id,
                     'mobile1':client.mobile1,
                     'mobile2':client.mobile2,
                     'dep_no':client.dep_no,
@@ -474,7 +529,7 @@ class client_branch(models.Model):
                         risk_no = sheet.cell(row, 10).value
                         nationality = sheet.cell(row, 11).value
                         staff_no = sheet.cell(row, 12).value
-                        member_category = sheet.cell(row, 13).value
+                        # member_category = sheet.cell(row, 13).value
                         mobile1 = sheet.cell(row, 14).value
                         mobile2 = sheet.cell(row, 15).value
                         dep_code = sheet.cell(row, 16).value
@@ -498,7 +553,6 @@ class client_branch(models.Model):
                             'risk_no': risk_no if risk_no != '' else '',
                             # 'nationality': nationality if nationality != '' else '',
                             'staff_no': staff_no if staff_no != '' else '',
-                            'member_category': member_category if member_category != '' else '',
                             'mobile1': mobile1 if mobile1 != '' else '',
                             'mobile2': mobile2 if mobile2 != '' else '',
                             'dep_no': dep_code if dep_code != '' else '',
@@ -509,7 +563,10 @@ class client_branch(models.Model):
                             'branch_id': self.id,
                         }
                         # pdb.set_trace()
-                        print(nationality)
+                        # if member_category != '':
+                        #     member_category = self.env['member.category'].search([('name', '=', member_category)], limit=1)
+                        #     if member_category:
+                        #         vals.update({'member_category': member_category.id})
                         if nationality != '':
                             nationality = self.env['res.country'].search([('name', '=', nationality)], limit=1)
                             if nationality:
@@ -570,7 +627,7 @@ class client_branch(models.Model):
                         vals = {
                             'vehicle_type': vehicle_type,
                             'plate_no': plate_no,
-                            'model': model,
+                            'model': str(int(model)),
                             'chasis_no': chasis_no,
                             'capacity': capacity,
                             'driver_insurance': driver_insurance,
@@ -585,7 +642,7 @@ class client_branch(models.Model):
                             'building_no': building_no,
                             'additional_no': additional_no,
                             'street': street,
-                            'city': city,
+                            # 'city': city,
                             'unit_no': unit_no,
                             'po_box': po_box,
                             'zip_code': zip_code,
@@ -601,6 +658,9 @@ class client_branch(models.Model):
                         nationality = self.env['res.country'].search([('name', '=', str(nationality))], limit=1)
                         if nationality:
                             vals.update({'nationality': nationality.id})
+                        city = self.env['res.country.state'].search([('name', '=', str(city))], limit=1)
+                        if city:
+                            vals.update({'city': city.id})
                         client_vehicle_info = self.env['client.vehicle.info'].create(vals)
 
 
@@ -676,7 +736,7 @@ class client_branch(models.Model):
                 worksheet.write(rows, 11, str(line.risk_no) or '')
                 worksheet.write(rows, 12, line.nationality.name or '')
                 worksheet.write(rows, 13, line.staff_no or '')
-                worksheet.write(rows, 14, line.member_category or '')
+                # worksheet.write(rows, 14, line.member_category.name or '')
                 worksheet.write(rows, 15, line.mobile1 or '')
                 worksheet.write(rows, 16, line.mobile2 or '')
                 worksheet.write(rows, 17, line.dep_no or '')
@@ -891,7 +951,6 @@ class client_basic_info(models.Model):
     _inherit = ['mail.thread', 'mail.activity.mixin', 'mail.render.mixin']
     _description = 'client_basic_info'
 
-    group_id = fields.Char(string='Group ID', tracking=True)
     member_id = fields.Char(string='Member ID')
     dependent_id = fields.Char(string='Dependent ID')
     name = fields.Char(string='Member Name (En)', tracking=True)
@@ -907,10 +966,12 @@ class client_basic_info(models.Model):
     risk_no = fields.Char(string='Risk No')
     nationality = fields.Many2one('res.country', 'Nationality')
     staff_no = fields.Char(string='Staff No')
-    member_category = fields.Selection([('Manager','Manager'),('Staff','Staff'),('Skilled Worker','Skilled Worker'),('Supervisor','Supervisor')],string='Member Category')
+    # member_category = fields.Selection([('Manager','Manager'),('Staff','Staff'),('Skilled Worker','Skilled Worker'),('Supervisor','Supervisor')],string='Member Category')
+    # member_category = fields.Many2one('member.category', string='Member Category')
+    # member_category = fields.Char(string='Member Category')
     mobile1 = fields.Char(string='Mobile No (1)')
     mobile2 = fields.Char(string='Mobile No (2)')
-    dep_no = fields.Char(string='Dep No')
+    dep_no = fields.Char(string='Dep Code')
     sponser_id = fields.Char(string='Sponser ID')
     occupation = fields.Many2one('ins.occupation',string='Occupation')
     marital_status = fields.Selection([('Single','Single'),('Married','Married'),('Divorced','Divorced'),('Widowed','Widowed')],string='Relation')
@@ -949,7 +1010,7 @@ class risk_location(models.Model):
     code = fields.Char(string='Code', tracking=True)
     country = fields.Many2one('res.country', 'Country')
     region = fields.Char(string='Region', tracking=True)
-    city = fields.Many2one('res.country.state',string='City')
+    city = fields.Many2one('res.country.state',string='City',domain="[('country_id', '=?', country)]")
     risk = fields.Char(string='Risk')
 
 class ins_occupation(models.Model):
@@ -969,14 +1030,15 @@ class Document(models.Model):
     @api.model
     def create(self, vals):
         if 'res_id' in vals:
-            source_ids = vals['res_id']
-            x = source_ids.split(",")
-            source_all = self.env[x[0]].search([])
-            source_id = int(x[1])
-            source = self.env[x[0]].search([('id','=',source_id)])
-            if source:
-                vals['res_id'] = source.id
-                vals['res_model'] = source._name
+            if not isinstance(vals['res_id'], int):
+                source_ids = vals['res_id']
+                x = source_ids.split(",")
+                source_all = self.env[x[0]].search([])
+                source_id = int(x[1])
+                source = self.env[x[0]].search([('id','=',source_id)])
+                if source:
+                    vals['res_id'] = source.id
+                    vals['res_model'] = source._name
         if 'uid' in self.env.context:
             vals['owner_id'] = self.env.context.get('uid')
         res = super(Document, self).create(vals)

@@ -10,7 +10,6 @@
                 <field name="document_no"/>
                 <field name="insurance_company_id"/>
                 <field name="date"/>
-                <field name="email"/>
                 <field name="quotation_no"/>
                 <field name="client_branch_id" invisible="1"/>
                 <field name="quotation_line_ids" invisible="1"/>
@@ -45,8 +44,8 @@
                         </group>
                         <group>
                             <field name="quotation_no"/>
-                            <field name="email"/>
-                            <field name="client_branch_id"/>
+                            <field name="email" invisible="1"/>
+                            <field name="client_branch_id" invisible="1"/>
                             <field name="quotation_file"/>
                             <button name="upload_quotation" type="object" string="Import" class="oe_highlight"/>
                             <field name="total_lines"/>
@@ -63,7 +62,7 @@
                                     <field name="age"/>
                                     <field name="member_type"/>
                                     <field name="nationality"/>
-                                    <field name="member_category"/>
+<!--                                    <field name="member_category"/>-->
                                     <field name="mobile1" optional="1"/>
                                     <field name="occupation"/>
                                     <field name="marital_status" optional="1"/>
@@ -93,7 +92,6 @@
                                     </group>
                                     <group>
                                         <group>
-                                            <field name="group_id"/>
                                             <field name="member_id"/>
                                             <field name="dependent_id"/>
                                         </group>
@@ -119,7 +117,7 @@
                                     <group>
                                         <group>
                                             <field name="staff_no"/>
-                                            <field name="member_category"/>
+<!--                                            <field name="member_category"/>-->
                                             <field name="mobile1"/>
                                             <field name="mobile2"/>
                                         </group>
@@ -137,8 +135,8 @@
                                             <field name="as_vip"/>
                                         </group>
                                         <group>
-                                            <field name="bank_id"/>
-                                            <field name="branch_id"/>
+<!--                                            <field name="bank_id"/>-->
+                                            <field name="branch_id" invisible="1"/>
                                         </group>
                                     </group>
                                 </form>
@@ -161,7 +159,7 @@
                                                      <field name="vary" attrs="{'readonly': [('included', '=', False)]}" widget="boolean_toggle"/>
                                                      <field name="from_value" attrs="{'readonly': [('vary', '=', False)]}"/>
                                                      <field name="to_value" attrs="{'readonly': [('vary', '=', False)]}"/>
-                                                     <field name="benefit_value" attrs="{'readonly': [('included', '=', False)]}"/>
+                                                     <field name="benefit_value" attrs="{'readonly': ['|',('included', '=', False),('vary', '=', True)]}"/>
                                                      <field name="client_branch_id" invisible="1"/>
                                                      <field name="insurance_quotation_id" invisible="1"/>
                                                      <field name="benefit_name" invisible="1"/>
@@ -178,7 +176,7 @@
                                                          <field name="vary" attrs="{'readonly': [('included', '=', False)]}" widget="radio"/>
                                                          <field name="from_value" attrs="{'readonly': [('vary', '=', False)]}"/>
                                                          <field name="to_value" attrs="{'readonly': [('vary', '=', False)]}"/>
-                                                         <field name="benefit_value"/>
+                                                         <field name="benefit_value" attrs="{'readonly': ['|',('included', '=', False),('vary', '=', True)]}"/>
                                                          <field name="client_branch_id" invisible="1"/>
                                                          <field name="insurance_quotation_id" invisible="1"/>
                                                          <field name="benefit_name" invisible="1"/>
@@ -223,7 +221,7 @@
                 <field name="age"/>
                 <field name="member_type"/>
                 <field name="nationality"/>
-                <field name="member_category"/>
+<!--                <field name="member_category"/>-->
                 <field name="mobile1" optional="1"/>
                 <field name="occupation"/>
                 <field name="marital_status" optional="1"/>
@@ -263,7 +261,6 @@
                     </group>
                     <group>
                         <group>
-                            <field name="group_id"/>
                             <field name="member_id"/>
                             <field name="dependent_id"/>
                         </group>
@@ -289,7 +286,7 @@
                     <group>
                         <group>
                             <field name="staff_no"/>
-                            <field name="member_category"/>
+<!--                            <field name="member_category"/>-->
                             <field name="mobile1"/>
                             <field name="mobile2"/>
                         </group>
@@ -307,8 +304,8 @@
                             <field name="as_vip"/>
                         </group>
                         <group>
-                            <field name="bank_id"/>
-                            <field name="branch_id"/>
+<!--                            <field name="bank_id"/>-->
+                            <field name="branch_id" invisible="1"/>
                             <field name="insurance_quotation_id"/>
                             <field name="insurance_company_id"/>
                         </group>

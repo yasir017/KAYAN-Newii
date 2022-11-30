@@ -67,12 +67,12 @@ class CustomerEmailWizard(models.TransientModel):
         su_id = self.env['res.partner'].browse(SUPERUSER_ID)
         customer_all_attachments = self.env['ir.attachment']
         # for ins_quotation in self.insurance_quotation_ids:
-        if self.medical_visibility_check == True:
-            client_quotatons_send_attachment = self.make_send_quotations(ins_quotations=self.insurance_quotation_ids)
-        if self.vehicle_visibility_check == True:
-            client_quotatons_send_attachment = self.make_send_quotations(ins_quotations=self.vehicle_quotation_ids)
-        if client_quotatons_send_attachment:
-            customer_all_attachments += client_quotatons_send_attachment
+        # if self.medical_visibility_check == True:
+        #     client_quotatons_send_attachment = self.make_send_quotations(ins_quotations=self.insurance_quotation_ids)
+        # if self.vehicle_visibility_check == True:
+        #     client_quotatons_send_attachment = self.make_send_quotations(ins_quotations=self.vehicle_quotation_ids)
+        # if client_quotatons_send_attachment:
+        #     customer_all_attachments += client_quotatons_send_attachment
         # else:
         #     client_information_attachment = self.client_id.insurance_sent_attachment_ids
         template_id = self.env['ir.model.data']._xmlid_to_res_id(
@@ -152,7 +152,7 @@ class CustomerEmailWizard(models.TransientModel):
 
                 worksheet.write(1, 4, 'Total Premium', style)
                 worksheet.write(1, 5, quotation.total_rate or '', style)
-                worksheet.write(2, 4, 'Total Amount(*VAT)', style)
+                worksheet.write(2, 4, 'Total Premium(*VAT)', style)
                 worksheet.write(2, 5, quotation.amount or '', style)
 
                 i = 1
@@ -208,7 +208,7 @@ class CustomerEmailWizard(models.TransientModel):
                     worksheet.write(rows, 11, str(line.risk_no) or '')
                     worksheet.write(rows, 12, line.nationality.name or '')
                     worksheet.write(rows, 13, line.staff_no or '')
-                    worksheet.write(rows, 14, line.member_category or '')
+                    # worksheet.write(rows, 14, line.member_category or '')
                     worksheet.write(rows, 15, line.mobile1 or '')
                     worksheet.write(rows, 16, line.mobile2 or '')
                     worksheet.write(rows, 17, line.dep_no or '')

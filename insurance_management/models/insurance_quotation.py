@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 import pdb
+from odoo.tools.misc import file_open, formatLang
 from odoo import models, fields, exceptions, api, _
 from odoo.exceptions import ValidationError, UserError
 from datetime import date
@@ -48,8 +49,8 @@ class insurance_quotation(models.Model):
     client_branch_id = fields.Many2one('client.branch',string='Client Branch')
     document_no = fields.Char(related='client_branch_id.document_no', string='Document No')
     quotation_file = fields.Binary(string='Upload File')
-    total_tax = fields.Float(string='Total Tax')
-    amount = fields.Float(string='Total Amount',compute='get_total_rate_vat_amount')
+    total_tax = fields.Float(string='Total Vat',compute='get_total_rate_tax_amount')
+    amount = fields.Float(string='Total',compute='get_total_rate_vat_amount')
     total_rate = fields.Float(string='Total Premium',compute='get_total_rate_vat_amount')
     select = fields.Boolean(string='Select')
     custom_benefits_ids = fields.One2many('customer.custom.benefit','insurance_quotation_id',string='Benefits')
@@ -78,10 +79,43 @@ class insurance_quotation(models.Model):
                     custom_benefit = self.env['customer.custom.benefit'].create(vals)
         return res
 
+    def get_total_rate_tax_amount(self):
+        total_tax_amount = 0
+        for rec in self:
+            for line in rec.quotation_line_ids:
+                total_tax_amount += line.rate*line.vat/100
+        rec.total_tax = total_tax_amount
     def get_total_rate_vat_amount(self):
         for rec in self:
             rec.total_rate = sum(rec.quotation_line_ids.mapped('rate'))
             rec.amount = sum(rec.quotation_line_ids.mapped('total'))
+
+    def download_export_template(self):
+        client_quoite_template = self.env['ir.attachment'].search([('is_client_quoit_temp','=',True)],limit=1)
+        if not client_quoite_template:
+            file_temp = file_open(
+                'insurance_management/data/Client Quotation Template.xlsx', "rb"
+            ).read()
+            encoded_file = base64.b64encode(file_temp)
+            client_quoite_template = self.env['ir.attachment'].create({
+                'type': 'binary',
+                'name': "Client Medical Quotation Template"+'.xls',
+                'datas': encoded_file,
+                'is_client_quoit_temp': True,
+                'description': 'Client Medical Quotation Template',
+            })
+        # wizard_data = self.env['download.attachment.wiz'].create({'attachment_id':client_quoite_template.id})
+        return {
+            'name': 'Download Template',
+            'views': [
+                (self.env.ref('insurance_management.view_attachment_form_ccc').id, 'form'),
+            ],
+            'type': 'ir.actions.act_window',
+            'res_model': 'ir.attachment',
+            'view_mode': 'form',
+            'res_id': client_quoite_template.id,
+            'target': 'new',
+        }
 
 
     def upload_quotation(self):
@@ -109,7 +143,7 @@ class insurance_quotation(models.Model):
                     risk_no = sheet.cell(row, 11).value
                     nationality = sheet.cell(row, 12).value
                     staff_no = sheet.cell(row, 13).value
-                    member_category = sheet.cell(row, 14).value
+                    # member_category = sheet.cell(row, 14).value
                     mobile1 = sheet.cell(row, 15).value
                     mobile2 = sheet.cell(row, 16).value
                     dep_code = sheet.cell(row, 17).value
@@ -132,7 +166,6 @@ class insurance_quotation(models.Model):
                         'risk_no': risk_no,
                         'nationality': nationality,
                         'staff_no': staff_no,
-                        'member_category': member_category,
                         'mobile1': mobile1,
                         'mobile2': mobile2,
                         'dep_no': dep_code,
@@ -144,9 +177,12 @@ class insurance_quotation(models.Model):
                         'rate': rate,
                         # 'insurance_quotation_id': self.id,
                     }
-                    nationality = self.env['res.country'].search([('name', '=', str(nationality))], limit=1)
-                    if nationality:
-                        vals.update({'nationality': nationality.id})
+                    # member_category = self.env['member.category'].search([('name', '=', str(member_category))], limit=1)
+                    # if member_category:
+                    #     vals.update({'member_category': member_category.id})
+                    # nationality = self.env['res.country'].search([('name', '=', str(nationality))], limit=1)
+                    # if nationality:
+                    #     vals.update({'nationality': nationality.id})
 
                     company_member_type_standard = self.env['company.member.type.standard'].search([('name', '=', str(member_type))], limit=1)
                     if company_member_type_standard:
@@ -188,7 +224,6 @@ class quotation_line(models.Model):
     vat = fields.Float(string='VAT',default=15)
     total = fields.Float(string='Total',compute='get_q_line_total')
     rate = fields.Float(string='Premium')
-    group_id = fields.Char(string='Group ID', tracking=True)
     member_id = fields.Char(string='Member ID')
     dependent_id = fields.Char(string='Dependent ID')
     name = fields.Char(string='Member Name (En)', tracking=True)
@@ -204,12 +239,14 @@ class quotation_line(models.Model):
     risk_no = fields.Char(string='Risk No')
     nationality = fields.Many2one('res.country', string='Nationality')
     staff_no = fields.Char(string='Staff No')
-    member_category = fields.Selection(
-        [('Manager', 'Manager'), ('Staff', 'Staff'), ('Skilled Worker', 'Skilled Worker'),
-         ('Supervisor', 'Supervisor')], string='Member Category')
+    # member_category = fields.Selection(
+    #     [('Manager', 'Manager'), ('Staff', 'Staff'), ('Skilled Worker', 'Skilled Worker'),
+    #      ('Supervisor', 'Supervisor')], string='Member Category')
+    # member_category = fields.Many2one('member.category', string='Member Category')
+    # member_category = fields.Char(string='Member Category')
     mobile1 = fields.Char(string='Mobile No (1)')
     mobile2 = fields.Char(string='Mobile No (2)')
-    dep_no = fields.Char(string='Dep No')
+    dep_no = fields.Char(string='Dep Code')
     sponser_id = fields.Char(string='Sponser ID')
     occupation = fields.Many2one('ins.occupation',string='Occupation')
     marital_status = fields.Selection(
@@ -222,7 +259,8 @@ class quotation_line(models.Model):
     @api.depends('vat','rate')
     def get_q_line_total(self):
         for rec in self:
-            rec.total = rec.vat*rec.rate
+            total_percentage_amount = rec.rate * rec.vat / 100
+            rec.total = rec.rate + total_percentage_amount
 
     @api.depends('dob')
     def get_member_age(self):
@@ -255,7 +293,7 @@ class vehicle_quotation(models.Model):
     document_no = fields.Char(related='client_branch_id.document_no', string='Document No')
     quotation_file = fields.Binary(string='Upload File')
     total_vat = fields.Float(string='Total VAT',compute='get_total_rate_vat_amount')
-    amount = fields.Float(string='Total Amount', compute='get_total_rate_vat_amount')
+    amount = fields.Float(string='Total', compute='get_total_rate_vat_amount')
     total_rate = fields.Float(string='Total Premium', compute='get_total_rate_vat_amount')
     select = fields.Boolean(string='Select')
 
@@ -276,6 +314,33 @@ class vehicle_quotation(models.Model):
 
     total_lines = fields.Integer(string='Total Lines', compute='get_total_lines')
 
+    def export_vehicle_quoit_template(self):
+        vehicle_quoite_template = self.env['ir.attachment'].search([('is_vehicle_quoit_temp','=',True)],limit=1)
+        if not vehicle_quoite_template:
+            file_temp = file_open(
+                'insurance_management/data/Vehicle Quotation Template.xlsx', "rb"
+            ).read()
+            encoded_file = base64.b64encode(file_temp)
+            vehicle_quoite_template = self.env['ir.attachment'].create({
+                'type': 'binary',
+                'name': "Client Vehicle Quotation Template"+'.xls',
+                'datas': encoded_file,
+                'is_vehicle_quoit_temp': True,
+                'description': 'Client Vehicle Quotation Template',
+            })
+        # wizard_data = self.env['download.attachment.wiz'].create({'attachment_id':client_quoite_template.id})
+        return {
+            'name': 'Download Template',
+            'views': [
+                (self.env.ref('insurance_management.view_attachment_form_ccc').id, 'form'),
+            ],
+            'type': 'ir.actions.act_window',
+            'res_model': 'ir.attachment',
+            'view_mode': 'form',
+            'res_id': vehicle_quoite_template.id,
+            'target': 'new',
+        }
+
     @api.depends('vehicle_quotation_line_ids')
     def get_total_lines(self):
         for rec in self:
@@ -285,7 +350,11 @@ class vehicle_quotation(models.Model):
         for rec in self:
             rec.total_rate = sum(rec.vehicle_quotation_line_ids.mapped('rate'))
             rec.amount = sum(rec.vehicle_quotation_line_ids.mapped('total'))
-            rec.total_vat = sum(rec.vehicle_quotation_line_ids.mapped('vat'))
+            total_tax_amount = 0
+            for rec in self:
+                for line in rec.vehicle_quotation_line_ids:
+                    total_tax_amount += line.rate * line.vat / 100
+            rec.total_vat = total_tax_amount
 
     def get_total_rate(self):
         for rec in self:
@@ -306,6 +375,7 @@ class vehicle_quotation(models.Model):
                     vehicle_type = sheet.cell(row, 1).value
                     plate_no = sheet.cell(row, 2).value
                     model = sheet.cell(row, 3).value
+                    # pdb.set_trace()
                     chasis_no = sheet.cell(row, 4).value
                     capacity = sheet.cell(row, 5).value
                     driver_insurance = sheet.cell(row, 6).value
@@ -342,7 +412,7 @@ class vehicle_quotation(models.Model):
                             'capacity': capacity,
                             'driver_insurance': driver_insurance,
                             'covering_maintenance': repair,
-                            'value': value,
+                            # 'sum_insured': value,
                             'owner_name': owner_name,
                             'owner_id_no': owner_id_no,
                             'custom_id': custom_id,
@@ -433,7 +503,8 @@ class vehicle_quotation_line(models.Model):
     @api.depends('vat', 'rate')
     def _get_q_line_total(self):
         for rec in self:
-            rec.total = rec.vat * rec.rate
+            total_percentage_amount = rec.rate*rec.vat/100
+            rec.total = rec.rate + total_percentage_amount
 
 
     # def get_member_age(self):

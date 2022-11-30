@@ -34,17 +34,22 @@
     <menuitem id="menu_bussinss_client_group" parent="policy_entry_insurance.menu_insurance_data" action="action_insurance_company"
               name="Customer"/>
 
-    <menuitem id="menu_broker_standards" parent="ins_configuration" sequence="8"
+    <menuitem id="ins_member_category_menu" name="Medical Member Category" parent="ins_configuration" sequence="8" action="action_member_category"/>
+    <menuitem id="ins_member_relation_menu" name="Medical Member Relation" parent="ins_configuration" sequence="9" action="action_member_relation"/>
+
+    <menuitem id="menu_broker_standards" parent="ins_configuration" sequence="10"
               name="Medical Standards"/>
     <menuitem id="ins_class_name_standard" name="Class Name Standard" parent="menu_broker_standards" sequence="1" action="action_class_name_standard"/>
     <menuitem id="ins_member_type_standard" name="Member Type Standard" parent="menu_broker_standards" sequence="1" action="action_member_type_standard"/>
     <menuitem id="ins_age_category_standard" name="Age Category Standard" parent="menu_broker_standards" sequence="1" action="action_age_category_standard"/>
 
-    <menuitem id="menu_vehicle_mark_main" parent="ins_configuration" sequence="9"
+    <menuitem id="menu_vehicle_mark_main" parent="ins_configuration" sequence="11"
               name="Vehicle"/>
     <menuitem id="ins_vehicle_mark" name="Vehicle Mark" parent="menu_vehicle_mark_main" sequence="1" action="fleet.fleet_vehicle_model_brand_action"/>
     <menuitem id="ins_vehicle_model" name="Vehicle Model" parent="menu_vehicle_mark_main" sequence="2" action="fleet.fleet_vehicle_model_action"/>
             <menuitem id="invoice_menu_commission" parent="account.menu_finance_receivables" sequence="1" action="action_move_out_invoice_type_commission"/>
+
+
 
 
 

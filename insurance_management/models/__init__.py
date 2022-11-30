@@ -16,3 +16,4 @@ from . import vehicle_custom_benefits
 from . import account_move
 from . import  ir_config_setting
 from . import insurance_employee_data
+from . import member_category_and_relation

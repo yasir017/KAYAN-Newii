@@ -33,6 +33,10 @@ access_customer_email_wizard,customer.email.wizard,model_customer_email_wizard,,
 access_select_quotation_wizard,select.quotation.wizard,model_select_quotation_wizard,,1,1,1,1
 
 access_benefit_comparison_wizard,benefit.comparison.wizard,model_benefit_comparison_wizard,,1,1,1,1
+access_download_attachment_wiz,download.attachment.wiz,model_download_attachment_wiz,,1,1,1,1
+
+access_member_category,member.category,model_member_category,,1,1,1,1
+access_member_relation,member.relation,model_member_relation,,1,1,1,1
 
 
 

@@ -60,4 +60,5 @@ class SelectQuotationWizard(models.TransientModel):
             for line in self.client_id.vehicle_quotation_ids.filtered(
                     lambda b: b.id != self.vehicle_quotation_id.id):
                 line.state = 'cancel'
-        self.client_id.state = 'validate'
+        # self.client_id.state = 'validate'
+        self.client_id.is_selected_quotation = True

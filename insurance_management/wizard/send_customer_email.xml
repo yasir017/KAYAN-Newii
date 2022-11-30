@@ -13,12 +13,12 @@
 						<group string="Client">
 							<field name="client_id" readonly="1" nolabel="1"/>
 						</group>
-						<group string="Select Insurance Quotations" attrs="{'invisible': [('medical_visibility_check', '=', False)]}">
-							<field name="insurance_quotation_ids" widget="many2many_tags" nolabel="1"/>
-						</group>
-						<group string="Select Vehicle Quotations" attrs="{'invisible': [('vehicle_visibility_check', '=', False)]}">
-							<field name="vehicle_quotation_ids" widget="many2many_tags" nolabel="1"/>
-						</group>
+<!--						<group string="Select Insurance Quotations" attrs="{'invisible': [('medical_visibility_check', '=', False)]}">-->
+<!--							<field name="insurance_quotation_ids" widget="many2many_tags" nolabel="1"/>-->
+<!--						</group>-->
+<!--						<group string="Select Vehicle Quotations" attrs="{'invisible': [('vehicle_visibility_check', '=', False)]}">-->
+<!--							<field name="vehicle_quotation_ids" widget="many2many_tags" nolabel="1"/>-->
+<!--						</group>-->
 					</group>
 					<group>
 						<field name="subject" nolabel="1" placeholder="Subject..." required="True"/>
