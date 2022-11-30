@@ -241,7 +241,7 @@
                                     <field name="risk_no" optional="1"/>
                                     <field name="nationality" optional="1"/>
                                     <field name="staff_no" optional="1"/>
-<!--                                    <field name="member_category" optional="1"/>-->
+                                    <field name="member_category" optional="1"/>
                                     <field name="mobile1" optional="1"/>
                                     <field name="mobile2" optional="1"/>
                                     <field name="dep_no" optional="1"/>
@@ -307,7 +307,7 @@
                                                     <field name="age"/>
                                                     <field name="member_type"/>
                                                     <field name="nationality"/>
-<!--                                                    <field name="member_category"/>-->
+                                                    <field name="member_category"/>
                                                     <field name="mobile1" optional="1"/>
                                                     <field name="occupation"/>
                                                     <field name="marital_status" optional="1"/>
@@ -362,7 +362,7 @@
                                                     <group>
                                                         <group>
                                                             <field name="staff_no"/>
-<!--                                                            <field name="member_category"/>-->
+                                                            <field name="member_category"/>
                                                             <field name="mobile1"/>
                                                             <field name="mobile2"/>
                                                         </group>

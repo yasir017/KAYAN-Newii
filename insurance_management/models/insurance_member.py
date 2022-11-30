@@ -227,7 +227,7 @@ class client_branch(models.Model):
                     'risk_no':client.risk_no,
                     'nationality':client.nationality.id,
                     'staff_no':client.staff_no,
-                    # 'member_category':client.member_category.id,
+                    'member_category':client.member_category.id,
                     'mobile1':client.mobile1,
                     'mobile2':client.mobile2,
                     'dep_no':client.dep_no,
@@ -529,7 +529,7 @@ class client_branch(models.Model):
                         risk_no = sheet.cell(row, 10).value
                         nationality = sheet.cell(row, 11).value
                         staff_no = sheet.cell(row, 12).value
-                        # member_category = sheet.cell(row, 13).value
+                        member_category = sheet.cell(row, 13).value
                         mobile1 = sheet.cell(row, 14).value
                         mobile2 = sheet.cell(row, 15).value
                         dep_code = sheet.cell(row, 16).value
@@ -562,11 +562,10 @@ class client_branch(models.Model):
                             # 'elm_relation': elm_relation,
                             'branch_id': self.id,
                         }
-                        # pdb.set_trace()
-                        # if member_category != '':
-                        #     member_category = self.env['member.category'].search([('name', '=', member_category)], limit=1)
-                        #     if member_category:
-                        #         vals.update({'member_category': member_category.id})
+                        if member_category != '':
+                            member_category = self.env['member.category'].search([('name', '=', member_category)], limit=1)
+                            if member_category:
+                                vals.update({'member_category': member_category.id})
                         if nationality != '':
                             nationality = self.env['res.country'].search([('name', '=', nationality)], limit=1)
                             if nationality:
@@ -736,7 +735,7 @@ class client_branch(models.Model):
                 worksheet.write(rows, 11, str(line.risk_no) or '')
                 worksheet.write(rows, 12, line.nationality.name or '')
                 worksheet.write(rows, 13, line.staff_no or '')
-                # worksheet.write(rows, 14, line.member_category.name or '')
+                worksheet.write(rows, 14, line.member_category.name or '')
                 worksheet.write(rows, 15, line.mobile1 or '')
                 worksheet.write(rows, 16, line.mobile2 or '')
                 worksheet.write(rows, 17, line.dep_no or '')
@@ -967,8 +966,7 @@ class client_basic_info(models.Model):
     nationality = fields.Many2one('res.country', 'Nationality')
     staff_no = fields.Char(string='Staff No')
     # member_category = fields.Selection([('Manager','Manager'),('Staff','Staff'),('Skilled Worker','Skilled Worker'),('Supervisor','Supervisor')],string='Member Category')
-    # member_category = fields.Many2one('member.category', string='Member Category')
-    # member_category = fields.Char(string='Member Category')
+    member_category = fields.Many2one('member.category', string='Member Category')
     mobile1 = fields.Char(string='Mobile No (1)')
     mobile2 = fields.Char(string='Mobile No (2)')
     dep_no = fields.Char(string='Dep Code')

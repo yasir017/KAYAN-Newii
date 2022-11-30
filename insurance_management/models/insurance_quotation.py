@@ -143,7 +143,7 @@ class insurance_quotation(models.Model):
                     risk_no = sheet.cell(row, 11).value
                     nationality = sheet.cell(row, 12).value
                     staff_no = sheet.cell(row, 13).value
-                    # member_category = sheet.cell(row, 14).value
+                    member_category = sheet.cell(row, 14).value
                     mobile1 = sheet.cell(row, 15).value
                     mobile2 = sheet.cell(row, 16).value
                     dep_code = sheet.cell(row, 17).value
@@ -177,9 +177,9 @@ class insurance_quotation(models.Model):
                         'rate': rate,
                         # 'insurance_quotation_id': self.id,
                     }
-                    # member_category = self.env['member.category'].search([('name', '=', str(member_category))], limit=1)
-                    # if member_category:
-                    #     vals.update({'member_category': member_category.id})
+                    member_category = self.env['member.category'].search([('name', '=', str(member_category))], limit=1)
+                    if member_category:
+                        vals.update({'member_category': member_category.id})
                     # nationality = self.env['res.country'].search([('name', '=', str(nationality))], limit=1)
                     # if nationality:
                     #     vals.update({'nationality': nationality.id})
@@ -242,8 +242,7 @@ class quotation_line(models.Model):
     # member_category = fields.Selection(
     #     [('Manager', 'Manager'), ('Staff', 'Staff'), ('Skilled Worker', 'Skilled Worker'),
     #      ('Supervisor', 'Supervisor')], string='Member Category')
-    # member_category = fields.Many2one('member.category', string='Member Category')
-    # member_category = fields.Char(string='Member Category')
+    member_category = fields.Many2one('member.category', string='Member Category')
     mobile1 = fields.Char(string='Mobile No (1)')
     mobile2 = fields.Char(string='Mobile No (2)')
     dep_no = fields.Char(string='Dep Code')

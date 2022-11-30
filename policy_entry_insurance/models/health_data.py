@@ -79,8 +79,7 @@ class EmployeeData(models.Model):
     # member_category = fields.Selection(
     #     [('manager', 'Manager'), ('staff', 'Staff'), ('skilled_worker', 'Skilled Worker'),
     #      ('supervisor', 'Supervisor')], string='Member Category')
-    # member_category = fields.Many2one('member.category', string='Member Category')
-    # member_category = fields.Char(string='Member Category')
+    member_category = fields.Many2one('member.category', string='Member Category')
     mobile1 = fields.Char(string='Mobile No (1)')
     mobile2 = fields.Char(string='Mobile No (2)')
     dep_no = fields.Char(string='Dep Code')

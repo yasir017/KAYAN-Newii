@@ -23,7 +23,7 @@
                                         <field name="risk_no" optional="hide"/>
                                         <field name="nationality" optional="hide"/>
                                         <field name="staff_no" optional="hide"/>
-<!--                                        <field name="member_category" optional="hide"/>-->
+                                        <field name="member_category" optional="hide"/>
                                         <field name="mobile1" optional="hide"/>
                                         <field name="mobile2" optional="hide"/>
                                         <field name="dep_no" optional="hide"/>
@@ -65,7 +65,7 @@
                                                     <field name="risk_no" optional="hide"/>
                                                     <field name="nationality" optional="hide"/>
                                                     <field name="staff_no" optional="hide"/>
-<!--                                                    <field name="member_category" optional="hide"/>-->
+                                                    <field name="member_category" optional="hide"/>
                                                     <field name="mobile1" optional="hide"/>
                                                     <field name="mobile2" optional="hide"/>
                                                     <field name="dep_no" optional="hide"/>
@@ -112,7 +112,7 @@
                                         <field name="risk_no" optional="hide"/>
                                         <field name="nationality" optional="hide"/>
                                         <field name="staff_no" optional="hide"/>
-<!--                                        <field name="member_category" optional="hide"/>-->
+                                        <field name="member_category" optional="hide"/>
                                         <field name="mobile1" optional="hide"/>
                                         <field name="mobile2" optional="hide"/>
                                         <field name="dep_no" optional="hide"/>

@@ -62,7 +62,7 @@
                                     <field name="age"/>
                                     <field name="member_type"/>
                                     <field name="nationality"/>
-<!--                                    <field name="member_category"/>-->
+                                    <field name="member_category"/>
                                     <field name="mobile1" optional="1"/>
                                     <field name="occupation"/>
                                     <field name="marital_status" optional="1"/>
@@ -117,7 +117,7 @@
                                     <group>
                                         <group>
                                             <field name="staff_no"/>
-<!--                                            <field name="member_category"/>-->
+                                            <field name="member_category"/>
                                             <field name="mobile1"/>
                                             <field name="mobile2"/>
                                         </group>
@@ -221,7 +221,7 @@
                 <field name="age"/>
                 <field name="member_type"/>
                 <field name="nationality"/>
-<!--                <field name="member_category"/>-->
+                <field name="member_category"/>
                 <field name="mobile1" optional="1"/>
                 <field name="occupation"/>
                 <field name="marital_status" optional="1"/>
@@ -286,7 +286,7 @@
                     <group>
                         <group>
                             <field name="staff_no"/>
-<!--                            <field name="member_category"/>-->
+                            <field name="member_category"/>
                             <field name="mobile1"/>
                             <field name="mobile2"/>
                         </group>

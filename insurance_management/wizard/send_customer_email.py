@@ -208,7 +208,7 @@ class CustomerEmailWizard(models.TransientModel):
                     worksheet.write(rows, 11, str(line.risk_no) or '')
                     worksheet.write(rows, 12, line.nationality.name or '')
                     worksheet.write(rows, 13, line.staff_no or '')
-                    # worksheet.write(rows, 14, line.member_category or '')
+                    worksheet.write(rows, 14, line.member_category or '')
                     worksheet.write(rows, 15, line.mobile1 or '')
                     worksheet.write(rows, 16, line.mobile2 or '')
                     worksheet.write(rows, 17, line.dep_no or '')
