@@ -247,7 +247,7 @@
                                     <field name="dep_no" optional="1"/>
                                     <field name="sponser_id" optional="1"/>
                                     <field name="occupation" optional="1"/>
-                                    <field name="marital_status" optional="1"/>
+<!--                                    <field name="marital_status" optional="1"/>-->
 <!--                                    <field name="elm_relation" optional="1"/>-->
                                     <field name="vip" optional="1"/>
                                     <field name="as_vip" optional="1"/>
@@ -310,7 +310,7 @@
                                                     <field name="member_category"/>
                                                     <field name="mobile1" optional="1"/>
                                                     <field name="occupation"/>
-                                                    <field name="marital_status" optional="1"/>
+<!--                                                    <field name="marital_status" optional="1"/>-->
 <!--                                                    <field name="elm_relation" optional="1"/>-->
                                                     <field name="vip"/>
                                                     <field name="rate"/>
@@ -370,7 +370,7 @@
                                                             <field name="dep_no"/>
                                                             <field name="sponser_id"/>
                                                             <field name="occupation"/>
-                                                            <field name="marital_status"/>
+<!--                                                            <field name="marital_status"/>-->
                                                         </group>
                                                     </group>
                                                     <group>

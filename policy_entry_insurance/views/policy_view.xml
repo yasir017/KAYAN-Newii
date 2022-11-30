@@ -353,7 +353,7 @@
                                         <field name="dep_no" readonly="1" optional="hide"/>
                                         <field name="sponser_id" readonly="1" optional="hide"/>
 <!--                                        <field name="occupation" readonly="1" optional="hide"/>-->
-                                        <field name="marital_status" readonly="1" optional="hide"/>
+<!--                                        <field name="marital_status" readonly="1" optional="hide"/>-->
                                         <field name="elm_relation" readonly="1" optional="hide"/>
                                         <field name="vip" readonly="1" optional="hide"/>
                                         <field name="as_vip" readonly="1" optional="hide"/>
@@ -588,7 +588,7 @@
                                         <field name="dep_no" optional="hide"/>
                                         <field name="sponser_id" optional="hide"/>
 <!--                                        <field name="occupation" optional="hide"/>-->
-                                        <field name="marital_status" optional="hide"/>
+<!--                                        <field name="marital_status" optional="hide"/>-->
                                         <field name="elm_relation" optional="hide"/>
                                         <field name="vip" optional="hide"/>
                                         <field name="as_vip" optional="hide"/>
@@ -624,7 +624,7 @@
                                                     <field name="dep_no" optional="hide"/>
                                                     <field name="sponser_id" optional="hide"/>
 <!--                                                    <field name="occupation" optional="hide"/>-->
-                                                    <field name="marital_status" optional="hide"/>
+<!--                                                    <field name="marital_status" optional="hide"/>-->
                                                 </group>
                                                 <group>
                                                     <field name="elm_relation" optional="hide"/>

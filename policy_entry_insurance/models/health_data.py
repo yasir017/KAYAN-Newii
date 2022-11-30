@@ -85,9 +85,9 @@ class EmployeeData(models.Model):
     dep_no = fields.Char(string='Dep Code')
     sponser_id = fields.Char(string='Sponser ID')
     # occupation = fields.Char(string='Occupation')
-    marital_status = fields.Selection(
-        [('single', 'Single'), ('married', 'Married'), ('divorced', 'Divorced'), ('widowed', 'Widowed')],
-        string='Marital Status')
+    # marital_status = fields.Selection(
+    #     [('single', 'Single'), ('married', 'Married'), ('divorced', 'Divorced'), ('widowed', 'Widowed')],
+    #     string='Marital Status')
     elm_relation = fields.Selection([('not_specified', 'Not Specified'), ('son', 'Son'), ('daughter', 'Daughter'),
                                      ('wife', 'Wife'),
                                      ('brother', 'Brother'),

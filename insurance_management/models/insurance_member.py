@@ -233,7 +233,7 @@ class client_branch(models.Model):
                     'dep_no':client.dep_no,
                     'sponser_id':client.sponser_id,
                     'occupation':client.occupation.id,
-                    'marital_status':client.marital_status,
+                    # 'marital_status':client.marital_status,
                     # 'elm_relation':client.elm_relation,
                     'vip':client.vip,
                     'as_vip':client.as_vip,
@@ -535,7 +535,7 @@ class client_branch(models.Model):
                         dep_code = sheet.cell(row, 16).value
                         sponser_id = sheet.cell(row, 17).value
                         occupation = sheet.cell(row, 18).value
-                        marital_status = sheet.cell(row, 19).value
+                        # marital_status = sheet.cell(row, 19).value
                         # elm_relation = sheet.cell(row, 20).value
                         print(member_name)
 
@@ -558,7 +558,7 @@ class client_branch(models.Model):
                             'dep_no': dep_code if dep_code != '' else '',
                             'sponser_id': sponser_id if sponser_id != '' else '',
                             # 'occupation': occupation if occupation != '' else '',
-                            'marital_status': marital_status if marital_status != '' else '',
+                            # 'marital_status': marital_status if marital_status != '' else '',
                             # 'elm_relation': elm_relation,
                             'branch_id': self.id,
                         }
@@ -741,7 +741,7 @@ class client_branch(models.Model):
                 worksheet.write(rows, 17, line.dep_no or '')
                 worksheet.write(rows, 18, line.sponser_id or '')
                 worksheet.write(rows, 19, line.occupation.name or '')
-                worksheet.write(rows, 20, line.marital_status or '')
+                # worksheet.write(rows, 20, line.marital_status or '')
                 worksheet.write(rows, 21, 15)
 
                 rows += 1
@@ -972,7 +972,7 @@ class client_basic_info(models.Model):
     dep_no = fields.Char(string='Dep Code')
     sponser_id = fields.Char(string='Sponser ID')
     occupation = fields.Many2one('ins.occupation',string='Occupation')
-    marital_status = fields.Selection([('Single','Single'),('Married','Married'),('Divorced','Divorced'),('Widowed','Widowed')],string='Relation')
+    # marital_status = fields.Selection([('Single','Single'),('Married','Married'),('Divorced','Divorced'),('Widowed','Widowed')],string='Relation')
     elm_relation = fields.Selection([('not_specified','Not Specified'),('son','Son'),('daughter','Daughter'),
                                      ('wife','Wife'),
                                      ('brother','Brother'),
