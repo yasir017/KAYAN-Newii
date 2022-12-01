@@ -6,47 +6,53 @@
             <field name="arch" type="xml">
                 <form string="Policy Entry">
                     <header>
-                         <field name="state" widget="statusbar" clickable="1" statusbar_visible="draft,submitted,posted"/>
+                        <field name="state" widget="statusbar" clickable="1"
+                               statusbar_visible="draft,submitted,posted"/>
 
                     </header>
                     <sheet>
 
                         <div class="oe_button_box" name="button_box">
                             <button name="action_open_policy_documents" type="object"
-                            class="oe_stat_button" icon="fa-star">
-                            <div class="o_stat_info">
-                                <field name="total_document_number" class="o_stat_value"/>
-                                <span class="o_stat_text">Documents</span>
-                            </div>
-                        </button>
+                                    class="oe_stat_button" icon="fa-star">
+                                <div class="o_stat_info">
+                                    <field name="total_document_number" class="o_stat_value"/>
+                                    <span class="o_stat_text">Documents</span>
+                                </div>
+                            </button>
                         </div>
 
                         <group>
-<!--                              <div class="oe_title">-->
-<!--&lt;!&ndash;                            <label for="name"/>&ndash;&gt;-->
-<!--                            <h1><field name="policy_id"  no_label="1" class="oe_inline"/></h1>-->
-<!--                        </div>-->
-                            <group > <h3>Client Policy information</h3>
-                                <field name="policy_type" />
+                            <!--                              <div class="oe_title">-->
+                            <!--&lt;!&ndash;                            <label for="name"/>&ndash;&gt;-->
+                            <!--                            <h1><field name="policy_id"  no_label="1" class="oe_inline"/></h1>-->
+                            <!--                        </div>-->
+                            <group>
+                                <h3>Client Policy information</h3>
+                                <field name="policy_type" required="1"/>
 
-                                <field name="partner_id" force_save="1" attrs="{'readonly':[('policy_type','=','endors')]}"/>
+                                <field name="partner_id" required="1" force_save="1"
+                                       attrs="{'readonly':[('policy_type','=','endors')]}"/>
                                 <!--                            <field name="manager_id"/>-->
-                                <field name="branch_id" force_save="1" attrs="{'readonly':[('policy_type','=','endors')]}"/>
-                                <field name="start_date"/>
-                                <field name="expiry_date"/>
-                                <field name="issuance_date"/>
-<!--                                <field name="journal_id"/>-->
-<!--                                <field name="payment_term_id"/>-->
+                                <field name="branch_id" required="1" force_save="1"
+                                       attrs="{'readonly':[('policy_type','=','endors')]}"/>
+                                <field name="start_date" required="1"/>
+                                <field name="expiry_date" required="1"/>
+                                <field name="issuance_date" required="1"/>
+                                <!--                                <field name="journal_id"/>-->
+                                <!--                                <field name="payment_term_id"/>-->
                             </group>
-                            <group><h3>Policy Detail</h3>
-<!--                                <field name="policy_id"/>-->
-                                <field name="policy_no" attrs="{'invisible':[('policy_type','=','endors')]}"/>
-                                <field name="endorsment_ref" attrs="{'invisible':[('policy_type','=','policy')]}"/>
-                                <field name="prev_policy" domain="[('policy_type','=','policy')]" attrs="{'invisible':[('policy_type','=','policy')],'required':[('policy_type','=','endors')]}"/>
+                            <group>
+                                <h3>Policy Detail</h3>
+                                <!--                                <field name="policy_id"/>-->
+                                <field name="policy_no" attrs="{'invisible':[('policy_type','=','endors')],'required':[('policy_type','=','policy')]}"/>
+                                <field name="endorsment_ref" attrs="{'invisible':[('policy_type','=','policy')],'required':[('policy_type','=','endors')]}"/>
+                                <field name="prev_policy" domain="[('policy_type','=','policy')]"
+                                       attrs="{'invisible':[('policy_type','=','policy')],'required':[('policy_type','=','endors')]}"/>
                                 <!--                            <field name="insurance_company_id"/>-->
-<!--                                <field name="business_class"/>-->
-<!--                                <field name="is_under_agreement"/>-->
-<!--                                <field name="agreement_file" attrs="{'invisible':[('is_under_agreement','=',False)]}"/>-->
+                                <!--                                <field name="business_class"/>-->
+                                <!--                                <field name="is_under_agreement"/>-->
+                                <!--                                <field name="agreement_file" attrs="{'invisible':[('is_under_agreement','=',False)]}"/>-->
                                 <!--                            <field name="is_extra_benfit"/>-->
                             </group>
                         </group>
@@ -100,7 +106,7 @@
                                                 <strong>Premium</strong>
                                             </td>
                                             <td style="border: 2px solid black;">
-                                                 <field no_label="1" name="basic_prem"/>
+                                                <field no_label="1" name="basic_prem"/>
                                             </td>
                                             <td style="border: 2px solid black;">
                                                 <field name="premium_actual" no_label="1"/>
@@ -145,7 +151,7 @@
                                                 <field no_label="1" name="vat_premium"/>
                                             </td>
                                             <td style="border: 2px solid black;">
-                                                <field name="total_premium_after_vat" no_label="1"/>
+                                                <field name="total_premium_after_vat" readonly="1" force_save="1" no_label="1"/>
                                             </td>
                                         </tr>
 
@@ -160,7 +166,7 @@
                                                 <field no_label="1" name="premium_percent_vat"/>
                                             </td>
                                             <td style="border: 2px solid black;">
-                                                <field name="premium_percent_am_total" no_label="1"/>
+                                                <field name="premium_percent_am_total" readonly="1" force_save="1"  no_label="1"/>
                                             </td>
                                         </tr>
                                         <tr>
@@ -174,7 +180,7 @@
                                                 <field no_label="1" name="issuening_fee_percent"/>
                                             </td>
                                             <td style="border: 2px solid black;">
-                                                <field name="issuening_fee_total" no_label="1"/>
+                                                <field name="issuening_fee_total" readonly="1" force_save="1"  no_label="1"/>
                                             </td>
                                         </tr>
 
@@ -189,7 +195,7 @@
                                                 <field no_label="1" name="additional_fee_am_vat"/>
                                             </td>
                                             <td style="border: 2px solid black;">
-                                                <field name="additional_fee_am_total" no_label="1"/>
+                                                <field name="additional_fee_am_total" readonly="1" force_save="1"  no_label="1"/>
                                             </td>
                                         </tr>
                                         <tr>
@@ -203,7 +209,7 @@
                                                 <field no_label="1" name="ded_fee_am_vat"/>
                                             </td>
                                             <td style="border: 2px solid black;">
-                                                <field name="ded_fee_am_total" no_label="1"/>
+                                                <field name="ded_fee_am_total" readonly="1" force_save="1"  no_label="1"/>
                                             </td>
                                         </tr>
 
@@ -218,7 +224,7 @@
                                                 <field no_label="1" name="total_policy_vat"/>
                                             </td>
                                             <td>
-                                                <field name="total_policy_am_after_vat" no_label="1"/>
+                                                <field name="total_policy_am_after_vat" readonly="1" force_save="1"  no_label="1"/>
                                             </td>
                                         </tr>
                                     </tbody>
@@ -284,14 +290,19 @@
                                                 <strong>Broker Commission</strong>
                                             </td>
                                             <td style="border: 2px solid black;">
-                                                <field name="broker_commision" no_label="1"/>
+                                                <field name="broker_commision" readonly="1" force_save="1"  no_label="1"/>
                                             </td>
-                                            <!--                                                    <td style="border: 2px solid black;">-->
-                                            <!--                                                        <field no_label="1" name="vat_premium"/>-->
-                                            <!--                                                    </td>-->
-                                            <!--                                                    <td style="border: 2px solid black;">-->
-                                            <!--                                                        <field name="total_premium_after_vat" no_label="1"/>-->
-                                            <!--                                                    </td>-->
+
+                                        </tr>
+
+                                        <tr>
+                                            <td style="border: 2px solid black;">
+                                                <strong>Govt Fee</strong>
+                                            </td>
+                                            <td style="border: 2px solid black;">
+                                                <field name="govt_fee" readonly="1" force_save="1"  no_label="1"/>
+                                            </td>
+
                                         </tr>
                                     </tbody>
 
@@ -314,18 +325,23 @@
                                 <!--                                        <field name="calculated_gross"/>-->
                                 <!--                                        <field name="premium_due"/>-->
                                 <!--                                        <field name="return_end_no"/>-->
-                                <!--                                        <field name="is_renewel_policy"/>-->
+                                <!--
+                                                                      <field name="is_renewel_policy"/>-->
+                               <group>
+                                       <group>
                                 <field name="is_extra_benfit"/>
+                                       </group>
+                               </group>
 
                                 <!--                                <group string="Is extra Benefits">-->
                                 <!--                                    <field name="is_extra_benfit" nolabel="1"/>-->
 
                                 <!--                                </group>-->
                             </page>
-                            <page string="Health Endorsement" name="health_endors" >
-                                <field name="health_endors_ids"   domain="[('policy_id','=',prev_policy)]">
+                            <page string="Health Endorsement" name="health_endors">
+                                <field name="health_endors_ids" domain="[('policy_id','=',prev_policy)]">
 
-                                            <tree editable="bottom">
+                                    <tree editable="bottom">
                                         <field name="member_id" readonly="1"/>
                                         <field name="dependent_id" readonly="1"/>
                                         <field name="name" readonly="1"/>
@@ -335,15 +351,15 @@
                                         <field name="dob" readonly="1"/>
                                         <field name="dob_hijra" readonly="1"/>
                                         <field name="age" readonly="1"/>
-<!--                                        <field name="member_type" readonly="1"/>-->
-<!--                                        <field name="class_no" readonly="1"/>-->
+                                        <!--                                        <field name="member_type" readonly="1"/>-->
+                                        <!--                                        <field name="class_no" readonly="1"/>-->
                                         <field name="rate" readonly="1"/>
                                         <field name="vat" readonly="1"/>
                                         <field name="total"/>
 
                                         <field name="endorsment_am"/>
-                                                <field name="endorsment_type"/>
-<!--                                        <field name="age_category" readonly="1" optional="hide"/>-->
+                                        <field name="endorsment_type"/>
+                                        <!--                                        <field name="age_category" readonly="1" optional="hide"/>-->
                                         <field name="risk_no" readonly="1" optional="hide"/>
                                         <field name="nationality" readonly="1" optional="hide"/>
                                         <field name="staff_no" readonly="1" optional="hide"/>
@@ -352,21 +368,21 @@
                                         <field name="mobile2" readonly="1" optional="hide"/>
                                         <field name="dep_no" readonly="1" optional="hide"/>
                                         <field name="sponser_id" readonly="1" optional="hide"/>
-<!--                                        <field name="occupation" readonly="1" optional="hide"/>-->
+                                        <!--                                        <field name="occupation" readonly="1" optional="hide"/>-->
                                         <field name="marital_status" readonly="1" optional="hide"/>
                                         <field name="elm_relation" readonly="1" optional="hide"/>
                                         <field name="vip" readonly="1" optional="hide"/>
                                         <field name="as_vip" readonly="1" optional="hide"/>
-<!--                                        <field name="bank_id" readonly="1" optional="hide"/>-->
-<!--                                        <field name="branch_id" readonly="1" optional="hide"/>-->
+                                        <!--                                        <field name="bank_id" readonly="1" optional="hide"/>-->
+                                        <!--                                        <field name="branch_id" readonly="1" optional="hide"/>-->
 
-                                        </tree>
+                                    </tree>
                                 </field>
                             </page>
-                            <page  name="vehicle" string="Vehicle Detail">
+                            <page name="vehicle" string="Vehicle Detail">
                                 <field name="vehicle_detail">
                                     <tree>
-                                        <field name="vehicle_type_id" />
+                                        <field name="vehicle_type_id"/>
                                         <field name="plate_no" placeholder="1234 A-B-C"/>
                                         <field name="plate_no_ar"/>
                                         <field name="chassis"/>
@@ -401,7 +417,7 @@
                                         <field name="natural_peril_cover" optional="hide"/>
                                         <field name="dob_owner" optional="hide"/>
                                         <field name="nationality" optional="hide"/>
-<!--                                        <field name="premium" optional="hide"/>-->
+                                        <!--                                        <field name="premium" optional="hide"/>-->
                                         <!--                                        <field name="policy_id"/>-->
                                         <!--                                        <field name="currency_id"/>-->
                                     </tree>
@@ -419,8 +435,8 @@
                                                     <field name="covering_maintenance"/>
                                                     <field name="value"/>
                                                     <field name="premium"/>
-                                        <field name="vat"/>
-                                        <field name="total"/>
+                                                    <field name="vat"/>
+                                                    <field name="total"/>
                                                     <field name="owener_name"/>
                                                 </group>
                                                 <group>
@@ -448,7 +464,7 @@
                                                     <field name="natural_peril_cover" optional="hide"/>
                                                     <field name="dob_owner" optional="hide"/>
                                                     <field name="nationality" optional="hide"/>
-<!--                                                    <field name="premium" optional="hide"/>-->
+                                                    <!--                                                    <field name="premium" optional="hide"/>-->
                                                 </group>
                                             </group>
                                         </sheet>
@@ -458,107 +474,107 @@
                             <page name="vehicle_coverage" string="Vehicle Coverage">
                                 <group>
                                     <table width="100%" style="border: 2px solid black;"
-                                                       class="table table-bordered mt32">
-                                                    <thead>
-                                                        <tr style="background-color:#89e3f2">
-                                                            <th style="border: 2px solid black;width: 300px;">
-                                                                <strong>Title</strong>
-                                                            </th>
-                                                            <th style="border: 2px solid black;width: 300px;">
-                                                                <strong>Amount</strong>
-                                                            </th>
-                                                            <th style="border: 2px solid black;width: 300px;">
-                                                                <strong>Title</strong>
-                                                            </th>
-                                                            <th style="border: 2px solid black;width: 300px;">
-                                                                <strong>Amount</strong>
-                                                            </th>
+                                           class="table table-bordered mt32">
+                                        <thead>
+                                            <tr style="background-color:#89e3f2">
+                                                <th style="border: 2px solid black;width: 300px;">
+                                                    <strong>Title</strong>
+                                                </th>
+                                                <th style="border: 2px solid black;width: 300px;">
+                                                    <strong>Amount</strong>
+                                                </th>
+                                                <th style="border: 2px solid black;width: 300px;">
+                                                    <strong>Title</strong>
+                                                </th>
+                                                <th style="border: 2px solid black;width: 300px;">
+                                                    <strong>Amount</strong>
+                                                </th>
 
-                                                        </tr>
-                                                    </thead>
-                                                    <tbody style="background-color:#e1e8cb">
-                                                        <tr>
-                                                            <td style="border: 2px solid black;">
-                                                                <strong>Issuance Fee</strong>
-                                                            </td>
-                                                            <td style="border: 2px solid black;">
-                                                                <field name="issuance_fee_car" no_label="1"/>
-                                                            </td>
+                                            </tr>
+                                        </thead>
+                                        <tbody style="background-color:#e1e8cb">
+                                            <tr>
+                                                <td style="border: 2px solid black;">
+                                                    <strong>Issuance Fee</strong>
+                                                </td>
+                                                <td style="border: 2px solid black;">
+                                                    <field name="issuance_fee_car" no_label="1"/>
+                                                </td>
 
-                                                            <td style="border: 2px solid black;">
-                                                                <strong>Zero Depreciation</strong>
-                                                            </td>
-                                                            <td style="border: 2px solid black;">
-                                                                <field name="zero_dep" no_label="1"/>
-                                                            </td>
+                                                <td style="border: 2px solid black;">
+                                                    <strong>Zero Depreciation</strong>
+                                                </td>
+                                                <td style="border: 2px solid black;">
+                                                    <field name="zero_dep" no_label="1"/>
+                                                </td>
 
-                                                        </tr>
+                                            </tr>
 
-                                                        <tr>
-                                                            <td style="border: 2px solid black;">
-                                                                <strong>Personal Accident For Driver</strong>
-                                                            </td>
-                                                            <td style="border: 2px solid black;">
-                                                                <field name="personal_accident_driver" no_label="1"/>
-                                                            </td>
+                                            <tr>
+                                                <td style="border: 2px solid black;">
+                                                    <strong>Personal Accident For Driver</strong>
+                                                </td>
+                                                <td style="border: 2px solid black;">
+                                                    <field name="personal_accident_driver" no_label="1"/>
+                                                </td>
 
-                                                            <td style="border: 2px solid black;">
-                                                                <strong>Towing Vehicle</strong>
-                                                            </td>
-                                                            <td style="border: 2px solid black;">
-                                                                <field name="towing_vehicle" no_label="1"/>
-                                                            </td>
+                                                <td style="border: 2px solid black;">
+                                                    <strong>Towing Vehicle</strong>
+                                                </td>
+                                                <td style="border: 2px solid black;">
+                                                    <field name="towing_vehicle" no_label="1"/>
+                                                </td>
 
-                                                        </tr>
-                                                        <tr>
-                                                            <td style="border: 2px solid black;">
-                                                                <strong>Personal Accident For Passengers</strong>
-                                                            </td>
-                                                            <td style="border: 2px solid black;">
-                                                                <field name="personal_accident_for_passenger" no_label="1"/>
-                                                            </td>
+                                            </tr>
+                                            <tr>
+                                                <td style="border: 2px solid black;">
+                                                    <strong>Personal Accident For Passengers</strong>
+                                                </td>
+                                                <td style="border: 2px solid black;">
+                                                    <field name="personal_accident_for_passenger" no_label="1"/>
+                                                </td>
 
-                                                            <td style="border: 2px solid black;">
-                                                                <strong>Coverage for key loss or theft</strong>
-                                                            </td>
-                                                            <td style="border: 2px solid black;">
-                                                                <field name="key_loss_thef_coverage" no_label="1"/>
-                                                            </td>
-                                                        </tr>
+                                                <td style="border: 2px solid black;">
+                                                    <strong>Coverage for key loss or theft</strong>
+                                                </td>
+                                                <td style="border: 2px solid black;">
+                                                    <field name="key_loss_thef_coverage" no_label="1"/>
+                                                </td>
+                                            </tr>
 
-                                                        <tr>
-                                                            <td style="border: 2px solid black;">
-                                                                <strong>Car Hire</strong>
-                                                            </td>
-                                                            <td style="border: 2px solid black;">
-                                                                <field name="car_hire" no_label="1"/>
-                                                            </td>
+                                            <tr>
+                                                <td style="border: 2px solid black;">
+                                                    <strong>Car Hire</strong>
+                                                </td>
+                                                <td style="border: 2px solid black;">
+                                                    <field name="car_hire" no_label="1"/>
+                                                </td>
 
-                                                            <td style="border: 2px solid black;">
-                                                                <strong>Glass Coverage</strong>
-                                                            </td>
-                                                            <td style="border: 2px solid black;">
-                                                                <field name="glass_coverage" no_label="1"/>
-                                                            </td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td style="border: 2px solid black;">
-                                                                <strong>Geographical Extension</strong>
-                                                            </td>
-                                                            <td style="border: 2px solid black;">
-                                                                <field name="geo_ext" no_label="1"/>
-                                                            </td>
+                                                <td style="border: 2px solid black;">
+                                                    <strong>Glass Coverage</strong>
+                                                </td>
+                                                <td style="border: 2px solid black;">
+                                                    <field name="glass_coverage" no_label="1"/>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td style="border: 2px solid black;">
+                                                    <strong>Geographical Extension</strong>
+                                                </td>
+                                                <td style="border: 2px solid black;">
+                                                    <field name="geo_ext" no_label="1"/>
+                                                </td>
 
-                                                            <td style="border: 2px solid black;">
-                                                                <strong>Personal holdings in vehicle</strong>
-                                                            </td>
-                                                            <td style="border: 2px solid black;">
-                                                                <field name="personal_holding_in_vehicle" no_label="1"/>
-                                                            </td>
-                                                        </tr>
+                                                <td style="border: 2px solid black;">
+                                                    <strong>Personal holdings in vehicle</strong>
+                                                </td>
+                                                <td style="border: 2px solid black;">
+                                                    <field name="personal_holding_in_vehicle" no_label="1"/>
+                                                </td>
+                                            </tr>
 
-                                                    </tbody>
-                                                </table>
+                                        </tbody>
+                                    </table>
                                 </group>
                             </page>
                             <page name="health" string="Health Detail">
@@ -573,12 +589,12 @@
                                         <field name="dob"/>
                                         <field name="dob_hijra"/>
                                         <field name="age"/>
-<!--                                        <field name="member_type"/>-->
-<!--                                        <field name="class_no"/>-->
+                                        <!--                                        <field name="member_type"/>-->
+                                        <!--                                        <field name="class_no"/>-->
                                         <field name="rate"/>
                                         <field name="vat"/>
                                         <field name="total"/>
-<!--                                        <field name="age_category" optional="hide"/>-->
+                                        <!--                                        <field name="age_category" optional="hide"/>-->
                                         <field name="risk_no" optional="hide"/>
                                         <field name="nationality" optional="hide"/>
                                         <field name="staff_no" optional="hide"/>
@@ -587,13 +603,13 @@
                                         <field name="mobile2" optional="hide"/>
                                         <field name="dep_no" optional="hide"/>
                                         <field name="sponser_id" optional="hide"/>
-<!--                                        <field name="occupation" optional="hide"/>-->
+                                        <!--                                        <field name="occupation" optional="hide"/>-->
                                         <field name="marital_status" optional="hide"/>
                                         <field name="elm_relation" optional="hide"/>
                                         <field name="vip" optional="hide"/>
                                         <field name="as_vip" optional="hide"/>
-<!--                                        <field name="bank_id" optional="hide"/>-->
-<!--                                        <field name="branch_id" optional="hide"/>-->
+                                        <!--                                        <field name="bank_id" optional="hide"/>-->
+                                        <!--                                        <field name="branch_id" optional="hide"/>-->
 
 
                                     </tree>
@@ -610,11 +626,11 @@
                                                     <field name="dob"/>
                                                     <field name="dob_hijra"/>
                                                     <field name="age"/>
-<!--                                                    <field name="member_type"/>-->
-<!--                                                    <field name="class_no"/>-->
+                                                    <!--                                                    <field name="member_type"/>-->
+                                                    <!--                                                    <field name="class_no"/>-->
                                                 </group>
                                                 <group>
-<!--                                                    <field name="age_category" optional="hide"/>-->
+                                                    <!--                                                    <field name="age_category" optional="hide"/>-->
                                                     <field name="risk_no" optional="hide"/>
                                                     <field name="nationality" optional="hide"/>
                                                     <field name="staff_no" optional="hide"/>
@@ -623,15 +639,15 @@
                                                     <field name="mobile2" optional="hide"/>
                                                     <field name="dep_no" optional="hide"/>
                                                     <field name="sponser_id" optional="hide"/>
-<!--                                                    <field name="occupation" optional="hide"/>-->
+                                                    <!--                                                    <field name="occupation" optional="hide"/>-->
                                                     <field name="marital_status" optional="hide"/>
                                                 </group>
                                                 <group>
                                                     <field name="elm_relation" optional="hide"/>
                                                     <field name="vip" optional="hide"/>
                                                     <field name="as_vip" optional="hide"/>
-<!--                                                    <field name="bank_id" optional="hide"/>-->
-<!--                                                    <field name="branch_id" optional="hide"/>-->
+                                                    <!--                                                    <field name="bank_id" optional="hide"/>-->
+                                                    <!--                                                    <field name="branch_id" optional="hide"/>-->
                                                     <field name="rate"/>
                                                     <field name="vat"/>
                                                     <field name="total"/>
@@ -651,11 +667,11 @@
                                         <field name="credit_letter_no"/>
                                         <field name="sailing_date"/>
                                         <field name="parcel_no"/>
-                                            <field name="currency_id"/>
+                                        <field name="currency_id"/>
                                         <field name="cardo_sum_insured"/>
-                                           <field name="premium"/>
-                                                <field name="vat"/>
-                                                <field name="total"/>
+                                        <field name="premium"/>
+                                        <field name="vat"/>
+                                        <field name="total"/>
                                         <field name="packing_type" optional="hide"/>
                                         <field name="nationality" optional="hide"/>
                                         <field name="discharge_port" optional="hide"/>
@@ -705,11 +721,11 @@
                                 </field>
                             </page>
                             <page name="endors_vehicle" string="Endorsement Vehicle">
-                                <field name="endors_vehicle_ids"  domain="[('policy_id','=',prev_policy)]">
+                                <field name="endors_vehicle_ids" domain="[('policy_id','=',prev_policy)]">
                                     <tree editable="bottom">
 
 
-                                        <field name="vehicle_type_id" readonly="1" />
+                                        <field name="vehicle_type_id" readonly="1"/>
                                         <field name="plate_no" readonly="1"/>
                                         <field name="plate_no_ar" readonly="1"/>
                                         <field name="model_no" readonly="1"/>
@@ -721,8 +737,8 @@
                                         <field name="premium" readonly="1"/>
                                         <field name="vat" readonly="1"/>
                                         <field name="total"/>
-                                            <field name="endorsment_am"/>
-                                            <field name="endorsment_type"/>
+                                        <field name="endorsment_am"/>
+                                        <field name="endorsment_type"/>
                                         <field name="owener_name" readonly="1"/>
                                         <field name="owner_id" readonly="1" optional="hide"/>
                                         <field name="custom_id" readonly="1" optional="hide"/>
@@ -736,13 +752,13 @@
                                         <field name="unit_no" readonly="1" optional="hide"/>
                                         <field name="po_box" readonly="1" optional="hide"/>
                                         <field name="zip_code" readonly="1" optional="hide"/>
-                                        <field name="neighbour_head"  readonly="1" optional="hide"/>
+                                        <field name="neighbour_head" readonly="1" optional="hide"/>
                                         <field name="mobile_no" readonly="1" optional="hide"/>
                                         <field name="istamara_expiry" readonly="1" optional="hide"/>
                                         <field name="vehicle_color" readonly="1" optional="hide"/>
                                         <field name="vehicle_make_id" readonly="1" optional="hide"/>
                                         <field name="vehicle_model_id" readonly="1" optional="hide"/>
-                                        <field name="gcc_cover"  readonly="1" optional="hide"/>
+                                        <field name="gcc_cover" readonly="1" optional="hide"/>
                                         <field name="natural_peril_cover" readonly="1" optional="hide"/>
                                         <field name="dob_owner" readonly="1" optional="hide"/>
                                         <field name="nationality" readonly="1" optional="hide"/>
@@ -761,12 +777,15 @@
                             <page string="Installment">
                                 <field name="installment_ids">
                                     <tree editable="bottom">
-<!--                                        <field name="cash_mode"/>-->
+                                        <!--                                        <field name="cash_mode"/>-->
                                         <field name="installment_date"/>
-                                        <field name="type_installement"/>
-                                        <field name="amount_paid" attrs="{'invisible':[('type_installement','=','fixed')]}"/>
-                                        <field name="percentage" attrs="{'invisible':[('type_installement','=','fixed')]}"/>
-                                        <field name="fix_amount" attrs="{'invisible':[('type_installement','!=','fixed')]}"/>
+<!--                                        <field name="type_installement"/>-->
+<!--                                        <field name="amount_paid"-->
+<!--                                               attrs="{'invisible':[('type_installement','=','fixed')]}"/>-->
+                                        <field name="percentage"
+                                              />
+                                        <field name="fix_amount"
+                                              />
                                     </tree>
                                 </field>
                                 <group class="oe_subtotal_footer oe_right">
@@ -794,25 +813,42 @@
                                         <field name="journal_id"/>
                                         <field name="sales_person"/>
                                         <field name="invoice_type"/>
-                                        <field name="date" optional="hide" invisible="context.get('default_move_type') in ('out_invoice', 'out_refund', 'out_receipt')" string="Accounting Date"/>
-                    <field name="invoice_date_due" widget="remaining_days" optional="show" attrs="{'invisible': [['payment_state', 'in', ('paid', 'in_payment', 'reversed')]]}"/>
-                    <field name="invoice_origin" optional="hide" string="Source Document"/>
-                    <field name="payment_reference" optional="hide" invisible="context.get('default_move_type') in ('out_invoice', 'out_refund','out_receipt')"/>
-                    <field name="ref" optional="hide"/>
-                    <field name="invoice_user_id" optional="hide" invisible="context.get('default_move_type') not in ('out_invoice', 'out_refund','out_receipt')" string="Salesperson" widget="many2one_avatar_user"/>
-                    <field name="activity_ids" widget="list_activity" optional="show"/>
-                    <field name="company_id" groups="base.group_multi_company" options="{'no_create': True}" optional="hide"/>
-                    <field name="amount_untaxed_signed" string="Tax Excluded" sum="Total" optional="show"/>
-                    <field name="amount_tax_signed" string="Tax" sum="Total" optional="hide"/>
-                    <field name="amount_total_signed" string="Total" sum="Total" decoration-bf="1" optional="show"/>
-                    <field name="amount_total_in_currency_signed" string="Total in Currency" groups="base.group_multi_currency" optional="show"/>
-                    <field name="amount_residual_signed" string="Amount Due" sum="Amount Due" optional="hide"/>
-                    <field name="currency_id" groups="base.group_multi_currency" optional="hide"/>
-                    <field name="company_currency_id" invisible="1"/>
-                    <field name="to_check" optional="hide" widget="boolean_toggle"/>
-                    <field name="payment_state" widget="badge" decoration-danger="payment_state == 'not_paid'" decoration-warning="payment_state in ('partial', 'in_payment')" decoration-success="payment_state in ('paid', 'reversed')" attrs="{'invisible': [('payment_state', 'in', ('invoicing_legacy'))]}" optional="show"/>
-                    <field name="state" widget="badge" decoration-success="state == 'posted'" decoration-info="state == 'draft'" optional="show"/>
-                    <field name="move_type" invisible="context.get('default_move_type', True)"/>
+                                        <field name="date" optional="hide"
+                                               invisible="context.get('default_move_type') in ('out_invoice', 'out_refund', 'out_receipt')"
+                                               string="Accounting Date"/>
+                                        <field name="invoice_date_due" widget="remaining_days" optional="show"
+                                               attrs="{'invisible': [['payment_state', 'in', ('paid', 'in_payment', 'reversed')]]}"/>
+                                        <field name="invoice_origin" optional="hide" string="Source Document"/>
+                                        <field name="payment_reference" optional="hide"
+                                               invisible="context.get('default_move_type') in ('out_invoice', 'out_refund','out_receipt')"/>
+                                        <field name="ref" optional="hide"/>
+                                        <field name="invoice_user_id" optional="hide"
+                                               invisible="context.get('default_move_type') not in ('out_invoice', 'out_refund','out_receipt')"
+                                               string="Salesperson" widget="many2one_avatar_user"/>
+                                        <field name="activity_ids" widget="list_activity" optional="show"/>
+                                        <field name="company_id" groups="base.group_multi_company"
+                                               options="{'no_create': True}" optional="hide"/>
+                                        <field name="amount_untaxed_signed" string="Tax Excluded" sum="Total"
+                                               optional="show"/>
+                                        <field name="amount_tax_signed" string="Tax" sum="Total" optional="hide"/>
+                                        <field name="amount_total_signed" string="Total" sum="Total" decoration-bf="1"
+                                               optional="show"/>
+                                        <field name="amount_total_in_currency_signed" string="Total in Currency"
+                                               groups="base.group_multi_currency" optional="show"/>
+                                        <field name="amount_residual_signed" string="Amount Due" sum="Amount Due"
+                                               optional="hide"/>
+                                        <field name="currency_id" groups="base.group_multi_currency" optional="hide"/>
+                                        <field name="company_currency_id" invisible="1"/>
+                                        <field name="to_check" optional="hide" widget="boolean_toggle"/>
+                                        <field name="payment_state" widget="badge"
+                                               decoration-danger="payment_state == 'not_paid'"
+                                               decoration-warning="payment_state in ('partial', 'in_payment')"
+                                               decoration-success="payment_state in ('paid', 'reversed')"
+                                               attrs="{'invisible': [('payment_state', 'in', ('invoicing_legacy'))]}"
+                                               optional="show"/>
+                                        <field name="state" widget="badge" decoration-success="state == 'posted'"
+                                               decoration-info="state == 'draft'" optional="show"/>
+                                        <field name="move_type" invisible="context.get('default_move_type', True)"/>
                                     </tree>
                                 </field>
                             </page>
@@ -846,13 +882,43 @@
                 <tree string="Policy Entry">
                     <field name="partner_id"/>
                     <!--                    <field name="manager_id"/>-->
-                    <field name="branch_id"/>
+                    <field name="country_id"/>
+                    <field name="fed_state_id"/>
                     <field name="start_date"/>
                     <field name="expiry_date"/>
                     <field name="issuance_date"/>
                     <field name="policy_id"/>
                     <field name="insurance_company_id"/>
                     <field name="business_class"/>
+                    <field name="policy_no" optional="hide"/>
+                    <field name="endorsment_ref" optional="hide"/>
+                    <field name="prev_policy" optional="hide"/>
+                    <field name="basic_prem" optional="hide"/>
+                    <field name="vat_premium" optional="hide"/>
+                    <field name="total_premium_after_vat" optional="hide"/>
+                    <field name="premium_percent_am" optional="hide"/>
+                    <field name="premium_percent_am" optional="hide"/>
+                    <field optional="hide" name="issuening_fee_percent"/>
+                    <field name="issuening_fee_total" optional="hide"/>
+                    <field name="additional_fee_am" optional="hide"/>
+                    <field name="additional_fee_am_vat" optional="hide"/>
+                    <field name="additional_fee_am_total" optional="hide"/>
+                    <field name="ded_fee_am" optional="hide"/>
+                    <field optional="hide" name="ded_fee_am_vat"/>
+
+                    <field name="ded_fee_am_total" optional="hide"/>
+                    <field name="total_policy_am" optional="hide"/>
+
+                    <field optional="hide" name="total_policy_vat"/>
+
+                    <field name="total_policy_am_after_vat" optional="hide"/>
+                     <field name="base_amount"  optional="hide"/>
+                     <field name="approved_amount" optional="hide"/>
+                     <field name="approve_percentage" optional="hide"/>
+                    <field name="broker_commision" optional="hide"/>
+
+
+
                 </tree>
             </field>
         </record>

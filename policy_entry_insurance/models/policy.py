@@ -92,6 +92,20 @@ class Policy(models.Model):
     total_instalment_am = fields.Float('Total Installment',compute='compute_installment')
     difference_instalment = fields.Float('Difference',compute='compute_installment')
     total_document_number = fields.Integer(string='Total Documents', compute='get_total_documents')
+    country_id = fields.Many2one('res.country',"Country")
+    fed_state_id = fields.Many2one('res.country.state',"Branch ID",domain="[('country_id','=',country_id)]")
+
+    govt_fee = fields.Float("Govt Feet", store=True, compute='_compute_govt_fee')
+
+    @api.depends('broker_commision')
+    def _compute_govt_fee(self):
+        for rec in self:
+            if rec.broker_commision:
+                params = self.env['ir.config_parameter'].sudo()
+
+                percentage = params.get_param('insurance_management.percentage')
+                if percentage:
+                    rec.govt_fee = rec.broker_commision * (int(percentage) / 100)
 
     def action_open_policy_documents(self):
         return {
@@ -130,8 +144,8 @@ class Policy(models.Model):
         for rec in self:
             if rec.expiry_date<rec.start_date:
                 raise  ValidationError("Expiry Date should be greater then start date")
-            elif rec.issuance_date<rec.expiry_date:
-                raise ValidationError("Issuence date should be greater then start date")
+            # elif rec.issuance_date<rec.expiry_date:
+            #     raise ValidationError("Issuence date should be greater then start date")
             # elif rec.expiry_date<rec.issuance_date
      # def action_create_invoice(self):
     #     invoice_lst = []
@@ -210,7 +224,7 @@ class Policy(models.Model):
     @api.onchange('basic_prem','vat_premium')
     def _onchange_premium(self):
         self.base_amount=self.basic_prem
-        if self.vat_premium>0:
+        if self.vat_premium>0.0:
             self.total_premium_after_vat =self.basic_prem+(self.basic_prem*(self.vat_premium/100))
         else:
             self.total_premium_after_vat = self.basic_prem
@@ -293,18 +307,23 @@ class Installment(models.Model):
     installment_date = fields.Date("Installment Date")
     amount_paid = fields.Float('Amount After  Percentage',store=True,compute='_compute_percentage')
     fix_amount = fields.Float('Fixed Amount')
-    percentage = fields.Float("Percentage %")
+    percentage = fields.Float("Percentage %",compute='_compute_percentage')
 
-    @api.depends('policy_id','type_installement','percentage')
+    @api.depends('policy_id','fix_amount')
     def _compute_percentage(self):
         for rec in self:
             percentage_am = 0.0
-            if rec.type_installement=='percentage':
-                if rec.percentage:
-                    percentage_am = rec.policy_id.total_policy_am_after_vat*(rec.percentage/100)
-                    rec.amount_paid=percentage_am
-            else:
-                rec.amount_paid=percentage_am
+            if rec.fix_amount:
+                if rec.policy_id.total_policy_am_after_vat:
+                    percentage_am = (rec.fix_amount/rec.policy_id.total_policy_am_after_vat)*100
+
+            rec.percentage=percentage_am
+            # if rec.type_installement=='percentage':
+            #     if rec.percentage:
+            #         percentage_am = rec.policy_id.total_policy_am_after_vat*(rec.percentage/100)
+            #         rec.amount_paid=percentage_am
+            # else:
+            #     rec.amount_paid=percentage_am
 class CashMode(models.Model):
     _name = 'cash.mode'
     name = fields.Char("Name")

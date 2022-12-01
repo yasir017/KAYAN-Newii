@@ -31,6 +31,7 @@
                   <field name="invoice_ref" attrs="{'invisible':[('invoice_type','!=','commission_inv')],'required':[('invoice_type','=','commission_inv')]}"/>
 
               </xpath>
+
           </field>
      </record>
 

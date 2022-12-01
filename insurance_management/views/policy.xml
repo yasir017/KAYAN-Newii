@@ -8,8 +8,8 @@
               <xpath expr="//header" position="inside">
                   <field name="hide_credit_note_button" invisible="1"/>
 
-                  <button name="action_create_invoice" type="object" string="Create Invoice" class="oe_highlight" attrs="{'invisible':[('hide_credit_note_button','=',True)]}" />
-                  <button name="action_create_create_note" type="object" string="Create Credit Note" class="oe_highlight" attrs="{'invisible':['|',('hide_credit_note_button','=',False),('policy_type','=','policy')]}"/>
+                  <button name="action_create_invoice" type="object" string="Create Invoice" class="oe_highlight"  />
+                  <button name="action_create_create_note" type="object" string="Create Credit Note" class="oe_highlight"/>
 
               </xpath>
               <xpath expr="//sheet/group" position="before">
@@ -61,7 +61,7 @@
                             </div>
                   </button>
 
-                      <button attrs="{'invisible':['|',('policy_type','!=','endors'),('hide_credit_note_button','=',False)]}" name="action_credit_invoices" type="object"
+                      <button  name="action_credit_invoices" type="object"
                             class="oe_stat_button" icon="fa-pencil-square-o" >
                             <div class="o_stat_info">
                                 <field name="count_credit_notes" class="o_stat_value"/>
@@ -119,8 +119,8 @@
               <xpath expr="//field[@name='policy_no']" position="after">
                      <field name="insurance_type_id" force_save="1" attrs="{'readonly':[('policy_type','=','endors')]}"/>
                   <field name="insurance_sub_type_id" force_save="1" attrs="{'readonly':[('policy_type','=','endors')]}"/>
-                  <field name="company_standard" force_save="1" attrs="{'readonly':[('policy_type','=','endors')]}"/>
-                  <field name="type_of_business" force_save="1" attrs="{'readonly':[('policy_type','=','endors')]}"/>
+                  <field name="company_standard" string="Business Type" force_save="1" attrs="{'readonly':[('policy_type','=','endors')]}"/>
+                  <field name="type_of_business" string="Policy Type" force_save="1" attrs="{'readonly':[('policy_type','=','endors')]}"/>
                   <field name="medical_boolean" invisible="1"/>
                   <field name="vehicle_boolean" invisible="1"/>
                   <field name="marine_boolean" invisible="1"/>

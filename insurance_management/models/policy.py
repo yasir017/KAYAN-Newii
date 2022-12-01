@@ -15,7 +15,7 @@ class Policy(models.Model):
     marine_boolean = fields.Boolean("Is Marine ",store=1,compute='_type_of_insurance')
     company_standard = fields.Selection([('sme', 'SME'), ('corporate', 'Corporate')
                                          ], string='Company Standard')
-    type_of_business = fields.Selection([('renewal', 'Renewal'), ('new_business', 'New Business')
+    type_of_business = fields.Selection([('renewal', 'Renewal'), ('new_business', 'New')
                                          ], string='Type of Business')
     data_collect_id = fields.Many2one('client.branch','Data collection')
     attachment_count = fields.Integer('Count',compute='_attachments')
@@ -29,6 +29,7 @@ class Policy(models.Model):
     count_endors_vehicle = fields.Integer(compute='endors_vehicle_count')
     count_commission_invoice = fields.Integer("Count Commission Invoice",compute='_commission_inv')
     count_govt_fee = fields.Integer("Govt Fee",compute='compute_govt')
+
 
     @api.depends('move_ids')
     def compute_govt(self):
@@ -298,15 +299,15 @@ class Policy(models.Model):
                     if rec.vehicle_detail:
                         for line in rec.vehicle_detail:
                             amount += line.value
-                            net_premium += line.total
+                            net_premium += line.premium
                 elif rec.insurance_type_id.ins_type_select=='is_marine':
                     for line in rec.marine_ids:
-                        net_premium += line.total
+                        net_premium += line.premium
                         amount += line.cardo_sum_insured
                 elif rec.insurance_type_id.ins_type_select == 'is_medical':
                     if rec.employee_ids:
                         for health in rec.employee_ids:
-                            net_premium += health.total
+                            net_premium += health.rate
 
             elif rec.policy_type=='endors':
                 if rec.insurance_type_id.ins_type_select == 'is_medical':

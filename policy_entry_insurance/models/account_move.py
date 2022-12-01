@@ -11,3 +11,8 @@ class AccountMove(models.Model):
     policy_no = fields.Char("Policy No")
     insurance_co_ref = fields.Char('Insurance Co.reference')
 
+    @api.onchange('invoice_type')
+    def onchange_inv_type(self):
+        self.policy_no=''
+        self.policy_id=False
+

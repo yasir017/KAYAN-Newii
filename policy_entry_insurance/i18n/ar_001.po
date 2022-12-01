@@ -1,0 +1,3397 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* policy_entry_insurance
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 15.0+e\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-11-29 13:23+0000\n"
+"PO-Revision-Date: 2022-11-29 13:23+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: policy_entry_insurance
+#: model:ir.model.fields.selection,name:policy_entry_insurance.selection__insurance_vehicle__model_no__1900
+msgid "1900"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.model.fields.selection,name:policy_entry_insurance.selection__insurance_vehicle__model_no__1901
+msgid "1901"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.model.fields.selection,name:policy_entry_insurance.selection__insurance_vehicle__model_no__1902
+msgid "1902"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.model.fields.selection,name:policy_entry_insurance.selection__insurance_vehicle__model_no__1903
+msgid "1903"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.model.fields.selection,name:policy_entry_insurance.selection__insurance_vehicle__model_no__1904
+msgid "1904"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.model.fields.selection,name:policy_entry_insurance.selection__insurance_vehicle__model_no__1905
+msgid "1905"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.model.fields.selection,name:policy_entry_insurance.selection__insurance_vehicle__model_no__1906
+msgid "1906"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.model.fields.selection,name:policy_entry_insurance.selection__insurance_vehicle__model_no__1907
+msgid "1907"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.model.fields.selection,name:policy_entry_insurance.selection__insurance_vehicle__model_no__1908
+msgid "1908"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.model.fields.selection,name:policy_entry_insurance.selection__insurance_vehicle__model_no__1909
+msgid "1909"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.model.fields.selection,name:policy_entry_insurance.selection__insurance_vehicle__model_no__1910
+msgid "1910"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.model.fields.selection,name:policy_entry_insurance.selection__insurance_vehicle__model_no__1911
+msgid "1911"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.model.fields.selection,name:policy_entry_insurance.selection__insurance_vehicle__model_no__1912
+msgid "1912"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.model.fields.selection,name:policy_entry_insurance.selection__insurance_vehicle__model_no__1913
+msgid "1913"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.model.fields.selection,name:policy_entry_insurance.selection__insurance_vehicle__model_no__1914
+msgid "1914"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.model.fields.selection,name:policy_entry_insurance.selection__insurance_vehicle__model_no__1915
+msgid "1915"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.model.fields.selection,name:policy_entry_insurance.selection__insurance_vehicle__model_no__1916
+msgid "1916"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.model.fields.selection,name:policy_entry_insurance.selection__insurance_vehicle__model_no__1917
+msgid "1917"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.model.fields.selection,name:policy_entry_insurance.selection__insurance_vehicle__model_no__1918
+msgid "1918"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.model.fields.selection,name:policy_entry_insurance.selection__insurance_vehicle__model_no__1919
+msgid "1919"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.model.fields.selection,name:policy_entry_insurance.selection__insurance_vehicle__model_no__1920
+msgid "1920"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.model.fields.selection,name:policy_entry_insurance.selection__insurance_vehicle__model_no__1921
+msgid "1921"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.model.fields.selection,name:policy_entry_insurance.selection__insurance_vehicle__model_no__1922
+msgid "1922"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.model.fields.selection,name:policy_entry_insurance.selection__insurance_vehicle__model_no__1923
+msgid "1923"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.model.fields.selection,name:policy_entry_insurance.selection__insurance_vehicle__model_no__1924
+msgid "1924"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.model.fields.selection,name:policy_entry_insurance.selection__insurance_vehicle__model_no__1925
+msgid "1925"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.model.fields.selection,name:policy_entry_insurance.selection__insurance_vehicle__model_no__1926
+msgid "1926"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.model.fields.selection,name:policy_entry_insurance.selection__insurance_vehicle__model_no__1927
+msgid "1927"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.model.fields.selection,name:policy_entry_insurance.selection__insurance_vehicle__model_no__1928
+msgid "1928"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.model.fields.selection,name:policy_entry_insurance.selection__insurance_vehicle__model_no__1929
+msgid "1929"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.model.fields.selection,name:policy_entry_insurance.selection__insurance_vehicle__model_no__1930
+msgid "1930"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.model.fields.selection,name:policy_entry_insurance.selection__insurance_vehicle__model_no__1931
+msgid "1931"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.model.fields.selection,name:policy_entry_insurance.selection__insurance_vehicle__model_no__1932
+msgid "1932"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.model.fields.selection,name:policy_entry_insurance.selection__insurance_vehicle__model_no__1933
+msgid "1933"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.model.fields.selection,name:policy_entry_insurance.selection__insurance_vehicle__model_no__1934
+msgid "1934"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.model.fields.selection,name:policy_entry_insurance.selection__insurance_vehicle__model_no__1935
+msgid "1935"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.model.fields.selection,name:policy_entry_insurance.selection__insurance_vehicle__model_no__1936
+msgid "1936"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.model.fields.selection,name:policy_entry_insurance.selection__insurance_vehicle__model_no__1937
+msgid "1937"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.model.fields.selection,name:policy_entry_insurance.selection__insurance_vehicle__model_no__1938
+msgid "1938"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.model.fields.selection,name:policy_entry_insurance.selection__insurance_vehicle__model_no__1939
+msgid "1939"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.model.fields.selection,name:policy_entry_insurance.selection__insurance_vehicle__model_no__1940
+msgid "1940"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.model.fields.selection,name:policy_entry_insurance.selection__insurance_vehicle__model_no__1941
+msgid "1941"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.model.fields.selection,name:policy_entry_insurance.selection__insurance_vehicle__model_no__1942
+msgid "1942"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.model.fields.selection,name:policy_entry_insurance.selection__insurance_vehicle__model_no__1943
+msgid "1943"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.model.fields.selection,name:policy_entry_insurance.selection__insurance_vehicle__model_no__1944
+msgid "1944"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.model.fields.selection,name:policy_entry_insurance.selection__insurance_vehicle__model_no__1945
+msgid "1945"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.model.fields.selection,name:policy_entry_insurance.selection__insurance_vehicle__model_no__1946
+msgid "1946"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.model.fields.selection,name:policy_entry_insurance.selection__insurance_vehicle__model_no__1947
+msgid "1947"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.model.fields.selection,name:policy_entry_insurance.selection__insurance_vehicle__model_no__1948
+msgid "1948"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.model.fields.selection,name:policy_entry_insurance.selection__insurance_vehicle__model_no__1949
+msgid "1949"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.model.fields.selection,name:policy_entry_insurance.selection__insurance_vehicle__model_no__1950
+msgid "1950"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.model.fields.selection,name:policy_entry_insurance.selection__insurance_vehicle__model_no__1951
+msgid "1951"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.model.fields.selection,name:policy_entry_insurance.selection__insurance_vehicle__model_no__1952
+msgid "1952"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.model.fields.selection,name:policy_entry_insurance.selection__insurance_vehicle__model_no__1953
+msgid "1953"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.model.fields.selection,name:policy_entry_insurance.selection__insurance_vehicle__model_no__1954
+msgid "1954"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.model.fields.selection,name:policy_entry_insurance.selection__insurance_vehicle__model_no__1955
+msgid "1955"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.model.fields.selection,name:policy_entry_insurance.selection__insurance_vehicle__model_no__1956
+msgid "1956"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.model.fields.selection,name:policy_entry_insurance.selection__insurance_vehicle__model_no__1957
+msgid "1957"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.model.fields.selection,name:policy_entry_insurance.selection__insurance_vehicle__model_no__1958
+msgid "1958"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.model.fields.selection,name:policy_entry_insurance.selection__insurance_vehicle__model_no__1959
+msgid "1959"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.model.fields.selection,name:policy_entry_insurance.selection__insurance_vehicle__model_no__1960
+msgid "1960"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.model.fields.selection,name:policy_entry_insurance.selection__insurance_vehicle__model_no__1961
+msgid "1961"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.model.fields.selection,name:policy_entry_insurance.selection__insurance_vehicle__model_no__1962
+msgid "1962"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.model.fields.selection,name:policy_entry_insurance.selection__insurance_vehicle__model_no__1963
+msgid "1963"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.model.fields.selection,name:policy_entry_insurance.selection__insurance_vehicle__model_no__1964
+msgid "1964"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.model.fields.selection,name:policy_entry_insurance.selection__insurance_vehicle__model_no__1965
+msgid "1965"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.model.fields.selection,name:policy_entry_insurance.selection__insurance_vehicle__model_no__1966
+msgid "1966"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.model.fields.selection,name:policy_entry_insurance.selection__insurance_vehicle__model_no__1967
+msgid "1967"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.model.fields.selection,name:policy_entry_insurance.selection__insurance_vehicle__model_no__1968
+msgid "1968"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.model.fields.selection,name:policy_entry_insurance.selection__insurance_vehicle__model_no__1969
+msgid "1969"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.model.fields.selection,name:policy_entry_insurance.selection__insurance_vehicle__model_no__1970
+msgid "1970"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.model.fields.selection,name:policy_entry_insurance.selection__insurance_vehicle__model_no__1971
+msgid "1971"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.model.fields.selection,name:policy_entry_insurance.selection__insurance_vehicle__model_no__1972
+msgid "1972"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.model.fields.selection,name:policy_entry_insurance.selection__insurance_vehicle__model_no__1973
+msgid "1973"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.model.fields.selection,name:policy_entry_insurance.selection__insurance_vehicle__model_no__1974
+msgid "1974"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.model.fields.selection,name:policy_entry_insurance.selection__insurance_vehicle__model_no__1975
+msgid "1975"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.model.fields.selection,name:policy_entry_insurance.selection__insurance_vehicle__model_no__1976
+msgid "1976"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.model.fields.selection,name:policy_entry_insurance.selection__insurance_vehicle__model_no__1977
+msgid "1977"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.model.fields.selection,name:policy_entry_insurance.selection__insurance_vehicle__model_no__1978
+msgid "1978"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.model.fields.selection,name:policy_entry_insurance.selection__insurance_vehicle__model_no__1979
+msgid "1979"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.model.fields.selection,name:policy_entry_insurance.selection__insurance_vehicle__model_no__1980
+msgid "1980"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.model.fields.selection,name:policy_entry_insurance.selection__insurance_vehicle__model_no__1981
+msgid "1981"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.model.fields.selection,name:policy_entry_insurance.selection__insurance_vehicle__model_no__1982
+msgid "1982"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.model.fields.selection,name:policy_entry_insurance.selection__insurance_vehicle__model_no__1983
+msgid "1983"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.model.fields.selection,name:policy_entry_insurance.selection__insurance_vehicle__model_no__1984
+msgid "1984"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.model.fields.selection,name:policy_entry_insurance.selection__insurance_vehicle__model_no__1985
+msgid "1985"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.model.fields.selection,name:policy_entry_insurance.selection__insurance_vehicle__model_no__1986
+msgid "1986"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.model.fields.selection,name:policy_entry_insurance.selection__insurance_vehicle__model_no__1987
+msgid "1987"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.model.fields.selection,name:policy_entry_insurance.selection__insurance_vehicle__model_no__1988
+msgid "1988"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.model.fields.selection,name:policy_entry_insurance.selection__insurance_vehicle__model_no__1989
+msgid "1989"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.model.fields.selection,name:policy_entry_insurance.selection__insurance_vehicle__model_no__1990
+msgid "1990"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.model.fields.selection,name:policy_entry_insurance.selection__insurance_vehicle__model_no__1991
+msgid "1991"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.model.fields.selection,name:policy_entry_insurance.selection__insurance_vehicle__model_no__1992
+msgid "1992"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.model.fields.selection,name:policy_entry_insurance.selection__insurance_vehicle__model_no__1993
+msgid "1993"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.model.fields.selection,name:policy_entry_insurance.selection__insurance_vehicle__model_no__1994
+msgid "1994"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.model.fields.selection,name:policy_entry_insurance.selection__insurance_vehicle__model_no__1995
+msgid "1995"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.model.fields.selection,name:policy_entry_insurance.selection__insurance_vehicle__model_no__1996
+msgid "1996"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.model.fields.selection,name:policy_entry_insurance.selection__insurance_vehicle__model_no__1997
+msgid "1997"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.model.fields.selection,name:policy_entry_insurance.selection__insurance_vehicle__model_no__1998
+msgid "1998"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.model.fields.selection,name:policy_entry_insurance.selection__insurance_vehicle__model_no__1999
+msgid "1999"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.model.fields.selection,name:policy_entry_insurance.selection__insurance_vehicle__model_no__2000
+msgid "2000"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.model.fields.selection,name:policy_entry_insurance.selection__insurance_vehicle__model_no__2001
+msgid "2001"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.model.fields.selection,name:policy_entry_insurance.selection__insurance_vehicle__model_no__2002
+msgid "2002"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.model.fields.selection,name:policy_entry_insurance.selection__insurance_vehicle__model_no__2003
+msgid "2003"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.model.fields.selection,name:policy_entry_insurance.selection__insurance_vehicle__model_no__2004
+msgid "2004"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.model.fields.selection,name:policy_entry_insurance.selection__insurance_vehicle__model_no__2005
+msgid "2005"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.model.fields.selection,name:policy_entry_insurance.selection__insurance_vehicle__model_no__2006
+msgid "2006"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.model.fields.selection,name:policy_entry_insurance.selection__insurance_vehicle__model_no__2007
+msgid "2007"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.model.fields.selection,name:policy_entry_insurance.selection__insurance_vehicle__model_no__2008
+msgid "2008"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.model.fields.selection,name:policy_entry_insurance.selection__insurance_vehicle__model_no__2009
+msgid "2009"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.model.fields.selection,name:policy_entry_insurance.selection__insurance_vehicle__model_no__2010
+msgid "2010"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.model.fields.selection,name:policy_entry_insurance.selection__insurance_vehicle__model_no__2011
+msgid "2011"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.model.fields.selection,name:policy_entry_insurance.selection__insurance_vehicle__model_no__2012
+msgid "2012"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.model.fields.selection,name:policy_entry_insurance.selection__insurance_vehicle__model_no__2013
+msgid "2013"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.model.fields.selection,name:policy_entry_insurance.selection__insurance_vehicle__model_no__2014
+msgid "2014"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.model.fields.selection,name:policy_entry_insurance.selection__insurance_vehicle__model_no__2015
+msgid "2015"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.model.fields.selection,name:policy_entry_insurance.selection__insurance_vehicle__model_no__2016
+msgid "2016"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.model.fields.selection,name:policy_entry_insurance.selection__insurance_vehicle__model_no__2017
+msgid "2017"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.model.fields.selection,name:policy_entry_insurance.selection__insurance_vehicle__model_no__2018
+msgid "2018"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.model.fields.selection,name:policy_entry_insurance.selection__insurance_vehicle__model_no__2019
+msgid "2019"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.model.fields.selection,name:policy_entry_insurance.selection__insurance_vehicle__model_no__2020
+msgid "2020"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.model.fields.selection,name:policy_entry_insurance.selection__insurance_vehicle__model_no__2021
+msgid "2021"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.model.fields.selection,name:policy_entry_insurance.selection__insurance_vehicle__model_no__2022
+msgid "2022"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model_terms:ir.ui.view,arch_db:policy_entry_insurance.view_policy_form
+msgid "<span class=\"o_stat_text\">Documents</span>"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model_terms:ir.ui.view,arch_db:policy_entry_insurance.view_policy_form
+msgid "<strong>Additional Fee</strong>"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model_terms:ir.ui.view,arch_db:policy_entry_insurance.view_policy_form
+msgid "<strong>Amount</strong>"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model_terms:ir.ui.view,arch_db:policy_entry_insurance.view_policy_form
+msgid "<strong>Approve Amount</strong>"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model_terms:ir.ui.view,arch_db:policy_entry_insurance.view_policy_form
+msgid "<strong>Approved Precentage</strong>"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model_terms:ir.ui.view,arch_db:policy_entry_insurance.view_policy_form
+msgid "<strong>Base Amount</strong>"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model_terms:ir.ui.view,arch_db:policy_entry_insurance.view_policy_form
+msgid "<strong>Base</strong>"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model_terms:ir.ui.view,arch_db:policy_entry_insurance.view_policy_form
+msgid "<strong>Broker Commission</strong>"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model_terms:ir.ui.view,arch_db:policy_entry_insurance.view_policy_form
+msgid "<strong>Car Hire</strong>"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model_terms:ir.ui.view,arch_db:policy_entry_insurance.view_policy_form
+msgid "<strong>Coverage for key loss or theft</strong>"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model_terms:ir.ui.view,arch_db:policy_entry_insurance.view_policy_form
+msgid "<strong>Coverage</strong>"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model_terms:ir.ui.view,arch_db:policy_entry_insurance.view_policy_form
+msgid "<strong>Deduction</strong>"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model_terms:ir.ui.view,arch_db:policy_entry_insurance.view_policy_form
+msgid "<strong>Detail</strong>"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model_terms:ir.ui.view,arch_db:policy_entry_insurance.view_policy_form
+msgid "<strong>Difference</strong>"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model_terms:ir.ui.view,arch_db:policy_entry_insurance.view_policy_form
+msgid "<strong>Geographical Extension</strong>"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model_terms:ir.ui.view,arch_db:policy_entry_insurance.view_policy_form
+msgid "<strong>Glass Coverage</strong>"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model_terms:ir.ui.view,arch_db:policy_entry_insurance.view_policy_form
+msgid "<strong>Issuance Fee</strong>"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model_terms:ir.ui.view,arch_db:policy_entry_insurance.view_policy_form
+msgid "<strong>Issuing Fee</strong>"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model_terms:ir.ui.view,arch_db:policy_entry_insurance.view_policy_form
+msgid "<strong>Personal Accident For Driver</strong>"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model_terms:ir.ui.view,arch_db:policy_entry_insurance.view_policy_form
+msgid "<strong>Personal Accident For Passengers</strong>"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model_terms:ir.ui.view,arch_db:policy_entry_insurance.view_policy_form
+msgid "<strong>Personal holdings in vehicle</strong>"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model_terms:ir.ui.view,arch_db:policy_entry_insurance.view_policy_form
+msgid "<strong>Premium(%)</strong>"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model_terms:ir.ui.view,arch_db:policy_entry_insurance.view_policy_form
+msgid "<strong>Premium</strong>"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model_terms:ir.ui.view,arch_db:policy_entry_insurance.view_policy_form
+msgid "<strong>Sum Insured</strong>"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model_terms:ir.ui.view,arch_db:policy_entry_insurance.view_policy_form
+msgid "<strong>Title</strong>"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model_terms:ir.ui.view,arch_db:policy_entry_insurance.view_policy_form
+msgid "<strong>Total Policy</strong>"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model_terms:ir.ui.view,arch_db:policy_entry_insurance.view_policy_form
+msgid "<strong>Total</strong>"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model_terms:ir.ui.view,arch_db:policy_entry_insurance.view_policy_form
+msgid "<strong>Towing Vehicle</strong>"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model_terms:ir.ui.view,arch_db:policy_entry_insurance.view_policy_form
+msgid "<strong>Vat</strong>"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model_terms:ir.ui.view,arch_db:policy_entry_insurance.view_policy_form
+msgid "<strong>Zero Depreciation</strong>"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_insurance_employee_data__as_vip
+msgid "AS VIP?"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_insurance_health__accidental_rate
+msgid "Accidental Rate"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_insurance_health__accommodation
+msgid "Accommodation"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_business_class_config__account_no
+msgid "Account NO"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model_terms:ir.ui.view,arch_db:policy_entry_insurance.view_policy_form
+msgid "Accounting Date"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_client_group__message_needaction
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_insurance_contract__message_needaction
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_insurance_policy__message_needaction
+msgid "Action Needed"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_client_group__activity_ids
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_insurance_contract__activity_ids
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_insurance_policy__activity_ids
+msgid "Activities"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_client_group__activity_exception_decoration
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_insurance_contract__activity_exception_decoration
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_insurance_policy__activity_exception_decoration
+msgid "Activity Exception Decoration"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_client_group__activity_state
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_insurance_contract__activity_state
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_insurance_policy__activity_state
+msgid "Activity State"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_client_group__activity_type_icon
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_insurance_contract__activity_type_icon
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_insurance_policy__activity_type_icon
+msgid "Activity Type Icon"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_insurance_policy__actual_sum_insured
+msgid "Actual Sum Insured Amount"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_insurance_policy__additional_fee_am
+msgid "Add Fee amount"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_insurance_policy__additional_fee_am_total
+msgid "Additional Fee Total"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_insurance_policy__additional_fee_am_vat
+msgid "Additional Fee Vat"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_insurance_vehicle__additional_no
+msgid "Additional No"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_client_group__affliated_co
+msgid "Affiliated Co."
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_insurance_employee_data__age
+msgid "Age"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.model.fields.selection,name:policy_entry_insurance.selection__insurance_vehicle__covering_maintenance__agency
+msgid "Agency"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_insurance_policy__agreement_file
+msgid "Agreement File"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_insurance_benefit_line__amount
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_insurance_producer__amount
+msgid "Amount"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_insurance_installment__amount_paid
+msgid "Amount After  Percentage"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model_terms:ir.ui.view,arch_db:policy_entry_insurance.view_policy_form
+msgid "Amount Due"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_insurance_policy__approve_percentage
+msgid "Approve Percentage"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_insurance_policy__approved_amount
+msgid "Approved Amount"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_client_group__arabic_name
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_insurance_department__arabic_name
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_insurance_employee_data__arabic_name
+msgid "Arabic Name"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_client_group__message_attachment_count
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_insurance_contract__message_attachment_count
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_insurance_policy__message_attachment_count
+msgid "Attachment Count"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_insurance_health__auto_acceptance_limit
+msgid "Automatic Acceptance Limit"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_insurance_marine__average_percentage
+msgid "Average Percentage"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_client_group__bank_id
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_insurance_employee_data__bank_id
+msgid "Bank"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_insurance_policy__base_amount
+msgid "Base Amount"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_insurance_policy__basic_amount
+msgid "Basic Amount"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_insurance_policy__basic_amount_percentage
+msgid "Basic Amount Percentage"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_insurance_contract__basic_line_ids
+#: model_terms:ir.ui.view,arch_db:policy_entry_insurance.view_insurance_contract_form
+msgid "Basic And Complementray"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_basic_com_lines__basic_comission
+msgid "Basic Commission"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_insurance_policy__basic_percent
+msgid "Basic Percent"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_insurance_health__benefit_name
+msgid "Benefit Name"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_insurance_benefit_line__benefit_id
+msgid "Benefits"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_insurance_policy__benefits_ids
+msgid "Benefits Line"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_client_group__billing_address
+msgid "Billing address"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_insurance_employee_data__dob
+msgid "Birth Date"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_insurance_employee_data__dob_hijra
+msgid "Birth Date(Hijra)"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.ui.menu,name:policy_entry_insurance.menu_branch_master
+#: model_terms:ir.ui.view,arch_db:policy_entry_insurance.view_insurance_branch_form
+#: model_terms:ir.ui.view,arch_db:policy_entry_insurance.view_insurance_branch_search
+#: model_terms:ir.ui.view,arch_db:policy_entry_insurance.view_insurance_branch_tree
+msgid "Branch Master"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.actions.act_window,name:policy_entry_insurance.act_branch_master
+msgid "Branch Master "
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_insurance_policy__branch_id
+msgid "Branch Name"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.ui.menu,name:policy_entry_insurance.menu_brand_master
+#: model_terms:ir.ui.view,arch_db:policy_entry_insurance.view_insurance_location_form
+#: model_terms:ir.ui.view,arch_db:policy_entry_insurance.view_insurance_location_search
+#: model_terms:ir.ui.view,arch_db:policy_entry_insurance.view_vehicle_brand_form
+#: model_terms:ir.ui.view,arch_db:policy_entry_insurance.view_vehicle_brand_search
+#: model_terms:ir.ui.view,arch_db:policy_entry_insurance.view_vehicle_brand_tree
+msgid "Brand Master"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.actions.act_window,name:policy_entry_insurance.act_insurance_location_master
+msgid "Brand Master "
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_vehicle_brand__name
+msgid "Brand Name"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_insurance_policy__broker_commision
+#: model_terms:ir.ui.view,arch_db:policy_entry_insurance.view_policy_form
+msgid "Broker Commission"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.model.fields.selection,name:policy_entry_insurance.selection__insurance_employee_data__elm_relation__brother
+msgid "Brother"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_insurance_vehicle__building_no
+msgid "Building No"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_basic_com_lines__business_class_id
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_insurance_policy__business_class
+msgid "Business Class"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.actions.act_window,name:policy_entry_insurance.act_business_class_config
+msgid "Business Class "
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model_terms:ir.ui.view,arch_db:policy_entry_insurance.view_business_class_config_search
+msgid "Business Class configuration"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.ui.menu,name:policy_entry_insurance.menu_bussinss_class_config
+msgid "Business Classes"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_insurance_policy__calculated_gross
+msgid "Calculated Gross"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.model.fields.selection,name:policy_entry_insurance.selection__insurance_employee_data__endorsment_type__remove
+#: model:ir.model.fields.selection,name:policy_entry_insurance.selection__insurance_vehicle__endorsment_type__remove
+msgid "Cancel"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_insurance_vehicle__capacity
+msgid "Capacity"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_insurance_policy__car_hire
+msgid "Car Hire"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_insurance_marine__cargo_description
+msgid "Cargo Description"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_insurance_installment__cash_mode
+msgid "Cash Mode"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.ui.menu,name:policy_entry_insurance.menu_bussinss_class_category
+#: model_terms:ir.ui.view,arch_db:policy_entry_insurance.view_insurance_category_search
+msgid "Category"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.actions.act_window,name:policy_entry_insurance.act_insurance_category
+msgid "Category "
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_insurance_category__arabic_name
+msgid "Category Arabic Name"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model_terms:ir.ui.view,arch_db:policy_entry_insurance.view_insurance_category_tree
+msgid "Category Config"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_insurance_category__name
+msgid "Category English Name"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_insurance_category__code
+msgid "Category ID"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_insurance_health__category_name
+msgid "Category Name"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_insurance_vehicle__chassis
+msgid "Chassis"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_client_group__city
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_insurance_vehicle__city
+msgid "City"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.actions.act_window,name:policy_entry_insurance.act_insurance_city
+#: model:ir.ui.menu,name:policy_entry_insurance.menu_city_master
+#: model_terms:ir.ui.view,arch_db:policy_entry_insurance.view_insurance_city_form
+#: model_terms:ir.ui.view,arch_db:policy_entry_insurance.view_insurance_city_search
+#: model_terms:ir.ui.view,arch_db:policy_entry_insurance.view_insurance_city_tree
+msgid "City Master"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.model.fields.selection,name:policy_entry_insurance.selection__account_move__invoice_type__claim_inv
+msgid "Claim Invoice"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_business_class_config__arabic_name
+msgid "Class Arabic Name"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model_terms:ir.ui.view,arch_db:policy_entry_insurance.view_business_class_config_tree
+msgid "Class Config"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model_terms:ir.ui.view,arch_db:policy_entry_insurance.view_business_class_config_form
+#: model_terms:ir.ui.view,arch_db:policy_entry_insurance.view_insurance_category_form
+msgid "Class Configuration"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_business_class_config__name
+msgid "Class English Name"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_business_class_config__class_id
+msgid "Class ID"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_insurance_marine__clause_type
+msgid "Clause Type"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model_terms:ir.actions.act_window,help:policy_entry_insurance.act_health_data
+msgid "Click to create a new Benefit Name."
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_insurance_employee_data__client_image
+msgid "Client Image"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model_terms:ir.ui.view,arch_db:policy_entry_insurance.view_policy_form
+msgid "Client Policy information"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_insurance_service__co_pay_amount
+msgid "Co-Pay Amount"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_insurance_service__co_percent
+msgid "Co-Pay Percent"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_business_class_config__code
+msgid "Code"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_client_group__income_account_id
+msgid "Comm Income Acc"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_client_group__recivable_acc
+msgid "Comm Recievable Acc"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_vehicle_lines__commercial_truck
+#: model:ir.model.fields.selection,name:policy_entry_insurance.selection__vehicle_lines__truck_type__commercial_truck
+msgid "Commercial Truck"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.model.fields.selection,name:policy_entry_insurance.selection__account_move__invoice_type__commission_inv
+msgid "Commission Invoice"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.ui.menu,name:policy_entry_insurance.config_menu
+msgid "Configuration"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_insurance_health__cont_europ
+msgid "Cont Europ"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.model.fields.selection,name:policy_entry_insurance.selection__insurance_health__cont_europ__continental
+msgid "Continental"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_client_group__contact_dear
+msgid "Contract Dear"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_insurance_contract__name
+msgid "Contract ID"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_client_group__contact_person
+msgid "Contract Person"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_insurance_marine__cover_cluase
+msgid "Cover Clause"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_insurance_policy__key_loss_thef_coverage
+msgid "Coverage for key loss or theft"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_insurance_vehicle__covering_maintenance
+msgid "Covering Maintenance"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_basic_com_lines__create_uid
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_business_class_config__create_uid
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_cash_mode__create_uid
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_client_group__create_uid
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_ded_line__create_uid
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_ded_type__create_uid
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_driver_lines__create_uid
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_insurance_accommodation__create_uid
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_insurance_benefit__create_uid
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_insurance_benefit_line__create_uid
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_insurance_branch__create_uid
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_insurance_business_class__create_uid
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_insurance_category__create_uid
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_insurance_city__create_uid
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_insurance_contract__create_uid
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_insurance_department__create_uid
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_insurance_employee_data__create_uid
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_insurance_good_type__create_uid
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_insurance_health__create_uid
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_insurance_installment__create_uid
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_insurance_location__create_uid
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_insurance_marine__create_uid
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_insurance_policy__create_uid
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_insurance_producer__create_uid
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_insurance_region__create_uid
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_insurance_service__create_uid
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_insurance_vehicle__create_uid
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_packing_type__create_uid
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_services__create_uid
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_vehicle_brand__create_uid
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_vehicle_lines__create_uid
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_vehicle_type__create_uid
+msgid "Created by"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_basic_com_lines__create_date
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_business_class_config__create_date
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_cash_mode__create_date
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_client_group__create_date
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_ded_line__create_date
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_ded_type__create_date
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_driver_lines__create_date
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_insurance_accommodation__create_date
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_insurance_benefit__create_date
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_insurance_benefit_line__create_date
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_insurance_branch__create_date
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_insurance_business_class__create_date
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_insurance_category__create_date
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_insurance_city__create_date
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_insurance_contract__create_date
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_insurance_department__create_date
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_insurance_employee_data__create_date
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_insurance_good_type__create_date
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_insurance_health__create_date
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_insurance_installment__create_date
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_insurance_location__create_date
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_insurance_marine__create_date
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_insurance_policy__create_date
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_insurance_producer__create_date
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_insurance_region__create_date
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_insurance_service__create_date
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_insurance_vehicle__create_date
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_packing_type__create_date
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_services__create_date
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_vehicle_brand__create_date
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_vehicle_lines__create_date
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_vehicle_type__create_date
+msgid "Created on"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_insurance_marine__credit_letter_no
+msgid "Credit Limit No"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_insurance_business_class__currency_id
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_insurance_health__currency_id
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_insurance_marine__currency_id
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_insurance_policy__currency_id
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_insurance_vehicle__currency_id
+msgid "Currency"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_insurance_vehicle__custom_id
+msgid "Custom ID"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.actions.act_window,name:policy_entry_insurance.act_client_group_class
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_client_group__name
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_insurance_policy__partner_id
+#: model_terms:ir.ui.view,arch_db:policy_entry_insurance.view_client_group_form
+msgid "Customer"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_driver_lines__ded
+msgid "DED."
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_insurance_vehicle__dob_owner
+msgid "DOB Owner"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.model.fields.selection,name:policy_entry_insurance.selection__insurance_employee_data__elm_relation__daughter
+msgid "Daughter"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_insurance_health__death_rate
+msgid "Death Rate"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_insurance_policy__ded_fee_am
+msgid "Ded Amount"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_insurance_policy__ded_fee_am_total
+msgid "Ded Fee total"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_insurance_policy__ded_fee_am_vat
+msgid "Ded Fee vat"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.actions.act_window,name:policy_entry_insurance.act_ded_type_master
+msgid "Ded Type "
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.ui.menu,name:policy_entry_insurance.menu_ded_type_master
+#: model_terms:ir.ui.view,arch_db:policy_entry_insurance.view_ded_type_form
+#: model_terms:ir.ui.view,arch_db:policy_entry_insurance.view_ded_type_search
+#: model_terms:ir.ui.view,arch_db:policy_entry_insurance.view_ded_type_tree
+msgid "Ded Type Master"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_insurance_marine__deductible
+msgid "Deductible"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_ded_line__ded_amount
+msgid "Deduction Amount"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_ded_line__ded_description
+msgid "Deduction Description"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_ded_line__ded_percentage
+msgid "Deduction Percentage"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_ded_line__ded_type
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_insurance_business_class__deducation_line
+msgid "Deduction Type"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_insurance_employee_data__dep_no
+msgid "Dep No"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_basic_com_lines__department_id
+msgid "Department"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_insurance_department__code
+msgid "Department ID"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_insurance_employee_data__dependent_id
+msgid "Dependent ID"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_insurance_health__weekly_desc
+msgid "Desc"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_insurance_benefit_line__description
+msgid "Description"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_insurance_policy__difference_instalment
+#: model_terms:ir.ui.view,arch_db:policy_entry_insurance.view_policy_form
+msgid "Difference"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_insurance_policy__difference_sum_insured
+msgid "Difference Sum Insured"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_insurance_marine__discharge_port
+msgid "Discharge Port"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_basic_com_lines__display_name
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_business_class_config__display_name
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_cash_mode__display_name
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_client_group__display_name
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_ded_line__display_name
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_ded_type__display_name
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_driver_lines__display_name
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_insurance_accommodation__display_name
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_insurance_benefit__display_name
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_insurance_benefit_line__display_name
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_insurance_branch__display_name
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_insurance_business_class__display_name
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_insurance_category__display_name
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_insurance_city__display_name
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_insurance_contract__display_name
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_insurance_department__display_name
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_insurance_employee_data__display_name
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_insurance_good_type__display_name
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_insurance_health__display_name
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_insurance_installment__display_name
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_insurance_location__display_name
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_insurance_marine__display_name
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_insurance_policy__display_name
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_insurance_producer__display_name
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_insurance_region__display_name
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_insurance_service__display_name
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_insurance_vehicle__display_name
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_packing_type__display_name
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_services__display_name
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_vehicle_brand__display_name
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_vehicle_lines__display_name
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_vehicle_type__display_name
+msgid "Display Name"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.model.fields.selection,name:policy_entry_insurance.selection__insurance_employee_data__marital_status__divorced
+msgid "Divorced"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: code:addons/policy_entry_insurance/models/policy.py:0
+#, python-format
+msgid "Documents"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.model.fields.selection,name:policy_entry_insurance.selection__insurance_employee_data__endorsment_type__sub
+#: model:ir.model.fields.selection,name:policy_entry_insurance.selection__insurance_vehicle__endorsment_type__sub
+msgid "Downgrade"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.model.fields.selection,name:policy_entry_insurance.selection__insurance_policy__state__draft
+msgid "Draft"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_insurance_vehicle__driver_insurance
+msgid "Driver Insurance"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_insurance_business_class__driver_line
+msgid "Driver Line"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.model.fields.selection,name:policy_entry_insurance.selection__driver_lines__type_of__driver_pa
+msgid "Driver P.A"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_insurance_employee_data__elm_relation
+msgid "ELM Relation"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_client_group__email_adress
+msgid "Email No"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_insurance_producer__employee_id
+msgid "Employee"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.model,name:policy_entry_insurance.model_insurance_employee_data
+msgid "Employee Data"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_insurance_health__employee_ids
+msgid "Employee Detail"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.model.fields.selection,name:policy_entry_insurance.selection__account_move__invoice_type__endors
+#: model:ir.model.fields.selection,name:policy_entry_insurance.selection__insurance_policy__policy_type__endors
+msgid "Endorsement"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_insurance_employee_data__endorsment_am
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_insurance_vehicle__endorsment_am
+msgid "Endorsement Amount"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_insurance_policy__endorsment_ref
+msgid "Endorsement Ref"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model_terms:ir.ui.view,arch_db:policy_entry_insurance.view_policy_form
+msgid "Endorsement Vehicle"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_insurance_policy__endors_vehicle_ids
+msgid "Endorsement Vehicle Detail"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_client_group__english_name
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_client_group__insurance_english_name
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_insurance_department__name
+msgid "English Name"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.model.fields.selection,name:policy_entry_insurance.selection__insurance_health__cont_europ__european
+msgid "European"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_insurance_contract__expiry_date
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_insurance_policy__expiry_date
+msgid "Expiry Date"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_client_group__ext
+msgid "Extension"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model_terms:ir.ui.view,arch_db:policy_entry_insurance.view_policy_form
+msgid "Extra Benefits"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_client_group__fax_no
+msgid "Fax No"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.model.fields.selection,name:policy_entry_insurance.selection__insurance_employee_data__gender__female
+msgid "Female"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_insurance_contract__file_path
+msgid "File Path"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.model.fields.selection,name:policy_entry_insurance.selection__insurance_installment__type_installement__fixed
+msgid "Fixed"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_insurance_installment__fix_amount
+msgid "Fixed Amount"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_client_group__message_follower_ids
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_insurance_contract__message_follower_ids
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_insurance_policy__message_follower_ids
+msgid "Followers"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_client_group__message_partner_ids
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_insurance_contract__message_partner_ids
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_insurance_policy__message_partner_ids
+msgid "Followers (Partners)"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.model.fields,help:policy_entry_insurance.field_client_group__activity_type_icon
+#: model:ir.model.fields,help:policy_entry_insurance.field_insurance_contract__activity_type_icon
+#: model:ir.model.fields,help:policy_entry_insurance.field_insurance_policy__activity_type_icon
+msgid "Font awesome icon e.g. fa-tasks"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_insurance_health__from_age
+msgid "From Age"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_insurance_vehicle__gcc_cover
+msgid "GCC Cover"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_insurance_employee_data__gender
+msgid "Gender"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_insurance_policy__geo_ext
+msgid "Geographical Extension"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_insurance_policy__glass_coverage
+msgid "Glass Coverage"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_insurance_marine__good_type
+msgid "Good Type"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.model.fields.selection,name:policy_entry_insurance.selection__insurance_employee_data__elm_relation__grand_parent
+msgid "Grand Parent"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_insurance_health__gross_prem
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_insurance_policy__gross_premium
+msgid "Gross Premium"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_insurance_policy__gross_return
+msgid "Gross Return"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_insurance_employee_data__group_id
+msgid "Group ID"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.model.fields.selection,name:policy_entry_insurance.selection__insurance_employee_data__elm_relation__hoh
+msgid "HOH"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_client_group__has_message
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_insurance_contract__has_message
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_insurance_policy__has_message
+msgid "Has Message"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_insurance_employee_data__health_id
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_insurance_service__health_id
+msgid "Health"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.actions.act_window,name:policy_entry_insurance.act_health_data
+#: model:ir.model,name:policy_entry_insurance.model_insurance_health
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_insurance_policy__employee_ids
+#: model_terms:ir.ui.view,arch_db:policy_entry_insurance.view_health_data_form
+#: model_terms:ir.ui.view,arch_db:policy_entry_insurance.view_health_data_search
+#: model_terms:ir.ui.view,arch_db:policy_entry_insurance.view_health_data_tree
+msgid "Health Data"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_insurance_policy__health_endors_ids
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_insurance_policy__health_ids
+#: model_terms:ir.ui.view,arch_db:policy_entry_insurance.view_policy_form
+msgid "Health Detail"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model_terms:ir.ui.view,arch_db:policy_entry_insurance.view_policy_form
+msgid "Health Endorsement"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.model.fields.selection,name:policy_entry_insurance.selection__insurance_employee_data__elm_relation__husband
+msgid "Husband"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_basic_com_lines__id
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_business_class_config__id
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_cash_mode__id
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_client_group__id
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_ded_line__id
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_ded_type__id
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_driver_lines__id
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_insurance_accommodation__id
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_insurance_benefit__id
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_insurance_benefit_line__id
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_insurance_branch__id
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_insurance_business_class__id
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_insurance_category__id
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_insurance_city__id
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_insurance_contract__id
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_insurance_department__id
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_insurance_employee_data__id
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_insurance_good_type__id
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_insurance_health__id
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_insurance_installment__id
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_insurance_location__id
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_insurance_marine__id
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_insurance_policy__id
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_insurance_producer__id
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_insurance_region__id
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_insurance_service__id
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_insurance_vehicle__id
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_packing_type__id
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_services__id
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_vehicle_brand__id
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_vehicle_lines__id
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_vehicle_type__id
+msgid "ID"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_client_group__activity_exception_icon
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_insurance_contract__activity_exception_icon
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_insurance_policy__activity_exception_icon
+msgid "Icon"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.model.fields,help:policy_entry_insurance.field_client_group__activity_exception_icon
+#: model:ir.model.fields,help:policy_entry_insurance.field_insurance_contract__activity_exception_icon
+#: model:ir.model.fields,help:policy_entry_insurance.field_insurance_policy__activity_exception_icon
+msgid "Icon to indicate an exception activity."
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.model.fields,help:policy_entry_insurance.field_client_group__message_needaction
+#: model:ir.model.fields,help:policy_entry_insurance.field_client_group__message_unread
+#: model:ir.model.fields,help:policy_entry_insurance.field_insurance_contract__message_needaction
+#: model:ir.model.fields,help:policy_entry_insurance.field_insurance_contract__message_unread
+#: model:ir.model.fields,help:policy_entry_insurance.field_insurance_policy__message_needaction
+#: model:ir.model.fields,help:policy_entry_insurance.field_insurance_policy__message_unread
+msgid "If checked, new messages require your attention."
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.model.fields,help:policy_entry_insurance.field_client_group__message_has_error
+#: model:ir.model.fields,help:policy_entry_insurance.field_client_group__message_has_sms_error
+#: model:ir.model.fields,help:policy_entry_insurance.field_insurance_contract__message_has_error
+#: model:ir.model.fields,help:policy_entry_insurance.field_insurance_contract__message_has_sms_error
+#: model:ir.model.fields,help:policy_entry_insurance.field_insurance_policy__message_has_error
+#: model:ir.model.fields,help:policy_entry_insurance.field_insurance_policy__message_has_sms_error
+msgid "If checked, some messages have a delivery error."
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_insurance_policy__installment_ids
+#: model_terms:ir.ui.view,arch_db:policy_entry_insurance.view_policy_form
+msgid "Installment"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_insurance_installment__installment_date
+msgid "Installment Date"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.model,name:policy_entry_insurance.model_insurance_accommodation
+msgid "Insurance Accommodation"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_vehicle_lines__insurance_amount
+msgid "Insurance Amount"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_client_group__insurance_arabic_name
+msgid "Insurance Arabic Name"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_account_bank_statement_line__insurance_co_ref
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_account_move__insurance_co_ref
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_account_payment__insurance_co_ref
+msgid "Insurance Co.reference"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_insurance_policy__insurance_company_id
+#: model_terms:ir.ui.view,arch_db:policy_entry_insurance.view_client_group_form
+msgid "Insurance Company"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.actions.act_window,name:policy_entry_insurance.act_insurance_contract_class
+#: model:ir.ui.menu,name:policy_entry_insurance.menu_insurance_contract
+#: model_terms:ir.ui.view,arch_db:policy_entry_insurance.view_insurance_contract_form
+msgid "Insurance Contract"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.ui.menu,name:policy_entry_insurance.menu_insurance_data
+msgid "Insurance Data"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_client_group__department_ids
+#: model_terms:ir.ui.view,arch_db:policy_entry_insurance.view_client_group_form
+msgid "Insurance Department"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_client_group__insurance_id
+msgid "Insurance ID"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_product_product__insurance_product
+msgid "Insurance Product"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.model,name:policy_entry_insurance.model_insurance_contract
+msgid "Insurance contract"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_insurance_policy__move_ids
+msgid "Invoices"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model_terms:ir.ui.view,arch_db:policy_entry_insurance.view_policy_form
+msgid "Invoices Detail"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_insurance_health__is_accidental_death
+msgid "Is Accidental Death"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_insurance_policy__is_extra_benfit
+msgid "Is Extra Benefit"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_client_group__message_is_follower
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_insurance_contract__message_is_follower
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_insurance_policy__message_is_follower
+msgid "Is Follower"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_insurance_policy__is_renewel_policy
+msgid "Is Renewal Policy"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_insurance_policy__is_under_agreement
+msgid "Is Under Agreement"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_insurance_health__is_partial_disable
+msgid "Is partial Permanent Disability"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_insurance_health__is_weekly_income
+msgid "Is weekly income"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_insurance_contract__issuance_date
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_insurance_policy__issuance_date
+msgid "Issuance Date"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_insurance_policy__issuance_fee_car
+msgid "Issuance Fee"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_insurance_policy__issuening_fee_percent
+msgid "Issueing Fee Percent"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_insurance_policy__issuening_fee_total
+msgid "Issuenc Fee total"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_insurance_policy__issuening_fee
+msgid "Issuing Fee"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_insurance_vehicle__istamara_expiry
+msgid "Istemara Expiry"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_insurance_policy__journal_id
+msgid "Journal "
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.model,name:policy_entry_insurance.model_account_move
+msgid "Journal Entry"
+msgstr "قيد اليومية"
+
+#. module: policy_entry_insurance
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_basic_com_lines____last_update
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_business_class_config____last_update
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_cash_mode____last_update
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_client_group____last_update
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_ded_line____last_update
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_ded_type____last_update
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_driver_lines____last_update
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_insurance_accommodation____last_update
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_insurance_benefit____last_update
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_insurance_benefit_line____last_update
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_insurance_branch____last_update
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_insurance_business_class____last_update
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_insurance_category____last_update
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_insurance_city____last_update
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_insurance_contract____last_update
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_insurance_department____last_update
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_insurance_employee_data____last_update
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_insurance_good_type____last_update
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_insurance_health____last_update
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_insurance_installment____last_update
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_insurance_location____last_update
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_insurance_marine____last_update
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_insurance_policy____last_update
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_insurance_producer____last_update
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_insurance_region____last_update
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_insurance_service____last_update
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_insurance_vehicle____last_update
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_packing_type____last_update
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_services____last_update
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_vehicle_brand____last_update
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_vehicle_lines____last_update
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_vehicle_type____last_update
+msgid "Last Modified on"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_basic_com_lines__write_uid
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_business_class_config__write_uid
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_cash_mode__write_uid
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_client_group__write_uid
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_ded_line__write_uid
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_ded_type__write_uid
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_driver_lines__write_uid
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_insurance_accommodation__write_uid
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_insurance_benefit__write_uid
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_insurance_benefit_line__write_uid
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_insurance_branch__write_uid
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_insurance_business_class__write_uid
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_insurance_category__write_uid
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_insurance_city__write_uid
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_insurance_contract__write_uid
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_insurance_department__write_uid
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_insurance_employee_data__write_uid
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_insurance_good_type__write_uid
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_insurance_health__write_uid
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_insurance_installment__write_uid
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_insurance_location__write_uid
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_insurance_marine__write_uid
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_insurance_policy__write_uid
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_insurance_producer__write_uid
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_insurance_region__write_uid
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_insurance_service__write_uid
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_insurance_vehicle__write_uid
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_packing_type__write_uid
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_services__write_uid
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_vehicle_brand__write_uid
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_vehicle_lines__write_uid
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_vehicle_type__write_uid
+msgid "Last Updated by"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_basic_com_lines__write_date
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_business_class_config__write_date
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_cash_mode__write_date
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_client_group__write_date
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_ded_line__write_date
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_ded_type__write_date
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_driver_lines__write_date
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_insurance_accommodation__write_date
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_insurance_benefit__write_date
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_insurance_benefit_line__write_date
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_insurance_branch__write_date
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_insurance_business_class__write_date
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_insurance_category__write_date
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_insurance_city__write_date
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_insurance_contract__write_date
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_insurance_department__write_date
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_insurance_employee_data__write_date
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_insurance_good_type__write_date
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_insurance_health__write_date
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_insurance_installment__write_date
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_insurance_location__write_date
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_insurance_marine__write_date
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_insurance_policy__write_date
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_insurance_producer__write_date
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_insurance_region__write_date
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_insurance_service__write_date
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_insurance_vehicle__write_date
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_packing_type__write_date
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_services__write_date
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_vehicle_brand__write_date
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_vehicle_lines__write_date
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_vehicle_type__write_date
+msgid "Last Updated on"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_insurance_service__limit
+msgid "Limit"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_driver_lines__limit_person
+msgid "Limit person"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_insurance_marine__loading_port
+msgid "Loading Port"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_insurance_location__name
+msgid "Location"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.ui.menu,name:policy_entry_insurance.menu_location_master
+#: model_terms:ir.ui.view,arch_db:policy_entry_insurance.view_insurance_location_tree
+msgid "Location Master"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.model.fields.selection,name:policy_entry_insurance.selection__insurance_policy__terms__long_term
+msgid "Long Term"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_client_group__message_main_attachment_id
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_insurance_contract__message_main_attachment_id
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_insurance_policy__message_main_attachment_id
+msgid "Main Attachment"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.model.fields.selection,name:policy_entry_insurance.selection__insurance_employee_data__gender__male
+msgid "Male"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.model.fields.selection,name:policy_entry_insurance.selection__insurance_employee_data__member_category__manager
+msgid "Manager"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.ui.menu,name:policy_entry_insurance.marine_data_menu
+msgid "Marin Data"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.actions.act_window,name:policy_entry_insurance.act_marine_data
+#: model_terms:ir.ui.view,arch_db:policy_entry_insurance.view_marine_data_form
+#: model_terms:ir.ui.view,arch_db:policy_entry_insurance.view_marine_data_search
+#: model_terms:ir.ui.view,arch_db:policy_entry_insurance.view_marine_data_tree
+msgid "Marine Data"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model_terms:ir.ui.view,arch_db:policy_entry_insurance.view_policy_form
+msgid "Marine Detail"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_insurance_policy__marine_ids
+msgid "Marine Details"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_insurance_employee_data__marital_status
+msgid "Marital Status"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.model.fields.selection,name:policy_entry_insurance.selection__insurance_employee_data__marital_status__married
+msgid "Married"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_insurance_health__max_sum_insured
+msgid "Max Sum Insured"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_insurance_employee_data__member_category
+msgid "Member Category"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_insurance_employee_data__member_id
+msgid "Member ID"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_client_group__message_has_error
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_insurance_contract__message_has_error
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_insurance_policy__message_has_error
+msgid "Message Delivery error"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_client_group__message_ids
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_insurance_contract__message_ids
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_insurance_policy__message_ids
+msgid "Messages"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_insurance_health__min_sum_insured
+msgid "Min Sum Insured"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_client_group__mobile_no
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_insurance_vehicle__mobile_no
+msgid "Mobile No"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_insurance_employee_data__mobile1
+msgid "Mobile No (1)"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_insurance_employee_data__mobile2
+msgid "Mobile No (2)"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_insurance_vehicle__model_no
+msgid "Model Year"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_client_group__my_activity_date_deadline
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_insurance_contract__my_activity_date_deadline
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_insurance_policy__my_activity_date_deadline
+msgid "My Activity Deadline"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_insurance_vehicle__natural_peril_cover
+msgid "NATURAL PERIL Cover"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_driver_lines__no
+msgid "NO"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_cash_mode__name
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_ded_type__name
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_insurance_accommodation__name
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_insurance_benefit__name
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_insurance_branch__name
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_insurance_city__name
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_insurance_employee_data__name
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_insurance_good_type__name
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_insurance_region__name
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_packing_type__name
+msgid "Name"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_insurance_employee_data__nationality
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_insurance_marine__nationality
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_insurance_vehicle__nationality
+msgid "Nationality"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_insurance_vehicle__neighbour_head
+msgid "Neighbor Head"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_insurance_policy__net_prem_percent
+msgid "Net Prem Percent"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_insurance_health__net_prem
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_insurance_policy__net_premium
+msgid "Net Premium"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_insurance_policy__net_pr_percentage
+msgid "Net Premium Percentage"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_insurance_policy__net_return_amount
+msgid "Net Return"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_client_group__activity_calendar_event_id
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_insurance_contract__activity_calendar_event_id
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_insurance_policy__activity_calendar_event_id
+msgid "Next Activity Calendar Event"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_client_group__activity_date_deadline
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_insurance_contract__activity_date_deadline
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_insurance_policy__activity_date_deadline
+msgid "Next Activity Deadline"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_client_group__activity_summary
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_insurance_contract__activity_summary
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_insurance_policy__activity_summary
+msgid "Next Activity Summary"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_client_group__activity_type_id
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_insurance_contract__activity_type_id
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_insurance_policy__activity_type_id
+msgid "Next Activity Type"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.model.fields.selection,name:policy_entry_insurance.selection__insurance_employee_data__as_vip__no
+#: model:ir.model.fields.selection,name:policy_entry_insurance.selection__insurance_employee_data__vip__no
+msgid "No"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_insurance_health__no_emp
+msgid "No Of Employees"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_insurance_health__no_of_person
+msgid "No of Person"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.model.fields.selection,name:policy_entry_insurance.selection__insurance_employee_data__elm_relation__not_specified
+msgid "Not Specified"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_client_group__message_needaction_counter
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_insurance_contract__message_needaction_counter
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_insurance_policy__message_needaction_counter
+msgid "Number of Actions"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_client_group__message_has_error_counter
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_insurance_contract__message_has_error_counter
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_insurance_policy__message_has_error_counter
+msgid "Number of errors"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.model.fields,help:policy_entry_insurance.field_client_group__message_needaction_counter
+#: model:ir.model.fields,help:policy_entry_insurance.field_insurance_contract__message_needaction_counter
+#: model:ir.model.fields,help:policy_entry_insurance.field_insurance_policy__message_needaction_counter
+msgid "Number of messages which requires an action"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.model.fields,help:policy_entry_insurance.field_client_group__message_has_error_counter
+#: model:ir.model.fields,help:policy_entry_insurance.field_insurance_contract__message_has_error_counter
+#: model:ir.model.fields,help:policy_entry_insurance.field_insurance_policy__message_has_error_counter
+msgid "Number of messages with delivery error"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.model.fields,help:policy_entry_insurance.field_client_group__message_unread_counter
+#: model:ir.model.fields,help:policy_entry_insurance.field_insurance_contract__message_unread_counter
+#: model:ir.model.fields,help:policy_entry_insurance.field_insurance_policy__message_unread_counter
+msgid "Number of unread messages"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_insurance_employee_data__endorsment_type
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_insurance_vehicle__endorsment_type
+msgid "Operation Type"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.model.fields.selection,name:policy_entry_insurance.selection__insurance_employee_data__elm_relation__other
+msgid "Other"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_client_group__other_income_account_id
+msgid "Other Fees Income Acc"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_insurance_vehicle__owner_id
+msgid "Owner ID No"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_insurance_vehicle__owener_name
+msgid "Owner Name"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_insurance_vehicle__po_box
+msgid "PO Box"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_insurance_marine__package_no
+msgid "Package No"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_insurance_marine__packing_type
+msgid "Packing Type"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_insurance_policy__paid
+msgid "Paid Amount"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_insurance_marine__parcel_no
+msgid "Parcel No"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.model.fields.selection,name:policy_entry_insurance.selection__insurance_employee_data__elm_relation__parent
+msgid "Parent"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_insurance_health__partial_rate
+msgid "Partial Rate"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.model.fields.selection,name:policy_entry_insurance.selection__driver_lines__type_of__passenger_pa
+msgid "Passenger P.A"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_insurance_policy__payment_term_id
+msgid "Payment Term"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_insurance_producer__percentage
+#: model:ir.model.fields.selection,name:policy_entry_insurance.selection__insurance_installment__type_installement__percentage
+msgid "Percentage"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_insurance_installment__percentage
+msgid "Percentage %"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_driver_lines__permium
+msgid "Permium"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_insurance_policy__personal_accident_driver
+msgid "Personal Accident For Driver"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_insurance_policy__personal_accident_for_passenger
+msgid "Personal Accident For Passengers"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_insurance_policy__personal_holding_in_vehicle
+msgid "Personal holdings in vehicle"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_client_group__phone
+msgid "Phone No"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_insurance_vehicle__plate_no_ar
+msgid "Plate No. (Ar)"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_insurance_vehicle__plate_no
+msgid "Plate No. (En)"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:documents.facet,name:policy_entry_insurance.documents_policy_data
+#: model:documents.folder,name:policy_entry_insurance.documents_policy_data_folder
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_account_bank_statement_line__policy_id
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_account_move__policy_id
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_account_payment__policy_id
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_insurance_policy__prev_policy
+#: model:ir.model.fields.selection,name:policy_entry_insurance.selection__account_move__invoice_type__policy
+#: model:ir.model.fields.selection,name:policy_entry_insurance.selection__insurance_policy__policy_type__policy
+msgid "Policy"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.ui.menu,name:policy_entry_insurance.policy_entry_data
+msgid "Policy Data"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model_terms:ir.ui.view,arch_db:policy_entry_insurance.view_policy_form
+msgid "Policy Detail"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:documents.tag,name:policy_entry_insurance.documents_document_policy_data_tag
+msgid "Policy Documents"
+msgstr "????? ???????"
+
+#. module: policy_entry_insurance
+#: model:ir.actions.act_window,name:policy_entry_insurance.act_policy_entry
+#: model:ir.ui.menu,name:policy_entry_insurance.policy_entry_menu
+#: model:ir.ui.menu,name:policy_entry_insurance.policy_entry_submenu
+#: model_terms:ir.ui.view,arch_db:policy_entry_insurance.view_policy_form
+#: model_terms:ir.ui.view,arch_db:policy_entry_insurance.view_policy_search
+#: model_terms:ir.ui.view,arch_db:policy_entry_insurance.view_policy_tree
+msgid "Policy Entry"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:documents.tag,name:policy_entry_insurance.documents_fine_policy_document_data
+msgid "Policy Fine"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_insurance_benefit_line__policy_id
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_insurance_business_class__policy_id
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_insurance_health__policy_id
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_insurance_marine__policy_id
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_insurance_vehicle__policy_id
+msgid "Policy ID"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model_terms:ir.ui.view,arch_db:policy_entry_insurance.view_policy_form
+msgid "Policy Info"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_account_bank_statement_line__policy_no
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_account_move__policy_no
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_account_payment__policy_no
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_insurance_policy__policy_no
+msgid "Policy No"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_product_template__insurance_product
+msgid "Policy Product"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model_terms:ir.ui.view,arch_db:policy_entry_insurance.view_policy_form
+msgid "Policy Summery"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_insurance_service__population
+msgid "Population"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.model.fields.selection,name:policy_entry_insurance.selection__insurance_marine__clause_type__port_store
+msgid "Port Store"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.model.fields.selection,name:policy_entry_insurance.selection__insurance_policy__state__posted
+msgid "Posted"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_client_group__pre_paid_tax_acc
+msgid "Pre Paid Tax Acc"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_insurance_employee_data__rate
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_insurance_marine__premium
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_insurance_policy__basic_prem
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_insurance_vehicle__premium
+msgid "Premium"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_insurance_policy__premium_actual
+msgid "Premium Actual"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_insurance_policy__premium_car
+msgid "Premium Car"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_insurance_policy__premium_difference
+msgid "Premium Difference"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_insurance_policy__premium_due
+msgid "Premium Due"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_insurance_policy__premium_percent_am
+msgid "Premium Percent"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_insurance_policy__premium_percent_vat
+msgid "Premium Percent Vat"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_insurance_policy__premium_percent_am_total
+msgid "Premium Percent total"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.model.fields.selection,name:policy_entry_insurance.selection__vehicle_lines__truck_type__private_vehicle
+msgid "Private Vehicle"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_insurance_policy__producer_ids
+#: model_terms:ir.ui.view,arch_db:policy_entry_insurance.view_policy_form
+#: model_terms:ir.ui.view,arch_db:policy_entry_insurance.view_producer_search
+#: model_terms:ir.ui.view,arch_db:policy_entry_insurance.view_producer_tree
+msgid "Producer"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.ui.menu,name:policy_entry_insurance.producer_menu
+#: model_terms:ir.ui.view,arch_db:policy_entry_insurance.view_producer_form
+msgid "Producer Data"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.actions.act_window,name:policy_entry_insurance.act_producer
+msgid "Producer Data "
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.model,name:policy_entry_insurance.model_product_product
+msgid "Product"
+msgstr "المنتج"
+
+#. module: policy_entry_insurance
+#: model:ir.model,name:policy_entry_insurance.model_product_template
+msgid "Product Template"
+msgstr "قالب المنتج"
+
+#. module: policy_entry_insurance
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_client_group__public
+msgid "Public"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_basic_com_lines__contract_id
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_insurance_employee_data__policy_id
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_insurance_installment__policy_id
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_insurance_producer__policy_id
+msgid "REL"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_client_group__region
+msgid "Region"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.ui.menu,name:policy_entry_insurance.menu_region_master
+#: model_terms:ir.ui.view,arch_db:policy_entry_insurance.view_insurance_region_form
+#: model_terms:ir.ui.view,arch_db:policy_entry_insurance.view_insurance_region_search
+#: model_terms:ir.ui.view,arch_db:policy_entry_insurance.view_insurance_region_tree
+msgid "Region Master"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.actions.act_window,name:policy_entry_insurance.act_insurance_insurance_region
+msgid "Region Master "
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.model.fields.selection,name:policy_entry_insurance.selection__account_move__invoice_type__regular_inv
+msgid "Regular Invoice"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_ded_line__class_id
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_driver_lines__class_id
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_insurance_vehicle__class_id
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_vehicle_lines__class_id
+msgid "Rel"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_client_group__activity_user_id
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_insurance_contract__activity_user_id
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_insurance_policy__activity_user_id
+msgid "Responsible User"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_insurance_policy__return_end_no
+msgid "Return End No"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_insurance_employee_data__risk_no
+msgid "Risk No"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_client_group__message_has_sms_error
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_insurance_contract__message_has_sms_error
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_insurance_policy__message_has_sms_error
+msgid "SMS Delivery error"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_insurance_marine__sailing_date
+msgid "Sailing Date"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_account_bank_statement_line__sales_person
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_account_move__sales_person
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_account_payment__sales_person
+msgid "Sales Person"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model_terms:ir.ui.view,arch_db:policy_entry_insurance.view_policy_form
+msgid "Salesperson"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_insurance_vehicle__seq_no
+msgid "Sequence No"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_insurance_health__service_ids
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_services__name
+msgid "Service"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.model.fields.selection,name:policy_entry_insurance.selection__insurance_policy__terms__short_term
+msgid "Short Term"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.model.fields.selection,name:policy_entry_insurance.selection__insurance_employee_data__marital_status__single
+msgid "Single"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_insurance_marine__single_policy
+msgid "Single Policy"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.model.fields.selection,name:policy_entry_insurance.selection__insurance_employee_data__elm_relation__sister
+msgid "Sister"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.model.fields.selection,name:policy_entry_insurance.selection__insurance_employee_data__member_category__skilled_worker
+msgid "Skilled Worker"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.model.fields.selection,name:policy_entry_insurance.selection__insurance_employee_data__elm_relation__son
+msgid "Son"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model_terms:ir.ui.view,arch_db:policy_entry_insurance.view_policy_form
+msgid "Source Document"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_insurance_employee_data__sponser_id
+msgid "Sponser ID"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.model.fields.selection,name:policy_entry_insurance.selection__insurance_employee_data__member_category__staff
+msgid "Staff"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_insurance_employee_data__staff_no
+msgid "Staff No"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_insurance_policy__start_date
+msgid "Start Date"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_insurance_contract__starting_date
+msgid "Starting Date"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_insurance_policy__state
+msgid "State"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.model.fields,help:policy_entry_insurance.field_client_group__activity_state
+#: model:ir.model.fields,help:policy_entry_insurance.field_insurance_contract__activity_state
+#: model:ir.model.fields,help:policy_entry_insurance.field_insurance_policy__activity_state
+msgid ""
+"Status based on activities\n"
+"Overdue: Due date is already passed\n"
+"Today: Activity date is today\n"
+"Planned: Future activities."
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.model.fields.selection,name:policy_entry_insurance.selection__insurance_marine__clause_type__store_port
+msgid "Store - Port"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.model.fields.selection,name:policy_entry_insurance.selection__insurance_policy__state__submitted
+msgid "Submitted"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_insurance_marine__cardo_sum_insured
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_insurance_policy__sum_insured
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_insurance_vehicle__value
+msgid "Sum Insured"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_insurance_policy__sum_insured_vehicle
+msgid "Sum Insured Vehicle"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.model.fields.selection,name:policy_entry_insurance.selection__insurance_employee_data__member_category__supervisor
+msgid "Supervisor"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.model.fields.selection,name:policy_entry_insurance.selection__driver_lines__type_of__tpl
+msgid "TPL"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model_terms:ir.ui.view,arch_db:policy_entry_insurance.view_policy_form
+msgid "Tax"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model_terms:ir.ui.view,arch_db:policy_entry_insurance.view_policy_form
+msgid "Tax Excluded"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_insurance_policy__terms
+msgid "Terms"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_insurance_health__to_age
+msgid "To Age"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_insurance_business_class__total_vehicle
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_insurance_health__total
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_insurance_marine__total
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_insurance_vehicle__total
+#: model_terms:ir.ui.view,arch_db:policy_entry_insurance.view_policy_form
+msgid "Total"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_insurance_employee_data__total
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_insurance_policy__total_premium_after_vat
+msgid "Total After Vat"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_insurance_policy__total_document_number
+msgid "Total Documents"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_insurance_policy__total_instalment_am
+msgid "Total Installment"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_insurance_health__total_no_person
+msgid "Total No of Person"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_insurance_health__total_permanent_disability_rate
+msgid "Total Permanent Disability Rate"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_insurance_policy__total_policy_am
+msgid "Total Policy"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_insurance_policy__total_policy_vat
+msgid "Total Policy Vat"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_insurance_policy__total_policy_am_after_vat
+msgid "Total Policy after Vat"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_insurance_health__total_rate
+msgid "Total Rate"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_vehicle_lines__no_of_truck
+msgid "Total Truck No"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_insurance_business_class__total_insurance
+msgid "Total Vehicle"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model_terms:ir.ui.view,arch_db:policy_entry_insurance.view_policy_form
+msgid "Total in Currency"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_insurance_policy__towing_vehicle
+msgid "Towing Vehicle"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_client_group__trade_name
+msgid "Trade Name"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_account_bank_statement_line__invoice_type
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_account_move__invoice_type
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_account_payment__invoice_type
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_driver_lines__type_of
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_insurance_installment__type_installement
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_insurance_policy__policy_type
+msgid "Type"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.model.fields,help:policy_entry_insurance.field_client_group__activity_exception_decoration
+#: model:ir.model.fields,help:policy_entry_insurance.field_insurance_contract__activity_exception_decoration
+#: model:ir.model.fields,help:policy_entry_insurance.field_insurance_policy__activity_exception_decoration
+msgid "Type of the exception activity on record."
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_insurance_vehicle__unit_no
+msgid "Unit No"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_client_group__message_unread
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_insurance_contract__message_unread
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_insurance_policy__message_unread
+msgid "Unread Messages"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_client_group__message_unread_counter
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_insurance_contract__message_unread_counter
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_insurance_policy__message_unread_counter
+msgid "Unread Messages Counter"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.model.fields.selection,name:policy_entry_insurance.selection__insurance_employee_data__endorsment_type__add
+#: model:ir.model.fields.selection,name:policy_entry_insurance.selection__insurance_vehicle__endorsment_type__add
+msgid "Upgrade"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_insurance_vehicle__user_id_no
+msgid "User ID No"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_insurance_vehicle__user_name
+msgid "User Name"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_insurance_vehicle__vat
+msgid "VAT"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_insurance_employee_data__vip
+msgid "VIP?"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_insurance_employee_data__vat
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_insurance_marine__vat
+msgid "Vat"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_insurance_policy__vat_premium
+msgid "Vat Premium"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model_terms:ir.ui.view,arch_db:policy_entry_insurance.view_vehicle_type_form
+msgid "Vehcile Type"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_insurance_vehicle__vehicle_color
+msgid "Vehicle Color"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model_terms:ir.ui.view,arch_db:policy_entry_insurance.view_policy_form
+msgid "Vehicle Coverage"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.actions.act_window,name:policy_entry_insurance.act_insurance_vehicle
+#: model:ir.ui.menu,name:policy_entry_insurance.bussines_class_vehicle_menu
+msgid "Vehicle Data"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_insurance_business_class__vehicle_ids
+#: model_terms:ir.ui.view,arch_db:policy_entry_insurance.view_insurance_vehicle_form
+#: model_terms:ir.ui.view,arch_db:policy_entry_insurance.view_insurance_vehicle_search
+#: model_terms:ir.ui.view,arch_db:policy_entry_insurance.view_insurance_vehicle_tree
+#: model_terms:ir.ui.view,arch_db:policy_entry_insurance.view_policy_form
+msgid "Vehicle Detail"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_insurance_vehicle__vehicle_image
+msgid "Vehicle Image"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_insurance_vehicle__vehicle_make_id
+msgid "Vehicle Make"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_insurance_vehicle__vehicle_model_id
+msgid "Vehicle Model"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_insurance_vehicle__vehicle_type_id
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_vehicle_lines__truck_type
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_vehicle_type__name
+msgid "Vehicle Type"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.ui.menu,name:policy_entry_insurance.menu_vehicle_type_master
+#: model_terms:ir.ui.view,arch_db:policy_entry_insurance.view_vehicle_type_search
+#: model_terms:ir.ui.view,arch_db:policy_entry_insurance.view_vehicle_type_tree
+msgid "Vehicle Type Master"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.actions.act_window,name:policy_entry_insurance.act_vehicle_type
+msgid "Vehicle Type Master "
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_insurance_policy__vehicle_detail
+msgid "Vehicle detail"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_insurance_business_class__vehicle_line_ids
+msgid "Vehicles"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_insurance_marine__vessel_build_date
+msgid "Vessel Build Date"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_insurance_marine__vessel_name
+msgid "Vessel Name"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_insurance_service__wating_after
+msgid "Waiting After"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_insurance_service__waiting_before
+msgid "Waiting Before"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_client_group__website_message_ids
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_insurance_contract__website_message_ids
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_insurance_policy__website_message_ids
+msgid "Website Messages"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.model.fields,help:policy_entry_insurance.field_client_group__website_message_ids
+#: model:ir.model.fields,help:policy_entry_insurance.field_insurance_contract__website_message_ids
+#: model:ir.model.fields,help:policy_entry_insurance.field_insurance_policy__website_message_ids
+msgid "Website communication history"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.model.fields.selection,name:policy_entry_insurance.selection__insurance_employee_data__marital_status__widowed
+msgid "Widowed"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.model.fields.selection,name:policy_entry_insurance.selection__insurance_employee_data__elm_relation__wife
+msgid "Wife"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.model.fields.selection,name:policy_entry_insurance.selection__insurance_vehicle__covering_maintenance__work_shop
+msgid "Workshop"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.model.fields.selection,name:policy_entry_insurance.selection__insurance_employee_data__as_vip__yes
+#: model:ir.model.fields.selection,name:policy_entry_insurance.selection__insurance_employee_data__vip__yes
+msgid "Yes"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_insurance_policy__zero_dep
+msgid "Zero Depreciation"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_insurance_vehicle__zip_code
+msgid "Zip Code"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.model,name:policy_entry_insurance.model_basic_com_lines
+msgid "basic.com.lines"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.model,name:policy_entry_insurance.model_business_class_config
+msgid "business.class.config"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.model,name:policy_entry_insurance.model_cash_mode
+msgid "cash.mode"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.model,name:policy_entry_insurance.model_client_group
+msgid "client.group"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.model,name:policy_entry_insurance.model_ded_line
+msgid "ded.line"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.model,name:policy_entry_insurance.model_ded_type
+msgid "ded.type"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.model,name:policy_entry_insurance.model_driver_lines
+msgid "driver.lines"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.model,name:policy_entry_insurance.model_insurance_benefit
+msgid "insurance.benefit"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.model,name:policy_entry_insurance.model_insurance_benefit_line
+msgid "insurance.benefit.line"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.model,name:policy_entry_insurance.model_insurance_branch
+msgid "insurance.branch"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.model,name:policy_entry_insurance.model_insurance_business_class
+msgid "insurance.business.class"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.model,name:policy_entry_insurance.model_insurance_category
+msgid "insurance.category"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.model,name:policy_entry_insurance.model_insurance_city
+msgid "insurance.city"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.model,name:policy_entry_insurance.model_insurance_department
+msgid "insurance.department"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.model,name:policy_entry_insurance.model_insurance_good_type
+msgid "insurance.good.type"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.model,name:policy_entry_insurance.model_insurance_installment
+msgid "insurance.installment"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.model,name:policy_entry_insurance.model_insurance_location
+msgid "insurance.location"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.model,name:policy_entry_insurance.model_insurance_marine
+msgid "insurance.marine"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.model,name:policy_entry_insurance.model_insurance_policy
+msgid "insurance.policy"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.model,name:policy_entry_insurance.model_insurance_producer
+msgid "insurance.producer"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.model,name:policy_entry_insurance.model_insurance_region
+msgid "insurance.region"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.model,name:policy_entry_insurance.model_insurance_service
+msgid "insurance.service"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.model,name:policy_entry_insurance.model_insurance_vehicle
+msgid "insurance.vehicle"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.model,name:policy_entry_insurance.model_packing_type
+msgid "packing.type"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_insurance_policy__policy_id
+msgid "policy ID"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_insurance_service__service_id
+msgid "service"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.model,name:policy_entry_insurance.model_services
+msgid "services"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_insurance_vehicle__street
+msgid "stree"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.model,name:policy_entry_insurance.model_vehicle_brand
+msgid "vehicle.brand"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.model,name:policy_entry_insurance.model_vehicle_lines
+msgid "vehicle.lines"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.model,name:policy_entry_insurance.model_vehicle_type
+msgid "vehicle.type"
+msgstr ""
+
+#. module: policy_entry_insurance
+#: model:ir.model.fields,field_description:policy_entry_insurance.field_client_group__website
+msgid "website"
+msgstr ""
