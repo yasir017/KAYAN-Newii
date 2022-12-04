@@ -35,8 +35,8 @@
                         <group>
                             <field name="name" invisible="1"/>
                             <field name="email"/>
-                            <field name="country"/>
-                             <field name="city"/>
+                            <field name="country" options="{'no_open': True, 'no_create': True}"/>
+                             <field name="city" options="{'no_open': True, 'no_create': True}"/>
                         </group>
                          <group>
                              <field name="website"/>

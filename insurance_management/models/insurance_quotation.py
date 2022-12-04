@@ -50,7 +50,7 @@ class insurance_quotation(models.Model):
     document_no = fields.Char(related='client_branch_id.document_no', string='Document No')
     quotation_file = fields.Binary(string='Upload File')
     total_tax = fields.Float(string='Total Vat',compute='get_total_rate_tax_amount')
-    amount = fields.Float(string='Total',compute='get_total_rate_vat_amount')
+    amount = fields.Float(string='Total After Vat',compute='get_total_rate_vat_amount')
     total_rate = fields.Float(string='Total Premium',compute='get_total_rate_vat_amount')
     select = fields.Boolean(string='Select')
     custom_benefits_ids = fields.One2many('customer.custom.benefit','insurance_quotation_id',string='Benefits')
@@ -296,7 +296,7 @@ class vehicle_quotation(models.Model):
     document_no = fields.Char(related='client_branch_id.document_no', string='Document No')
     quotation_file = fields.Binary(string='Upload File')
     total_vat = fields.Float(string='Total VAT',compute='get_total_rate_vat_amount')
-    amount = fields.Float(string='Total', compute='get_total_rate_vat_amount')
+    amount = fields.Float(string='Total After Vat', compute='get_total_rate_vat_amount')
     total_rate = fields.Float(string='Total Premium', compute='get_total_rate_vat_amount')
     select = fields.Boolean(string='Select')
 
@@ -503,8 +503,37 @@ class vehicle_quotation_line(models.Model):
     dob_owner = fields.Date(string='DOB of Owner (AD)')
     nationality = fields.Many2one('res.country', string='Nationality')
     vehicle_make_id = fields.Many2one('fleet.vehicle.model.brand', string='Vehicle Manufacturer')
-    vehicle_model_id = fields.Many2one('fleet.vehicle.model', string='Vehicle Model')
+    vehicle_model_id = fields.Many2one('fleet.vehicle.model', string='Vehicle Model' ,domain="[('brand_id', '=?', vehicle_make_id)]")
     sum_insured = fields.Float("Sum Insured")
+
+    @api.onchange('vehicle_make_id')
+    def set_model_wrt_vehicle_make_id(self):
+        for rec in self:
+            if rec.vehicle_model_id:
+                if rec.vehicle_model_id.brand_id.id != rec.vehicle_make_id.id:
+                    rec.vehicle_model_id = False
+
+    @api.onchange('vehicle_model_id')
+    def set_make_wrt_vehicle_model_id(self):
+        for rec in self:
+            rec.vehicle_make_id = rec.vehicle_model_id.brand_id.id
+
+    @api.onchange('country')
+    def set_city_wrt_country(self):
+        for rec in self:
+            if rec.city:
+                if rec.city.id not in rec.country.state_ids.ids:
+                    rec.city = False
+
+    @api.onchange('city')
+    def set_country_wrt_state_id(self):
+        for rec in self:
+            if rec.city:
+                if not rec.country:
+                    rec.country = rec.city.country_id.id
+                elif rec.country.id != rec.city.country_id.id:
+                    rec.country = rec.city.country_id.id
+
     @api.depends('vat', 'rate')
     def _get_q_line_total(self):
         for rec in self:

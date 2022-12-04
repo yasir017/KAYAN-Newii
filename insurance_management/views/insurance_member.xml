@@ -7,6 +7,7 @@
         <field name="arch" type="xml">
             <tree string="Client INFO" create="0" edit="0" delete="0">
                 <field name="document_no"/>
+                <field name="customer_id"/>
                 <field name="member_id"/>
                 <field name="dependent_id"/>
                 <field name="name"/>
@@ -67,13 +68,13 @@
                         <group>
                             <field name="dob_hijra"/>
                             <field name="age"/>
-                            <field name="member_type"/>
+                            <field name="member_type" options="{'no_open': True, 'no_create': True}"/>
                         </group>
                         <group>
-                            <field name="class_no"/>
-                            <field name="age_category"/>
+                            <field name="class_no" options="{'no_open': True, 'no_create': True}"/>
+                            <field name="age_category" options="{'no_open': True, 'no_create': True}"/>
                             <field name="risk_no"/>
-                            <field name="nationality"/>
+                            <field name="nationality" options="{'no_open': True, 'no_create': True}"/>
                         </group>
                     </group>
                     <group>
@@ -130,6 +131,7 @@
         <field name="arch" type="xml">
             <tree string="Client INFO" create="1" edit="1" delete="1">
                 <field name="document_no"/>
+                <field name="customer_id"/>
                 <field name="member_id"/>
                 <field name="dependent_id"/>
                 <field name="name"/>
@@ -190,19 +192,19 @@
                         <group>
                             <field name="dob_hijra"/>
                             <field name="age"/>
-                            <field name="member_type"/>
+                            <field name="member_type" options="{'no_open': True, 'no_create': True}"/>
                         </group>
                         <group>
-                            <field name="class_no"/>
-                            <field name="age_category"/>
+                            <field name="class_no" options="{'no_open': True, 'no_create': True}"/>
+                            <field name="age_category" options="{'no_open': True, 'no_create': True}"/>
                             <field name="risk_no"/>
-                            <field name="nationality"/>
+                            <field name="nationality" options="{'no_open': True, 'no_create': True}"/>
                         </group>
                     </group>
                     <group>
                         <group>
                             <field name="staff_no"/>
-                            <field name="member_category"/>
+                            <field name="member_category" options="{'no_open': True, 'no_create': True}"/>
                             <field name="mobile1"/>
                             <field name="mobile2"/>
                         </group>

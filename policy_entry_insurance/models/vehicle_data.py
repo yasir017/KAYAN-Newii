@@ -38,7 +38,7 @@ class Vehicle(models.Model):
     istamara_expiry = fields.Date("Istemara Expiry")
     vehicle_color = fields.Char("Vehicle Color")
     vehicle_make_id = fields.Many2one('fleet.vehicle.model.brand', string='Vehicle Manufacturer')
-    vehicle_model_id = fields.Many2one('fleet.vehicle.model', string='Vehicle Model')
+    vehicle_model_id = fields.Many2one('fleet.vehicle.model', string='Vehicle Model',domain="[('brand_id', '=?', vehicle_make_id)]")
     gcc_cover = fields.Boolean("GCC Cover")
     natural_peril_cover = fields.Boolean("NATURAL PERIL Cover")
     dob_owner = fields.Date("DOB Owner")
@@ -49,6 +49,19 @@ class Vehicle(models.Model):
     endorsment_am = fields.Float("Endorsement Amount")
     endorsment_type = fields.Selection([('add', 'Upgrade'), ('sub', 'Downgrade'), ('remove', 'Cancel')],
                                        string='Operation Type')
+
+    @api.onchange('vehicle_make_id')
+    def set_model_wrt_vehicle_make_id(self):
+        for rec in self:
+            if rec.vehicle_model_id:
+                if rec.vehicle_model_id.brand_id.id != rec.vehicle_make_id.id:
+                    rec.vehicle_model_id = False
+
+    @api.onchange('vehicle_model_id')
+    def set_make_wrt_vehicle_model_id(self):
+        for rec in self:
+            rec.vehicle_make_id = rec.vehicle_model_id.brand_id.id
+
     @api.depends('vat', 'premium')
     def _get_q_line_total(self):
         for rec in self:

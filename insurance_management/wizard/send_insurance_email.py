@@ -25,7 +25,7 @@ class InsuranceEmailWizard(models.TransientModel):
 
     client_id = fields.Many2one('client.branch',string='Client')
     insurance_companies_ids = fields.Many2many('insurance.company',string='Insurance Companies',required=True)
-    client_info_attachment_ids = fields.Many2many('ir.attachment',string='Client Info Attachments')
+    client_info_attachment_ids = fields.Many2many('ir.attachment',string='Client Info Attachments',domain="[('res_id','=',client_id),('res_model','=','qqqq')]")
     attachment_ids = fields.Many2many(
         'ir.attachment', 'mail_insurance_message_ir_attachments_rel',
         'ins_wizard_id', 'attachment_id', 'Attachments')

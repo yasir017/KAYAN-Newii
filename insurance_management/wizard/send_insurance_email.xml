@@ -13,14 +13,10 @@
 						</group>
 						<group>
 							<field name="client_info_attachment_ids">
-								<tree create="0">
+								<tree delete="1">
 									<field name="name" invisible="1"/>
 									<field name="datas" filename="name" widget="binary" string="Name"/>
 								</tree>
-								<form create="0">
-									<field name="name"/>
-									<field name="datas" filename="name" widget="binary"/>
-								</form>
 							</field>
 <!--							<button name="generate_client_info_attachment" type="object" string="Generate Client Info Attachments"-->
 <!--					class="oe_highlight"/>-->
@@ -33,7 +29,7 @@
 						<field name="subject" nolabel="1" placeholder="Subject..." required="True"/>
 					</group>
 					<group>
-						<field name="cc" nolabel="1" placeholder="CC... write separate email with comma" required="True"/>
+						<field name="cc" nolabel="1" placeholder="CC... write separate email with comma"/>
 					</group>
                     <field name="body" class="oe-bordered-editor" options="{'style-inline': true}" force_save="1"/>
 					<group col="4">

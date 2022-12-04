@@ -149,7 +149,7 @@
                             class="oe_stat_button" icon="fa-star" attrs="{'invisible': [('medical_visibility_check', '=', False)]}">
                             <div class="o_stat_info">
                                 <field name="total_clients_number" class="o_stat_value"/>
-                                <span class="o_stat_text">Client Details</span>
+                                <span class="o_stat_text">Client Lines</span>
                             </div>
                         </button>
                         <button name="action_open_medical_quotation" type="object"
@@ -184,7 +184,7 @@
                             class="oe_stat_button" icon="fa-star" attrs="{'invisible': [('vehicle_visibility_check', '=', False)]}">
                             <div class="o_stat_info">
                                 <field name="total_vehicle_detail" class="o_stat_value"/>
-                                <span class="o_stat_text">Vehicle Details</span>
+                                <span class="o_stat_text">Vehicle Lines</span>
                             </div>
                         </button>
                         <button name="action_open_vehicle_quote_line" type="object"
@@ -350,13 +350,13 @@
                                                         <group>
                                                             <field name="dob_hijra"/>
                                                             <field name="age"/>
-                                                            <field name="member_type"/>
+                                                            <field name="member_type" options="{'no_open': True, 'no_create': True}"/>
                                                         </group>
                                                         <group>
-                                                            <field name="class_no"/>
-                                                            <field name="age_category"/>
+                                                            <field name="class_no" options="{'no_open': True, 'no_create': True}"/>
+                                                            <field name="age_category" options="{'no_open': True, 'no_create': True}"/>
                                                             <field name="risk_no"/>
-                                                            <field name="nationality"/>
+                                                            <field name="nationality" options="{'no_open': True, 'no_create': True}"/>
                                                         </group>
                                                     </group>
                                                     <group>

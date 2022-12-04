@@ -50,11 +50,40 @@ class client_vehicle_info(models.Model):
     dob_owner = fields.Char(string='DOB of Owner (AD)')
     nationality = fields.Many2one('res.country',string='Nationality')
     customer_branch_id = fields.Many2one('client.branch', string='Customer Branch ID')
-    document_no = fields.Char(related='customer_branch_id.document_no',string='Document No')
+    customer_id = fields.Many2one(related='customer_branch_id.customer_id',store=True)
+    document_no = fields.Char(related='customer_branch_id.document_no',string='Document No',store=True)
     state = fields.Selection(related='customer_branch_id.state',store=True)
     vehicle_make_id = fields.Many2one('fleet.vehicle.model.brand',string='Vehicle Manufacturer')
-    vehicle_model_id = fields.Many2one('fleet.vehicle.model',string='Vehicle Model')
+    vehicle_model_id = fields.Many2one('fleet.vehicle.model',string='Vehicle Model',domain="[('brand_id', '=?', vehicle_make_id)]")
     note = fields.Text(string='Note')
+
+    @api.onchange('vehicle_make_id')
+    def set_model_wrt_vehicle_make_id(self):
+        for rec in self:
+            if rec.vehicle_model_id:
+                if rec.vehicle_model_id.brand_id.id != rec.vehicle_make_id.id:
+                    rec.vehicle_model_id = False
+
+    @api.onchange('vehicle_model_id')
+    def set_make_wrt_vehicle_model_id(self):
+        for rec in self:
+            rec.vehicle_make_id = rec.vehicle_model_id.brand_id.id
+
+    @api.onchange('country')
+    def set_city_wrt_country(self):
+        for rec in self:
+            if rec.city:
+                if rec.city.id not in rec.country.state_ids.ids:
+                    rec.city = False
+
+    @api.onchange('city')
+    def set_country_wrt_state_id(self):
+        for rec in self:
+            if rec.city:
+                if not rec.country:
+                    rec.country = rec.city.country_id.id
+                elif rec.country.id != rec.city.country_id.id:
+                    rec.country = rec.city.country_id.id
 
     @api.model
     def create(self, vals):

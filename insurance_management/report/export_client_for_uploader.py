@@ -81,7 +81,7 @@ class ClientExportUploaderXlsx(models.AbstractModel):
             worksheet.write(rows, 16, 'Dep Code', header_format)
             worksheet.write(rows, 17, 'Sponser ID', header_format)
             worksheet.write(rows, 18, 'Occupation', header_format)
-            worksheet.write(rows, 19, 'Marital status(Saudi EMP &Boarder no(Employee,Dependent)', header_format)
+            worksheet.write(rows, 19, 'Relation', header_format)
             worksheet.write(rows, 20, 'ELM Relation', header_format)
             rows += 1
         elif client_branch.insurance_type_id.ins_type_select == 'is_vehicle':

@@ -52,7 +52,7 @@ class CustomerEmailWizard(models.TransientModel):
                                               compute='get_insurance_pages_visibility')
     insurance_quotation_ids = fields.Many2many('insurance.quotation',string='Insurance Quotation',domain="[('client_branch_id','=',client_id)]")
     vehicle_quotation_ids = fields.Many2many('vehicle.quotation',string='Vehicle Quotation',domain="[('client_branch_id','=',client_id)]")
-    client_info_attachment_ids = fields.Many2many('ir.attachment',string='Client Info Attachments')
+    client_info_attachment_ids = fields.Many2many('ir.attachment',string='Client Info Attachments',domain="[('res_id','=',client_id),('res_model','=','client.branch')]")
     attachment_ids = fields.Many2many(
         'ir.attachment', 'mail_client_message_ir_attachments_rel',
         'ins_wizard_id', 'attachment_id', 'Attachments')
@@ -182,7 +182,7 @@ class CustomerEmailWizard(models.TransientModel):
                 worksheet.write(rows, 17, 'Dep Code', style)
                 worksheet.write(rows, 18, 'Sponser ID', style)
                 worksheet.write(rows, 19, 'Occupation', style)
-                worksheet.write(rows, 20, 'Marital status(Saudi EMP &Boarder no(Employee,Dependent)', style)
+                worksheet.write(rows, 20, 'Relation', style)
                 worksheet.write(rows, 21, 'VAT', style)
                 worksheet.write(rows, 22, 'Premium', style)
                 rows += 1

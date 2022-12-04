@@ -46,6 +46,9 @@ class client_branch(models.Model):
         check_list = self.env['client.checklist'].search([])
         if check_list:
             return check_list[0].check_list
+
+    # def _get_default_country(self):
+    #     self.env['res.country'].search([('country','=',)])
     # def _default_get_client_ifo_temp(self):
     #     file_temp = file_open(
     #         'insurance_management/data/temp_client_info.xlsx', "rb"
@@ -100,6 +103,29 @@ class client_branch(models.Model):
     total_vehicle_detail = fields.Integer(string='Total Lines',compute='get_total_vehicle_detail')
     total_vehicle_line = fields.Integer(string='Total Vehicle Lines',compute='get_total_vehicle_line')
     is_selected_quotation = fields.Boolean(string='Is Quotation Selected?')
+
+    def unlink(self):
+        for rec in self:
+            if rec.state == "validate":
+                raise ValidationError("You can not delete record which is Validate State!")
+        res = super(client_branch, self).unlink()
+        return res
+
+    @api.onchange('country')
+    def set_city_wrt_country(self):
+        for rec in self:
+            if rec.state_id:
+                if rec.state_id.id not in rec.country.state_ids.ids:
+                    rec.state_id = False
+
+    @api.onchange('state_id')
+    def set_country_wrt_state_id(self):
+        for rec in self:
+            if rec.state_id:
+                if not rec.country:
+                    rec.country = rec.state_id.country_id.id
+                elif rec.country.id != rec.state_id.country_id.id:
+                    rec.country = rec.state_id.country_id.id
 
     def export_client_info_file_template(self):
         medical_info_template = self.env['ir.attachment'].search([('is_medical_info_temp','=',True)],limit=1)
@@ -174,7 +200,7 @@ class client_branch(models.Model):
             'template': 'insurance_management/data/temp_client_info.xlsx'
         }]
 
-    policy_id = fields.Many2one('insurance.policy',"Policy")
+    policy_id = fields.Many2one('insurance.policy',"Policy",copy=False)
 
     def action_create_policy(self):
         policy = self.env['insurance.policy'].create({
@@ -712,7 +738,7 @@ class client_branch(models.Model):
             worksheet.write(rows, 17, 'Dep Code', style)
             worksheet.write(rows, 18, 'Sponser ID', style)
             worksheet.write(rows, 19, 'Occupation', style)
-            worksheet.write(rows, 20, 'Marital status(Saudi EMP &Boarder no(Employee,Dependent)', style)
+            worksheet.write(rows, 20, 'Relation', style)
             worksheet.write(rows, 21, 'VAT', style)
             worksheet.write(rows, 22, 'Premium', style)
             rows += 1
@@ -990,6 +1016,7 @@ class client_basic_info(models.Model):
     as_vip = fields.Selection([('yes','Yes'),('no','No')],string='AS VIP?')
     bank_id = fields.Many2one('res.bank', string='Bank')
     branch_id = fields.Many2one('client.branch',string='Branch ID')
+    customer_id = fields.Many2one(related='branch_id.customer_id', store=True)
     document_no = fields.Char(related='branch_id.document_no', string='Document No')
     state = fields.Selection(related='branch_id.state', store=True)
     note = fields.Text(string='Note')
@@ -1015,6 +1042,22 @@ class risk_location(models.Model):
     region = fields.Char(string='Region', tracking=True)
     city = fields.Many2one('res.country.state',string='City',domain="[('country_id', '=?', country)]")
     risk = fields.Char(string='Risk')
+
+    @api.onchange('country')
+    def set_city_wrt_country(self):
+        for rec in self:
+            if rec.city:
+                if rec.city.id not in rec.country.state_ids.ids:
+                    rec.city = False
+
+    @api.onchange('city')
+    def set_country_wrt_state_id(self):
+        for rec in self:
+            if rec.city:
+                if not rec.country:
+                    rec.country = rec.city.country_id.id
+                elif rec.country.id != rec.city.country_id.id:
+                    rec.country = rec.city.country_id.id
 
 class ins_occupation(models.Model):
     _name = 'ins.occupation'

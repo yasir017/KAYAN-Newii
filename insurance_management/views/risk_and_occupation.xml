@@ -30,11 +30,11 @@
                     </div>
                     <group>
                         <group>
-                            <field name="country"/>
+                            <field name="country" options="{'no_open': True, 'no_create': True}"/>
                             <field name="region"/>
                         </group>
                          <group>
-                            <field name="city"/>
+                            <field name="city" options="{'no_open': True, 'no_create': True}"/>
                             <field name="risk"/>
                         </group>
                     </group>

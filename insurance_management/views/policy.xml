@@ -160,8 +160,8 @@
                   <field name="branch_id" optional="hide"/>
               </xpath>
                <xpath expr="//field[@name='employee_ids']/form" position="inside">
-                    <field name="member_type" optional="hide"/>
-                  <field name="class_no" optional="hide"/>
+                    <field name="member_type" optional="hide" options="{'no_open': True, 'no_create': True}"/>
+                  <field name="class_no" optional="hide" options="{'no_open': True, 'no_create': True}"/>
                   <field name="occupation" optional="hide"/>
                   <field name="branch_id" optional="hide"/>
               </xpath>

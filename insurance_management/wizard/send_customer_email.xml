@@ -24,7 +24,7 @@
 						<field name="subject" nolabel="1" placeholder="Subject..." required="True"/>
 					</group>
 					<group>
-						<field name="cc" nolabel="1" placeholder="CC... write separate email with comma" required="True"/>
+						<field name="cc" nolabel="1" placeholder="CC... write separate email with comma"/>
 					</group>
                     <field name="body" class="oe-bordered-editor" options="{'style-inline': true}" force_save="1"/>
 					<group col="4">
