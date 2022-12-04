@@ -80,8 +80,9 @@ class insurance_quotation(models.Model):
         return res
 
     def get_total_rate_tax_amount(self):
-        total_tax_amount = 0
+
         for rec in self:
+            total_tax_amount = 0
             for line in rec.quotation_line_ids:
                 total_tax_amount += line.rate*line.vat/100
             rec.total_tax = total_tax_amount
@@ -353,11 +354,12 @@ class vehicle_quotation(models.Model):
         for rec in self:
             rec.total_rate = sum(rec.vehicle_quotation_line_ids.mapped('rate'))
             rec.amount = sum(rec.vehicle_quotation_line_ids.mapped('total'))
-            total_tax_amount = 0
+
             for rec in self:
+                total_tax_amount = 0
                 for line in rec.vehicle_quotation_line_ids:
                     total_tax_amount += line.rate * line.vat / 100
-            rec.total_vat = total_tax_amount
+                rec.total_vat = total_tax_amount
 
     def get_total_rate(self):
         for rec in self:
