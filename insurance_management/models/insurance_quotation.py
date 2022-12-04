@@ -84,7 +84,7 @@ class insurance_quotation(models.Model):
         for rec in self:
             for line in rec.quotation_line_ids:
                 total_tax_amount += line.rate*line.vat/100
-        rec.total_tax = total_tax_amount
+            rec.total_tax = total_tax_amount
     def get_total_rate_vat_amount(self):
         for rec in self:
             rec.total_rate = sum(rec.quotation_line_ids.mapped('rate'))
