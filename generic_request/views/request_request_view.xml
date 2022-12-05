@@ -96,7 +96,7 @@
                                placeholder="Tags..."
                                class="oe_inline"
                                nolabel="1"
-                               domain="[('model_id.model', '=', 'request.request'),'|', ('category_id', '=', False), ('category_id.request_type_ids.id', '=', type_id)]"
+                               domain="[('model_id.model', '=', 'request.request')]"
                                context="{'default_model': 'request.request'}"/>
                     </div>
                     <group name="request_head_info" class="request-head-info">
@@ -184,42 +184,50 @@
                                     <span class="field-icon fa fa-clock-o text-danger oe_inline"
                                           title="Deadline"
                                           attrs="{'invisible': [('deadline_state', '!=', 'overdue')]}"/>
-                                    <span class="field-icon fa fa-clock-o oe_inline"
-                                          title="Deadline"
-                                          attrs="{'invisible': [('deadline_state', '!=', False)]}"/>
-                                    <field name="deadline_date"
-                                           attrs="{'readonly': [('can_change_deadline', '=', False)]}"
-                                           class="oe_inline"/>
+<!--                                    <span class="field-icon fa fa-clock-o oe_inline"-->
+<!--                                          title="Deadline"-->
+<!--                                          attrs="{'invisible': [('deadline_state', '!=', False)]}"/>-->
                                 </span>
                             </div>
                         </group>
                     </group>
-                    <group></group>
-                    <group>
+                    <group string="Operational Dates">
                         <group>
-                            <field name="client_id"/>
-                            <field name="insurance_type_id"/>
-                            <field name="insurance_sub_type_id"/>
+                            <field name="scheduled_date"/>
+                            <field name="deadline_date" attrs="{'readonly': [('can_change_deadline', '=', False)]}"/>
                         </group>
                         <group>
-                            <field name="insurance_company_id"/>
+                            <field name="date_created"/>
+                            <field name="notification_date"/>
+                        </group>
+                    </group>
+                    <group>
+                        <group string="Customer">
+                            <field name="client_id"/>
+                        </group>
+                        <group string="Policy">
+                            <field name="policy_id"/>
+                            <field name="ins_type_select" invisible="1"/>
                             <field name="incident_type"/>
                         </group>
                     </group>
+                    <group string="Policy Related Details">
+                        <group>
+                            <field name="insurance_type_id"/>
+                            <field name="insurance_sub_type_id"/>
+                            <field name="insurance_company_id"/>
+                            <field name="issuance_date"/>
+                        </group>
+                        <group>
+                            <field name="policy_no"/>
+                            <field name="branch_id"/>
+                            <field name="start_date"/>
+                            <field name="expiry_date"/>
+                        </group>
+                    </group>
                     <notebook class="request-notebook_custom">
-                        <page string="Inside Detail">
+                        <page string="Inside Detail" attrs="{'invisible':[('ins_type_select','!=','is_vehicle')]}" name="inside_detail_vehicle">
                             <group string="Policy Related Details">
-                                <group>
-                                    <field name="policy_id"/>
-                                    <field name="policy_partner_id"/>
-                                    <field name="policy_no"/>
-                                </group>
-                                <group>
-                                    <field name="branch_id"/>
-                                    <field name="start_date"/>
-                                    <field name="expiry_date"/>
-                                    <field name="issuance_date"/>
-                                </group>
                                 <group>
                                     <field name="vehicle_detail_id"/>
                                     <field name="vehicle_covering_maintenance"/>
@@ -276,6 +284,26 @@
                                     </group>
                                 </page>
                             </notebook>
+                        </page>
+                        <page string="Inside Detail" attrs="{'invisible':[('ins_type_select','!=','is_medical')]}" name="inside_detail_medical">
+                            <group>
+                                <group>
+                                    <field name="medical_detail_id"/>
+                                </group>
+                                <group>
+
+                                </group>
+                            </group>
+                        </page>
+                        <page string="Inside Detail" attrs="{'invisible':[('ins_type_select','!=','is_marine')]}" name="inside_detail_marine">
+                            <group>
+                                <group>
+                                    <field name="marine_detail_id"/>
+                                </group>
+                                <group>
+
+                                </group>
+                            </group>
                         </page>
                         <page string="Request" name="page_request">
                             <field name="note_html" attrs="{'invisible': ['|', ('note_html', '=', False), ('id', '!=', False)]}"/>

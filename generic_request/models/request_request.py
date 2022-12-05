@@ -80,7 +80,7 @@ class RequestRequest(models.Model):
     # Type and stage related fields
     type_id = fields.Many2one(
         'request.type', 'Type', ondelete='restrict',
-        required=True, index=True, tracking=True,
+         index=True, tracking=True,
         help="Type of request")
     type_color = fields.Char(related="type_id.color", readonly=True)
     kind_id = fields.Many2one(
@@ -98,7 +98,7 @@ class RequestRequest(models.Model):
         help="Channel of request")
     stage_id = fields.Many2one(
         'request.stage', 'Stage', ondelete='restrict',
-        required=True, index=True, tracking=True, copy=False)
+         index=True, tracking=True, copy=False)
     stage_type_id = fields.Many2one(
         'request.stage.type', related="stage_id.type_id", string="Stage Type",
         index=True, readonly=True, store=True)
@@ -311,9 +311,11 @@ class RequestRequest(models.Model):
     basher_report = fields.Binary(string='Basher Report')
     incident_type = fields.Many2one('incident.type', string='Incident Type')
     client_id = fields.Many2one('res.partner',string='Customer',required=True)
-    insurance_company_id = fields.Many2one('insurance.company', string='Insurance Company')
+    insurance_company_id = fields.Many2one(related='policy_id.insurance_company_id', string='Insurance Company',store=True)
     other_attachment_ids = fields.One2many('request.other.attachments','request_id',string='Other Attachments',ondelete='cascade')
-    policy_id = fields.Many2one('insurance.policy',string='Policy')
+    policy_id = fields.Many2one('insurance.policy',string='Policy',domain="[('partner_id','=',client_id)]")
+    ins_type_select = fields.Selection(related='policy_id.insurance_type_id.ins_type_select',
+        string='Technical Type')
     policy_partner_id = fields.Many2one(related='policy_id.partner_id', string='Customer')
     policy_no = fields.Char(related='policy_id.policy_no',string="Policy ID")
     branch_id = fields.Many2one(related='policy_id.branch_id',string= "Branch Name")
@@ -321,6 +323,8 @@ class RequestRequest(models.Model):
     expiry_date = fields.Date(related='policy_id.expiry_date',string='Expiry Date')
     issuance_date = fields.Date(related='policy_id.issuance_date',string='issuance Date')
     vehicle_detail_id = fields.Many2one('insurance.vehicle',string='Related Vehicle Detail',domain="[('policy_id','=',policy_id)]")
+    medical_detail_id = fields.Many2one('insurance.employee.data',string='Related Medical Detail',domain="[('policy_id','=',policy_id)]")
+    marine_detail_id = fields.Many2one('insurance.marine',string='Related Marine Detail',domain="[('policy_id','=',policy_id)]")
     vehicle_covering_maintenance = fields.Selection(related='vehicle_detail_id.covering_maintenance',
                                                    string="Vehicle Covering Maintenance")
     notification_date = fields.Date(string='Notification Date')
@@ -341,12 +345,16 @@ class RequestRequest(models.Model):
     other_lost_cost_ids = fields.One2many('lost.other.cost', 'request_id', string='Other Lost Costs',ondelete='cascade')
     t_lost_insurance_value = fields.Float(related='vehicle_detail_id.value',string='Sum Insured',help='Sum Insured')
     net_amount = fields.Float(string='Net Amount',help='Net Amount',compute='get_insured_value')
-    insurance_type_id = fields.Many2one('insurance.type', string='Insurance Type', required='1')
-    insurance_sub_type_id = fields.Many2one('insurance.sub.type', string='Insurance Sub Type',
-                                            domain="[('insurance_type_id','=',insurance_type_id)]")
+    insurance_type_id = fields.Many2one(related='policy_id.insurance_type_id', string='Insurance Type',store=True)
+    insurance_sub_type_id = fields.Many2one(related='policy_id.insurance_sub_type_id', string='Insurance Sub Type',store=True)
     total_claim_invoice = fields.Integer(string='Total Invoice', compute='get_total_claim_invoice')
     account_move_ids = fields.Many2many('account.move',string="Claim Invoices")
     total_document_number = fields.Integer(string='Total Documents', compute='get_total_documents')
+    # ins_technical_type = fields.Char(string='Ins Type Technical',compute='get_ins_technical_type')
+
+    # def get_ins_technical_type(self):
+    #     for rec in self:
+
 
     def action_open_claim_documents(self):
         return {
@@ -419,28 +427,28 @@ class RequestRequest(models.Model):
     def set_policy_id_domain(self):
         return {'domain': {'policy_id': [('partner_id', '=', self.client_id.id),('state', '=', 'posted'),('expiry_date', '>=', fields.date.today())]}}
 
-    @api.onchange('insurance_type_id')
-    def onchange_insurance_type_id(self):
-        if self.insurance_type_id:
-            category = self.env['request.category'].search([('name','=',self.insurance_type_id.name)])
-            if category:
-                self.category_id = category.id
-            else:
-                category = self.env['request.category'].create({'name':self.insurance_type_id.name,'code':self.insurance_type_id.name})
-                self.category_id = category.id
+    # @api.onchange('insurance_type_id')
+    # def onchange_insurance_type_id(self):
+    #     if self.insurance_type_id:
+    #         category = self.env['request.category'].search([('name','=',self.insurance_type_id.name)])
+    #         if category:
+    #             self.category_id = category.id
+    #         else:
+    #             category = self.env['request.category'].create({'name':self.insurance_type_id.name,'code':self.insurance_type_id.name})
+    #             self.category_id = category.id
 
-    @api.onchange('insurance_sub_type_id')
-    def onchange_insurance_sub_type_id(self):
-        if self.insurance_sub_type_id:
-            request_type = self.env['request.type'].search([('name', '=', self.insurance_sub_type_id.name)])
-            if request_type:
-                self.type_id = request_type.id
-            else:
-                if self.category_id:
-                    request_type = self.env['request.type'].create(
-                        {'name': self.insurance_sub_type_id.name, 'code': self.insurance_sub_type_id.name,'category_ids':[(4, self.category_id.id)]})
-                    request_type.action_create_default_stage_and_routes()
-                    self.type_id = request_type.id
+    # @api.onchange('insurance_sub_type_id')
+    # def onchange_insurance_sub_type_id(self):
+    #     if self.insurance_sub_type_id:
+    #         request_type = self.env['request.type'].search([('name', '=', self.insurance_sub_type_id.name)])
+    #         if request_type:
+    #             self.type_id = request_type.id
+    #         else:
+    #             if self.category_id:
+    #                 request_type = self.env['request.type'].create(
+    #                     {'name': self.insurance_sub_type_id.name, 'code': self.insurance_sub_type_id.name,'category_ids':[(4, self.category_id.id)]})
+    #                 request_type.action_create_default_stage_and_routes()
+    #                 self.type_id = request_type.id
 
     @api.depends('t_lost_deductible_cost','t_lost_depreciation_cost','other_lost_cost_ids.cost')
     def get_insured_value(self):
