@@ -23,7 +23,7 @@ class HealthData(models.Model):
     is_weekly_income = fields.Boolean("Is weekly income")
     weekly_desc = fields.Char("Desc")
     total_rate = fields.Float("Total Rate")
-    employee_ids = fields.One2many('insurance.employee.data','health_id',"Employee Detail")
+    employee_ids = fields.Char("Employee Detail")
     # ***********Medical*********
 
     total_no_person  = fields.Float("Total No of Person")
@@ -58,15 +58,15 @@ class EmployeeData(models.Model):
     _name = 'insurance.employee.data'
     _description = 'Employee Data'
 
-    health_id = fields.Many2one('insurance.health','Health')
-    policy_id = fields.Many2one('insurance.policy', 'REL')
+    # health_id = fields.Many2one('insurance.health','Health')
+    policy_id = fields.Many2one('insurance.policy', 'Policy')
     member_id = fields.Char(string='Member ID')
     dependent_id = fields.Char(string='Dependent ID')
     name = fields.Char(string='Name', tracking=True)
 
     client_image = fields.Binary(string='Client Image')
     arabic_name = fields.Char(string='Arabic Name', tracking=True)
-    gender = fields.Selection([('male', 'Male'), ('female', 'Female')], string='Gender')
+    gender = fields.Selection([('Male', 'Male'), ('Female', 'Female')], string='Gender')
     dob = fields.Date(string='Birth Date')
     dob_hijra = fields.Char(string='Birth Date(Hijra)')
     age = fields.Float(string='Age',compute='get_member_age')
@@ -79,16 +79,16 @@ class EmployeeData(models.Model):
     # member_category = fields.Selection(
     #     [('manager', 'Manager'), ('staff', 'Staff'), ('skilled_worker', 'Skilled Worker'),
     #      ('supervisor', 'Supervisor')], string='Member Category')
-    member_category = fields.Many2one('member.category', string='Member Category')
+    # member_category = fields.Many2one('member.category', string='Member Category')
     mobile1 = fields.Char(string='Mobile No (1)')
     mobile2 = fields.Char(string='Mobile No (2)')
     dep_no = fields.Char(string='Dep Code')
     sponser_id = fields.Char(string='Sponser ID')
     # occupation = fields.Char(string='Occupation')
-    # marital_status = fields.Selection(
-    #     [('single', 'Single'), ('married', 'Married'), ('divorced', 'Divorced'), ('widowed', 'Widowed')],
-    #     string='Marital Status')
-    marital_status = fields.Many2one('member.relation',string='Relation')
+    marital_status = fields.Selection(
+        [('single', 'Single'), ('married', 'Married'), ('divorced', 'Divorced'), ('widowed', 'Widowed')],
+        string='Marital Status')
+    # marital_status = fields.Selection([('single','Singe)],string='Relation')
     elm_relation = fields.Selection([('not_specified', 'Not Specified'), ('son', 'Son'), ('daughter', 'Daughter'),
                                      ('wife', 'Wife'),
                                      ('brother', 'Brother'),

@@ -34,11 +34,13 @@
                                 <field name="partner_id" required="1" force_save="1"
                                        attrs="{'readonly':[('policy_type','=','endors')]}"/>
                                 <!--                            <field name="manager_id"/>-->
-                                <field name="branch_id" required="1" force_save="1"
-                                       attrs="{'readonly':[('policy_type','=','endors')]}"/>
+<!--                                <field name="branch_id" required="1" force_save="1"-->
+<!--                                       attrs="{'readonly':[('policy_type','=','endors')]}"/>-->
                                 <field name="start_date" required="1"/>
                                 <field name="expiry_date" required="1"/>
                                 <field name="issuance_date" required="1"/>
+                                <field name="country_id" required="1" attrs="{'readonly':[('policy_type','=','endors')]}"/>
+                                <field name="fed_state_id" string="Branch" required="1" attrs="{'readonly':[('policy_type','=','endors')]}"/>
                                 <!--                                <field name="journal_id"/>-->
                                 <!--                                <field name="payment_term_id"/>-->
                             </group>
@@ -363,7 +365,7 @@
                                         <field name="risk_no" readonly="1" optional="hide"/>
                                         <field name="nationality" readonly="1" optional="hide"/>
                                         <field name="staff_no" readonly="1" optional="hide"/>
-                                        <field name="member_category" optional="hide"/>
+<!--                                        <field name="member_category" optional="hide"/>-->
                                         <field name="mobile1" readonly="1" optional="hide"/>
                                         <field name="mobile2" readonly="1" optional="hide"/>
                                         <field name="dep_no" readonly="1" optional="hide"/>
@@ -412,6 +414,8 @@
                                         <field name="vehicle_color" optional="hide"/>
                                         <field name="vehicle_make_id" optional="hide"/>
                                         <field name="vehicle_model_id"/>
+                                        <field name="country_id"/>
+                                        <field name="city" domain="[('country_id', '=', country_id)]"/>
                                         <field name="model_no" optional="hide"/>
                                         <field name="gcc_cover" optional="hide"/>
                                         <field name="natural_peril_cover" optional="hide"/>
@@ -448,7 +452,8 @@
                                                     <field name="building_no" optional="hide"/>
                                                     <field name="additional_no" optional="hide"/>
                                                     <field name="street" optional="hide"/>
-                                                    <field name="city" optional="hide"/>
+                                                    <field name="country_id"/>
+                                                    <field name="city" domain="[('country_id', '=', country_id)]" optional="hide"/>
                                                     <field name="unit_no" optional="hide"/>
                                                 </group>
                                                 <group>
@@ -598,7 +603,7 @@
                                         <field name="risk_no" optional="hide"/>
                                         <field name="nationality" optional="hide"/>
                                         <field name="staff_no" optional="hide"/>
-                                        <field name="member_category" optional="hide"/>
+<!--                                        <field name="member_category" optional="hide"/>-->
                                         <field name="mobile1" optional="hide"/>
                                         <field name="mobile2" optional="hide"/>
                                         <field name="dep_no" optional="hide"/>
@@ -634,7 +639,7 @@
                                                     <field name="risk_no" optional="hide"/>
                                                     <field name="nationality" optional="hide"/>
                                                     <field name="staff_no" optional="hide"/>
-                                                    <field name="member_category" optional="hide"/>
+<!--                                                    <field name="member_category" optional="hide"/>-->
                                                     <field name="mobile1" optional="hide"/>
                                                     <field name="mobile2" optional="hide"/>
                                                     <field name="dep_no" optional="hide"/>
@@ -748,7 +753,8 @@
                                         <field name="building_no" readonly="1" optional="hide"/>
                                         <field name="additional_no" readonly="1" optional="hide"/>
                                         <field name="street" readonly="1" optional="hide"/>
-                                        <field name="city" readonly="1" optional="hide"/>
+<!--                                        <field name="country_id " optional="hide"/>-->
+<!--                                        <field name="city" domain="[('country_id', '=', country_id)]" readonly="1" optional="hide"/>-->
                                         <field name="unit_no" readonly="1" optional="hide"/>
                                         <field name="po_box" readonly="1" optional="hide"/>
                                         <field name="zip_code" readonly="1" optional="hide"/>
@@ -887,7 +893,7 @@
                     <field name="start_date"/>
                     <field name="expiry_date"/>
                     <field name="issuance_date"/>
-                    <field name="policy_id"/>
+                    <field name="policy_id_i"/>
                     <field name="insurance_company_id"/>
                     <field name="business_class"/>
                     <field name="policy_no" optional="hide"/>
@@ -923,23 +929,7 @@
             </field>
         </record>
 
-        <record id="view_policy_search" model="ir.ui.view">
-            <field name="name">insurance.policy.tree</field>
-            <field name="model">insurance.policy</field>
-            <field name="arch" type="xml">
-                <search string="Policy Entry">
-                    <field name="partner_id"/>
-                    <!--                    <field name="manager_id"/>-->
-                    <field name="branch_id"/>
-                    <field name="start_date"/>
-                    <field name="expiry_date"/>
-                    <field name="issuance_date"/>
-                    <field name="policy_id"/>
-                    <field name="insurance_company_id"/>
-                    <field name="business_class"/>
-                </search>
-            </field>
-        </record>
+
 
         <record id="act_policy_entry" model="ir.actions.act_window">
             <field name="name">Policy Entry</field>

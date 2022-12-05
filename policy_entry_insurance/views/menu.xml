@@ -10,12 +10,12 @@
 
 <!--    <menuitem id="bussines_class_entry_submenu" parent="policy_entry_data" name="Vehicle Data"-->
 <!--              action="act_bussiness_class" sequence="2"/>-->
-    <menuitem id="producer_menu" parent="policy_entry_data" name="Producer Data"
-              action="act_producer" sequence="3"/>
-    <menuitem id="marine_data_menu" parent="policy_entry_data" name="Marin Data"
+<!--    <menuitem id="producer_menu" parent="policy_entry_data" name="Producer Data"-->
+<!--              action="act_producer" sequence="3"/>-->
+    <menuitem id="marine_data_menu" parent="policy_entry_menu" name="Marine Data"
               action="act_marine_data" sequence="4"/>
 
-      <menuitem id="medical_date_menu" parent="policy_entry_data" name="Medical Data"
+      <menuitem id="medical_date_menu" parent="policy_entry_menu" name="Medical Data"
               action="act_health_data" sequence="4"/>
 
 <!--    <menuitem id="menu_insurance_data" parent="policy_entry_menu" name="Insurance Data"/>-->

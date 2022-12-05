@@ -13,7 +13,7 @@ import calendar
 class Policy(models.Model):
     _name = 'insurance.policy'
 
-    _rec_name = 'policy_id'
+    _rec_name = 'policy_id_i'
 
     _inherit = ['mail.thread', 'mail.activity.mixin']
     partner_id = fields.Many2one('res.partner',string='Customer')
@@ -22,7 +22,7 @@ class Policy(models.Model):
     start_date = fields.Date('Start Date')
     expiry_date = fields.Date('Expiry Date')
     issuance_date = fields.Date('Issuance Date')
-    policy_id = fields.Char('policy ID',readonly=1)
+    policy_id_i = fields.Char('policy ID',readonly=1)
     prev_policy = fields.Many2one('insurance.policy',"Policy")
     insurance_company_id = fields.Char('Insurance Company')
     business_class = fields.Many2one('business.class.config','Business Class')
@@ -93,7 +93,7 @@ class Policy(models.Model):
     difference_instalment = fields.Float('Difference',compute='compute_installment')
     total_document_number = fields.Integer(string='Total Documents', compute='get_total_documents')
     country_id = fields.Many2one('res.country',"Country")
-    fed_state_id = fields.Many2one('res.country.state',"Branch ID",domain="[('country_id','=',country_id)]")
+    fed_state_id = fields.Many2one('res.country.state',"Branch ID")
 
     govt_fee = fields.Float("Govt Feet", store=True, compute='_compute_govt_fee')
 
@@ -273,10 +273,10 @@ class Policy(models.Model):
     def create(self, vals):
 
         if vals['policy_type']=='policy':
-            vals['policy_id'] = self.env['ir.sequence'].next_by_code(
+            vals['policy_id_i'] = self.env['ir.sequence'].next_by_code(
                 'policy.seq')
         if vals['policy_type']=='endors':
-            vals['policy_id'] = self.env['ir.sequence'].next_by_code(
+            vals['policy_id_i'] = self.env['ir.sequence'].next_by_code(
                 'endors.seq')
 
 

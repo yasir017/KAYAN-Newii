@@ -9,7 +9,8 @@
                   <field name="member_type"/>
                   <field name="class_no"/>
                   <field name="occupation" optional="hide"/>
-                  <field name="branch_id" optional="hide"/>
+<!--                  <field name="branch_id" optional="hide"/>-->
+                  <field name="member_category" optional="hide"/>
               </xpath>
           </field>
      </record>
@@ -23,7 +24,8 @@
                    <field name="member_type" options="{'no_open': True, 'no_create': True}"/>
                   <field name="class_no" options="{'no_open': True, 'no_create': True}"/>
                   <field name="occupation" optional="hide"/>
-                  <field name="branch_id" optional="hide"/>
+<!--                  <field name="branch_id" optional="hide"/>-->
+                  <field name="member_category"/>
 
 
               </xpath>

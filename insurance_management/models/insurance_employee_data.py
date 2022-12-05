@@ -11,3 +11,4 @@ class EmpData(models.Model):
     age_category = fields.Many2one('age.category.standard', string='Age Category')
     occupation = fields.Many2one('ins.occupation', string='Occupation')
     branch_id = fields.Many2one('client.branch', string='Branch ID')
+    member_category = fields.Many2one('member.category', string='Member Category')

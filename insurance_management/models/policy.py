@@ -210,6 +210,8 @@ class Policy(models.Model):
         self.company_standard = self.prev_policy.company_standard
         self.journal_id = self.prev_policy.journal_id.id
         self.payment_term_id = self.prev_policy.payment_term_id.id
+        self.country_id = self.prev_policy.country_id.id
+        self.fed_state_id = self.prev_policy.fed_state_id.id
         for benefits in self.prev_policy.benefits_custome_ids:
             vals={
                 # 'policy_id': policy.id,

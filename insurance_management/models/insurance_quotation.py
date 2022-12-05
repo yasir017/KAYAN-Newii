@@ -491,7 +491,7 @@ class vehicle_quotation_line(models.Model):
     additional_no = fields.Char(string='Additional No')
     street = fields.Char(string='Street')
     country = fields.Many2one('res.country', 'Country')
-    city = fields.Many2one('res.country.state','City',domain="[('country_id', '=?', country)]")
+    city = fields.Many2one('res.country.state','City',domain="[('country_id', '=', country)]")
     unit_no = fields.Char(string='Unit No')
     po_box = fields.Char(string='PO. BOX')
     zip_code = fields.Char(string='Zip Code')

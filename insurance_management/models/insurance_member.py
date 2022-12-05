@@ -103,7 +103,7 @@ class client_branch(models.Model):
     total_vehicle_detail = fields.Integer(string='Total Lines',compute='get_total_vehicle_detail')
     total_vehicle_line = fields.Integer(string='Total Vehicle Lines',compute='get_total_vehicle_line')
     is_selected_quotation = fields.Boolean(string='Is Quotation Selected?')
-
+    # policy_id = fields.Many2one('insurance.policy','Policy')
     def unlink(self):
         for rec in self:
             if rec.state == "validate":
@@ -201,16 +201,26 @@ class client_branch(models.Model):
         }]
 
     policy_id = fields.Many2one('insurance.policy',"Policy",copy=False)
+    count_policy = fields.Integer("Count Policy",compute='_count_total_policy',store=True)
+
+
+    @api.depends('policy_id')
+    def _count_total_policy(self):
+        for rec in self:
+            rec.count_policy=len(rec.policy_id)
 
     def action_create_policy(self):
         policy = self.env['insurance.policy'].create({
             'partner_id':self.customer_id.id,
+            'policy_type':'policy',
             'insurance_company_id':self.insurance_quotation_ids.filtered(lambda i:i.select==True).insurance_company_id.id,
             'insurance_type_id':self.insurance_type_id.id,
             'insurance_sub_type_id':self.insurance_sub_type_id.id,
             'company_standard':self.company_standard,
             'type_of_business':self.type_of_business,
-            'data_collect_id':self.id
+            'data_collect_id':self.id,
+            'country_id':self.country.id,
+            'fed_state_id':self.state_id.id,
         })
         self.policy_id=policy.id
 
