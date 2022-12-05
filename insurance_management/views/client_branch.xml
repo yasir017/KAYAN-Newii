@@ -429,6 +429,9 @@
                                                 </form>
                                             </field>
                                         </page>
+<!--                                        <page string="Attachment">-->
+<!--                                            <field name="attachment_ids"/>-->
+<!--                                        </page>-->
                                     </notebook>
                                 </form>
                             </field>
