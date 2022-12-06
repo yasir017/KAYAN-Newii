@@ -56,6 +56,7 @@ class Services(models.Model):
     name = fields.Char('Service')
 class EmployeeData(models.Model):
     _name = 'insurance.employee.data'
+    _inherit = ['mail.thread', 'mail.activity.mixin', 'mail.render.mixin']
     _description = 'Employee Data'
 
     # health_id = fields.Many2one('insurance.health','Health')
@@ -103,11 +104,11 @@ class EmployeeData(models.Model):
     bank_id = fields.Many2one('res.bank', string='Bank')
     # branch_id = fields.Many2one('insurance.branch', string='Branch ID')
     rate = fields.Float("Premium")
-    vat = fields.Float("Vat")
+    vat = fields.Float("Vat",default=15.0)
     total = fields.Float("Total After Vat",compute='_compute_total',store=True)
     endorsment_am = fields.Float("Endorsement Amount")
     endorsment_type = fields.Selection([('add','Upgrade'),('sub','Downgrade'),('remove','Cancel')],string='Operation Type')
-
+    note = fields.Char("Notes")
     @api.depends('dob')
     def get_member_age(self):
         for rec in self:

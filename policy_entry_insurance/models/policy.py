@@ -62,25 +62,25 @@ class Policy(models.Model):
     health_ids = fields.One2many('insurance.health','policy_id','Health Detail')
     health_endors_ids = fields.Many2many('insurance.employee.data', string='Health Detail')
     # ******************scheduled Policy****************
-    vat_premium = fields.Float('Vat Premium')
-    total_premium_after_vat = fields.Float("Total After Vat")
+    vat_premium = fields.Float('Vat Premium',default=15.0)
+    total_premium_after_vat = fields.Float("Total After Vat",store=1,compute='compute_total_prem')
 
     premium_percent_am = fields.Float("Premium Percent")
-    premium_percent_vat = fields.Float("Premium Percent Vat")
+    premium_percent_vat = fields.Float("Premium Percent Vat",default=15.0)
     premium_percent_am_total = fields.Float("Premium Percent total")
 
-    issuening_fee_percent = fields.Float("Issueing Fee Percent")
+    issuening_fee_percent = fields.Float("Issueing Fee Percent",default=15.0)
     issuening_fee_total = fields.Float("Issuenc Fee total")
 
     additional_fee_am = fields.Float("Add Fee amount")
-    additional_fee_am_vat = fields.Float("Additional Fee Vat")
+    additional_fee_am_vat = fields.Float("Additional Fee Vat",default=15.0)
     additional_fee_am_total = fields.Float("Additional Fee Total")
 
     ded_fee_am = fields.Float("Ded Amount")
-    ded_fee_am_vat = fields.Float("Ded Fee vat")
+    ded_fee_am_vat = fields.Float("Ded Fee vat",default=15.0)
     ded_fee_am_total = fields.Float("Ded Fee total")
 
-    total_policy_am = fields.Float("Total Policy")
+    total_policy_am = fields.Float("Total Policy",readonly=1)
     total_policy_vat = fields.Float("Total Policy Vat",compute='_total_vat',store=True)
     total_policy_am_after_vat=  fields.Float("Total Policy after Vat")
 
@@ -89,14 +89,19 @@ class Policy(models.Model):
     payment_term_id = fields.Many2one('account.payment.term',"Payment Term")
     policy_type = fields.Selection([('policy','Policy'),('endors','Endorsement')],default='policy',string="Type")
     endorsment_ref = fields.Char("Endorsement Ref")
-    total_instalment_am = fields.Float('Total Installment',compute='compute_installment')
+    total_instalment_am = fields.Float('Total Installment after vat',compute='compute_installment')
     difference_instalment = fields.Float('Difference',compute='compute_installment')
     total_document_number = fields.Integer(string='Total Documents', compute='get_total_documents')
-    country_id = fields.Many2one('res.country',"Country")
-    fed_state_id = fields.Many2one('res.country.state',"Branch ID")
+    def default_coutry(self):
+        country_id = self.env['res.country'].search([('code', '=', 'SA')])
+        print(country_id)
+        return country_id
+    country_id = fields.Many2one('res.country',"Country",default=default_coutry)
+    fed_state_id = fields.Many2one('res.country.state',"Branch ID",domain="[('country_id','=',country_id)]")
 
     govt_fee = fields.Float("Govt Feet", store=True, compute='_compute_govt_fee')
-
+    sales_employee = fields.Many2one('hr.employee', string='Sales Employee')
+    supervisor = fields.Many2one('hr.employee', string='Supervisor')
     @api.depends('broker_commision')
     def _compute_govt_fee(self):
         for rec in self:
@@ -137,7 +142,7 @@ class Policy(models.Model):
                     elif amount.type_installement=='percentage':
                         instalment_am+=amount.amount_paid
                 rec.total_instalment_am=instalment_am
-            rec.difference_instalment=rec.total_policy_am_after_vat-rec.total_instalment_am
+            rec.difference_instalment=rec.total_premium_after_vat_ii-rec.total_instalment_am
 
     @api.constrains('start_date','expiry_date','issuance_date')
     def constrainst_date(self):
@@ -203,7 +208,7 @@ class Policy(models.Model):
     personal_holding_in_vehicle = fields.Float('Personal holdings in vehicle')
     employee_ids = fields.One2many('insurance.employee.data','policy_id',"Health Data")
     state = fields.Selection([('draft','Draft'),('submitted','Submitted'),('posted','Posted')],string='State',default='draft')
-
+    total_premium_after_vat_ii = fields.Float("Total")
 
     @api.onchange('sum_insured','basic_prem')
     def _onchange_sum_insured(self):
@@ -222,12 +227,14 @@ class Policy(models.Model):
             if self.approve_percentage>0:
                 self.broker_commision=(self.base_amount*(self.approve_percentage/100))
     @api.onchange('basic_prem','vat_premium')
-    def _onchange_premium(self):
+    def compute_total_prem(self):
         self.base_amount=self.basic_prem
+        print("Yaisr")
         if self.vat_premium>0.0:
-            self.total_premium_after_vat =self.basic_prem+(self.basic_prem*(self.vat_premium/100))
+            self.total_premium_after_vat_ii =self.basic_prem+(self.basic_prem*(self.vat_premium/100))
+            # print(self.total_premium_after_vat,"TOTAL")
         else:
-            self.total_premium_after_vat = self.basic_prem
+            self.total_premium_after_vat_ii = self.basic_prem
 
     @api.onchange('issuening_fee','issuening_fee_percent')
     def _onchange_issueng_fee(self):
@@ -240,9 +247,9 @@ class Policy(models.Model):
     def _onchange_prem_ded_issue(self):
         self.total_policy_am = (self.basic_prem+self.issuening_fee+self.additional_fee_am)-self.ded_fee_am
 
-    @api.onchange('total_premium_after_vat','issuening_fee_total','additional_fee_am_total','ded_fee_am_total')
+    @api.onchange('total_premium_after_vat_ii','issuening_fee_total','additional_fee_am_total','ded_fee_am_total')
     def _calculate_total(self):
-        self.total_policy_am_after_vat = (self.total_premium_after_vat+self.issuening_fee_total+self.additional_fee_am_total)-self.ded_fee_am_total
+        self.total_policy_am_after_vat = (self.total_premium_after_vat_ii+self.issuening_fee_total+self.additional_fee_am_total)-self.ded_fee_am_total
     @api.onchange('additional_fee_am','additional_fee_am_vat')
     def _onchange_addi_fee(self):
         if self.additional_fee_am_vat>0:
@@ -301,6 +308,7 @@ class Benefit(models.Model):
 class Installment(models.Model):
     _name = 'insurance.installment'
 
+    _inherit = ['mail.thread', 'mail.activity.mixin']
     policy_id = fields.Many2one('insurance.policy', 'REL')
     type_installement = fields.Selection([('fixed','Fixed'),('percentage','Percentage')],string="Type",default='fixed')
     cash_mode = fields.Many2one('cash.mode','Cash Mode')
@@ -308,14 +316,15 @@ class Installment(models.Model):
     amount_paid = fields.Float('Amount After  Percentage',store=True,compute='_compute_percentage')
     fix_amount = fields.Float('Fixed Amount')
     percentage = fields.Float("Percentage %",compute='_compute_percentage')
+    no_of_installment = fields.Integer("No of Installment")
 
     @api.depends('policy_id','fix_amount')
     def _compute_percentage(self):
         for rec in self:
             percentage_am = 0.0
             if rec.fix_amount:
-                if rec.policy_id.total_policy_am_after_vat:
-                    percentage_am = (rec.fix_amount/rec.policy_id.total_policy_am_after_vat)*100
+                if rec.policy_id.total_premium_after_vat_ii:
+                    percentage_am = (rec.fix_amount/rec.policy_id.total_premium_after_vat_ii)*100
 
             rec.percentage=percentage_am
             # if rec.type_installement=='percentage':

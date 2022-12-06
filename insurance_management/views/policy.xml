@@ -160,13 +160,13 @@
 <!--               ?   <field name="branch_id" optional="hide"/>-->
                   <field name="member_category" optional="hide"/>
               </xpath>
-               <xpath expr="//field[@name='employee_ids']/form/sheet/group/group/field[@name='age']" position="after">
-                    <field name="member_type" optional="hide" options="{'no_open': True, 'no_create': True}"/>
-                  <field name="class_no" optional="hide" options="{'no_open': True, 'no_create': True}"/>
-                  <field name="occupation" optional="hide"/>
-<!--               ?   <field name="branch_id" optional="hide"/>-->
-                   <field name="member_category" />
-              </xpath>
+<!--               <xpath expr="//field[@name='employee_ids']/form/sheet/group/group/field[@name='age']" position="after">-->
+<!--                    <field name="member_type" optional="hide" options="{'no_open': True, 'no_create': True}"/>-->
+<!--                  <field name="class_no" optional="hide" options="{'no_open': True, 'no_create': True}"/>-->
+<!--                  <field name="occupation" optional="hide"/>-->
+<!--&lt;!&ndash;               ?   <field name="branch_id" optional="hide"/>&ndash;&gt;-->
+<!--                   <field name="member_category" />-->
+<!--              </xpath>-->
 <!--              <xpath expr="//field[@name='employee_ids']/tree/field[@name='as_vip']" position="after">-->
 <!--                  -->
 <!--              </xpath>-->

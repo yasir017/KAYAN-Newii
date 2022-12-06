@@ -56,6 +56,9 @@
                                 <!--                                <field name="is_under_agreement"/>-->
                                 <!--                                <field name="agreement_file" attrs="{'invisible':[('is_under_agreement','=',False)]}"/>-->
                                 <!--                            <field name="is_extra_benfit"/>-->
+                               <field name="sales_employee"/>
+                                <field name="supervisor"/>
+
                             </group>
                         </group>
 
@@ -153,7 +156,7 @@
                                                 <field no_label="1" name="vat_premium"/>
                                             </td>
                                             <td style="border: 2px solid black;">
-                                                <field name="total_premium_after_vat" readonly="1" force_save="1" no_label="1"/>
+                                                <field name="total_premium_after_vat_ii"  force_save="1" no_label="1"/>
                                             </td>
                                         </tr>
 
@@ -170,6 +173,7 @@
                                             <td style="border: 2px solid black;">
                                                 <field name="premium_percent_am_total" readonly="1" force_save="1"  no_label="1"/>
                                             </td>
+
                                         </tr>
                                         <tr>
                                             <td style="border: 2px solid black;">
@@ -220,7 +224,7 @@
                                                 <strong>Total Policy</strong>
                                             </td>
                                             <td>
-                                                <field name="total_policy_am" no_label="1"/>
+                                                <field name="total_policy_am" force_save="1" no_label="1"/>
                                             </td>
                                             <td>
                                                 <field no_label="1" name="total_policy_vat"/>
@@ -275,7 +279,7 @@
                                         </tr>
                                         <tr>
                                             <td style="border: 2px solid black;">
-                                                <strong>Approved Precentage</strong>
+                                                <strong>Approved Commission Percentage</strong>
                                             </td>
                                             <td style="border: 2px solid black;">
                                                 <field name="approve_percentage" no_label="1"/>
@@ -583,7 +587,7 @@
                                 </group>
                             </page>
                             <page name="health" string="Health Detail">
-                                <field name="employee_ids">
+                                <field name="employee_ids" mode="tree,form" nolabel="1">
                                     <tree>
                                         <field name="member_id"/>
                                         <field name="dependent_id"/>
@@ -618,48 +622,48 @@
 
 
                                     </tree>
-                                    <form>
-                                        <sheet>
-                                            <group>
-                                                <group>
-                                                    <field name="member_id"/>
-                                                    <field name="dependent_id"/>
-                                                    <field name="name"/>
-                                                    <field name="client_image"/>
-                                                    <field name="arabic_name"/>
-                                                    <field name="gender"/>
-                                                    <field name="dob"/>
-                                                    <field name="dob_hijra"/>
-                                                    <field name="age"/>
-                                                    <!--                                                    <field name="member_type"/>-->
-                                                    <!--                                                    <field name="class_no"/>-->
-                                                </group>
-                                                <group>
-                                                    <!--                                                    <field name="age_category" optional="hide"/>-->
-                                                    <field name="risk_no" optional="hide"/>
-                                                    <field name="nationality" optional="hide"/>
-                                                    <field name="staff_no" optional="hide"/>
-<!--                                                    <field name="member_category" optional="hide"/>-->
-                                                    <field name="mobile1" optional="hide"/>
-                                                    <field name="mobile2" optional="hide"/>
-                                                    <field name="dep_no" optional="hide"/>
-                                                    <field name="sponser_id" optional="hide"/>
-                                                    <!--                                                    <field name="occupation" optional="hide"/>-->
-                                                    <field name="marital_status" optional="hide"/>
-                                                </group>
-                                                <group>
-                                                    <field name="elm_relation" optional="hide"/>
-                                                    <field name="vip" optional="hide"/>
-                                                    <field name="as_vip" optional="hide"/>
-                                                    <!--                                                    <field name="bank_id" optional="hide"/>-->
-                                                    <!--                                                    <field name="branch_id" optional="hide"/>-->
-                                                    <field name="rate"/>
-                                                    <field name="vat"/>
-                                                    <field name="total"/>
-                                                </group>
-                                            </group>
-                                        </sheet>
-                                    </form>
+<!--                                    <form>-->
+<!--                                        <sheet>-->
+<!--                                            <group>-->
+<!--                                                <group>-->
+<!--                                                    <field name="member_id"/>-->
+<!--                                                    <field name="dependent_id"/>-->
+<!--                                                    <field name="name"/>-->
+<!--                                                    <field name="client_image"/>-->
+<!--                                                    <field name="arabic_name"/>-->
+<!--                                                    <field name="gender"/>-->
+<!--                                                    <field name="dob"/>-->
+<!--                                                    <field name="dob_hijra"/>-->
+<!--                                                    <field name="age"/>-->
+<!--                                                    &lt;!&ndash;                                                    <field name="member_type"/>&ndash;&gt;-->
+<!--                                                    &lt;!&ndash;                                                    <field name="class_no"/>&ndash;&gt;-->
+<!--                                                </group>-->
+<!--                                                <group>-->
+<!--                                                    &lt;!&ndash;                                                    <field name="age_category" optional="hide"/>&ndash;&gt;-->
+<!--                                                    <field name="risk_no" optional="hide"/>-->
+<!--                                                    <field name="nationality" optional="hide"/>-->
+<!--                                                    <field name="staff_no" optional="hide"/>-->
+<!--&lt;!&ndash;                                                    <field name="member_category" optional="hide"/>&ndash;&gt;-->
+<!--                                                    <field name="mobile1" optional="hide"/>-->
+<!--                                                    <field name="mobile2" optional="hide"/>-->
+<!--                                                    <field name="dep_no" optional="hide"/>-->
+<!--                                                    <field name="sponser_id" optional="hide"/>-->
+<!--                                                    &lt;!&ndash;                                                    <field name="occupation" optional="hide"/>&ndash;&gt;-->
+<!--                                                    <field name="marital_status" optional="hide"/>-->
+<!--                                                </group>-->
+<!--                                                <group>-->
+<!--                                                    <field name="elm_relation" optional="hide"/>-->
+<!--                                                    <field name="vip" optional="hide"/>-->
+<!--                                                    <field name="as_vip" optional="hide"/>-->
+<!--                                                    &lt;!&ndash;                                                    <field name="bank_id" optional="hide"/>&ndash;&gt;-->
+<!--                                                    &lt;!&ndash;                                                    <field name="branch_id" optional="hide"/>&ndash;&gt;-->
+<!--                                                    <field name="rate"/>-->
+<!--                                                    <field name="vat"/>-->
+<!--                                                    <field name="total"/>-->
+<!--                                                </group>-->
+<!--                                            </group>-->
+<!--                                        </sheet>-->
+<!--                                    </form>-->
                                 </field>
                             </page>
 
@@ -785,18 +789,20 @@
                                     <tree editable="bottom">
                                         <!--                                        <field name="cash_mode"/>-->
                                         <field name="installment_date"/>
+                                        <field name="no_of_installment"/>
 <!--                                        <field name="type_installement"/>-->
 <!--                                        <field name="amount_paid"-->
 <!--                                               attrs="{'invisible':[('type_installement','=','fixed')]}"/>-->
                                         <field name="percentage"
                                               />
+                                         <field name="activity_ids" widget="list_activity"/>
                                         <field name="fix_amount"
                                               />
                                     </tree>
                                 </field>
                                 <group class="oe_subtotal_footer oe_right">
                                     <field name="total_instalment_am"/>
-                                    <field name="total_policy_am_after_vat"/>
+                                    <field name="total_premium_after_vat_ii" force_save="1" readonly="1" string="Total Premium After Vat"/>
                                     <field name="difference_instalment"/>
                                 </group>
                             </page>
@@ -896,6 +902,7 @@
                     <field name="policy_id_i"/>
                     <field name="insurance_company_id"/>
                     <field name="business_class"/>
+                    <field name="state"/>
                     <field name="policy_no" optional="hide"/>
                     <field name="endorsment_ref" optional="hide"/>
                     <field name="prev_policy" optional="hide"/>
@@ -923,6 +930,8 @@
                      <field name="approve_percentage" optional="hide"/>
                     <field name="broker_commision" optional="hide"/>
 
+                    <field name="sales_employee" optional="hide"/>
+                                <field name="supervisor" optional="hide"/>
 
 
                 </tree>

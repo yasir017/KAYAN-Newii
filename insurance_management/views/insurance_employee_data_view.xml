@@ -5,12 +5,16 @@
         <field name="model">insurance.employee.data</field>
         <field name="inherit_id" ref="policy_entry_insurance.view_health_data_tree"/>
           <field name="arch" type="xml">
-              <xpath expr="//field[@name='age']" position="after">
+              <xpath expr="//field[@name='staff_no']" position="after">
                   <field name="member_type"/>
                   <field name="class_no"/>
                   <field name="occupation" optional="hide"/>
 <!--                  <field name="branch_id" optional="hide"/>-->
                   <field name="member_category" optional="hide"/>
+                  <field name="age_category" />
+              </xpath>
+              <xpath expr="//field[@name='nationality']" position="after">
+                  <field name="occupation"/>
               </xpath>
           </field>
      </record>
