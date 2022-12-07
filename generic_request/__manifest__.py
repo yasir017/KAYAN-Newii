@@ -74,6 +74,7 @@
         'views/request_event_category.xml',
         'views/request_event_type.xml',
         'views/request_creation_template.xml',
+        'views/incident_type.xml',
         'views/generic_tag_menu.xml',
         'views/request_timesheet_activity.xml',
         'views/request_timesheet_line.xml',

@@ -16,3 +16,25 @@ class incident_type(models.Model):
 
     name = fields.Char(string='Name')
 
+class claim_required_docs(models.Model):
+    _name = 'claim.required.docs'
+    _inherit = ['mail.thread', 'mail.activity.mixin', 'mail.render.mixin']
+    _description = 'claim_required_docs'
+
+    name = fields.Selection([('Claim Form', 'Claim Form'),
+                             ('Trafic & Najm Report', 'Trafic & Najm Report'),
+                             ('Civil Defence Report', 'Civil Defence Report'),
+                             ('Driver Licence Copy', 'Driver Licence Copy'),
+                             ('Vehicle Registration Copy', 'Vehicle Registration Copy'),
+                             ('Sketch Accident', 'Sketch Accident'),
+                             ('Permission to Repair', 'Permission to Repair'),
+                             ('Basher Report', 'Basher Report'),
+                             ('Copy of ID', 'Copy of ID'),
+                             ], string="Covering Maintenance")
+
+# class claim_docs_name(models.Model):
+#     _name = 'claim.docs.name'
+#     _inherit = ['mail.thread', 'mail.activity.mixin', 'mail.render.mixin']
+#     _description = 'claim_docs_name'
+#
+#     name = fields.Char(string='Name')

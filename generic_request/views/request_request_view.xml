@@ -16,16 +16,19 @@
                 <field name="can_change_category" invisible="1"/>
                 <field name="can_change_deadline" invisible="1"/>
                 <header>
-                    <div class="stage_route_out_widget">
-                        <field name="stage_route_out_json" widget="stage_route_out_widget"/>
-                    </div>
-                    <button name="send_claim_email_insurance_company" type="object" string="Send Email to Insurance Company" class="oe_highlight"/>
+<!--                    <div class="stage_route_out_widget">-->
+<!--                        <field name="stage_route_out_json" widget="stage_route_out_widget"/>-->
+<!--                    </div>-->
+                    <button name="send_claim_email_insurance_company" type="object" string="Send Email to Vendor" class="oe_highlight"/>
                     <button name="create_claim_invoice_wizard" type="object" string="Create Invoice" class="oe_highlight"/>
                     <button name="create_claim_credit_note_wizard" type="object" string="Create Credit-Note" class="oe_highlight"/>
-                    <field name="stage_id" widget="statusbar"
-                           required="0"
-                           attrs="{'readonly': True}"
-                           domain="[('id', '=', stage_id)]"/>
+                    <button name="close" type="object" string="Close" class="oe_highlight" states="draft,sent_to_vendor"/>
+                    <button name="cancel" type="object" string="Cancel" class="oe_highlight" states="draft,sent_to_vendor,closed"/>
+<!--                    <field name="stage_id" widget="statusbar"-->
+<!--                           required="0"-->
+<!--                           attrs="{'readonly': True}"-->
+<!--                           domain="[('id', '=', stage_id)]"/>-->
+                    <field name="state" widget="statusbar" statusbar_visible="draft,sent_to_vendor,closed,cancel" clickable="1"/>
                 </header>
                 <sheet>
                     <div class="oe_button_box" name="button_box">
@@ -36,17 +39,17 @@
                                 <span class="o_stat_text">Documents</span>
                             </div>
                         </button>
-                        <button name="action_button_show_subrequests"
-                                type="object"
-                                class="oe_stat_button" icon="fa-sitemap">
-                            <field string="Subrequests" name="child_count"
-                                   widget="statinfo"/>
-                        </button>
+<!--                        <button name="action_button_show_subrequests"-->
+<!--                                type="object"-->
+<!--                                class="oe_stat_button" icon="fa-sitemap">-->
+<!--                            <field string="Subrequests" name="child_count"-->
+<!--                                   widget="statinfo"/>-->
+<!--                        </button>-->
                         <button name="action_open_claim_invoice" type="object"
                             class="oe_stat_button" icon="fa-star" attrs="{'invisible': [('total_claim_invoice', '=', 0)]}">
                             <div class="o_stat_info">
                                 <field name="total_claim_invoice" class="o_stat_value"/>
-                                <span class="o_stat_text">Claim Invoice</span>
+                                <span class="o_stat_text">Invoice/CreditNote</span>
                             </div>
                         </button>
                     </div>
@@ -250,11 +253,10 @@
                                         <group>
                                             <field name="repair_labour_cost"/>
                                             <field name="repair_deductible_cost"/>
-                                            <field name="approved_letter_file"/>
+                                            <field name="repair_parts_cost"/>
                                             <field name="net_amount_repair"/>
                                         </group>
                                         <group>
-                                            <field name="repair_parts_cost"/>
                                             <field name="other_repair_cost_ids">
                                                 <tree editable="bottom">
                                                     <field name="name"/>
@@ -263,6 +265,12 @@
                                             </field>
                                         </group>
                                     </group>
+                                    <group>
+                                        <group string="Approved Letter File">
+                                            <field name="approved_letter_file" nolabel="1"/>
+                                        </group>
+                                        <group></group>
+                                    </group>
                                 </page>
                                 <page string="Total Lost" attrs="{'invisible': [('approved_claim_type', '!=', 'total_lost')]}">
                                     <group>
@@ -270,7 +278,6 @@
                                             <field name="t_lost_insurance_value"/>
                                             <field name="t_lost_deductible_cost"/>
                                             <field name="t_lost_depreciation_cost"/>
-                                            <field name="approved_letter_file"/>
                                             <field name="net_amount"/>
                                         </group>
                                         <group string="Other Lost Costs">
@@ -281,6 +288,12 @@
                                                 </tree>
                                             </field>
                                         </group>
+                                    </group>
+                                    <group>
+                                        <group string="Approved Letter File">
+                                            <field name="approved_letter_file" nolabel="1"/>
+                                        </group>
+                                        <group></group>
                                     </group>
                                 </page>
                             </notebook>
@@ -350,34 +363,29 @@
                                            attrs="{'invisible': ['|', ('author_id', '!=', False), ('author_phone', '=', False)]}"/>
                                 </group>
                                 <group name="group_partner" class="mb0 mt0">
-                                    <label for="partner_id"/>
                                     <div name="div_partner" class="request-partner-author-field o_row">
-                                        <field name="partner_id"
-                                               placeholder="Related partner..."
-                                               widget="m2o_info"
-                                               options="{'info_method': 'request_helper_m2o_info'}"/>
                                         <span name="span_request_partner_stat">
-                                            <button name="action_show_related_partner_requests_opened"
-                                                    type="object"
-                                                    class="btn btn-sm btn-secondary"
-                                                    title="Open requests by same partner"
-                                                    attrs="{'invisible': ['|', ('partner_id', '=', False), ('partner_related_request_open_count', '!=', 0)]}">
-                                                <field name="partner_related_request_open_count"/>
-                                            </button>
-                                            <button name="action_show_related_partner_requests_opened"
-                                                    type="object"
-                                                    class="btn btn-sm btn-outline-danger"
-                                                    title="Open requests by same partner"
-                                                    attrs="{'invisible': ['|', ('partner_id', '=', False), ('partner_related_request_open_count', '=', 0)]}">
-                                                <field name="partner_related_request_open_count"/>
-                                            </button>
-                                            <button name="action_show_related_partner_requests_closed"
-                                                    type="object"
-                                                    class="btn btn-sm btn-secondary btn-outline-dark ml4"
-                                                    title="Closed requests by same partner"
-                                                    attrs="{'invisible': [('partner_id', '=', False)]}">
-                                                <field name="partner_related_request_closed_count"/>
-                                            </button>
+<!--                                            <button name="action_show_related_partner_requests_opened"-->
+<!--                                                    type="object"-->
+<!--                                                    class="btn btn-sm btn-secondary"-->
+<!--                                                    title="Open requests by same partner"-->
+<!--                                                    attrs="{'invisible': ['|', ('partner_id', '=', False), ('partner_related_request_open_count', '!=', 0)]}">-->
+<!--                                                <field name="partner_related_request_open_count"/>-->
+<!--                                            </button>-->
+<!--                                            <button name="action_show_related_partner_requests_opened"-->
+<!--                                                    type="object"-->
+<!--                                                    class="btn btn-sm btn-outline-danger"-->
+<!--                                                    title="Open requests by same partner"-->
+<!--                                                    attrs="{'invisible': ['|', ('partner_id', '=', False), ('partner_related_request_open_count', '=', 0)]}">-->
+<!--                                                <field name="partner_related_request_open_count"/>-->
+<!--                                            </button>-->
+<!--                                            <button name="action_show_related_partner_requests_closed"-->
+<!--                                                    type="object"-->
+<!--                                                    class="btn btn-sm btn-secondary btn-outline-dark ml4"-->
+<!--                                                    title="Closed requests by same partner"-->
+<!--                                                    attrs="{'invisible': [('partner_id', '=', False)]}">-->
+<!--                                                <field name="partner_related_request_closed_count"/>-->
+<!--                                            </button>-->
                                         </span>
                                     </div>
                                 </group>
@@ -403,30 +411,30 @@
                         <page string="Attachments">
                         <group string="Attachments">
                             <group>
-                                 <field name="claim_form" widget="image"/>
-                                 <field name="trafic_najm_report" widget="image"/>
-                                 <field name="civil_defence_report" widget="image"/>
+                                 <field name="claim_form" widget="binary"/>
+                                 <field name="trafic_najm_report" widget="binary"/>
+                                 <field name="civil_defence_report" widget="binary"/>
+                                <field name="driver_licence_copy" widget="binary"/>
+                                 <field name="vehicle_registration_copy" widget="binary"/>
                              </group>
                              <group>
-                                 <field name="driver_licence_copy" widget="image"/>
-                                 <field name="vehicle_registration_copy" widget="image"/>
-                                 <field name="id_copy" widget="image"/>
-                             </group>
-                             <group>
-                                 <field name="sketch_accident" widget="image"/>
-                                 <field name="permission_to_repair" widget="image"/>
-                                 <field name="basher_report" widget="image"/>
+                                 <field name="sketch_accident" widget="binary"/>
+                                 <field name="permission_to_repair" widget="binary"/>
+                                 <field name="basher_report" widget="binary"/>
+                                 <field name="id_copy" widget="binary"/>
                              </group>
                         </group>
+                            <group string="Other Attachment">
+                                <group>
+                                    <field name="other_attachment_ids">
+                                        <tree editable="bottom">
+                                            <field name="name"/>
+                                            <field name="file"/>
+                                        </tree>
+                                    </field>
+                                </group>
+                            </group>
                     </page>
-                        <page string="Other Attachments">
-                            <field name="other_attachment_ids">
-                                <tree editable="bottom">
-                                    <field name="name"/>
-                                    <field name="file"/>
-                                </tree>
-                            </field>
-                        </page>
                         <page string="Time log" attrs="{'invisible': [('use_timesheet', '=', False)]}">
                             <field name="timesheet_line_ids">
                                 <tree editable="bottom">
@@ -452,12 +460,7 @@
                             </group>
                         </page>
                         <page string="Help"
-                              name="page_help"
-                              attrs="{'invisible': [
-                                    '&amp;',
-                                    '|', ('help_html', '=', False), ('help_html', '=', '&lt;p&gt;&lt;br&gt;&lt;/p&gt;'),
-                                    '|', ('stage_help_html', '=', False), ('stage_help_html', '=', '&lt;p&gt;&lt;br&gt;&lt;/p&gt;'),
-                                    '|', ('category_help_html', '=', False), ('category_help_html', '=', '&lt;p&gt;&lt;br&gt;&lt;/p&gt;')]}">
+                              name="page_help" invisible="1">
                             <separator string="Stage"
                                        colspan="4"
                                        attrs="{'invisible': ['|', ('stage_help_html', '=', False), ('stage_help_html', '=', '&lt;p&gt;&lt;br&gt;&lt;/p&gt;')]}"/>
@@ -480,12 +483,11 @@
                                    attrs="{'invisible': ['|', ('help_html', '=', False), ('help_html', '=', '&lt;p&gt;&lt;br&gt;&lt;/p&gt;')]}"/>
                         </page>
                         <page string="Instruction"
-                              name="page_instruction"
-                              attrs="{'invisible': [('instruction_visible', '=', False)]}">
+                              name="page_instruction" invisible="1">
                             <field name="instruction_visible" invisible="1"/>
                             <field colspan="4" name="instruction_html"/>
                         </page>
-                        <page string="Other" name="page_other">
+                        <page string="Other" invisible="1" name="page_other">
                             <group>
                                 <group name="group_info_left">
                                     <field name="email_from"/>
@@ -496,7 +498,7 @@
                                 <group name="group_info_right"/>
                             </group>
                         </page>
-                        <page string="Technical"
+                        <page invisible="1" string="Technical"
                               name="page_technical"
                               groups="base.group_no_one">
                             <group>
@@ -514,132 +516,6 @@
                             </group>
                         </page>
                     </notebook>
-                    <div class="row mt8" name="request_user_info_footer">
-                        <div class="col-md-3"
-                             name="request_footer__creator">
-                            <div><label for="date_created" string="Created"/></div>
-                            <div>
-                                <i title="Date Created"
-                                   class="fa fa-calendar mr4"/>
-                                <field name="date_created"/>
-                            </div>
-                            <div>
-                                <i class="fa fa-user mr4"
-                                   title="Created by user"/>
-                                <field name="created_by_id"
-                                       widget="m2o_info"
-                                       class="d-inline-block"
-                                       options="{'info_method': 'request_helper_m2o_info'}"/>
-                            </div>
-                        </div>
-                        <div class="col-md-3"
-                             name="request_footer__moved_by"
-                             attrs="{'invisible': [('date_moved', '=', False)]}">
-                            <div><label for="date_moved" string="Moved"/></div>
-                            <div>
-                                <i title="Date Created"
-                                   class="fa fa-calendar mr4"/>
-                                <field name="date_moved"/>
-                            </div>
-                            <div>
-                                <i class="fa fa-user mr4"
-                                   title="Moved by user"/>
-                                <field name="moved_by_id"
-                                       widget="m2o_info"
-                                       class="d-inline-block"
-                                       options="{'info_method': 'request_helper_m2o_info'}"/></div>
-                        </div>
-                        <div class="col-md-3"
-                             name="request_footer__assigned">
-                            <div>
-                                <span attrs="{'invisible': [('user_id', '=', False)]}">
-                                    <label for="date_assigned" string="Assigned"/>
-                                </span>
-                                <span name="request_assign_button"
-                                      attrs="{'invisible':
-                                      ['|', '|', '|',
-                                       ('closed', '=', True),
-                                       ('can_change_assignee', '=', False),
-                                       ('user_id', '!=', False),
-                                       ('id', '=', False)]}">
-                                    <button name="action_request_assign"
-                                            type="object"
-                                            string="Assign"
-                                            class="oe_link"
-                                            style="padding: 0px 0px;"/></span>
-                                <span name="request_reassign_button"
-                                      attrs="{'invisible':
-                                      ['|',
-                                       ('can_change_assignee', '=', False),
-                                       ('user_id', '=', False)]}">
-                                    <button name="action_request_assign"
-                                            type="object"
-                                            string="Reassign"
-                                            class="oe_link"
-                                            style="padding: 0px 0px;"/></span>
-                            </div>
-                            <div attrs="{'invisible': [('user_id', '!=', False)]}">
-                                <button name="action_request_assign_to_me"
-                                        type="object"
-                                        attrs="{'invisible':
-                                            ['|', '|', '|',
-                                            ('closed', '=', True),
-                                            ('can_change_assignee', '=', False),
-                                            ('user_id', '!=', False),
-                                            ('id', '=', False)]}"
-                                        string="Assign to me"
-                                        class="oe_link"
-                                        style="padding: 0px 0px;"/>
-                            </div>
-                            <div>
-                                <i title="Date Assigned"
-                                   class="fa fa-calendar mr4" attrs="{'invisible': [('date_assigned', '=', False)]}"/>
-                                <field name="date_assigned"/>
-                            </div>
-                            <div attrs="{'invisible': [('user_id', '=', False)]}">
-                                 <i class="fa fa-user mr4"
-                                    title="Assignee"/>
-                                 <field name="user_id"
-                                        readonly="1"
-                                        widget="m2o_info"
-                                        class="d-inline-block"
-                                        options="{'info_method': 'request_helper_m2o_info'}"/>
-                            </div>
-                        </div>
-                        <div class="col-md-3"
-                             name="request_footer__closed"
-                             attrs="{'invisible': [('date_closed', '=', False)]}">
-                            <div><label for="date_closed" string="Closed"/></div>
-                            <div>
-                                <i title="Date Closed"
-                                   class="fa fa-calendar mr4"/>
-                                <field name="date_closed"/>
-                            </div>
-                            <div>
-                                <i class="fa fa-user mr4"
-                                   title="Closed by user"/>
-                                <field name="closed_by_id"
-                                       widget="m2o_info"
-                                       class="d-inline-block"
-                                       options="{'info_method': 'request_helper_m2o_info'}"/>
-                            </div>
-                        </div>
-                        <div class="col-md-3"
-                             name="notify_scheduled_date">
-                            <div><label for="notification_date" string="Notification Date"/></div>
-                            <div>
-                                <i title="Notification Date"
-                                   class="fa fa-calendar mr4"/>
-                                <field name="notification_date"/>
-                            </div>
-                            <div><label for="scheduled_date" string="Scheduled Date"/></div>
-                            <div>
-                                <i title="Scheduled Date"
-                                   class="fa fa-calendar mr4"/>
-                                <field name="scheduled_date"/>
-                            </div>
-                        </div>
-                    </div>
                 </sheet>
                 <div class="oe_chatter">
                     <field name="message_follower_ids"/>
@@ -685,7 +561,11 @@
                 <field name="deadline_date"
                        string="Deadline"
                        optional="show"/>
-                <field name="stage_id"
+                <field name="activity_ids" string="Next Activity" widget="list_activity" optional="show"/>
+<!--                <field name="stage_id"-->
+<!--                       options="{'field_bg_color': 'stage_bg_color', 'field_label_color': 'stage_label_color'}"-->
+<!--                       optional="show"/>-->
+                <field name="state"
                        options="{'field_bg_color': 'stage_bg_color', 'field_label_color': 'stage_label_color'}"
                        optional="show"/>
                 <field name="kanban_state"
@@ -739,13 +619,13 @@
                 <field name="date_closed"/>
                 <field name="closed_by_id"/>
                 <field name="closed"/>
-                <field name="stage_id"/>
+<!--                <field name="stage_id"/>-->
+                <field name="state"/>
                 <field name="stage_bg_color"/>
                 <field name="stage_label_color"/>
                 <field name="request_text_sample"/>
                 <field name="activity_ids"/>
                 <field name="activity_state"/>
-                <field name="partner_id"/>
                 <field name="author_id"/>
                 <field name="deadline_date"/>
                 <field name="deadline_state"/>
@@ -814,12 +694,12 @@
                                         <span title='Followers' class='fa fa-users mr4'></span>
                                         <t t-esc="record.message_follower_ids.raw_value.length"/>
                                     </span>
-                                    <span t-if="record.child_count.raw_value"
-                                          class="icon">
-                                        <span title='Subrequests'
-                                              class='fa fa-sitemap mr4'></span>
-                                        <t t-esc="record.child_count.raw_value"/>
-                                    </span>
+<!--                                    <span t-if="record.child_count.raw_value"-->
+<!--                                          class="icon">-->
+<!--                                        <span title='Subrequests'-->
+<!--                                              class='fa fa-sitemap mr4'></span>-->
+<!--                                        <t t-esc="record.child_count.raw_value"/>-->
+<!--                                    </span>-->
                                 </div>
                                 <div name="right_info" class="o_header_right_info">
                                     <div name="right_info_kanban_state">
@@ -830,7 +710,8 @@
                                          class="o_header_stage"
                                          t-attf-style="background-color: {{record.stage_bg_color.raw_value}}">
                                         <span t-attf-style="color: {{record.stage_label_color.raw_value}}">
-                                            <field name="stage_id"/>
+<!--                                            <field name="stage_id"/>-->
+                                            <field name="state"/>
                                         </span>
                                     </div>
                                 </div>
@@ -888,16 +769,16 @@
                                 </div>
                              <div class="o_request_kanban_row">
                               <div class="o_partner_icon mr8">
-                                <t t-if="record.partner_id.raw_value">
-                                    <div>
-                                        <a type="open">
-                                            <img t-att-src="kanban_image('res.partner', 'image_128', record.partner_id.raw_value)"
-                                                 t-att-title="record.partner_id.value"
-                                                 t-att-alt="record.partner_id.value"
-                                                 class="oe_kanban_image"/>
-                                        </a>
-                                    </div>
-                                </t>
+<!--                                <t t-if="record.partner_id.raw_value">-->
+<!--                                    <div>-->
+<!--                                        <a type="open">-->
+<!--                                            <img t-att-src="kanban_image('res.partner', 'image_128', record.partner_id.raw_value)"-->
+<!--                                                 t-att-title="record.partner_id.value"-->
+<!--                                                 t-att-alt="record.partner_id.value"-->
+<!--                                                 class="oe_kanban_image"/>-->
+<!--                                        </a>-->
+<!--                                    </div>-->
+<!--                                </t>-->
                              </div>
                             <div>
                                 <div name="request_text" class="o_request_kanban_text">
@@ -975,17 +856,13 @@
                        ('request_text', 'ilike', self),
                        ('author_id.phone', 'ilike', self),
                        ('author_id.mobile', 'ilike', self),
-                       ('author_id.name', 'ilike', self),
-                       ('partner_id.phone', 'ilike', self),
-                       ('partner_id.mobile', 'ilike', self),
-                       ('partner_id.name', 'ilike', self)]"/>
+                       ('author_id.name', 'ilike', self)]"/>
                 <field name="name"/>
                 <field name="type_id"/>
                 <field name="parent_id"/>
                 <field name="kind_id"/>
                 <field name="category_id"/>
                 <field name="stage_type_id"/>
-                <field name="partner_id"/>
                 <field name="author_id"/>
                 <field name="user_id"/>
                 <field name="is_assigned"/>
@@ -1063,12 +940,14 @@
                             string="Kind" context="{'group_by': 'kind_id'}"/>
                     <filter name="filter_group_by_category"
                             string="Category" context="{'group_by': 'category_id'}"/>
+<!--                    <filter name="filter_group_by_stage"-->
+<!--                            string="Stage" context="{'group_by': 'stage_id'}"/>-->
                     <filter name="filter_group_by_stage"
-                            string="Stage" context="{'group_by': 'stage_id'}"/>
+                            string="Stage" context="{'group_by': 'state'}"/>
                     <filter name="filter_group_by_stage_type"
                             string="Stage Type" context="{'group_by': 'stage_type_id'}"/>
-                    <filter name="filter_group_by_partner"
-                            string="Partner" context="{'group_by': 'partner_id'}"/>
+<!--                    <filter name="filter_group_by_partner"-->
+<!--                            string="Partner" context="{'group_by': 'partner_id'}"/>-->
                     <filter name="filter_group_by_assignee"
                             string="Assignee" context="{'group_by': 'user_id'}"/>
                     <filter name="filter_group_by_is_assigned"
