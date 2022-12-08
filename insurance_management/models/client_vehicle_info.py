@@ -108,4 +108,6 @@ class client_vehicle_info(models.Model):
                 for s in string_part_list:
                     if not s.isalpha():
                         raise ValidationError("The Plate No. is not According to given Format!")
+                    elif not s.isupper():
+                        raise ValidationError("The Plate No. is not According to given Format Alphabet must be in capital letters!")
         return res

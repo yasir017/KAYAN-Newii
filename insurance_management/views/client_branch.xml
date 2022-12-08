@@ -12,6 +12,7 @@
                 <field name="insurance_sub_type_id"/>
                 <field name="sales_employee"/>
                 <field name="supervisor"/>
+                <field name="activity_ids" string="Next Activity" widget="list_activity" optional="show"/>
                 <field name="country"/>
                 <field name="state_id"/>
                 <field name="client_ids"/>
@@ -138,6 +139,12 @@
                 </header>
                 <sheet>
                     <div class="oe_button_box" name="button_box">
+                        <button name="action_open_crm" type="object"
+                            class="oe_stat_button" icon="fa-star">
+                            <div class="o_stat_info">
+                                <span class="o_stat_text">CRM</span>
+                            </div>
+                        </button>
                         <button name="action_open_client_documents" type="object"
                             class="oe_stat_button" icon="fa-star">
                             <div class="o_stat_info">

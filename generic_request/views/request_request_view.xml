@@ -19,11 +19,11 @@
 <!--                    <div class="stage_route_out_widget">-->
 <!--                        <field name="stage_route_out_json" widget="stage_route_out_widget"/>-->
 <!--                    </div>-->
-                    <button name="send_claim_email_insurance_company" type="object" string="Send Email to Vendor" class="oe_highlight"/>
-                    <button name="create_claim_invoice_wizard" type="object" string="Create Invoice" class="oe_highlight"/>
-                    <button name="create_claim_credit_note_wizard" type="object" string="Create Credit-Note" class="oe_highlight"/>
+                    <button name="send_claim_email_insurance_company" type="object" string="Send Email to Vendor" class="oe_highlight" states="draft,sent_to_vendor"/>
+                    <button name="create_claim_invoice_wizard" type="object" string="Create Invoice" class="oe_highlight" states="draft,sent_to_vendor"/>
+                    <button name="create_claim_credit_note_wizard" type="object" string="Create Credit-Note" class="oe_highlight" states="draft,sent_to_vendor"/>
                     <button name="close" type="object" string="Close" class="oe_highlight" states="draft,sent_to_vendor"/>
-                    <button name="cancel" type="object" string="Cancel" class="oe_highlight" states="draft,sent_to_vendor,closed"/>
+                    <button name="cancel" type="object" string="Cancel" class="oe_highlight" states="draft,sent_to_vendor"/>
 <!--                    <field name="stage_id" widget="statusbar"-->
 <!--                           required="0"-->
 <!--                           attrs="{'readonly': True}"-->
@@ -102,7 +102,7 @@
                                domain="[('model_id.model', '=', 'request.request')]"
                                context="{'default_model': 'request.request'}"/>
                     </div>
-                    <group name="request_head_info" class="request-head-info">
+                    <group name="request_head_info" class="request-head-info" invisible="1">
                         <group invisible="1" name="request_head_info_left" class="request-head-info-left">
                             <div colspan="2" name="header_category" class="request-head-info-item">
                                 <span class="field-with-icon">
@@ -194,7 +194,7 @@
                             </div>
                         </group>
                     </group>
-                    <group string="Operational Dates">
+                    <group string="Operation Dates">
                         <group>
                             <field name="scheduled_date"/>
                             <field name="deadline_date" attrs="{'readonly': [('can_change_deadline', '=', False)]}"/>
@@ -203,8 +203,6 @@
                             <field name="date_created"/>
                             <field name="notification_date"/>
                         </group>
-                    </group>
-                    <group>
                         <group string="Customer">
                             <field name="client_id"/>
                         </group>
@@ -213,8 +211,6 @@
                             <field name="ins_type_select" invisible="1"/>
                             <field name="incident_type"/>
                         </group>
-                    </group>
-                    <group string="Policy Related Details">
                         <group>
                             <field name="insurance_type_id"/>
                             <field name="insurance_sub_type_id"/>
@@ -228,75 +224,123 @@
                             <field name="expiry_date"/>
                         </group>
                     </group>
+<!--                    <group>-->
+<!--                        -->
+<!--                    </group>-->
+<!--                    <group string="Policy Related Details">-->
+<!--                    </group>-->
                     <notebook class="request-notebook_custom">
                         <page string="Inside Detail" attrs="{'invisible':[('ins_type_select','!=','is_vehicle')]}" name="inside_detail_vehicle">
-                            <group string="Policy Related Details">
+                            <group>
                                 <group>
                                     <field name="vehicle_detail_id"/>
                                     <field name="vehicle_covering_maintenance"/>
-                                </group>
-                            </group>
-                            <group string="Insurance Company Response Details">
-                                <group>
-                                    <field name="covering_maintenance"/>
-                                </group>
-                                <group>
-                                    <field name="approved_claim_number"/>
-                                </group>
-                                <group>
                                     <field name="approved_claim_type"/>
                                 </group>
+                                <group>
+                                    <field name="covering_maintenance"/>
+                                    <field name="approved_claim_number"/>
+                                </group>
                             </group>
-                            <notebook>
-                                <page string="Repair" attrs="{'invisible': [('approved_claim_type', '!=', 'repair')]}">
-                                    <group>
-                                        <group>
-                                            <field name="repair_labour_cost"/>
-                                            <field name="repair_deductible_cost"/>
-                                            <field name="repair_parts_cost"/>
-                                            <field name="net_amount_repair"/>
-                                        </group>
-                                        <group>
-                                            <field name="other_repair_cost_ids">
-                                                <tree editable="bottom">
-                                                    <field name="name"/>
-                                                    <field name="cost"/>
-                                                </tree>
-                                            </field>
-                                        </group>
+                            <separator string="Total Lost" colspan="4" style="font-size:20px;" attrs="{'invisible': [('approved_claim_type', '!=', 'total_lost')]}"/>
+                                    <table width="100%" style="border: 2px solid black;" attrs="{'invisible': [('approved_claim_type', '!=', 'total_lost')]}"
+                                       class="table table-bordered mt32">
+                                    <thead>
+                                        <tr style="background-color:#f2bf89">
+                                            <th style="border: 2px solid black;width: 300px;">
+                                                <strong>Sum Insured</strong>
+                                            </th>
+                                            <th style="border: 2px solid black;width: 300px;">
+                                                <strong>Deductible Cost</strong>
+                                            </th>
+                                            <th style="border: 2px solid black;width: 300px;">
+                                                <strong>Depreciation Cost</strong>
+                                            </th>
+                                            <th style="border: 2px solid black;width: 300px;">
+                                                <strong>Net Amount</strong>
+                                            </th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td style="border: 2px solid black;">
+                                                <field name="t_lost_insurance_value" no_label="1"/>
+                                            </td>
+                                            <td style="border: 2px solid black;">
+                                                <field no_label="1" name="t_lost_deductible_cost"/>
+                                            </td>
+                                            <td style="border: 2px solid black;">
+                                                <field no_label="1" name="t_lost_depreciation_cost"/>
+                                            </td>
+                                            <td style="border: 2px solid black;">
+                                                <field name="net_amount" no_label="1"/>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                <group attrs="{'invisible': [('approved_claim_type', '!=', 'total_lost')]}">
+                                    <group string="Other Costs">
+                                        <field name="other_lost_cost_ids" nolabel="1">
+                                            <tree editable="bottom">
+                                                <field name="name"/>
+                                                <field name="cost"/>
+                                            </tree>
+                                        </field>
                                     </group>
-                                    <group>
-                                        <group string="Approved Letter File">
-                                            <field name="approved_letter_file" nolabel="1"/>
-                                        </group>
-                                        <group></group>
+                                    <group string="Approved Letter File">
+                                        <field name="approved_letter_file"/>
                                     </group>
-                                </page>
-                                <page string="Total Lost" attrs="{'invisible': [('approved_claim_type', '!=', 'total_lost')]}">
-                                    <group>
-                                        <group>
-                                            <field name="t_lost_insurance_value"/>
-                                            <field name="t_lost_deductible_cost"/>
-                                            <field name="t_lost_depreciation_cost"/>
-                                            <field name="net_amount"/>
-                                        </group>
-                                        <group string="Other Lost Costs">
-                                            <field name="other_lost_cost_ids" nolabel="1">
-                                                <tree editable="bottom">
-                                                    <field name="name"/>
-                                                    <field name="cost"/>
-                                                </tree>
-                                            </field>
-                                        </group>
+                                </group>
+
+                            <separator string="Repair" colspan="4" style="font-size:20px;" attrs="{'invisible': [('approved_claim_type', '!=', 'repair')]}"/>
+                                    <table width="100%" style="border: 2px solid black;" attrs="{'invisible': [('approved_claim_type', '!=', 'repair')]}"
+                                       class="table table-bordered mt32">
+                                    <thead>
+                                        <tr style="background-color:#7bdaff">
+                                            <th style="border: 2px solid black;width: 300px;">
+                                                <strong>Labour Cost</strong>
+                                            </th>
+                                            <th style="border: 2px solid black;width: 300px;">
+                                                <strong>Deductible Cost</strong>
+                                            </th>
+                                            <th style="border: 2px solid black;width: 300px;">
+                                                <strong>Parts Cost</strong>
+                                            </th>
+                                            <th style="border: 2px solid black;width: 300px;">
+                                                <strong>Net Amount</strong>
+                                            </th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td style="border: 2px solid black;">
+                                                <field name="repair_labour_cost" no_label="1"/>
+                                            </td>
+                                            <td style="border: 2px solid black;">
+                                                <field no_label="1" name="repair_deductible_cost"/>
+                                            </td>
+                                            <td style="border: 2px solid black;">
+                                                <field no_label="1" name="repair_parts_cost"/>
+                                            </td>
+                                            <td style="border: 2px solid black;">
+                                                <field name="net_amount_repair" no_label="1"/>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                <group attrs="{'invisible': [('approved_claim_type', '!=', 'repair')]}">
+                                    <group string="Other Cost">
+                                        <field name="other_repair_cost_ids" nolabel="1">
+                                            <tree editable="bottom">
+                                                <field name="name"/>
+                                                <field name="cost"/>
+                                            </tree>
+                                        </field>
                                     </group>
-                                    <group>
-                                        <group string="Approved Letter File">
-                                            <field name="approved_letter_file" nolabel="1"/>
-                                        </group>
-                                        <group></group>
+                                    <group string="Approved Letter File">
+                                        <field name="approved_letter_file"/>
                                     </group>
-                                </page>
-                            </notebook>
+                                </group>
                         </page>
                         <page string="Inside Detail" attrs="{'invisible':[('ins_type_select','!=','is_medical')]}" name="inside_detail_medical">
                             <group>

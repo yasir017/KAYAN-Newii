@@ -334,10 +334,10 @@ class RequestRequest(models.Model):
     approved_claim_number = fields.Char(string='Claim Number')
     approved_claim_type = fields.Selection([('repair', 'Repair'),('total_lost', 'Total Lost')], string="Approved Claim For")
 
-    repair_labour_cost = fields.Float(string='Repair Labour Cost')
-    repair_parts_cost = fields.Float(string='Repair Parts Cost')
-    repair_deductible_cost = fields.Float(string='Repair Deductible Cost',help='(It’s supposed to be in the policy)(this cost will be covered by client to the work shop directely)')
-    other_repair_cost_ids = fields.One2many('other.repair.cost','request_id',string='Other Repair Costs',ondelete='cascade')
+    repair_labour_cost = fields.Float(string='Labour Cost')
+    repair_parts_cost = fields.Float(string='Parts Cost')
+    repair_deductible_cost = fields.Float(string='Deductible Cost',help='(It’s supposed to be in the policy)(this cost will be covered by client to the work shop directely)')
+    other_repair_cost_ids = fields.One2many('other.repair.cost','request_id',string='Other Costs',ondelete='cascade')
     approved_letter_file = fields.Binary(string='Approved Letter File')
     net_amount_repair = fields.Float(string='Net Amount', help='Net Amount', compute='get_net_amount_repaired')
 
@@ -462,10 +462,10 @@ class RequestRequest(models.Model):
     #                 request_type.action_create_default_stage_and_routes()
     #                 self.type_id = request_type.id
 
-    @api.depends('t_lost_deductible_cost','t_lost_depreciation_cost','other_lost_cost_ids.cost')
+    @api.depends('t_lost_deductible_cost','t_lost_depreciation_cost','other_lost_cost_ids.cost','t_lost_insurance_value')
     def get_insured_value(self):
         for rec in self:
-            rec.net_amount = rec.t_lost_deductible_cost + rec.t_lost_depreciation_cost + sum(rec.other_lost_cost_ids.mapped('cost'))
+            rec.net_amount = rec.t_lost_insurance_value+rec.t_lost_deductible_cost + rec.t_lost_depreciation_cost + sum(rec.other_lost_cost_ids.mapped('cost'))
 
 
 
