@@ -165,13 +165,13 @@
                                                 <strong>Premium(%)</strong>
                                             </td>
                                             <td style="border: 2px solid black;">
-                                                <field name="premium_percent_am" no_label="1"/>
+                                                <field name="premium_percent_am" no_label="1" readonly="1" force_save="1"/>
                                             </td>
                                             <td style="border: 2px solid black;">
-                                                <field no_label="1" name="premium_percent_vat" readonly="1" force_save="1"/>
+                                                <field no_label="1" name="premium_percent_vat" />
                                             </td>
                                             <td style="border: 2px solid black;">
-                                                <field name="premium_percent_am_total" readonly="1" force_save="1"  no_label="1"/>
+                                                <field name="premium_percent_am_total_ii" readonly="1" force_save="1"  no_label="1"/>
                                             </td>
 
                                         </tr>

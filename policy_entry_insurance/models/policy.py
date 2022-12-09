@@ -67,7 +67,7 @@ class Policy(models.Model):
 
     premium_percent_am = fields.Float("Premium Percent")
     premium_percent_vat = fields.Float("Premium Percent Vat",default=15.0)
-    premium_percent_am_total = fields.Float("Premium Percent total")
+    premium_percent_am_total_ii= fields.Float("Premium Percent total")
 
     issuening_fee_percent = fields.Float("Issueing Fee Percent",default=15.0)
     issuening_fee_total = fields.Float("Issuenc Fee total")
@@ -125,9 +125,13 @@ class Policy(models.Model):
     @api.onchange('premium_percent_am','premium_percent_vat')
     def _onchange_prem_percent_vat(self):
         if self.premium_percent_vat:
-            self.premium_percent_am_total = self.premium_percent_am_total+(self.premium_percent_am_total*(self.premium_percent_vat/100))
+            print("Yasirrrrrrrrrrrrr")
+            percentage = self.premium_percent_vat/100
+            total_after_percentage = self.premium_percent_am*percentage
+            total_am = self.premium_percent_am+total_after_percentage
+            self.premium_percent_am_total_ii=total_am
         else:
-            self.premium_percent_am_total = self.premium_percent_am
+            self.premium_percent_am_total_ii = self.premium_percent_am
     @api.depends('broker_commision')
     def _compute_govt_fee(self):
         for rec in self:
@@ -273,9 +277,9 @@ class Policy(models.Model):
     def _onchange_prem_ded_issue(self):
         self.total_policy_am = (self.basic_prem+self.issuening_fee+self.additional_fee_am)-self.ded_fee_am
 
-    @api.onchange('total_premium_after_vat_ii','issuening_fee_total','additional_fee_am_total','ded_fee_am_total')
+    @api.onchange('total_premium_after_vat_ii','issuening_fee_total','additional_fee_am_total','ded_fee_am_total','premium_percent_am_total_ii')
     def _calculate_total(self):
-        self.total_policy_am_after_vat = (self.total_premium_after_vat_ii+self.issuening_fee_total+self.premium_percent_am_total+self.additional_fee_am_total)-self.ded_fee_am_total
+        self.total_policy_am_after_vat = (self.total_premium_after_vat_ii+self.issuening_fee_total+self.premium_percent_am_total_ii+self.additional_fee_am_total)-self.ded_fee_am_total
     @api.onchange('additional_fee_am','additional_fee_am_vat')
     def _onchange_addi_fee(self):
         if self.additional_fee_am_vat>0:
