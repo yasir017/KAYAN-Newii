@@ -29,12 +29,13 @@ class AccountMove(models.Model):
         # account_move = self.env['account.move']
 
         if self.invoice_type=='policy':
+            params = self.env['ir.config_parameter'].sudo()
+            value = sum(self.line_ids.mapped('price_subtotal'))
+            sign = value < 0 and -1 or 1
+            percentage = params.get_param('insurance_management.percentage')
             if self.policy_id:
                 if self.invoice_payment_term_id:
-                    params = self.env['ir.config_parameter'].sudo()
-                    value= sum(self.line_ids.mapped('price_subtotal'))
-                    sign = value < 0 and -1 or 1
-                    percentage = params.get_param('insurance_management.percentage')
+
                     print(percentage)
                     if not percentage:
                         raise ValidationError("Govt percentage must be greater then 0")
@@ -78,7 +79,10 @@ class AccountMove(models.Model):
                                 commission_am = line.value_amount*(self.policy_id.approve_percentage/100.0)
                                 self.create_invoice_commsion(commission_am,next_date)
                                 self.create_govt_fee(next_date,commission_am*(int(percentage)/100.0))
-
+                elif self.invoice_due_date:
+                    commission_am = value* (self.policy_id.approve_percentage / 100.0)
+                    self.create_invoice_commsion(commission_am, self.invoice_due_date)
+                    self.create_govt_fee(self.invoice_due_date, commission_am * (int(percentage) / 100.0))
     def open_comssion_invoice(self,lst):
         return {
             'name': 'Invoice',

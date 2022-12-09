@@ -212,6 +212,8 @@ class Policy(models.Model):
         self.payment_term_id = self.prev_policy.payment_term_id.id
         self.country_id = self.prev_policy.country_id.id
         self.fed_state_id = self.prev_policy.fed_state_id.id
+        self.expiry_date = self.prev_policy.expiry_date
+        self.start_date  = self.prev_policy.start_date
         for benefits in self.prev_policy.benefits_custome_ids:
             vals={
                 # 'policy_id': policy.id,
@@ -348,7 +350,7 @@ class Policy(models.Model):
             'context': {
                 'default_policy_id': self.id,
             },
-            'domain': ['|',('client_branch_id','=',self.data_collect_id.id),('policy_id', '=', self.id)],
+            'domain': [('policy_id', '=', self.id)],
         }
 
     def action_health_lines(self):

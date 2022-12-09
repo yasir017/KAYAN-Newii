@@ -89,15 +89,17 @@
                             <field name="sponser_id"/>
                             <field name="vip"/>
                             <field name="as_vip"/>
-                                </group>
-                                <group>
-                                    <group>
-<!--                            <field name="class_no" options="{'no_open': True, 'no_create': True}"/>-->
-<!--                            <field name="age_category" options="{'no_open': True, 'no_create': True}"/>-->
-                            <field name="risk_no"/>
+                                       <field name="risk_no"/>
                             <field name="note"/>
-                        </group>
                                 </group>
+<!--                                <group>-->
+<!--                                    <group>-->
+<!--&lt;!&ndash;                            <field name="class_no" options="{'no_open': True, 'no_create': True}"/>&ndash;&gt;-->
+<!--&lt;!&ndash;                            <field name="age_category" options="{'no_open': True, 'no_create': True}"/>&ndash;&gt;-->
+<!--                            <field name="risk_no"/>-->
+<!--                            <field name="note"/>-->
+<!--                        </group>-->
+<!--                                </group>-->
                             </group>
                             <!--                                                    <field name="age_category" optional="hide"/>-->
 <!--                            <field name="risk_no" optional="hide"/>-->

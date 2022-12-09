@@ -37,8 +37,8 @@
 <!--                                <field name="branch_id" required="1" force_save="1"-->
 <!--                                       attrs="{'readonly':[('policy_type','=','endors')]}"/>-->
                                 <field name="start_date" required="1"/>
-                                <field name="expiry_date" required="1"/>
-                                <field name="issuance_date" required="1"/>
+                                <field name="expiry_date" attrs="{'readonly':[('policy_type','=','endors')]}" force_save="1" required="1"/>
+                                <field name="issuance_date" required="1" attrs="{'readonly':[('policy_type','=','endors')]}" force_save="1"/>
                                 <field name="country_id" required="1" attrs="{'readonly':[('policy_type','=','endors')]}"/>
                                 <field name="fed_state_id" string="Branch" required="1" attrs="{'readonly':[('policy_type','=','endors')]}"/>
                                 <!--                                <field name="journal_id"/>-->
@@ -156,7 +156,7 @@
                                                 <field no_label="1" name="vat_premium"/>
                                             </td>
                                             <td style="border: 2px solid black;">
-                                                <field name="total_premium_after_vat_ii"  force_save="1" no_label="1"/>
+                                                <field name="total_premium_after_vat_ii"  force_save="1"  readonly="1" no_label="1"/>
                                             </td>
                                         </tr>
 
@@ -168,7 +168,7 @@
                                                 <field name="premium_percent_am" no_label="1"/>
                                             </td>
                                             <td style="border: 2px solid black;">
-                                                <field no_label="1" name="premium_percent_vat"/>
+                                                <field no_label="1" name="premium_percent_vat" readonly="1" force_save="1"/>
                                             </td>
                                             <td style="border: 2px solid black;">
                                                 <field name="premium_percent_am_total" readonly="1" force_save="1"  no_label="1"/>
@@ -622,6 +622,7 @@
 
 
                                     </tree>
+
 <!--                                    <form>-->
 <!--                                        <sheet>-->
 <!--                                            <group>-->
@@ -665,6 +666,11 @@
 <!--                                        </sheet>-->
 <!--                                    </form>-->
                                 </field>
+                                 <group class="oe_subtotal_footer oe_right">
+                                    <field name="total_employee_am"/>
+                                    <field name="employee_tax" />
+                                    <field name="employe_total_after_tax"/>
+                                </group>
                             </page>
 
                             <page name="marine" string="Marine Detail">
@@ -795,9 +801,10 @@
 <!--                                               attrs="{'invisible':[('type_installement','=','fixed')]}"/>-->
                                         <field name="percentage"
                                               />
-                                         <field name="activity_ids" widget="list_activity"/>
                                         <field name="fix_amount"
                                               />
+                                        <field name="activity_ids" widget="list_activity"/>
+
                                     </tree>
                                 </field>
                                 <group class="oe_subtotal_footer oe_right">

@@ -102,6 +102,32 @@ class Policy(models.Model):
     govt_fee = fields.Float("Govt Feet", store=True, compute='_compute_govt_fee')
     sales_employee = fields.Many2one('hr.employee', string='Sales Employee')
     supervisor = fields.Many2one('hr.employee', string='Supervisor')
+
+    total_employee_am = fields.Float("Premium Before Vat",compute='compute_health_total',store=1)
+    employee_tax = fields.Float("Total Tax",compute='compute_health_total',store=1)
+    employe_total_after_tax = fields.Float("Total After Tax",compute='compute_health_total',store=1)
+
+    @api.depends('employee_ids')
+    def compute_health_total(self):
+
+        total_befor_tax = 0.0
+        total_tax = 0.0
+        total_after_tax = 0.0
+        for rec in self:
+            for emp in rec.employee_ids:
+                total_befor_tax+=emp.rate
+                total_after_tax+=emp.total
+            rec.total_employee_am = total_befor_tax
+            rec.employe_total_after_tax = total_after_tax
+            rec.employee_tax = abs(total_after_tax-total_befor_tax)
+
+
+    @api.onchange('premium_percent_am','premium_percent_vat')
+    def _onchange_prem_percent_vat(self):
+        if self.premium_percent_vat:
+            self.premium_percent_am_total = self.premium_percent_am_total+(self.premium_percent_am_total*(self.premium_percent_vat/100))
+        else:
+            self.premium_percent_am_total = self.premium_percent_am
     @api.depends('broker_commision')
     def _compute_govt_fee(self):
         for rec in self:
@@ -249,7 +275,7 @@ class Policy(models.Model):
 
     @api.onchange('total_premium_after_vat_ii','issuening_fee_total','additional_fee_am_total','ded_fee_am_total')
     def _calculate_total(self):
-        self.total_policy_am_after_vat = (self.total_premium_after_vat_ii+self.issuening_fee_total+self.additional_fee_am_total)-self.ded_fee_am_total
+        self.total_policy_am_after_vat = (self.total_premium_after_vat_ii+self.issuening_fee_total+self.premium_percent_am_total+self.additional_fee_am_total)-self.ded_fee_am_total
     @api.onchange('additional_fee_am','additional_fee_am_vat')
     def _onchange_addi_fee(self):
         if self.additional_fee_am_vat>0:
