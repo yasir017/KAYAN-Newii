@@ -46,7 +46,6 @@ class ClaimCreditNoteWizard(models.TransientModel):
                 'move_type': 'out_refund',
                 'policy_no': rec.claim_request_id.policy_no,
                 'invoice_date_due': rec.due_date,
-                'invoice_ref': rec.claim_request_id.id,
                 'insurance_company_id': rec.claim_request_id.insurance_company_id.id
 
             })

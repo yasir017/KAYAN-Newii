@@ -12,7 +12,7 @@
     'author': 'Kayan IT team',
     'license': 'AGPL-3',
     'website': 'http://kayan.com/',
-    'depends': ['base','hr','mail','report_xlsx','policy_entry_insurance','fleet','documents'],
+    'depends': ['base','hr','mail','report_xlsx','policy_entry_insurance','fleet','documents','crm'],
     'data': [
         'security/ir.model.access.csv',
         'views/client_branch.xml',

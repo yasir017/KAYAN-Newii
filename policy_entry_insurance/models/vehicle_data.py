@@ -4,7 +4,7 @@ from odoo import api, fields, models, _
 
 class Vehicle(models.Model):
     _name = 'insurance.vehicle'
-    _rec_name = "owener_name"
+    _rec_name = "plate_no"
 
     class_id = fields.Many2one('insurance.business.class', 'Rel')
     policy_id = fields.Many2one('insurance.policy', 'Policy ID')

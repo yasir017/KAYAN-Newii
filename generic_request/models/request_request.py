@@ -1,6 +1,7 @@
 # pylint:disable=too-many-lines
 import json
 import logging
+import pdb
 from datetime import datetime
 from odoo import models, fields, api, tools, _, http, exceptions, SUPERUSER_ID
 from odoo.addons.generic_mixin import pre_write, post_write, pre_create
@@ -333,10 +334,10 @@ class RequestRequest(models.Model):
     approved_claim_number = fields.Char(string='Claim Number')
     approved_claim_type = fields.Selection([('repair', 'Repair'),('total_lost', 'Total Lost')], string="Approved Claim For")
 
-    repair_labour_cost = fields.Float(string='Repair Labour Cost')
-    repair_parts_cost = fields.Float(string='Repair Parts Cost')
-    repair_deductible_cost = fields.Float(string='Repair Deductible Cost',help='(It’s supposed to be in the policy)(this cost will be covered by client to the work shop directely)')
-    other_repair_cost_ids = fields.One2many('other.repair.cost','request_id',string='Other Repair Costs',ondelete='cascade')
+    repair_labour_cost = fields.Float(string='Labour Cost')
+    repair_parts_cost = fields.Float(string='Parts Cost')
+    repair_deductible_cost = fields.Float(string='Deductible Cost',help='(It’s supposed to be in the policy)(this cost will be covered by client to the work shop directely)')
+    other_repair_cost_ids = fields.One2many('other.repair.cost','request_id',string='Other Costs',ondelete='cascade')
     approved_letter_file = fields.Binary(string='Approved Letter File')
     net_amount_repair = fields.Float(string='Net Amount', help='Net Amount', compute='get_net_amount_repaired')
 
@@ -351,6 +352,17 @@ class RequestRequest(models.Model):
     account_move_ids = fields.Many2many('account.move',string="Claim Invoices")
     total_document_number = fields.Integer(string='Total Documents', compute='get_total_documents')
     # ins_technical_type = fields.Char(string='Ins Type Technical',compute='get_ins_technical_type')
+    state = fields.Selection([('draft', 'Draft'),
+                              ('sent_to_vendor', 'Sent To Vendor'),
+                              ('closed', 'Closed'),
+                              ('cancel', 'Cancel')], track_visibility='onchange',
+                             default='draft')
+
+    def cancel(self):
+        self.state = 'cancel'
+
+    def close(self):
+        self.state = 'closed'
 
     # def get_ins_technical_type(self):
     #     for rec in self:
@@ -450,10 +462,10 @@ class RequestRequest(models.Model):
     #                 request_type.action_create_default_stage_and_routes()
     #                 self.type_id = request_type.id
 
-    @api.depends('t_lost_deductible_cost','t_lost_depreciation_cost','other_lost_cost_ids.cost')
+    @api.depends('t_lost_deductible_cost','t_lost_depreciation_cost','other_lost_cost_ids.cost','t_lost_insurance_value')
     def get_insured_value(self):
         for rec in self:
-            rec.net_amount = rec.t_lost_deductible_cost + rec.t_lost_depreciation_cost + sum(rec.other_lost_cost_ids.mapped('cost'))
+            rec.net_amount = rec.t_lost_insurance_value+rec.t_lost_deductible_cost + rec.t_lost_depreciation_cost + sum(rec.other_lost_cost_ids.mapped('cost'))
 
 
 
@@ -470,6 +482,35 @@ class RequestRequest(models.Model):
 
     def send_claim_email_insurance_company(self):
         # attachments = self.export_inventory_lines_records()
+        required_docs = self.env['claim.required.docs'].search([]).mapped('name')
+        if self._fields['claim_form'].string in required_docs and not self.claim_form:
+            raise ValidationError(_(
+                'Claim Form Document is Required you have to Upload it.'))
+        if self._fields['trafic_najm_report'].string in required_docs and not self.trafic_najm_report:
+            raise ValidationError(_(
+                'Traffic Najam Document is Required you have to Upload it.'))
+        if self._fields['civil_defence_report'].string in required_docs and not self.civil_defence_report:
+            raise ValidationError(_(
+                'Civil Defence Document is Required you have to Upload it.'))
+        if self._fields['driver_licence_copy'].string in required_docs and not self.driver_licence_copy:
+            raise ValidationError(_(
+                'Driver Licence Copy Document is Required you have to Upload it.'))
+        if self._fields['vehicle_registration_copy'].string in required_docs and not self.vehicle_registration_copy:
+            raise ValidationError(_(
+                'Vehicle Registration Copy Document is Required you have to Upload it.'))
+        if self._fields['id_copy'].string in required_docs and not self.id_copy:
+            raise ValidationError(_(
+                'ID Copy Document is Required you have to Upload it.'))
+        if self._fields['sketch_accident'].string in required_docs and not self.sketch_accident:
+            raise ValidationError(_(
+                'Sketch Accident Document is Required you have to Upload it.'))
+        if self._fields['permission_to_repair'].string in required_docs and not self.permission_to_repair:
+            raise ValidationError(_(
+                'Permission To Repair Document is Required you have to Upload it.'))
+        if self._fields['basher_report'].string in required_docs and not self.basher_report:
+            raise ValidationError(_(
+                'Basher Report Document is Required you have to Upload it.'))
+
         attachments = []
         if self.claim_form:
             claim_form_attachment = self.create_attachments_medical_claim(file=self.claim_form,
@@ -577,11 +618,21 @@ class RequestRequest(models.Model):
                 elif date_deadline == now:
                     rec.deadline_state = 'today'
 
-    @api.depends('stage_id', 'stage_id.type_id')
+    @api.depends('state')
     def _compute_stage_colors(self):
         for rec in self:
-            rec.stage_bg_color = rec.stage_id.res_bg_color
-            rec.stage_label_color = rec.stage_id.res_label_color
+            if rec.state == 'draft':
+                rec.stage_bg_color = 'rgb(84, 107, 1))'
+                rec.stage_label_color = 'rgb(84, 107, 1)'
+            if rec.state == 'sent_to_vendor':
+                rec.stage_bg_color = 'rgba(120,120,120,1)'
+                rec.stage_label_color = 'rgb(0, 251, 27)'
+            if rec.state == 'closed':
+                rec.stage_bg_color = 'rgb(221, 79, 46)'
+                rec.stage_label_color = 'rgb(245, 227, 93)'
+            if rec.state == 'cancel':
+                rec.stage_bg_color = 'rgb(66, 3, 3)'
+                rec.stage_label_color = 'rgb(240, 14, 14)'
 
     @api.depends('stage_id.route_out_ids.stage_to_id.closed')
     def _compute_can_be_closed(self):
@@ -871,18 +922,18 @@ class RequestRequest(models.Model):
     def _create_update_from_type(self, r_type, vals):
         vals = dict(vals)
         # Name update
-        if vals.get('name') == "###new###":
-            # To set correct name for request generated from mail aliases
-            # See code `mail.models.mail_thread.MailThread.message_new` - it
-            # attempts to set name if it is empty. So we pass special name in
-            # our method overload, and handle it here, to keep all request name
-            # related logic in one place
-            vals['name'] = False
-        if not vals.get('name') and r_type.sequence_id:
-            vals['name'] = r_type.sudo().sequence_id.next_by_id()
-        elif not vals.get('name'):
-            vals['name'] = self.env['ir.sequence'].sudo().next_by_code(
-                'request.request.name')
+        # if vals.get('name') == "###new###":
+        #     # To set correct name for request generated from mail aliases
+        #     # See code `mail.models.mail_thread.MailThread.message_new` - it
+        #     # attempts to set name if it is empty. So we pass special name in
+        #     # our method overload, and handle it here, to keep all request name
+        #     # related logic in one place
+        #     vals['name'] = False
+        # if not vals.get('name') and r_type.sequence_id:
+        #     vals['name'] = r_type.sudo().sequence_id.next_by_id()
+        # elif not vals.get('name'):
+        #     vals['name'] = self.env['ir.sequence'].sudo().next_by_code(
+        #         'request.request.name')
 
         # Update stage
         if r_type.start_stage_id:
@@ -932,6 +983,8 @@ class RequestRequest(models.Model):
             vals = self._create_update_from_type(r_type, vals)
 
         self_ctx = self.with_context(mail_create_nolog=False)
+        vals['name'] = self.env['ir.sequence'].sudo().next_by_code(
+            'request.request.name')
         request = super(RequestRequest, self_ctx).create(vals)
         request.trigger_event('created')
         self_ctx = self.sudo()

@@ -38,12 +38,12 @@
             </form>
         </field>
    </record>
-   <record id="action_request_wizard_set_parent" model="ir.actions.act_window">
-       <field name="res_model">request.wizard.set.parent</field>
-       <field name="binding_model_id" ref="generic_request.model_request_request"/>
-       <field name="name">Change parent request</field>
-       <field name="view_mode">form</field>
-       <field name="target">new</field>
-       <field name="context">{}</field>
-   </record>
+<!--   <record id="action_request_wizard_set_parent" model="ir.actions.act_window">-->
+<!--       <field name="res_model">request.wizard.set.parent</field>-->
+<!--       <field name="binding_model_id" ref="generic_request.model_request_request"/>-->
+<!--       <field name="name">Change parent request</field>-->
+<!--       <field name="view_mode">form</field>-->
+<!--       <field name="target">new</field>-->
+<!--       <field name="context">{}</field>-->
+<!--   </record>-->
 </odoo>

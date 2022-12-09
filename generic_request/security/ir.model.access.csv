@@ -40,3 +40,6 @@ access_other_repair_cost,other.repair.cost,model_other_repair_cost,,1,1,1,1
 access_lost_other_cost,lost.other.cost,model_lost_other_cost,,1,1,1,1
 access_claim_invoice_wizard,claim.invoice.wizard,model_claim_invoice_wizard,,1,1,1,1
 access_claim_credit_note_wizard,claim.credit.note.wizard,model_claim_credit_note_wizard,,1,1,1,1
+
+access_claim_required_docs,claim.required.docs,model_claim_required_docs,,1,1,1,1
+

@@ -29,25 +29,23 @@ class ClaimInvoiceWizard(models.TransientModel):
 
             params = self.env['ir.config_parameter'].sudo()
             gov_rel_email = params.get_param('gov_rel_email', default='')
-            account_move = self.env['account.move'].create({
+
+            vals = {
                 'partner_id': rec.claim_request_id.client_id.id,
                 'policy_id': rec.claim_request_id.policy_id.id,
                 'claim_request_id': rec.claim_request_id.id,
-                'vehicle_detail_id': rec.claim_request_id.vehicle_detail_id,
+                'vehicle_detail_id': rec.claim_request_id.vehicle_detail_id.id,
                 'claim_boolean': True,
-                # 'invoice_date':due_date,
                 'invoice_type': 'claim_inv',
                 'journal_id': rec.journal_id.id,
-                # 'invoice_payment_term_id': rec.claim_request_id.payment_term_id.id,
                 'move_type': 'out_invoice',
                 'policy_no': rec.claim_request_id.policy_no,
                 'invoice_date_due': rec.due_date,
-                'invoice_ref': rec.claim_request_id.id,
                 'insurance_company_id': rec.claim_request_id.insurance_company_id.id
 
-            })
+            }
 
-
+            account_move = self.env['account.move'].create(vals)
             account_move.invoice_line_ids = invoice_lst
 
             if account_move:

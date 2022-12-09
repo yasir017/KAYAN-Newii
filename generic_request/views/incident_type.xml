@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+<!--************ INCIDENT TYPE VIEWS  ************-->
+    <record id="incident_type_view_tree" model="ir.ui.view">
+        <field name="name">incident.type.tree</field>
+        <field name="model">incident.type</field>
+        <field name="arch" type="xml">
+            <tree string="Incident Type">
+                <field name="name"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="incident_type_view_form" model="ir.ui.view">
+        <field name="name">incident.type.form</field>
+        <field name="model">incident.type</field>
+        <field name="arch" type="xml">
+            <form string="Incident Type">
+                <header>
+                </header>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="name"/>
+                        </group>
+                         <group>
+                        </group>
+                    </group>
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids" widget="mail_followers" groups="base.group_user"/>
+                    <field name="activity_ids" widget="mail_activity"/>
+                    <field name="message_ids" widget="mail_thread"/>
+                </div>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_incident_type" model="ir.actions.act_window">
+        <field name="name">Incident Type</field>
+        <field name="res_model">incident.type</field>
+        <field name="view_mode">tree,form</field>
+        <field name="search_view_id" ref="incident_type_view_tree"/>
+         <field name="help" type="html">
+            <p class="oe_view_nocontent_create">
+                Click to create a new Incident Type.
+            </p>
+        </field>
+    </record>
+
+    <menuitem name="Incident Type"
+              id="menu_configuration_incident_type"
+              parent="generic_request.menu_configuration_requests"
+              action="action_incident_type"
+              sequence="80"/>
+
+
+<!--************ CLAIM REQUIRED DOCS VIEWS  ************-->
+    <record id="claim_required_docs_view_tree" model="ir.ui.view">
+        <field name="name">claim.required.docs.tree</field>
+        <field name="model">claim.required.docs</field>
+        <field name="arch" type="xml">
+            <tree string="Claim Required Docs" editable="bottom">
+                <field name="name"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="claim_required_docs_view_form" model="ir.ui.view">
+        <field name="name">claim.required.docs.form</field>
+        <field name="model">claim.required.docs</field>
+        <field name="arch" type="xml">
+            <form string="Claim Required Docs">
+                <header>
+                </header>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="name"/>
+                        </group>
+                         <group>
+                        </group>
+                    </group>
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids" widget="mail_followers" groups="base.group_user"/>
+                    <field name="activity_ids" widget="mail_activity"/>
+                    <field name="message_ids" widget="mail_thread"/>
+                </div>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_claim_required_docs" model="ir.actions.act_window">
+        <field name="name">Claim Required Docs</field>
+        <field name="res_model">claim.required.docs</field>
+        <field name="view_mode">tree,form</field>
+        <field name="search_view_id" ref="claim_required_docs_view_tree"/>
+         <field name="help" type="html">
+            <p class="oe_view_nocontent_create">
+                Click to create a new Incident Type.
+            </p>
+        </field>
+    </record>
+
+    <menuitem name="Claim Required Docs"
+              id="menu_configuration_claim_required_docs"
+              parent="generic_request.menu_configuration_requests"
+              action="action_claim_required_docs"
+              sequence="90"/>
+
+</odoo>

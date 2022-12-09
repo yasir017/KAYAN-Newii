@@ -104,6 +104,8 @@ class client_branch(models.Model):
     total_vehicle_line = fields.Integer(string='Total Vehicle Lines',compute='get_total_vehicle_line')
     is_selected_quotation = fields.Boolean(string='Is Quotation Selected?')
     # policy_id = fields.Many2one('insurance.policy','Policy')
+    # crm_lead_id = fields.Many2one('crm.lead',string='CRM Lead',copy=False)
+
     def unlink(self):
         for rec in self:
             if rec.state == "validate":
@@ -485,19 +487,6 @@ class client_branch(models.Model):
             'name': _('Documents'),
             'type': 'ir.actions.act_window',
             'res_model': 'documents.document',
-            # 'views': [
-            #     [self.env.ref('insurance_management.documents_view_list_c').id, 'list'],
-            #     [self.env.ref('	insurance_management.documents_view_form_c').id, 'form'],
-            #     [false, 'kanban'],
-            # ],
-            # 'views': [[self.env.ref('insurance_management.documents_view_list_c').id, 'list'],
-            #           [self.env.ref('insurance_management.documents_view_form_c').id, 'form'],
-            #           [self.env.ref('insurance_management.document_view_kanban_c').id, 'Kanban'],
-            #           ],
-            # 'view_ids': [(self.env.ref('insurance_management.documents_view_list_c').id, 'list'),
-            #              (self.env.ref('insurance_management.documents_view_form_c').id, 'form'),
-            #              (self.env.ref('insurance_management.document_view_kanban_c').id, 'kanban')],
-            # 'views': [(self.env.ref('insurance_management.document_view_kanban_c').id, 'kanban')],
             'view_mode': 'kanban',
             'context': {
                 'default_res_id': self.id,
@@ -506,6 +495,19 @@ class client_branch(models.Model):
                 'default_tag_ids': [(6, 0, [self.env.ref('insurance_management.documents_document_data_tag').id] or [])],
             },
             'domain': [('res_id', '=', self.id),('res_model', '=', self._name)],
+        }
+
+    def action_open_crm(self):
+        return {
+            'name': _('CRM Lead'),
+            'type': 'ir.actions.act_window',
+            'res_model': 'crm.lead',
+            'view_mode': 'tree,form',
+            'context': {
+                'default_client_branch_id': self.id,
+                'default_partner_id': self.customer_id.id,
+            },
+            'domain': [('client_branch_id', '=', self.id)],
         }
 
     def get_total_documents(self):
@@ -1100,3 +1102,9 @@ class Document(models.Model):
         res = super(Document, self).create(vals)
 
         return res
+
+
+class CrmLead(models.Model):
+    _inherit = 'crm.lead'
+
+    client_branch_id = fields.Many2one('client.branch', string='Client Branch')

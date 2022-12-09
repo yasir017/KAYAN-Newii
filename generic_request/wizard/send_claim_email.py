@@ -49,10 +49,10 @@ class ClaimEmailWizard(models.TransientModel):
         elif self.attachment_ids and claim_attachment == None:
             claim_attachment = self.attachment_ids
         template_id = self.env['ir.model.data']._xmlid_to_res_id(
-            'insurance_management.email_template_info_report_customer', raise_if_not_found=False)
+            'generic_request.email_template_claim_request', raise_if_not_found=False)
         template_browse = self.env['mail.template'].browse(template_id)
         if template_browse:
-            values = template_browse.generate_email(ins_company.id,
+            values = template_browse.generate_email(self.claim_request_id.id,
                                                     ['subject', 'body_html', 'email_from',
                                                      'email_to', 'partner_to', 'email_cc',
                                                      'reply_to', 'scheduled_date',
@@ -100,24 +100,24 @@ class ClaimEmailWizard(models.TransientModel):
     def action_confirm(self):
         active_id = self._context.get('active_id', False)
         self._insurance_company_email_send()
-        stage = self.env['request.stage'].search([('name','=','Sent To Insurance Company'),('request_type_id','=',self.claim_request_id.type_id.id)],limit=1)
-        if stage:
-            self.claim_request_id.stage_id = stage.id
-        else:
-            stage = self.env['request.stage'].create({
-                'name': _('Sent To Insurance Company'),
-                'code': 'Sent-To-Insurance-Company',
-                'request_type_id': self.claim_request_id.type_id.id,
-                'sequence': 10,
-                'closed': False,
-                'type_id': self.env.ref(
-                    'generic_request.request_stage_send_to_insurance_company').id,
-            })
+        # stage = self.env['request.stage'].search([('name','=','Sent To Insurance Company'),('request_type_id','=',self.claim_request_id.type_id.id)],limit=1)
+        #         # if stage:
+        #         #     self.claim_request_id.stage_id = stage.id
+        #         # else:
+        #         #     stage = self.env['request.stage'].create({
+        #         #         'name': _('Sent To Insurance Company'),
+        #         #         'code': 'Sent-To-Insurance-Company',
+        #         #         'request_type_id': self.claim_request_id.type_id.id,
+        #         #         'sequence': 10,
+        #         #         'closed': False,
+        #         #         'type_id': self.env.ref(
+        #         #             'generic_request.request_stage_send_to_insurance_company').id,
+        #         #     })
             # stage = self.env['request.stage'].create(
             #     {'name', '=', 'Insurance Company Response Waiting',
             #      'code', '=', 'Insurance-Company-Response-Waiting',
             #      'request_type_id', '=', self.claim_request_id.type_id.id
             #      })
-            self.claim_request_id.stage_id = stage.id
+        self.claim_request_id.state = "sent_to_vendor"
 
 
