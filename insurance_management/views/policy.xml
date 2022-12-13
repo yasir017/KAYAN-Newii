@@ -8,8 +8,8 @@
               <xpath expr="//header" position="inside">
                   <field name="hide_credit_note_button" invisible="1"/>
 
-                  <button name="action_create_invoice" type="object" string="Create Invoice" class="oe_highlight"  />
-                  <button name="action_create_create_note" type="object" string="Create Credit Note" class="oe_highlight"/>
+                  <button name="action_create_invoice" states='posted' type="object" string="Create Invoice" class="oe_highlight"  />
+                  <button name="action_create_create_note" type="object" states='posted' string="Create Credit Note" class="oe_highlight"/>
 
               </xpath>
               <xpath expr="//sheet/group" position="before">

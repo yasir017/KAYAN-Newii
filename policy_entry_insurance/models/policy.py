@@ -240,6 +240,12 @@ class Policy(models.Model):
     state = fields.Selection([('draft','Draft'),('submitted','Submitted'),('posted','Posted')],string='State',default='draft')
     total_premium_after_vat_ii = fields.Float("Total")
 
+    def action_submit(self):
+        self.state= 'submitted'
+
+    def action_post(self):
+        self.state='posted'
+
     @api.onchange('sum_insured','basic_prem')
     def _onchange_sum_insured(self):
         if self.sum_insured>0 and self.basic_prem:

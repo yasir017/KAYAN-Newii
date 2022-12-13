@@ -5,6 +5,11 @@ class Policy(models.Model):
     _inherit = 'insurance.policy'
 
     insurance_company_id = fields.Many2one('insurance.company', "Insurance Company")
+    insurance_partner = fields.Many2one('res.partner','Insurance Partner')
+
+    @api.onchange('insurance_company_id')
+    def onchange_insurance_company_id(self):
+        self.insurance_partner = self.insurance_company_id.ins_company_partner_id.id
     insurance_type_id = fields.Many2one('insurance.type', string='Insurance Type', required='1')
     insurance_sub_type_id = fields.Many2one('insurance.sub.type', string='Insurance Sub Type',
                                             domain="[('insurance_type_id','=',insurance_type_id)]")

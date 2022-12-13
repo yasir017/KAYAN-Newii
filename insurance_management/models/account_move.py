@@ -12,7 +12,11 @@ class AccountMove(models.Model):
     invoice_ref = fields.Many2one('account.move',string="Invoice Ref")
     govt_boolean = fields.Boolean("Govt Bill")
     commission_boolean = fields.Boolean('Commission Invoice')
+    policy_id = fields.Many2one('insurance.policy', "Policy",
+                                domain="[('policy_type','=','endors'),('insurance_partner','=',partner_id),('state','=','posted'),('policy_type','=','policy')]")
 
+    endorsment_id = fields.Many2one('insurance.policy', "Endoresment",
+                                    domain="[('policy_type','=','endors'),('insurance_partner','=',partner_id),('state','=','posted')]")
     def _count_commission(self):
         for rec in self:
             account_move = self.env['account.move'].search([('invoice_ref','=',self.id),('move_type','=','out_invoice')])
@@ -79,7 +83,7 @@ class AccountMove(models.Model):
                                 commission_am = line.value_amount*(self.policy_id.approve_percentage/100.0)
                                 self.create_invoice_commsion(commission_am,next_date)
                                 self.create_govt_fee(next_date,commission_am*(int(percentage)/100.0))
-                elif self.invoice_due_date:
+                elif self.invoice_date_due:
                     commission_am = value* (self.policy_id.approve_percentage / 100.0)
                     self.create_invoice_commsion(commission_am, self.invoice_due_date)
                     self.create_govt_fee(self.invoice_due_date, commission_am * (int(percentage) / 100.0))

@@ -9,6 +9,16 @@
                         <field name="state" widget="statusbar" clickable="1"
                                statusbar_visible="draft,submitted,posted"/>
 
+                                  <button name="action_submit"
+                            states="draft" string="Submit"
+                            type="object" class="oe_highlight"
+                          />
+
+                        <button name="action_post"
+                            states="submitted" string="Post"
+                            type="object" class="oe_highlight"
+                            />
+
                     </header>
                     <sheet>
 
@@ -29,25 +39,25 @@
                             <!--                        </div>-->
                             <group>
                                 <h3>Client Policy information</h3>
-                                <field name="policy_type" required="1"/>
+                                <field name="policy_type" attrs="{'readonly':[('state','!=','draft')]}" required="1"/>
 
                                 <field name="partner_id" required="1" force_save="1"
-                                       attrs="{'readonly':[('policy_type','=','endors')]}"/>
+                                       attrs="{'readonly':['|',('state','!=','draft'),('policy_type','=','endors')]}"/>
                                 <!--                            <field name="manager_id"/>-->
 <!--                                <field name="branch_id" required="1" force_save="1"-->
 <!--                                       attrs="{'readonly':[('policy_type','=','endors')]}"/>-->
-                                <field name="start_date" required="1"/>
-                                <field name="expiry_date" attrs="{'readonly':[('policy_type','=','endors')]}" force_save="1" required="1"/>
-                                <field name="issuance_date" required="1" attrs="{'readonly':[('policy_type','=','endors')]}" force_save="1"/>
-                                <field name="country_id" required="1" attrs="{'readonly':[('policy_type','=','endors')]}"/>
-                                <field name="fed_state_id" string="Branch" required="1" attrs="{'readonly':[('policy_type','=','endors')]}"/>
+                                <field name="start_date" attrs="{'readonly':[('state','!=','draft')]}" required="1"/>
+                                <field name="expiry_date" attrs="{'readonly':['|',('state','!=','draft'),('policy_type','=','endors')('policy_type','=','endors')]}" force_save="1" required="1"/>
+                                <field name="issuance_date" required="1" attrs="{'readonly':['|',('state','!=','draft'),('policy_type','=','endors')]}" force_save="1"/>
+                                <field name="country_id" required="1" attrs="{'readonly':['|',('state','!=','draft'),('policy_type','=','endors')]}"/>
+                                <field name="fed_state_id" string="Branch" required="1" attrs="{'readonly':['|',('state','!=','draft'),('policy_type','=','endors')]}"/>
                                 <!--                                <field name="journal_id"/>-->
                                 <!--                                <field name="payment_term_id"/>-->
                             </group>
                             <group>
                                 <h3>Policy Detail</h3>
                                 <!--                                <field name="policy_id"/>-->
-                                <field name="policy_no" attrs="{'invisible':[('policy_type','=','endors')],'required':[('policy_type','=','policy')]}"/>
+                                <field name="policy_no" attrs="{'readonly':[('state','!=','draft')],'invisible':[('policy_type','=','endors')],'required':[('policy_type','=','policy')]}"/>
                                 <field name="endorsment_ref" attrs="{'invisible':[('policy_type','=','policy')],'required':[('policy_type','=','endors')]}"/>
                                 <field name="prev_policy" domain="[('policy_type','=','policy')]"
                                        attrs="{'invisible':[('policy_type','=','policy')],'required':[('policy_type','=','endors')]}"/>
@@ -56,8 +66,8 @@
                                 <!--                                <field name="is_under_agreement"/>-->
                                 <!--                                <field name="agreement_file" attrs="{'invisible':[('is_under_agreement','=',False)]}"/>-->
                                 <!--                            <field name="is_extra_benfit"/>-->
-                               <field name="sales_employee"/>
-                                <field name="supervisor"/>
+                               <field name="sales_employee" attrs="{'readonly':[('state','!=','draft')]}"/>
+                                <field name="supervisor" attrs="{'readonly':[('state','!=','draft')]}"/>
 
                             </group>
                         </group>
@@ -97,13 +107,13 @@
                                                 <strong>Sum Insured</strong>
                                             </td>
                                             <td style="border: 2px solid black;">
-                                                <field name="sum_insured" no_label="1"/>
+                                                <field name="sum_insured" attrs="{'readonly':[('state','!=','draft')]}" no_label="1"/>
                                             </td>
                                             <td style="border: 2px solid black;">
                                                 <field no_label="1" name="actual_sum_insured"/>
                                             </td>
                                             <td style="border: 2px solid black;">
-                                                <field name="difference_sum_insured" no_label="1"/>
+                                                <field name="difference_sum_insured" attrs="{'readonly':[('state','!=','draft')]}" no_label="1"/>
                                             </td>
                                         </tr>
                                         <tr>
@@ -111,14 +121,14 @@
                                                 <strong>Premium</strong>
                                             </td>
                                             <td style="border: 2px solid black;">
-                                                <field no_label="1" name="basic_prem"/>
+                                                <field no_label="1" name="basic_prem" attrs="{'readonly':[('state','!=','draft')]}"/>
                                             </td>
                                             <td style="border: 2px solid black;">
-                                                <field name="premium_actual" no_label="1"/>
+                                                <field name="premium_actual" attrs="{'readonly':[('state','!=','draft')]}" no_label="1"/>
 
                                             </td>
                                             <td style="border: 2px solid black;">
-                                                <field name="premium_difference" no_label="1"/>
+                                                <field name="premium_difference" attrs="{'readonly':[('state','!=','draft')]}" no_label="1"/>
                                             </td>
                                         </tr>
 
@@ -150,10 +160,10 @@
                                                 <strong>Premium</strong>
                                             </td>
                                             <td style="border: 2px solid black;">
-                                                <field name="basic_prem" no_label="1"/>
+                                                <field name="basic_prem" attrs="{'readonly':[('state','!=','draft')]}" no_label="1"/>
                                             </td>
                                             <td style="border: 2px solid black;">
-                                                <field no_label="1" name="vat_premium"/>
+                                                <field no_label="1" attrs="{'readonly':[('state','!=','draft')]}" name="vat_premium"/>
                                             </td>
                                             <td style="border: 2px solid black;">
                                                 <field name="total_premium_after_vat_ii"  force_save="1"  readonly="1" no_label="1"/>
@@ -168,7 +178,7 @@
                                                 <field name="premium_percent_am" no_label="1" readonly="1" force_save="1"/>
                                             </td>
                                             <td style="border: 2px solid black;">
-                                                <field no_label="1" name="premium_percent_vat" />
+                                                <field no_label="1" name="premium_percent_vat" attrs="{'readonly':[('state','!=','draft')]}"/>
                                             </td>
                                             <td style="border: 2px solid black;">
                                                 <field name="premium_percent_am_total_ii" readonly="1" force_save="1"  no_label="1"/>
@@ -180,10 +190,10 @@
                                                 <strong>Issuing Fee</strong>
                                             </td>
                                             <td style="border: 2px solid black;">
-                                                <field name="issuening_fee" no_label="1"/>
+                                                <field name="issuening_fee" attrs="{'readonly':[('state','!=','draft')]}" no_label="1"/>
                                             </td>
                                             <td style="border: 2px solid black;">
-                                                <field no_label="1" name="issuening_fee_percent"/>
+                                                <field no_label="1" attrs="{'readonly':[('state','!=','draft')]}" name="issuening_fee_percent"/>
                                             </td>
                                             <td style="border: 2px solid black;">
                                                 <field name="issuening_fee_total" readonly="1" force_save="1"  no_label="1"/>
@@ -195,7 +205,7 @@
                                                 <strong>Additional Fee</strong>
                                             </td>
                                             <td style="border: 2px solid black;">
-                                                <field name="additional_fee_am" no_label="1"/>
+                                                <field name="additional_fee_am" attrs="{'readonly':[('state','!=','draft')]}" no_label="1"/>
                                             </td>
                                             <td style="border: 2px solid black;">
                                                 <field no_label="1" name="additional_fee_am_vat"/>
@@ -209,10 +219,10 @@
                                                 <strong>Deduction</strong>
                                             </td>
                                             <td style="border: 2px solid black;">
-                                                <field name="ded_fee_am" no_label="1"/>
+                                                <field name="ded_fee_am" attrs="{'readonly':[('state','!=','draft')]}" no_label="1"/>
                                             </td>
                                             <td style="border: 2px solid black;">
-                                                <field no_label="1" name="ded_fee_am_vat"/>
+                                                <field no_label="1" attrs="{'readonly':[('state','!=','draft')]}" name="ded_fee_am_vat"/>
                                             </td>
                                             <td style="border: 2px solid black;">
                                                 <field name="ded_fee_am_total" readonly="1" force_save="1"  no_label="1"/>
@@ -227,7 +237,7 @@
                                                 <field name="total_policy_am" force_save="1" no_label="1"/>
                                             </td>
                                             <td>
-                                                <field no_label="1" name="total_policy_vat"/>
+                                                <field no_label="1" name="total_policy_vat" attrs="{'readonly':[('state','!=','draft')]}"/>
                                             </td>
                                             <td>
                                                 <field name="total_policy_am_after_vat" readonly="1" force_save="1"  no_label="1"/>
@@ -254,7 +264,7 @@
                                                 <strong>Base Amount</strong>
                                             </td>
                                             <td style="border: 2px solid black;">
-                                                <field name="base_amount" no_label="1"/>
+                                                <field name="base_amount" attrs="{'readonly':[('state','!=','draft')]}" no_label="1"/>
                                             </td>
                                             <!--                                                    <td style="border: 2px solid black;">-->
                                             <!--                                                        <field no_label="1" name="vat_premium"/>-->
@@ -268,7 +278,7 @@
                                                 <strong>Approve Amount</strong>
                                             </td>
                                             <td style="border: 2px solid black;">
-                                                <field name="approved_amount" no_label="1"/>
+                                                <field name="approved_amount" attrs="{'readonly':[('state','!=','draft')]}" no_label="1"/>
                                             </td>
                                             <!--                                                    <td style="border: 2px solid black;">-->
                                             <!--                                                        <field no_label="1" name="vat_premium"/>-->
@@ -282,7 +292,7 @@
                                                 <strong>Approved Commission Percentage</strong>
                                             </td>
                                             <td style="border: 2px solid black;">
-                                                <field name="approve_percentage" no_label="1"/>
+                                                <field name="approve_percentage" attrs="{'readonly':[('state','!=','draft')]}" no_label="1"/>
                                             </td>
                                             <!--                                                    <td style="border: 2px solid black;">-->
                                             <!--                                                        <field no_label="1" name="vat_premium"/>-->
