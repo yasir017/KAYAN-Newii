@@ -74,7 +74,6 @@ class InsuranceEmailWizard(models.TransientModel):
                     fields.datetime.now()) + '' + "-" + '' + 'Client Information Report'
                 values['cc'] = self.cc or False
                 # add_date = self.body + str(fields.date.today())
-                # pdb.set_trace()
                 values['body_html'] = self.body
                 # values['body_html'] = values['body_html'],
                 values['author_id'] = self.env['res.users'].browse(

@@ -209,23 +209,23 @@
                         </h1>
                         <label for="customer_id" class="oe_edit_only"/>
                         <h1>
-                            <field name="customer_id" widget="res_partner_many2one" context="{'res_partner_search_mode': 'customer', 'show_address': 1, 'show_vat': True}" options="{&quot;always_reload&quot;: True,'no_open': True, 'no_create': True}"/>
+                            <field name="customer_id" widget="res_partner_many2one" attrs="{'readonly':[('state','=','validate')]}" context="{'res_partner_search_mode': 'customer', 'show_address': 1, 'show_vat': True}" options="{&quot;always_reload&quot;: True,'no_open': True, 'no_create': True}"/>
                         </h1>
                     </div>
                     <group>
                         <group>
-                            <field name="insurance_type_id" options="{'no_open': True, 'no_create': True}"/>
-                            <field name="insurance_sub_type_id" options="{'no_open': True, 'no_create': True}"/>
-                            <field name="country" options="{'no_open': True, 'no_create': True}"/>
-                            <field name="state_id" options="{'no_open': True, 'no_create': True}"/>
+                            <field name="insurance_type_id" attrs="{'readonly':[('state','=','validate')]}" options="{'no_open': True, 'no_create': True}"/>
+                            <field name="insurance_sub_type_id" attrs="{'readonly':[('state','=','validate')]}" options="{'no_open': True, 'no_create': True}"/>
+                            <field name="country" attrs="{'readonly':[('state','=','validate')]}" options="{'no_open': True, 'no_create': True}"/>
+                            <field name="state_id" attrs="{'readonly':[('state','=','validate')]}" options="{'no_open': True, 'no_create': True}"/>
                             <field name="policy_id" invisible="1"/>
                         </group>
                          <group>
-                             <field name="type_of_business"/>
-                             <field name="renewal_policy_id" options="{'no_open': True, 'no_create': True}" attrs="{'invisible': [('type_of_business', '!=', 'renewal')],'required': [('type_of_business', '=', 'renewal')]}"/>
-                             <field name="company_standard" options="{'no_open': True, 'no_create': True}"/>
-                             <field name="sales_employee" options="{'no_open': True, 'no_create': True}"/>
-                            <field name="supervisor"/>
+                             <field name="type_of_business" attrs="{'readonly':[('state','=','validate')]}"/>
+                             <field name="renewal_policy_id" options="{'no_open': True, 'no_create': True}" attrs="{'readonly':[('state','=','validate')],'invisible': [('type_of_business', '!=', 'renewal')],'required': [('type_of_business', '=', 'renewal')]}"/>
+                             <field name="company_standard" attrs="{'readonly':[('state','=','validate')]}" options="{'no_open': True, 'no_create': True}"/>
+                             <field name="sales_employee" attrs="{'readonly':[('state','=','validate')]}" options="{'no_open': True, 'no_create': True}"/>
+                            <field name="supervisor" attrs="{'readonly':[('state','=','validate')]}"/>
                              <field name="total_clients_number" attrs="{'invisible': [('medical_visibility_check', '=', False)]}"/>
                              <field name="total_vehicle_detail" attrs="{'invisible': [('vehicle_visibility_check', '=', False)]}"/>
                              <field name="list_required_docs_ids" invisible="1"/>
@@ -235,7 +235,7 @@
                     <field name="vehicle_visibility_check" invisible="1"/>
                     <notebook>
                         <page string="Clients Detail" attrs="{'invisible': [('medical_visibility_check', '=', False)]}">
-                                <field name="client_ids" widget="section_and_note_one2many" mode="tree,form" nolabel="1">
+                                <field name="client_ids" attrs="{'readonly':[('state','=','validate')]}" widget="section_and_note_one2many" mode="tree,form" nolabel="1">
                                 <tree>
                                     <field name="name"/>
                                     <field name="arabic_name"/>
@@ -265,7 +265,7 @@
                             </field>
                         </page>
                         <page string="Medical Quotations" attrs="{'invisible': ['|',('medical_visibility_check', '=', False),('state','in',('gather_info','review'))]}">
-                            <field name="insurance_quotation_ids" nolabel="1">
+                            <field name="insurance_quotation_ids" attrs="{'readonly':[('state','=','validate')]}" nolabel="1">
                                 <tree>
                                     <field name="insurance_company_id"/>
                                     <field name="date"/>
@@ -446,7 +446,7 @@
                         </page>
 
                         <page string="Vehicle Detail" attrs="{'invisible': [('vehicle_visibility_check', '=', False)]}">
-                                <field name="client_vehicle_ids" widget="section_and_note_one2many" mode="tree,form" nolabel="1">
+                                <field name="client_vehicle_ids" attrs="{'readonly':[('state','=','validate')]}" widget="section_and_note_one2many" mode="tree,form" nolabel="1">
                                 <tree>
                                     <field name="vehicle_type"/>
                                     <field name="plate_no" placeholder="1234 A-B-C"/>
@@ -487,7 +487,7 @@
                             </field>
                         </page>
                         <page string="Vehicle Quotations" attrs="{'invisible': ['|',('vehicle_visibility_check', '=', False),('state','in',('gather_info','review'))]}">
-                            <field name="vehicle_quotation_ids" nolabel="1">
+                            <field name="vehicle_quotation_ids" attrs="{'readonly':[('state','=','validate')]}" nolabel="1">
                                 <tree>
                                     <field name="insurance_company_id"/>
                                     <field name="date"/>
@@ -807,7 +807,7 @@
                         <page string="Import File">
                             <group>
                                 <group>
-                                    <field name="import_client_file"/>
+                                    <field name="import_client_file" attrs="{'readonly':[('state','=','validate')]}"/>
                                 </group>
                                 <group>
                                     <button name="export_client_info_file_template" type="object" string="Export Template" class="oe_highlight" attrs="{'invisible': [('medical_visibility_check', '=', False)]}"/>
@@ -829,7 +829,7 @@
 <!--                            </field>-->
 <!--                        </page>-->
                         <page string="Customer Attachments">
-                            <field name="customer_attachment_ids">
+                            <field name="customer_attachment_ids" attrs="{'readonly':[('state','=','validate')]}">
                                 <tree editable="bottom">
                                     <field name="name"/>
                                     <field name="file_type"/>

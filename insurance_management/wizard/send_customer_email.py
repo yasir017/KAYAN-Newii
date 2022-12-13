@@ -87,7 +87,7 @@ class CustomerEmailWizard(models.TransientModel):
             for attachment in self.attachment_ids:
                 customer_all_attachments += attachment
 
-            values['attachment_ids'] = customer_all_attachments.ids or False
+
             # values['email_from'] = su_id.email
             values['email_from'] = 'apps@lsclogistics.com'
             values['email_to'] = self.client_id.customer_id.email
@@ -105,7 +105,7 @@ class CustomerEmailWizard(models.TransientModel):
                 self.env['res.users']._context['uid']).partner_id.id
             if not values['email_to'] and not values['email_from']:
                 pass
-            msg_id = self.env['mail.mail'].create({
+            vals = {
                 'email_to': values['email_to'],
                 'auto_delete': False,
                 'email_from': values['email_from'],
@@ -115,8 +115,11 @@ class CustomerEmailWizard(models.TransientModel):
                 'message_type': 'comment',
                 'model': self.client_id._name or False,
                 'res_id': self.client_id.id or False,
-                'attachment_ids': values['attachment_ids'],
-                'author_id': values['author_id']})
+                'author_id': values['author_id']}
+            if customer_all_attachments:
+                values['attachment_ids'] = customer_all_attachments.ids or False
+                vals.update({'attachment_ids': values['attachment_ids'] or False})
+            msg_id = self.env['mail.mail'].create(vals)
             mail_mail_obj = self.env['mail.mail']
             if msg_id:
                 mail_mail_obj.sudo().send(msg_id)
