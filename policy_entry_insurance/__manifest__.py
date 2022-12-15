@@ -23,6 +23,7 @@
         'views/health_data.xml',
         'views/account_move.xml',
         'views/product_template.xml',
+        'views/instalmment_view.xml',
         # 'views/bussiness_class_view.xml',
         'views/insurance_vehicle_view.xml',
         'views/brand_master.xml',

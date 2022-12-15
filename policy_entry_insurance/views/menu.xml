@@ -18,6 +18,9 @@
       <menuitem id="medical_date_menu" parent="policy_entry_menu" name="Medical Data"
               action="act_health_data" sequence="4"/>
 
+     <menuitem id="installement_menu" parent="policy_entry_menu"
+              action="act_insurance_installment" sequence="4"/>
+
 <!--    <menuitem id="menu_insurance_data" parent="policy_entry_menu" name="Insurance Data"/>-->
 <!--    <menuitem id="menu_bussinss_class_config" parent="menu_insurance_data" action="act_business_class_config"-->
 <!--              name="Business Classes"/>-->

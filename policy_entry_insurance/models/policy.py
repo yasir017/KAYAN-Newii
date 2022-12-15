@@ -87,7 +87,7 @@ class Policy(models.Model):
     move_ids = fields.One2many('account.move','policy_id',string="Invoices")
     journal_id = fields.Many2one('account.journal',string="Journal ")
     payment_term_id = fields.Many2one('account.payment.term',"Payment Term")
-    policy_type = fields.Selection([('policy','Policy'),('endors','Endorsement')],default='policy',string="Type")
+    policy_type = fields.Selection([('policy','Inception'),('endors','Endorsement')],default='policy',string="Transaction Type")
     endorsment_ref = fields.Char("Endorsement Ref")
     total_instalment_am = fields.Float('Total Installment after vat',compute='compute_installment')
     difference_instalment = fields.Float('Difference',compute='compute_installment')
