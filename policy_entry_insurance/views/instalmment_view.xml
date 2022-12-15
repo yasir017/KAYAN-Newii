@@ -48,7 +48,7 @@
     </record>
 
      <record id="act_insurance_installment" model="ir.actions.act_window">
-            <field name="name">Installment </field>
+            <field name="name">Installment</field>
             <field name="type">ir.actions.act_window</field>
             <field name="res_model">insurance.installment</field>
             <field name="view_mode">tree,form</field>

@@ -47,7 +47,7 @@
 <!--                                <field name="branch_id" required="1" force_save="1"-->
 <!--                                       attrs="{'readonly':[('policy_type','=','endors')]}"/>-->
                                 <field name="start_date" attrs="{'readonly':[('state','!=','draft')]}" required="1"/>
-                                <field name="expiry_date" attrs="{'readonly':['|',('state','!=','draft'),('policy_type','=','endors')('policy_type','=','endors')]}" force_save="1" required="1"/>
+                                <field name="expiry_date" attrs="{'readonly':['|','|',('state','!=','draft'),('policy_type','=','endors'),('policy_type','=','endors')]}" force_save="1" required="1"/>
                                 <field name="issuance_date" required="1" attrs="{'readonly':['|',('state','!=','draft'),('policy_type','=','endors')]}" force_save="1"/>
                                 <field name="country_id" required="1" attrs="{'readonly':['|',('state','!=','draft'),('policy_type','=','endors')]}"/>
                                 <field name="fed_state_id" string="Branch" required="1" attrs="{'readonly':['|',('state','!=','draft'),('policy_type','=','endors')]}"/>
