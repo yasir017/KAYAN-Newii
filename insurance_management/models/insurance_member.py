@@ -1029,7 +1029,7 @@ class client_basic_info(models.Model):
     bank_id = fields.Many2one('res.bank', string='Bank')
     branch_id = fields.Many2one('client.branch',string='Branch ID')
     customer_id = fields.Many2one(related='branch_id.customer_id', store=True)
-    document_no = fields.Char(related='branch_id.document_no', string='Document No')
+    document_no = fields.Char(related='branch_id.document_no', string='Document No',store=True)
     state = fields.Selection(related='branch_id.state', store=True)
     note = fields.Text(string='Note')
 

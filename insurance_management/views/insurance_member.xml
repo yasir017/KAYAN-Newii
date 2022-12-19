@@ -39,6 +39,20 @@
         </field>
     </record>
 
+    <record id="view_client_basic_info_search" model="ir.ui.view">
+        <field name="name">client.basic.info.search</field>
+        <field name="model">client.basic.info</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="document_no"/>
+                <group name="group_group_by_info" expand="0" string="Group by...">
+                    <filter name="filter_group_by_document_no"
+                            string="Document NO" context="{'group_by': 'document_no'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+
     <record id="client_basic_info_view_form" model="ir.ui.view">
         <field name="name">client.basic.info.form</field>
         <field name="model">client.basic.info</field>
@@ -109,7 +123,7 @@
         <field name="name">Client INFO</field>
         <field name="res_model">client.basic.info</field>
         <field name="view_mode">tree,form</field>
-        <field name="search_view_id" ref="client_basic_info_view_tree"/>
+        <field name="search_view_id" ref="view_client_basic_info_search"/>
          <field name="help" type="html">
             <p class="oe_view_nocontent_create">
                 Click to create a new Client INFO.

@@ -47,7 +47,7 @@ class insurance_quotation(models.Model):
     state = fields.Selection([('draft','Draft'),('selected','Selected'),('cancel','Cancel')],string='state',default='draft')
     quotation_line_ids = fields.One2many('quotation.line','insurance_quotation_id',string='Quotation Lines')
     client_branch_id = fields.Many2one('client.branch',string='Client Branch')
-    document_no = fields.Char(related='client_branch_id.document_no', string='Document No')
+    document_no = fields.Char(related='client_branch_id.document_no', string='Document No',store=True)
     quotation_file = fields.Binary(string='Upload File')
     total_tax = fields.Float(string='Total Vat',compute='get_total_rate_tax_amount')
     amount = fields.Float(string='Total After Vat',compute='get_total_rate_vat_amount')
@@ -122,37 +122,41 @@ class insurance_quotation(models.Model):
     def upload_quotation(self):
         active_id = self._context.get('active_id', False)
         self.write({'client_branch_id':active_id})
+        if not self.quotation_file:
+            raise ValidationError("You have to Upload the file first!")
 
         wb = xlrd.open_workbook(file_contents=base64.decodebytes(self.quotation_file))
         quotation_lines_vals_list = []
         for sheet in wb.sheets():
             for row in range(sheet.nrows):
+
                 if row < 6:
                     continue
                 else:
-                    client_technical_id = sheet.cell(row, 0).value
-                    member_id = sheet.cell(row, 1).value
-                    dependent_id = sheet.cell(row, 2).value
-                    member_name = sheet.cell(row, 3).value
-                    member_name_arabic = sheet.cell(row, 4).value
-                    dob = sheet.cell(row, 5).value
-                    age = sheet.cell(row, 6).value
-                    dob_hijra = sheet.cell(row, 7).value
-                    member_type = sheet.cell(row, 8).value
-                    gender = sheet.cell(row, 9).value
-                    class_no = sheet.cell(row, 10).value
-                    risk_no = sheet.cell(row, 11).value
-                    nationality = sheet.cell(row, 12).value
-                    staff_no = sheet.cell(row, 13).value
-                    member_category = sheet.cell(row, 14).value
-                    mobile1 = sheet.cell(row, 15).value
-                    mobile2 = sheet.cell(row, 16).value
-                    dep_code = sheet.cell(row, 17).value
-                    sponser_id = sheet.cell(row, 18).value
-                    occupation = sheet.cell(row, 19).value
-                    marital_status = sheet.cell(row, 20).value
-                    vat = sheet.cell(row, 21).value
-                    rate = sheet.cell(row, 22).value
+                    # client_technical_id = sheet.cell(row, 0).value
+                    member_id = sheet.cell(row, 0).value
+                    dependent_id = sheet.cell(row, 1).value
+                    member_name = sheet.cell(row, 2).value
+                    member_name_arabic = sheet.cell(row, 3).value
+                    dob = sheet.cell(row, 4).value
+                    age = sheet.cell(row, 5).value
+                    dob_hijra = sheet.cell(row, 6).value
+                    member_type = sheet.cell(row, 7).value
+                    gender = sheet.cell(row, 8).value
+                    class_no = sheet.cell(row, 9).value
+                    risk_no = sheet.cell(row, 10).value
+                    nationality = sheet.cell(row, 11).value
+                    staff_no = sheet.cell(row, 12).value
+                    member_category = sheet.cell(row, 13).value
+                    mobile1 = sheet.cell(row, 14).value
+                    mobile2 = sheet.cell(row, 15).value
+                    dep_code = sheet.cell(row, 16).value
+                    sponser_id = sheet.cell(row, 17).value
+                    occupation = sheet.cell(row, 18).value
+                    marital_status = sheet.cell(row, 19).value
+                    vat = sheet.cell(row, 20).value
+                    rate = sheet.cell(row, 21).value
+
                     vals = {
                         'member_id': member_id,
                         'dependent_id': dependent_id,
@@ -184,9 +188,9 @@ class insurance_quotation(models.Model):
                     member_category = self.env['member.category'].search([('name', '=', str(member_category))], limit=1)
                     if member_category:
                         vals.update({'member_category': member_category.id})
-                    # nationality = self.env['res.country'].search([('name', '=', str(nationality))], limit=1)
-                    # if nationality:
-                    #     vals.update({'nationality': nationality.id})
+                    nationality = self.env['res.country'].search([('name', '=', str(nationality))], limit=1)
+                    if nationality:
+                        vals.update({'nationality': nationality.id})
 
                     company_member_type_standard = self.env['company.member.type.standard'].search([('name', '=', str(member_type))], limit=1)
                     if company_member_type_standard:
@@ -196,9 +200,14 @@ class insurance_quotation(models.Model):
                     if company_class_standard:
                         vals.update({'class_no': company_class_standard.class_standard_id.id})
 
-                    client_id = self.env['client.basic.info'].search([('id','=',int(client_technical_id))])
-                    if client_id:
-                        vals.update({'client_id': client_id.id})
+                    # company_age_category = self.env['age.category.standard'].search([('name', '=', str(class_no))],
+                    #                                                                    limit=1)
+                    # if company_class_standard:
+                    #     vals.update({'class_no': company_class_standard.class_standard_id.id})
+
+                    # client_id = self.env['client.basic.info'].search([('id','=',int(client_technical_id))])
+                    # if client_id:
+                    #     vals.update({'client_id': client_id.id})
                     occupation = self.env['ins.occupation'].search([('name', '=', occupation)],limit=1)
                     if occupation:
                         vals.update({'occupation': occupation.id})

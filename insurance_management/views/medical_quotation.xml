@@ -85,7 +85,7 @@
                                             <field name="total"/>
                                         </group>
                                         <group string="Client ID">
-                                            <field name="client_id" nolabel="1" domain="[('id','in',related_client_ids)]"/>
+                                            <field name="client_id" invisible="1" domain="[('id','in',related_client_ids)]"/>
                                             <field name="client_branch_id" invisible="1"/>
                                             <field name="related_client_ids" nolabel="1" invisible="1"/>
                                         </group>
