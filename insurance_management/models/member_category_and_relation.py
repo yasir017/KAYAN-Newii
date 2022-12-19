@@ -13,7 +13,7 @@ class member_category(models.Model):
     _inherit = ['mail.thread', 'mail.activity.mixin', 'mail.render.mixin']
     _description = 'member_category'
 
-    name = fields.Char(string='Member Category Name')
+    name = fields.Char(string='Member Category Name', translate=True)
 
 
 class member_relation(models.Model):
@@ -21,4 +21,4 @@ class member_relation(models.Model):
     _inherit = ['mail.thread', 'mail.activity.mixin', 'mail.render.mixin']
     _description = 'member_relation'
 
-    name = fields.Char(string='Member Relation Name')
+    name = fields.Char(string='Member Relation Name', translate=True)

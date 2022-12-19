@@ -4,7 +4,7 @@
             <field name="name">ir.attachment.form.ccc</field>
             <field name="model">ir.attachment</field>
             <field name="arch" type="xml">
-                <form string="Attachments">
+                <form string="Attachments" create="0" edit="0">
                    <sheet>
                     <label for="name"/>
                     <h1>

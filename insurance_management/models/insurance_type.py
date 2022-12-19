@@ -14,7 +14,7 @@ class insurance_type(models.Model):
     _inherit = ['mail.thread', 'mail.activity.mixin', 'mail.render.mixin']
     _description = 'insurance_type'
 
-    name = fields.Char(string='Type Name')
+    name = fields.Char(string='Type Name', translate=True)
     insurance_subtype_ids = fields.One2many('insurance.sub.type','insurance_type_id',string='Insurance Sub-Types')
     ins_type_select = fields.Selection([('is_medical','Medical'),('is_vehicle','Vehicle'),('is_marine','Marine'), ('other', 'Other')],string='Technical Type',required=True)
     # is_medical = fields.Boolean(string='Is Medical?')
@@ -26,10 +26,10 @@ class insurance_sub_type(models.Model):
     _inherit = ['mail.thread', 'mail.activity.mixin', 'mail.render.mixin']
     _description = 'insurance_sub_type'
 
-    name = fields.Char(string='Name')
+    name = fields.Char(string='Name', translate=True)
     code = fields.Integer(string='Code')
     sequence = fields.Integer(string='Sequence')
-    insurance_type_id = fields.Many2one('insurance.type',string='Insurance Type Main')
+    insurance_type_id = fields.Many2one('insurance.type',string='Insurance Type Main',required=True)
 
 
 class list_required_docs(models.Model):

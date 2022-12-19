@@ -51,6 +51,8 @@
                     <div class="oe_title">
                         <label for="name" class="oe_edit_only"/>
                         <h1><field name="name" class="oe_inline"/></h1>
+                        <label for="arabic_name" class="oe_edit_only"/>
+                        <h1><field name="arabic_name" class="oe_inline"/></h1>
                     </div>
                     <group string="Member Details">
                         <group>

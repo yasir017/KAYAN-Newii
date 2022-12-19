@@ -18,6 +18,7 @@
         'views/client_branch.xml',
         'views/insurance_member.xml',
         'views/contract_inhrit.xml',
+        'views/crm.xml',
         'views/policy.xml',
         'views/account_move.xml',
         'views/ir_config_setting_view.xml',

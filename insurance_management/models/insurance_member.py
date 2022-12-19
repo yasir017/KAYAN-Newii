@@ -730,60 +730,60 @@ class client_branch(models.Model):
 
             rows = 5
 
-            worksheet.write(rows, 0, 'Client DB ID(for technical use)', style)
-            worksheet.write(rows, 1, 'Member ID', style)
-            worksheet.write(rows, 2, 'Dependent ID', style)
-            worksheet.write(rows, 3, 'Member Name (English)', style)
-            worksheet.write(rows, 4, 'Member Name (Arabic)', style)
-            worksheet.write(rows, 5, 'Gregorian Birth Date', style)
-            worksheet.write(rows, 6, 'Age', style)
-            worksheet.write(rows, 7, 'Hajrah Birth Date', style)
-            worksheet.write(rows, 8, 'Member type', style)
-            worksheet.write(rows, 9, 'Gender', style)
-            worksheet.write(rows, 10, 'Class no', style)
-            worksheet.write(rows, 11, 'Risk No.', style)
-            worksheet.write(rows, 12, 'Nationality', style)
-            worksheet.write(rows, 13, 'Staff No.', style)
-            worksheet.write(rows, 14, 'Member Category', style)
-            worksheet.write(rows, 15, 'Mobile No. (1)', style)
-            worksheet.write(rows, 16, 'Mobile No. (2)', style)
-            worksheet.write(rows, 17, 'Dep Code', style)
-            worksheet.write(rows, 18, 'Sponser ID', style)
-            worksheet.write(rows, 19, 'Occupation', style)
-            worksheet.write(rows, 20, 'Relation', style)
-            worksheet.write(rows, 21, 'VAT', style)
-            worksheet.write(rows, 22, 'Premium', style)
+            # worksheet.write(rows, 0, 'Client DB ID(for technical use)', style)
+            worksheet.write(rows, 0, 'Member ID', style)
+            worksheet.write(rows, 1, 'Dependent ID', style)
+            worksheet.write(rows, 2, 'Member Name (English)', style)
+            worksheet.write(rows, 3, 'Member Name (Arabic)', style)
+            worksheet.write(rows, 4, 'Gregorian Birth Date', style)
+            worksheet.write(rows, 5, 'Age', style)
+            worksheet.write(rows, 6, 'Hajrah Birth Date', style)
+            worksheet.write(rows, 7, 'Member type', style)
+            worksheet.write(rows, 8, 'Gender', style)
+            worksheet.write(rows, 9, 'Class no', style)
+            worksheet.write(rows, 10, 'Risk No.', style)
+            worksheet.write(rows, 11, 'Nationality', style)
+            worksheet.write(rows, 12, 'Staff No.', style)
+            worksheet.write(rows, 13, 'Member Category', style)
+            worksheet.write(rows, 14, 'Mobile No. (1)', style)
+            worksheet.write(rows, 15, 'Mobile No. (2)', style)
+            worksheet.write(rows, 16, 'Dep Code', style)
+            worksheet.write(rows, 17, 'Sponser ID', style)
+            worksheet.write(rows, 18, 'Occupation', style)
+            worksheet.write(rows, 19, 'Relation', style)
+            worksheet.write(rows, 20, 'VAT', style)
+            worksheet.write(rows, 21, 'Premium', style)
             rows += 1
 
             for line in self.client_ids:
                 company_member_type_standard = ''
                 if line.member_type:
-                    company_member_type_standard = self.env['company.member.type.standard'].search([('member_type_standard_id', '=', line.member_type.id),('insurance_company_id','=',company.id)], limit=1).name or ''
+                    company_member_type_standard = self.env['company.member.type.standard'].search([('member_type_standard_id', '=', line.member_type.id),('insurance_company_id','=',company._origin.id)], limit=1).name or ''
                 company_class_standard = ''
                 if line.class_no:
-                    company_class_standard = self.env['company.class.standard'].search([('class_standard_id', '=', line.class_no.id),('insurance_company_id','=',company.id)], limit=1).name or ''
-                worksheet.write(rows, 0, line.id or '')
-                worksheet.write(rows, 1, line.member_id or '')
-                worksheet.write(rows, 2, line.dependent_id or '')
-                worksheet.write(rows, 3, line.name or '')
-                worksheet.write(rows, 4, line.arabic_name or '')
-                worksheet.write(rows, 5, line.dob or '')
-                worksheet.write(rows, 6, line.age or '')
-                worksheet.write(rows, 7, line.dob_hijra or '')
-                worksheet.write(rows, 8, company_member_type_standard or '')
-                worksheet.write(rows, 9, line.gender or '')
-                worksheet.write(rows, 10, company_class_standard or '')
-                worksheet.write(rows, 11, str(line.risk_no) or '')
-                worksheet.write(rows, 12, line.nationality.name or '')
-                worksheet.write(rows, 13, line.staff_no or '')
-                worksheet.write(rows, 14, line.member_category.name or '')
-                worksheet.write(rows, 15, line.mobile1 or '')
-                worksheet.write(rows, 16, line.mobile2 or '')
-                worksheet.write(rows, 17, line.dep_no or '')
-                worksheet.write(rows, 18, line.sponser_id or '')
-                worksheet.write(rows, 19, line.occupation.name or '')
-                worksheet.write(rows, 20, line.marital_status.name or '')
-                worksheet.write(rows, 21, 15)
+                    company_class_standard = self.env['company.class.standard'].search([('class_standard_id', '=', line.class_no.id),('insurance_company_id','=',company._origin.id)], limit=1).name or ''
+                # worksheet.write(rows, 0, line.id or '')
+                worksheet.write(rows, 0, line.member_id or '')
+                worksheet.write(rows, 1, line.dependent_id or '')
+                worksheet.write(rows, 2, line.name or '')
+                worksheet.write(rows, 3, line.arabic_name or '')
+                worksheet.write(rows, 4, str(line.dob) if line.dob else '')
+                worksheet.write(rows, 5, line.age or '')
+                worksheet.write(rows, 6, line.dob_hijra or '')
+                worksheet.write(rows, 7, company_member_type_standard or '')
+                worksheet.write(rows, 8, line.gender or '')
+                worksheet.write(rows, 9, company_class_standard or '')
+                worksheet.write(rows, 10, str(line.risk_no) or '')
+                worksheet.write(rows, 11, line.nationality.name or '')
+                worksheet.write(rows, 12, line.staff_no or '')
+                worksheet.write(rows, 13, line.member_category.name or '')
+                worksheet.write(rows, 14, line.mobile1 or '')
+                worksheet.write(rows, 15, line.mobile2 or '')
+                worksheet.write(rows, 16, line.dep_no or '')
+                worksheet.write(rows, 17, line.sponser_id or '')
+                worksheet.write(rows, 18, line.occupation.name or '')
+                worksheet.write(rows, 19, line.marital_status.name or '')
+                worksheet.write(rows, 20, 15)
 
                 rows += 1
 
@@ -1108,3 +1108,14 @@ class CrmLead(models.Model):
     _inherit = 'crm.lead'
 
     client_branch_id = fields.Many2one('client.branch', string='Client Branch')
+
+    def action_related_data_gathering(self):
+        return {
+            'name': "Customer Information",
+            'type': 'ir.actions.act_window',
+            'view_mode': 'form',
+            'view_type': 'form',
+            'res_model': 'client.branch',
+            'views': [(False, 'form')],
+            'res_id': self.client_branch_id.id,
+        }

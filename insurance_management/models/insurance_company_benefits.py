@@ -34,6 +34,6 @@ class benefit_name(models.Model):
     _inherit = ['mail.thread', 'mail.activity.mixin', 'mail.render.mixin']
     _description = 'benefit_name'
 
-    name = fields.Char(string='Benefit Name')
+    name = fields.Char(string='Benefit Name', translate=True)
     ins_type_select = fields.Selection([('is_medical', 'Medical'), ('is_vehicle', 'Vehicle'), ('is_marine', 'Marine'), ('other', 'Other')],
                                        string='Technical Type',required=True)
