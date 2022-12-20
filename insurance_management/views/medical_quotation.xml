@@ -8,6 +8,7 @@
         <field name="arch" type="xml">
             <tree string="Medical Quotation" create="0" edit="0" delete="0">
                 <field name="document_no"/>
+                <field name="customer_id"/>
                 <field name="insurance_company_id"/>
                 <field name="date"/>
                 <field name="quotation_no"/>

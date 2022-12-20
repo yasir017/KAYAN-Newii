@@ -79,8 +79,8 @@ class client_branch(models.Model):
     state = fields.Selection([('gather_info','Gather Info'),
                               ('review','Review'),
                               ('sent_to_insurance','Sent to Vendor'),
-                              ('sent_to_customer','Sent to Customer'),('validate','Validate'),
-                              ('cancel','Cancel')],string='state',default='gather_info')
+                              ('sent_to_customer','Sent to Customer'),('policy_issuance','Policy Issuance'),('validate','Validate'),
+                              ('cancel','Cancel')],string='state',default='gather_info', tracking=True)
     import_client_file = fields.Binary(string='Upload Clients Data (.xls')
     # template_client_info_file = fields.Binary(string='Client Info Template',default=_default_get_client_ifo_temp)
     # template_vehicle_info_file = fields.Binary(string='Vehicle Info Template',default=_default_get_vehicle_ifo_temp)

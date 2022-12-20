@@ -7,6 +7,9 @@
         <field name="model">vehicle.quotation</field>
         <field name="arch" type="xml">
             <tree string="Vehicle Quotation" create="0" edit="0" delete="0">
+                <field name="document_no"/>
+                <field name="branch_db" invisible="1"/>
+                <field name="customer_id"/>
                 <field name="insurance_company_id"/>
                 <field name="date"/>
                 <field name="email" invisible="1"/>

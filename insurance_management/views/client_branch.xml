@@ -136,7 +136,7 @@
                     <button name="cancel" type="object" string="cancel" class="oe_highlight"/>
                     <button name="action_create_policy" type="object" string="Create Policy" class="oe_highlight" attrs="{'invisible':['|',('state','!=','validate'),('policy_id','!=',False)]}" />
 
-                    <field name="state" widget="statusbar" clickable="1" statusbar_visible="gather_info,review,sent_to_insurance,sent_to_customer,validate"/>
+                    <field name="state" widget="statusbar" clickable="1" statusbar_visible="gather_info,review,sent_to_insurance,sent_to_customer,policy_issuance,validate"/>
                 </header>
                 <sheet>
                     <div class="oe_button_box" name="button_box">
@@ -520,8 +520,8 @@
                                             <field name="quotation_no"/>
                                             <field name="email" invisible="1"/>
                                             <field name="client_branch_id" invisible="1"/>
-                                            <field name="branch_db" invisible="0"/>
-                                            <field name="document_no" invisible="0"/>
+                                            <field name="branch_db" invisible="1"/>
+                                            <field name="document_no" invisible="1"/>
                                             <field name="quotation_file"/>
                                             <button name="get_vehicle_quote_lines" type="object" string="Map Clients" class="oe_highlight"/>
 <!--                                            <button name="upload_quotation" type="object" string="Import" class="oe_highlight"/>-->
