@@ -16,6 +16,7 @@
                 <field name="country"/>
                 <field name="state_id"/>
                 <field name="client_ids"/>
+                <field name="state" string="Status"/>
             </tree>
         </field>
     </record>
@@ -297,10 +298,10 @@
                                         <group>
                                             <field name="quotation_no"/>
                                             <field name="email" invisible="1"/>
-                                            <field name="client_branch_id" invisible="1" options="{'no_open': True, 'no_create': True}"/>
-                                            <field name="quotation_file"/>
-                                            <button name="upload_quotation" type="object" string="Import" class="oe_highlight"/>
-                                            <button name="download_export_template" type="object" string="Download Template" class="oe_highlight"/>
+                                            <field name="client_branch_id" invisible="0" options="{'no_open': True, 'no_create': True}"/>
+                                            <field name="branch_db_id" invisible="1"/>
+                                            <button name="get_medical_quote_lines" type="object" string="Map Clients" class="oe_highlight"/>
+<!--                                            <button name="download_export_template" type="object" string="Download Template" class="oe_highlight"/>-->
                                             <field name="total_lines"/>
                                         </group>
                                     </group>
@@ -519,9 +520,12 @@
                                             <field name="quotation_no"/>
                                             <field name="email" invisible="1"/>
                                             <field name="client_branch_id" invisible="1"/>
+                                            <field name="branch_db" invisible="0"/>
+                                            <field name="document_no" invisible="0"/>
                                             <field name="quotation_file"/>
-                                            <button name="upload_quotation" type="object" string="Import" class="oe_highlight"/>
-                                            <button name="export_vehicle_quoit_template" type="object" string="Export Template" class="oe_highlight"/>
+                                            <button name="get_vehicle_quote_lines" type="object" string="Map Clients" class="oe_highlight"/>
+<!--                                            <button name="upload_quotation" type="object" string="Import" class="oe_highlight"/>-->
+<!--                                            <button name="export_vehicle_quoit_template" type="object" string="Export Template" class="oe_highlight"/>-->
                                             <field name="total_lines"/>
                                         </group>
                                     </group>

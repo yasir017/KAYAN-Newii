@@ -41,12 +41,14 @@ class insurance_quotation(models.Model):
     _description = 'insurance_quotation'
     _rec_name = 'insurance_company_id'
 
+
     insurance_company_id = fields.Many2one('insurance.company',string='Company',required='1')
-    date = fields.Date(string='Date')
+    date = fields.Date(string='Date',required=True)
     email = fields.Char(string='Email')
     state = fields.Selection([('draft','Draft'),('selected','Selected'),('cancel','Cancel')],string='state',default='draft')
     quotation_line_ids = fields.One2many('quotation.line','insurance_quotation_id',string='Quotation Lines')
     client_branch_id = fields.Many2one('client.branch',string='Client Branch')
+    branch_db_id = fields.Integer(related='client_branch_id.id', string='Branch DB ID',store=True)
     document_no = fields.Char(related='client_branch_id.document_no', string='Document No',store=True)
     quotation_file = fields.Binary(string='Upload File')
     total_tax = fields.Float(string='Total Vat',compute='get_total_rate_tax_amount')
@@ -54,8 +56,43 @@ class insurance_quotation(models.Model):
     total_rate = fields.Float(string='Total Premium',compute='get_total_rate_vat_amount')
     select = fields.Boolean(string='Select')
     custom_benefits_ids = fields.One2many('customer.custom.benefit','insurance_quotation_id',string='Benefits')
-    quotation_no = fields.Char(string='Quotation Number')
+    quotation_no = fields.Char(string='Quotation Number',required=True)
     total_lines = fields.Integer(string='Total Lines',compute='get_total_lines')
+
+    def get_medical_quote_lines(self):
+        quote_lines_list = []
+        self.quotation_line_ids.unlink()
+        branch = self.env['client.branch'].search([('id','=',self.branch_db_id)],limit=1)
+        for line in branch.client_ids:
+            vals = {
+                'member_id': line.member_id,
+                'dependent_id': line.dependent_id,
+                'name': line.name,
+                'arabic_name': line.arabic_name,
+                'dob': line.dob,
+                'age': line.age,
+                'dob_hijra': line.dob_hijra,
+                'member_type': line.member_type.id,
+                'gender': line.gender,
+                'class_no': line.class_no.id,
+                'risk_no': line.risk_no,
+                'nationality': line.nationality.id,
+                'staff_no': line.staff_no,
+                'mobile1': line.mobile1,
+                'mobile2': line.mobile2,
+                'dep_no': line.dep_no,
+                'sponser_id': line.sponser_id,
+                'occupation': line.occupation.id,
+                'vat': 15,
+                'branch_id': self.client_branch_id.id,
+                'client_id': line.id,
+                'marital_status': line.marital_status.id,
+                'vip': line.vip,
+                'as_vip': line.as_vip,
+                'insurance_quotation_id': self.id,
+            }
+            quotation_line = self.env['quotation.line'].create(vals)
+
     @api.depends('quotation_line_ids')
     def get_total_lines(self):
         for rec in self:
@@ -298,11 +335,12 @@ class vehicle_quotation(models.Model):
     _rec_name = 'insurance_company_id'
 
     insurance_company_id = fields.Many2one('insurance.company',string='Company',required='1')
-    date = fields.Date(string='Date')
+    date = fields.Date(string='Date',required=True)
     email = fields.Char(string='Email')
     state = fields.Selection([('draft','Draft'),('in_review','In Review'),('selected','Selected'),('cancel','Cancel')],string='state',default='draft')
     vehicle_quotation_line_ids = fields.One2many('vehicle.quotation.line','vehicle_quotation_id',string='Vehicle Quotation Lines')
     client_branch_id = fields.Many2one('client.branch',string='Client Branch')
+    branch_db = fields.Integer(related='client_branch_id.id', string='DB ID')
     document_no = fields.Char(related='client_branch_id.document_no', string='Document No')
     quotation_file = fields.Binary(string='Upload File')
     total_vat = fields.Float(string='Total VAT',compute='get_total_rate_vat_amount')
@@ -323,9 +361,50 @@ class vehicle_quotation(models.Model):
     glass_coverage = fields.Float('Glass Coverage')
     personal_holding_in_vehicle = fields.Float('Personal holdings in vehicle')
     vehicle_custom_benefits_ids = fields.One2many('vehicle.custom.benefit', 'vehicle_quotation_id', string='Benefits')
-    quotation_no = fields.Char(string='Quotation Number')
+    quotation_no = fields.Char(string='Quotation Number',required=True)
 
     total_lines = fields.Integer(string='Total Lines', compute='get_total_lines')
+
+    def get_vehicle_quote_lines(self):
+        quote_lines_list = []
+        self.vehicle_quotation_line_ids.unlink()
+        branch = self.env['client.branch'].search([('id','=',self.branch_db)],limit=1)
+        for line in branch.client_vehicle_ids:
+            vals = {
+                'vehicle_type': line.vehicle_type.id,
+                'plate_no': line.plate_no,
+                'model': line.model,
+                'chasis_no': line.chasis_no,
+                'capacity': line.capacity,
+                'driver_insurance': line.driver_insurance,
+                'covering_maintenance': line.covering_maintenance,
+                'sum_insured': line.value,
+                'owner_name': line.owner_name,
+                'owner_id_no': line.owner_id_no,
+                'custom_id': line.custom_id,
+                'sequence_no': line.sequence_no,
+                'user_id_no': line.user_id_no,
+                'user_name': line.user_name,
+                'building_no': line.building_no,
+                'additional_no': line.additional_no,
+                'street': line.street,
+                'city': line.city.id,
+                'unit_no': line.unit_no,
+                'po_box': line.po_box,
+                'zip_code': line.zip_code,
+                'neighborhead': line.neighborhead,
+                'mobile_no': line.mobile_no,
+                'exp_date_istemara_hijry': line.exp_date_istemara_hijry,
+                'vehicle_color': line.vehicle_color,
+                'gcc_covering': line.gcc_covering,
+                'natural_peril_cover': line.natural_peril_cover,
+                'dob_owner': line.dob_owner,
+                'vehicle_quotation_id': self.id,
+                'vehicle_client_id': line.id,
+                # 'customer_branch_id': self.id,
+                'vat': 15,
+            }
+            vehicle_quotation_line = self.env['vehicle.quotation.line'].create(vals)
 
     def export_vehicle_quoit_template(self):
         vehicle_quoite_template = self.env['ir.attachment'].search([('is_vehicle_quoit_temp','=',True)],limit=1)

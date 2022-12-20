@@ -17,7 +17,7 @@ class client_vehicle_info(models.Model):
     _rec_name = 'owner_name'
 
     vehicle_image = fields.Binary(string='Vehicle Image')
-    vehicle_type = fields.Char(string='Vehicle Type')
+    vehicle_type = fields.Many2one('vehicle.type',"Vehicle Type")
     plate_no = fields.Char(string='Plate No. (En)',placeholder="1234 A-B-C")
     plate_no_ar = fields.Char(string='Plate No. (Ar)')
     model = fields.Selection([(str(num), str(num)) for num in range(1900, (datetime.now().year)+1 )],string="Vehicle Year")
