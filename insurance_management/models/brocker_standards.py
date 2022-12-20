@@ -20,7 +20,7 @@ class class_name_standard(models.Model):
     _description = 'class_name_standard'
 
     name = fields.Char(string='Name',required=True)
-    # standard_type = fields.Many2many('company.standard.type',string='Standard For',required=True)
+    standard_type = fields.Many2many('company.standard.type',string='Standard For',required=True)
 
 
 class member_type_standard(models.Model):
@@ -29,7 +29,7 @@ class member_type_standard(models.Model):
     _description = 'member_type_standard'
 
     name = fields.Char(string='Name',required=True)
-    # standard_type = fields.Many2many('company.standard.type',string='Standard For',required=True)
+    standard_type = fields.Many2many('company.standard.type',string='Standard For',required=True)
 
 
 class age_category_standard(models.Model):
@@ -38,4 +38,4 @@ class age_category_standard(models.Model):
     _description = 'age_category_standard'
 
     name = fields.Char(string='Name',required=True)
-    # standard_type = fields.Many2many('company.standard.type',string='Standard For',required=True)
+    standard_type = fields.Many2many('company.standard.type',string='Standard For',required=True)
