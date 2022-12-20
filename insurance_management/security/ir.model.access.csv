@@ -16,6 +16,7 @@ access_insurance_sub_type,insurance.sub.type,model_insurance_sub_type,,1,1,1,1
 access_vehicle_quotation,vehicle.quotation,model_vehicle_quotation,,1,1,1,1
 access_vehicle_quotation_line,vehicle.quotation.line,model_vehicle_quotation_line,,1,1,1,1
 access_customer_attachment,customer.attachment,model_customer_attachment,,1,1,1,1
+access_company_standard_type,company.standard.type,model_company_standard_type,,1,1,1,1
 access_class_name_standard,class.name.standard,model_class_name_standard,,1,1,1,1
 access_member_type_standard,member.type.standard,model_member_type_standard,,1,1,1,1
 access_age_category_standard,age.category.standard,model_age_category_standard,,1,1,1,1

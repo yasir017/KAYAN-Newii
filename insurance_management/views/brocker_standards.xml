@@ -8,7 +8,7 @@
         <field name="arch" type="xml">
             <tree string="Medical Class Name standard" editable="bottom">
                 <field name="name"/>
-                <field name="standard_type"/>
+<!--                <field name="standard_type" widget="many2many_tags"/>-->
             </tree>
         </field>
     </record>
@@ -25,7 +25,7 @@
                     </div>
                     <group>
                         <group>
-                            <field name="standard_type"/>
+<!--                            <field name="standard_type" widget="many2many_tags"/>-->
                         </group>
                          <group>
                         </group>
@@ -60,7 +60,7 @@
         <field name="arch" type="xml">
             <tree string="Medical Member Type Standard" editable="bottom">
                 <field name="name"/>
-                <field name="standard_type"/>
+<!--                <field name="standard_type" widget="many2many_tags"/>-->
             </tree>
         </field>
     </record>
@@ -77,7 +77,7 @@
                     </div>
                     <group>
                         <group>
-                            <field name="standard_type"/>
+<!--                            <field name="standard_type" widget="many2many_tags"/>-->
                         </group>
                          <group>
                         </group>
@@ -112,7 +112,7 @@
         <field name="arch" type="xml">
             <tree string="Medical Age Category Standard" editable="bottom">
                 <field name="name"/>
-                <field name="standard_type"/>
+<!--                <field name="standard_type" widget="many2many_tags"/>-->
             </tree>
         </field>
     </record>
@@ -129,7 +129,7 @@
                     </div>
                     <group>
                         <group>
-                            <field name="standard_type"/>
+<!--                            <field name="standard_type" widget="many2many_tags"/>-->
                         </group>
                          <group>
                         </group>

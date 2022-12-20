@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="0">
+
+        <record id="company_standard_type_sme" model="company.standard.type" forcecreate="0">
+            <field name="name">SME</field>
+        </record>
+        <record id="company_standard_type_corporate" model="company.standard.type" forcecreate="0">
+            <field name="name">Corporate</field>
+        </record>
+
+    </data>
+</odoo>

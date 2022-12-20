@@ -90,7 +90,7 @@ class company_class_standard(models.Model):
     name = fields.Char(string='Name',required=True)
     standard_type = fields.Selection([('sme', 'SME'), ('corporate', 'Corporate')
                                       ], string='Standard For', required=True)
-    class_standard_id = fields.Many2one('class.name.standard',string='Broker Standard',domain="[('standard_type','=',standard_type)]",required=True)
+    # class_standard_id = fields.Many2one('class.name.standard',string='Broker Standard',domain="[('standard_type','=',standard_type)]",required=True)
     insurance_company_id = fields.Many2one('insurance.company',string='Insurance Company')
 
 
@@ -102,7 +102,7 @@ class company_member_type_standard(models.Model):
     name = fields.Char(string='Name',required=True)
     standard_type = fields.Selection([('sme', 'SME'), ('corporate', 'Corporate')
                                       ], string='Standard For', required=True)
-    member_type_standard_id = fields.Many2one('member.type.standard',string='Member Type Standard',domain="[('standard_type','=',standard_type)]",required=True)
+    # member_type_standard_id = fields.Many2one('member.type.standard',string='Member Type Standard',domain="[('standard_type','=',standard_type)]",required=True)
     insurance_company_id = fields.Many2one('insurance.company',string='Insurance Company')
 
 class company_age_category_standard(models.Model):
@@ -113,5 +113,5 @@ class company_age_category_standard(models.Model):
     name = fields.Char(string='Name',required=True)
     standard_type = fields.Selection([('sme', 'SME'), ('corporate', 'Corporate')
                                       ], string='Standard For', required=True)
-    age_category_standard_id = fields.Many2one('age.category.standard',string='Member Type Standard',domain="[('standard_type','=',standard_type)]",required=True)
+    # age_category_standard_id = fields.Many2one('age.category.standard',string='Member Type Standard',domain="[('standard_type','=',standard_type)]",required=True)
     insurance_company_id = fields.Many2one('insurance.company',string='Insurance Company')

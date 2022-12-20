@@ -42,6 +42,7 @@
         'report/benefits_comparison_report.xml',
         'report/benefits_comparison_template.xml',
         'report/export_client_for_uploader.xml',
+        'data/standard_type.xml',
         'data/customer_info_send_email_template.xml',
         'data/client_document_data.xml',
         'data/ir_sequence.xml',
