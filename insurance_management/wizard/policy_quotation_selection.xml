@@ -1,0 +1,75 @@
+<?xml version="1.0"?>
+<odoo>
+
+	<record id="form_policy_selection_quotation_wizard_view" model="ir.ui.view">
+		<field name="name">policy.selection.quotation.form.view</field>
+		<field name="model">policy.selection.quotation</field>
+		<field name="arch" type="xml">
+			<form string="Policy Quotation Selection Wizard">
+				<sheet>
+					<group>
+						<field name="medical_visibility_check" invisible="1"/>
+                    	<field name="vehicle_visibility_check" invisible="1"/>
+						<group string="Client">
+							<field name="client_id" readonly="1" nolabel="1"/>
+						</group>
+						<group string="Quotation" attrs="{'invisible': [('medical_visibility_check', '=', False)]}">
+							<field name="medical_quotation_id" readonly="1" nolabel="1"/>
+						</group>
+						<group string="Quotation" attrs="{'invisible': [('vehicle_visibility_check', '=', False)]}">
+							<field name="vehicle_quotation_id" readonly="1" nolabel="1"/>
+						</group>
+					</group>
+					<notebook>
+						<page string="Clients" attrs="{'invisible': [('medical_visibility_check', '=', False)]}">
+							<field name="medical_quotation_lines"/>
+						</page>
+						<page string="Clients" attrs="{'invisible': [('vehicle_visibility_check', '=', False)]}">
+							<field name="vehicle_quotation_lines">
+								<tree>
+                                    <field name="vehicle_type"/>
+                                    <field name="plate_no" placeholder="1234 A-B-C"/>
+                                    <field name="plate_no_ar" optional="1"/>
+                                    <field name="vehicle_make_id" optional="1"/>
+                                    <field name="vehicle_model_id" optional="1"/>
+                                    <field name="model" optional="1"/>
+                                    <field name="chasis_no" optional="1"/>
+                                    <field name="capacity" optional="1"/>
+                                    <field name="driver_insurance" optional="1"/>
+                                    <field name="covering_maintenance" optional="1"/>
+                                    <field name="owner_name"/>
+                                    <field name="owner_id_no"/>
+                                    <field name="custom_id" optional="1"/>
+                                    <field name="sequence_no" optional="1"/>
+                                    <field name="user_id_no" optional="1"/>
+                                    <field name="user_name" optional="1"/>
+                                    <field name="sum_insured"/>
+                                    <field name="rate"/>
+                                    <field name="vat"/>
+                                    <field name="total"/>
+                                    <field name="client_branch_id" optional="1"/>
+                                    <field name="vehicle_client_id" invisible="1"/>
+                                </tree>
+							</field>
+						</page>
+					</notebook>
+				</sheet>
+				<footer>
+					<button name="action_confirm" type="object" string="Create Policy"
+					class="oe_highlight"/>
+					<button string="Cancel" class="btn-secondary" special="cancel"/>
+				</footer>
+			</form>
+		</field>
+	</record>
+
+	<record id="action_policy_selection_quotation_wizard" model="ir.actions.act_window">
+		<field name="name">Policy Quotation Selection Wizard</field>
+		<field name="type">ir.actions.act_window</field>
+		<field name="res_model">policy.selection.quotation</field>
+		<field name="view_mode">form</field>
+		<field name="view_id" ref="form_select_quotation_wizard_view"/>
+		<field name="target">new</field>
+	</record>
+
+</odoo>

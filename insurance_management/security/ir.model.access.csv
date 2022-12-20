@@ -39,6 +39,8 @@ access_download_attachment_wiz,download.attachment.wiz,model_download_attachment
 access_member_category,member.category,model_member_category,,1,1,1,1
 access_member_relation,member.relation,model_member_relation,,1,1,1,1
 
+access_policy_selection_quotation,policy.selection.quotation,model_policy_selection_quotation,,1,1,1,1
+
 
 
 

@@ -35,6 +35,7 @@
         'views/brocker_standards.xml',
         'views/member_category_and_relation.xml',
         'wizard/send_insurance_email.xml',
+        'wizard/policy_quotation_selection.xml',
         'wizard/send_customer_email.xml',
         'wizard/select_quotation_wizard.xml',
         'wizard/benefits_comparison_wizard.xml',
