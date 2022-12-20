@@ -758,12 +758,28 @@ class client_branch(models.Model):
             rows += 1
 
             for line in self.client_ids:
+                standard_type = False
+                if line.branch_id.company_standard == 'sme':
+                    standard_type = 'SME'
+                elif line.branch_id.company_standard == 'corporate':
+                    standard_type = 'Corporate'
+                else:
+                    standard_type = False
                 company_member_type_standard = ''
                 if line.member_type:
-                    company_member_type_standard = self.env['company.member.type.standard'].search([('member_type_standard_id', '=', line.member_type.id),('insurance_company_id','=',company._origin.id)], limit=1).name or ''
+                    company_member_type_standard_env = self.env['company.member.type.standard'].search([('member_type_standard_id', '=', line.member_type.id),('insurance_company_id','=',company._origin.id)])
+                    company_member_type_standard = company_member_type_standard_env.filtered(lambda b: standard_type in b.standard_type.mapped('name'))
+                    if company_member_type_standard:
+                        company_member_type_standard = company_member_type_standard[0].name or ''
                 company_class_standard = ''
                 if line.class_no:
-                    company_class_standard = self.env['company.class.standard'].search([('class_standard_id', '=', line.class_no.id),('insurance_company_id','=',company._origin.id)], limit=1).name or ''
+
+                    # company_class_standard_env = self.env['company.class.standard'].search([])
+                    # company_class_standard = company_class_standard_env.filtered(lambda b: standard_type in b.standard_type.mapped('name') and b.class_standard_id.id == line.class_no.id and b.insurance_company_id == )
+                    company_class_standard_env = self.env['company.class.standard'].search([('class_standard_id', '=', line.class_no.id),('insurance_company_id','=',company._origin.id)])
+                    company_class_standard = company_class_standard_env.filtered(lambda b: standard_type in b.standard_type.mapped('name'))
+                    if company_class_standard:
+                        company_class_standard = company_class_standard[0].name or ''
                 # worksheet.write(rows, 0, line.id or '')
                 worksheet.write(rows, 0, line.member_id or '')
                 worksheet.write(rows, 1, line.dependent_id or '')

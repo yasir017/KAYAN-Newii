@@ -88,8 +88,7 @@ class company_class_standard(models.Model):
     _description = 'company_class_standard'
 
     name = fields.Char(string='Name',required=True)
-    # standard_type = fields.Selection([('sme', 'SME'), ('corporate', 'Corporate')
-    #                                   ], string='Standard For', required=True)
+    standard_type = fields.Many2many(related='class_standard_id.standard_type', string='Standard For')
     class_standard_id = fields.Many2one('class.name.standard',string='Broker Standard',required=True)
     insurance_company_id = fields.Many2one('insurance.company',string='Insurance Company')
 
@@ -100,8 +99,7 @@ class company_member_type_standard(models.Model):
     _description = 'company_member_type_standard'
 
     name = fields.Char(string='Name',required=True)
-    # standard_type = fields.Selection([('sme', 'SME'), ('corporate', 'Corporate')
-    #                                   ], string='Standard For', required=True)
+    standard_type = fields.Many2many(related='member_type_standard_id.standard_type', string='Standard For')
     member_type_standard_id = fields.Many2one('member.type.standard',string='Member Type Standard',required=True)
     insurance_company_id = fields.Many2one('insurance.company',string='Insurance Company')
 
@@ -111,7 +109,6 @@ class company_age_category_standard(models.Model):
     _description = 'company_age_category_standard'
 
     name = fields.Char(string='Name',required=True)
-    # standard_type = fields.Selection([('sme', 'SME'), ('corporate', 'Corporate')
-    #                                   ], string='Standard For', required=True)
+    standard_type = fields.Many2many(related='age_category_standard_id.standard_type', string='Standard For')
     age_category_standard_id = fields.Many2one('age.category.standard',string='Member Type Standard',required=True)
     insurance_company_id = fields.Many2one('insurance.company',string='Insurance Company')
