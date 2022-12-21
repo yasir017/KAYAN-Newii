@@ -72,8 +72,9 @@
                                     <field name="rate"/>
                                     <field name="vat"/>
                                     <field name="total"/>
+                                        <field name="create_policy"/>
                                     <field name="as_vip" optional="1"/>
-                                    <field name="create_policy"/>
+
                                     <button type="object" name="add_policy" string="Add To policy" class="oe_highlight" attrs="{'invisible':['|',('parent.select','=',False),('create_policy','=',True)]}"/>
 
                                 </tree>
@@ -103,6 +104,7 @@
                                             <field name="arabic_name"/>
                                             <field name="gender"/>
                                             <field name="dob"/>
+                                                 <field name="create_policy"/>
                                         </group>
                                     </group>
                                     <group>
