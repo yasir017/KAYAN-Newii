@@ -108,12 +108,31 @@ class client_branch(models.Model):
     # policy_id = fields.Many2one('insurance.policy','Policy')
     # crm_lead_id = fields.Many2one('crm.lead',string='CRM Lead',copy=False)
 
+    def vendor_finishing(self):
+        self.state = 'policy_issuance'
+
     def unlink(self):
         for rec in self:
             if rec.state == "validate":
                 raise ValidationError("You can not delete record which is Validate State!")
         res = super(client_branch, self).unlink()
         return res
+
+    @api.onchange('insurance_type_id')
+    def set_ins_type_wrt_sub_type(self):
+        for rec in self:
+            if rec.insurance_sub_type_id:
+                if rec.insurance_sub_type_id.id not in rec.insurance_type_id.insurance_subtype_ids.ids:
+                    rec.insurance_sub_type_id = False
+
+    @api.onchange('insurance_sub_type_id')
+    def set_subtype_wrt_ins_type(self):
+        for rec in self:
+            if rec.insurance_sub_type_id:
+                if not rec.insurance_type_id:
+                    rec.insurance_type_id = rec.insurance_sub_type_id.insurance_type_id.id
+                elif rec.insurance_type_id.id != rec.insurance_type_id.id:
+                    rec.insurance_type_id = rec.insurance_sub_type_id.insurance_type_id.id
 
     @api.onchange('country')
     def set_city_wrt_country(self):

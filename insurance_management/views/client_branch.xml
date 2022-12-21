@@ -130,9 +130,10 @@
                     <button name="send_for_insurance_quotation" type="object" string="Send To Vendor" class="oe_highlight" states="review,sent_to_insurance"/>
                     <button name="already_received_quotation" type="object" string="Already Received Quotation" class="oe_highlight" states="review"/>
                     <button name="send_to_customer" type="object" string="Send to Customer" class="oe_highlight" states="sent_to_insurance"/>
-                    <button name="validate" type="object" string="Validate" class="oe_highlight" states="sent_to_customer" attrs="{'invisible': ['|',('is_selected_quotation', '=', False)]}"/>
+                    <button name="validate" type="object" string="Validate" class="oe_highlight" states="policy_issuance" attrs="{'invisible': ['|',('is_selected_quotation', '=', False)]}"/>
                     <button name="reset_to_draft" type="object" string="Reset Back" class="oe_highlight" states="validate"/>
                     <button name="open_select_quotation_wizard" type="object" string="Select Quotation" class="oe_highlight" states="sent_to_customer"/>
+                    <button name="vendor_finishing" type="object" string="Vendor Finishing" class="oe_highlight" states="sent_to_customer"/>
                     <button name="cancel" type="object" string="cancel" class="oe_highlight"/>
                     <button name="action_create_policy" type="object" string="Create Policy" class="oe_highlight" attrs="{'invisible':['|',('state','!=','validate'),('policy_id','!=',False)]}" />
 
