@@ -311,7 +311,7 @@ class quotation_line(models.Model):
 
     def add_policy(self):
         if self.insurance_quotation_id.client_branch_id.policy_id:
-            if self.insurance_quotation_id.client_branch_id.select==True:
+            if self.insurance_quotation_id.select==True:
                 employee_data = self.env['insurance.employee.data'].create({
 
                     'policy_id': self.insurance_quotation_id.client_branch_id.policy_id.id,
