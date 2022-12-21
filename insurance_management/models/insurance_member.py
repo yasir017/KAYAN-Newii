@@ -393,6 +393,20 @@ class client_branch(models.Model):
             },
             'domain': [('client_branch_id', '=', self.id)],
         }
+    def action_open_task(self):
+        return {
+            'name': "Task",
+            'type': 'ir.actions.act_window',
+            'view_mode': 'tree,form',
+            'view_type': 'form',
+            'res_model': 'project.task',
+            # 'views': [(False, 'form')],
+            'context': {
+                'default_client_branch_id': self.id,
+                'default_partner_id': self.customer_id.id,
+            },
+            'domain': [('client_branch_id', '=', self.id)],
+        }
 
     def get_total_documents(self):
         for rec in self:
@@ -1021,6 +1035,22 @@ class Document(models.Model):
 
 class CrmLead(models.Model):
     _inherit = 'crm.lead'
+
+    client_branch_id = fields.Many2one('client.branch', string='Client Branch')
+
+    def action_related_data_gathering(self):
+        return {
+            'name': "Customer Information",
+            'type': 'ir.actions.act_window',
+            'view_mode': 'form',
+            'view_type': 'form',
+            'res_model': 'client.branch',
+            'views': [(False, 'form')],
+            'res_id': self.client_branch_id.id,
+        }
+
+class Task(models.Model):
+    _inherit = "project.task"
 
     client_branch_id = fields.Many2one('client.branch', string='Client Branch')
 

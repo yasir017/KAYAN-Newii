@@ -92,6 +92,22 @@ class Policy(models.Model):
     total_instalment_am = fields.Float('Total Installment after vat',compute='compute_installment')
     difference_instalment = fields.Float('Difference',compute='compute_installment')
     total_document_number = fields.Integer(string='Total Documents', compute='get_total_documents')
+
+    def action_open_task(self):
+        return {
+            'name': "Task",
+            'type': 'ir.actions.act_window',
+            'view_mode': 'tree,form',
+            'view_type': 'form',
+            'res_model': 'project.task',
+            # 'views': [(False, 'form')],
+            'context': {
+                'default_policy_id': self.id,
+                'default_partner_id': self.partner_id.id,
+            },
+            'domain': [('policy_id', '=', self.id)],
+        }
+
     def default_coutry(self):
         country_id = self.env['res.country'].search([('code', '=', 'SA')])
         print(country_id)
@@ -372,3 +388,19 @@ class Installment(models.Model):
 class CashMode(models.Model):
     _name = 'cash.mode'
     name = fields.Char("Name")
+
+class Task(models.Model):
+    _inherit = "project.task"
+
+    policy_id = fields.Many2one('insurance.policy', string='Policy')
+
+    def action_related_policy(self):
+        return {
+            'name': "Insurance Policy",
+            'type': 'ir.actions.act_window',
+            'view_mode': 'form',
+            'view_type': 'form',
+            'res_model': 'insurance.policy',
+            'views': [(False, 'form')],
+            'res_id': self.policy_id.id,
+        }

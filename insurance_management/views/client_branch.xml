@@ -140,8 +140,14 @@
                 </header>
                 <sheet>
                     <div class="oe_button_box" name="button_box">
+                        <button name="action_open_task" type="object"
+                            class="oe_stat_button" icon="fa-tasks">
+                            <div class="o_stat_info">
+                                <span class="o_stat_text">Task</span>
+                            </div>
+                        </button>
                         <button name="action_open_crm" type="object"
-                            class="oe_stat_button" icon="fa-star">
+                            class="oe_stat_button" icon="fa-pencil-square-o">
                             <div class="o_stat_info">
                                 <span class="o_stat_text">CRM</span>
                             </div>
@@ -808,20 +814,20 @@
                             </field>
                         </page>
 
-                        <page string="Import File">
-                            <group>
-                                <group>
-                                    <field name="import_client_file" attrs="{'readonly':[('state','=','validate')]}"/>
-                                </group>
-                                <group>
-                                    <button name="export_client_info_file_template" type="object" string="Export Template" class="oe_highlight" attrs="{'invisible': [('medical_visibility_check', '=', False)]}"/>
-                                    <button name="export_vehicle_info_file_template" type="object" string="Export Template" class="oe_highlight" attrs="{'invisible': [('vehicle_visibility_check', '=', False)]}"/>
-                                </group>
-                                <group>
-                                    <button name="import_client_file_data" type="object" string="Import Data" class="oe_highlight" attrs="{'invisible': [('import_client_file', '=', False)]}"/>
-                                </group>
-                            </group>
-                        </page>
+<!--                        <page string="Import File">-->
+<!--                            <group>-->
+<!--                                <group>-->
+<!--                                    <field name="import_client_file" attrs="{'readonly':[('state','=','validate')]}"/>-->
+<!--                                </group>-->
+<!--                                <group>-->
+<!--                                    <button name="export_client_info_file_template" type="object" string="Export Template" class="oe_highlight" attrs="{'invisible': [('medical_visibility_check', '=', False)]}"/>-->
+<!--                                    <button name="export_vehicle_info_file_template" type="object" string="Export Template" class="oe_highlight" attrs="{'invisible': [('vehicle_visibility_check', '=', False)]}"/>-->
+<!--                                </group>-->
+<!--                                <group>-->
+<!--                                    <button name="import_client_file_data" type="object" string="Import Data" class="oe_highlight" attrs="{'invisible': [('import_client_file', '=', False)]}"/>-->
+<!--                                </group>-->
+<!--                            </group>-->
+<!--                        </page>-->
 <!--                        <page string="Attachment@ Insurance">-->
 <!--                            <field name="insurance_sent_attachment_ids" readonly="1">-->
 <!--                                <tree>-->

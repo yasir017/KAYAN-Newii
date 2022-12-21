@@ -23,11 +23,10 @@
                     <sheet>
 
                         <div class="oe_button_box" name="button_box">
-                            <button name="action_open_policy_documents" type="object"
-                                    class="oe_stat_button" icon="fa-star">
+                            <button name="action_open_task" type="object"
+                                class="oe_stat_button" icon="fa-tasks">
                                 <div class="o_stat_info">
-                                    <field name="total_document_number" class="o_stat_value"/>
-                                    <span class="o_stat_text">Documents</span>
+                                    <span class="o_stat_text">Task</span>
                                 </div>
                             </button>
                         </div>
