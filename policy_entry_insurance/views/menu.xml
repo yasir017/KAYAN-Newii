@@ -21,6 +21,9 @@
      <menuitem id="installement_menu" parent="policy_entry_menu"
               action="act_insurance_installment" sequence="4"/>
 
+     <menuitem id="commission_menu" parent="account.menu_finance_configuration"
+              action="act_commission_scheme" />
+
 <!--    <menuitem id="menu_insurance_data" parent="policy_entry_menu" name="Insurance Data"/>-->
 <!--    <menuitem id="menu_bussinss_class_config" parent="menu_insurance_data" action="act_business_class_config"-->
 <!--              name="Business Classes"/>-->
@@ -32,6 +35,9 @@
 
     <menuitem id="bussines_class_vehicle_menu" parent="policy_entry_menu" name="Vehicle Data"
               action="act_insurance_vehicle"/>
+
+                <menuitem id="salespersopn_menu_commission" parent="account.menu_finance_receivables" sequence="1" action="act_commission_scheme"/>
+
 <!--    <menuitem id="config_menu" parent="policy_entry_menu" name="Configuration"/>-->
 
 <!--    <menuitem id="menu_brand_master" parent="config_menu" action="act_branch_master" name="Brand Master"/>-->

@@ -10,8 +10,10 @@
                                 <field name="no_of_installment"/>
                                 <field name="policy_id"/>
                                 <field name="installment_date"/>
+                                  <field name="activity_ids" widget="list_activity"/>
                                 <field name="fix_amount"/>
                                 <field name="percentage"/>
+
 
                             </group>
                         </group>
@@ -27,6 +29,7 @@
                      <field name="no_of_installment"/>
                                 <field name="policy_id"/>
                                 <field name="installment_date"/>
+                                  <field name="activity_ids" widget="list_activity"/>
                                 <field name="fix_amount"/>
                                 <field name="percentage"/>
                 </tree>

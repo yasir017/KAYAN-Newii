@@ -42,6 +42,13 @@ access_vehicle_brand,access_vehicle_brand,model_vehicle_brand,,1,1,1,1
 access_vehicle_type,access_vehicle_type,model_vehicle_type,,1,1,1,1
 access_insurance_city,access_insurance_city,model_insurance_city,,1,1,1,1
 
+access_commission_scheme,access_commission_scheme,model_commission_scheme,,1,1,1,1
+access_commission_scheme_line,access_commission_scheme_line,model_commission_scheme_line,,1,1,1,1
+
+access_sale_person_commission,access_sale_person_commission,model_sale_person_commission,,1,1,1,1
+
+
+
 
 
 

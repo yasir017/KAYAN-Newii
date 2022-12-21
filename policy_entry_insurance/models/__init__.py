@@ -12,3 +12,5 @@ from . import marine_data
 from . import health_data
 from . import account_move
 from . import product_produt
+from . import commoission
+from . import  account_payment

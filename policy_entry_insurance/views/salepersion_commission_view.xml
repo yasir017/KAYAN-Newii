@@ -1,0 +1,101 @@
+<odoo>
+     <record id="view_sale_person_commission_form" model="ir.ui.view">
+            <field name="name">sale.person.commission.form</field>
+            <field name="model">sale.person.commission</field>
+            <field name="arch" type="xml">
+                <form string="Commission">
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="employee_id"/>
+                                <field name="salary"/>
+<!--                                <field name="salary_package"/>-->
+
+                            </group>
+                        </group>
+                        <notebook>
+                           <page name="invoice" string="Invoices Detail">
+                                <field name="move_ids">
+                                    <tree>
+                                        <field name="name"/>
+                                        <field name="partner_id"/>
+                                        <field name="invoice_payment_term_id"/>
+                                        <field name="invoice_date"/>
+                                        <field name="journal_id"/>
+                                        <field name="sales_person"/>
+                                        <field name="invoice_type"/>
+                                        <field name="date" optional="hide"
+                                               invisible="context.get('default_move_type') in ('out_invoice', 'out_refund', 'out_receipt')"
+                                               string="Accounting Date"/>
+                                        <field name="invoice_date_due" widget="remaining_days" optional="show"
+                                               attrs="{'invisible': [['payment_state', 'in', ('paid', 'in_payment', 'reversed')]]}"/>
+                                        <field name="invoice_origin" optional="hide" string="Source Document"/>
+                                        <field name="payment_reference" optional="hide"
+                                               invisible="context.get('default_move_type') in ('out_invoice', 'out_refund','out_receipt')"/>
+                                        <field name="ref" optional="hide"/>
+                                        <field name="invoice_user_id" optional="hide"
+                                               invisible="context.get('default_move_type') not in ('out_invoice', 'out_refund','out_receipt')"
+                                               string="Salesperson" widget="many2one_avatar_user"/>
+                                        <field name="activity_ids" widget="list_activity" optional="show"/>
+                                        <field name="company_id" groups="base.group_multi_company"
+                                               options="{'no_create': True}" optional="hide"/>
+                                        <field name="amount_untaxed_signed" string="Tax Excluded" sum="Total"
+                                               optional="show"/>
+                                        <field name="amount_tax_signed" string="Tax" sum="Total" optional="hide"/>
+                                        <field name="amount_total_signed" string="Total" sum="Total" decoration-bf="1"
+                                               optional="show"/>
+                                        <field name="amount_total_in_currency_signed" string="Total in Currency"
+                                               groups="base.group_multi_currency" optional="show"/>
+                                        <field name="amount_residual_signed" string="Amount Due" sum="Amount Due"
+                                               optional="hide"/>
+                                        <field name="currency_id" groups="base.group_multi_currency" optional="hide"/>
+                                        <field name="company_currency_id" invisible="1"/>
+                                        <field name="to_check" optional="hide" widget="boolean_toggle"/>
+                                        <field name="payment_state" widget="badge"
+                                               decoration-danger="payment_state == 'not_paid'"
+                                               decoration-warning="payment_state in ('partial', 'in_payment')"
+                                               decoration-success="payment_state in ('paid', 'reversed')"
+                                               attrs="{'invisible': [('payment_state', 'in', ('invoicing_legacy'))]}"
+                                               optional="show"/>
+                                        <field name="state" widget="badge" decoration-success="state == 'posted'"
+                                               decoration-info="state == 'draft'" optional="show"/>
+                                        <field name="move_type" invisible="context.get('default_move_type', True)"/>
+                                    </tree>
+                                </field>
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+     </record>
+    <record id="view_sale_person_commission_tree" model="ir.ui.view">
+            <field name="name">sale.person.commission.form</field>
+            <field name="model">sale.person.commission</field>
+            <field name="arch" type="xml">
+                <tree string="Saleperson Commission">
+                  <field name="employee_id"/>
+                                <field name="salary"/>
+                </tree>
+            </field>
+    </record>
+
+     <record id="view_sale_person_commission_search" model="ir.ui.view">
+            <field name="name">sale.person.commission.search</field>
+            <field name="model">sale.person.commission</field>
+            <field name="arch" type="xml">
+                <search string="Saleperson Commission">
+                  <field name="employee_id"/>
+                                <field name="salary"/>
+                </search>
+            </field>
+    </record>
+
+     <record id="act_commission_scheme" model="ir.actions.act_window">
+            <field name="name">Saleperson Commission</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">sale.person.commission</field>
+            <field name="view_mode">tree,form</field>
+            <field name="view_id" ref="view_sale_person_commission_tree"/>
+
+        </record>
+</odoo>

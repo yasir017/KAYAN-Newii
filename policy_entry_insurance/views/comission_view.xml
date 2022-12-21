@@ -1,0 +1,63 @@
+<odoo>
+     <record id="view_commission_scheme_form" model="ir.ui.view">
+            <field name="name">commission.scheme.form</field>
+            <field name="model">commission.scheme</field>
+            <field name="arch" type="xml">
+                <form string="Commission Scheme">
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="name"/>
+                                <field name="com_type"/>
+                                <field name="salary_package"/>
+
+                            </group>
+                        </group>
+                        <notebook>
+                            <page string="Lines">
+                               <field name="line_ids">
+                                   <tree editable="bottom">
+                                       <field name="percentage"/>
+                                       <field name="revenue_from"/>
+                                       <field name="revenue_to"/>
+                                   </tree>
+                               </field>
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+     </record>
+    <record id="view_commission_scheme_tree" model="ir.ui.view">
+            <field name="name">commission.scheme.tree</field>
+            <field name="model">commission.scheme</field>
+            <field name="arch" type="xml">
+                <tree string="Commission Scheme">
+                    <field name="name"/>
+                                <field name="com_type"/>
+                                <field name="salary_package"/>
+                </tree>
+            </field>
+    </record>
+
+     <record id="view_commission_scheme_search" model="ir.ui.view">
+            <field name="name">commission.scheme.search</field>
+            <field name="model">commission.scheme</field>
+            <field name="arch" type="xml">
+                <search string="Commission Scheme">
+                    <field name="name"/>
+                                <field name="com_type"/>
+                                <field name="salary_package"/>
+                </search>
+            </field>
+    </record>
+
+     <record id="act_commission_scheme" model="ir.actions.act_window">
+            <field name="name">Commission Scheme </field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">commission.scheme</field>
+            <field name="view_mode">tree,form</field>
+            <field name="view_id" ref="view_commission_scheme_tree"/>
+
+        </record>
+</odoo>
