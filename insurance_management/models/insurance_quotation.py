@@ -307,6 +307,7 @@ class quotation_line(models.Model):
     as_vip = fields.Selection([('yes', 'Yes'), ('no', 'No')], string='AS VIP?')
     bank_id = fields.Many2one('res.bank', string='Bank')
     branch_id = fields.Many2one('client.branch', string='Branch ID')
+    create_policy = fields.Boolean('Create Policy',default=True)
     @api.depends('vat','rate')
     def get_q_line_total(self):
         for rec in self:
@@ -597,6 +598,7 @@ class vehicle_quotation_line(models.Model):
     vehicle_make_id = fields.Many2one('fleet.vehicle.model.brand', string='Vehicle Manufacturer')
     vehicle_model_id = fields.Many2one('fleet.vehicle.model', string='Vehicle Model' ,domain="[('brand_id', '=?', vehicle_make_id)]")
     sum_insured = fields.Float("Sum Insured")
+    create_policy = fields.Boolean('Create Policy',default=True)
 
     @api.onchange('vehicle_make_id')
     def set_model_wrt_vehicle_make_id(self):

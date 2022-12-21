@@ -15,40 +15,67 @@
 						</group>
 						<group string="Quotation" attrs="{'invisible': [('medical_visibility_check', '=', False)]}">
 							<field name="medical_quotation_id" readonly="1" nolabel="1"/>
+
+
 						</group>
 						<group string="Quotation" attrs="{'invisible': [('vehicle_visibility_check', '=', False)]}">
-							<field name="vehicle_quotation_id" readonly="1" nolabel="1"/>
+						<field name="vehicle_quotation_id" readonly="1" nolabel="1"/>
 						</group>
 					</group>
 					<notebook>
 						<page string="Clients" attrs="{'invisible': [('medical_visibility_check', '=', False)]}">
-							<field name="medical_quotation_lines"/>
+							<field name="medical_quotation_lines">
+								<tree editable="bottom">
+                                    <field name="name" readonly="1"/>
+                                    <field name="arabic_name" readonly="1"/>
+                                    <field name="gender" readonly="1"/>
+                                    <field name="dob" readonly="1" />
+                                    <field name="age" readonly="1"/>
+									<field name="create_policy" />
+                                    <field name="member_type" readonly="1" optional="hide"/>
+                                    <field name="nationality" readonly="1" optional="hide"/>
+                                    <field name="member_category" readonly="1" optional="hide"/>
+                                    <field name="mobile1" optional="1" readonly="1" />
+                                    <field name="occupation" readonly="1" optional="hide"/>
+                                    <field name="marital_status"  readonly="1" optional="1"/>
+<!--                                    <field name="elm_relation" optional="1"/>-->
+                                    <field name="vip" optional="hide" readonly="1"/>
+                                    <field name="rate" optional="hide" readonly="1"/>
+                                    <field name="vat" optional="hide" readonly="1"/>
+                                    <field name="total" optional="hide" readonly="1"/>
+                                    <field name="as_vip" optional="hide" readonly="1"/>
+
+								</tree>
+							</field>
 						</page>
-						<page string="Clients" attrs="{'invisible': [('vehicle_visibility_check', '=', False)]}">
+						<page string="Vehicle" attrs="{'invisible': [('vehicle_visibility_check', '=', False)]}">
 							<field name="vehicle_quotation_lines">
-								<tree>
-                                    <field name="vehicle_type"/>
-                                    <field name="plate_no" placeholder="1234 A-B-C"/>
-                                    <field name="plate_no_ar" optional="1"/>
-                                    <field name="vehicle_make_id" optional="1"/>
-                                    <field name="vehicle_model_id" optional="1"/>
-                                    <field name="model" optional="1"/>
-                                    <field name="chasis_no" optional="1"/>
-                                    <field name="capacity" optional="1"/>
-                                    <field name="driver_insurance" optional="1"/>
-                                    <field name="covering_maintenance" optional="1"/>
-                                    <field name="owner_name"/>
-                                    <field name="owner_id_no"/>
-                                    <field name="custom_id" optional="1"/>
-                                    <field name="sequence_no" optional="1"/>
-                                    <field name="user_id_no" optional="1"/>
-                                    <field name="user_name" optional="1"/>
-                                    <field name="sum_insured"/>
-                                    <field name="rate"/>
-                                    <field name="vat"/>
-                                    <field name="total"/>
-                                    <field name="client_branch_id" optional="1"/>
-                                    <field name="vehicle_client_id" invisible="1"/>
+                                   <tree editable="bottom" create="0">
+                                    <field name="vehicle_type" readonly="1"/>
+                                    <field name="plate_no" readonly="1" placeholder="1234 A-B-C"/>
+                                    <field name="plate_no_ar" readonly="1"/>
+                                    <field name="vehicle_make_id" readonly="1" optional="1"/>
+                                    <field name="vehicle_model_id" readonly="1" optional="1"/>
+                                    <field name="model"  readonly="1" optional="1"/>
+                                    <field name="chasis_no" readonly="1"/>
+									 <field name="create_policy"/>
+                                    <field name="capacity" readonly="1" optional="hide"/>
+                                    <field name="driver_insurance" readonly="1" optional="hide"/>
+                                    <field name="covering_maintenance" readonly="1" optional="hide"/>
+<!--                                    <field name="value"/>-->
+                                    <field name="owner_name" readonly="1" optional="hide"/>
+                                    <field name="owner_id_no" readonly="1" optional="hide"/>
+                                    <field name="custom_id" readonly="1" optional="hide"/>
+                                    <field name="sequence_no" readonly="1" optional="hide"/>
+                                    <field name="user_id_no" readonly="1" optional="hide"/>
+                                    <field name="user_name" readonly="1" optional="hide"/>
+                                    <field name="sum_insured" readonly="1" optional="hide"/>
+                                    <field name="rate" readonly="1" optional="hide"/>
+                                    <field name="vat" readonly="1" optional="hide"/>
+                                    <field name="total" readonly="1" optional="hide"/>
+                                    <field name="client_branch_id" readonly="1" optional="hide"/>
+                                    <field name="related_vehicle_client_ids" readonly="1" optional="hide"/>
+                                    <field name="vehicle_client_id" readonly="1" invisible="1"/>
                                 </tree>
 							</field>
 						</page>
