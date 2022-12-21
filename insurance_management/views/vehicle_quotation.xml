@@ -51,7 +51,6 @@
                     <notebook>
                         <page string="Quotation Lines">
                             <field name="vehicle_quotation_line_ids">
-                                <button type="object" name="add_policy" string="Add To policy" class="oe_highlight" attrs="{'invisible':['|',('insurance_quotation_id.select','=',False),('('create_policy','=',True)]}"/>
                                 <tree>
                                     <field name="vehicle_type"/>
                                     <field name="plate_no" placeholder="1234 A-B-C"/>
@@ -77,6 +76,8 @@
                                     <field name="client_branch_id"/>
                                     <field name="related_vehicle_client_ids"/>
                                     <field name="vehicle_client_id" invisible="1"/>
+                                    <button type="object" name="add_policy" string="Add To policy" class="oe_highlight" attrs="{'invisible':['|',('insurance_quotation_id.select','=',False),('('create_policy','=',True)]}"/>
+
                                 </tree>
                                 <form>
                                     <div class="oe_title">
