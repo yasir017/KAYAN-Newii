@@ -73,7 +73,7 @@
                                     <field name="vat"/>
                                     <field name="total"/>
                                     <field name="as_vip" optional="1"/>
-                                    <button type="object" name="add_policy" string="Add To policy" class="oe_highlight" attrs="{'invisible':['|',('insurance_quotation_id.select','=',False),('('create_policy','=',True)]}"/>
+                                    <button type="object" name="add_policy" string="Add To policy" class="oe_highlight" attrs="{'invisible':['|',('insurance_quotation_id.select','=',False),('create_policy','=',True)]}"/>
 
                                 </tree>
                                 <form>
