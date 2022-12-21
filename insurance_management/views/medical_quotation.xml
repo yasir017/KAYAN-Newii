@@ -72,10 +72,8 @@
                                     <field name="rate"/>
                                     <field name="vat"/>
                                     <field name="total"/>
-                                        <field name="create_policy"/>
                                     <field name="as_vip" optional="1"/>
 
-                                    <button type="object" name="add_policy" string="Add To policy" class="oe_highlight" attrs="{'invisible':['|',('parent.select','=',False),('create_policy','=',True)]}"/>
 
                                 </tree>
                                 <form>

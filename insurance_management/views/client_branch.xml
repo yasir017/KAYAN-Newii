@@ -334,6 +334,9 @@
                                                     <field name="vat"/>
                                                     <field name="total"/>
                                                     <field name="as_vip" optional="1"/>
+                                                    <field name="create_policy"/>
+                                                    <button type="object" name="add_policy" string="Add To policy" class="oe_highlight" attrs="{'invisible':['|',('parent.select','=',False),('create_policy','=',True)]}"/>
+
                                                 </tree>
                                                 <form>
                                                     <div class="oe_title">
@@ -581,6 +584,11 @@
                                                     <field name="client_branch_id" optional="1"/>
                                                     <field name="related_vehicle_client_ids" optional="1"/>
                                                     <field name="vehicle_client_id" optional="1" invisible="1"/>
+                                                <field name="create_policy"/>
+
+                                    <button type="object" name="add_policy" string="Add To policy" class="oe_highlight" attrs="{'invisible':['|',('parent.select','=',False),('create_policy','=',True)]}"/>
+
+
                                                 </tree>
                                                 <form>
                                                     <div class="oe_title">
