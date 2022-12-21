@@ -37,6 +37,7 @@
         'account_accountant',
         'documents',
         'account_predictive_bills',
+        'project',
     ],
 
     # always loaded
@@ -79,6 +80,7 @@
         'views/request_timesheet_activity.xml',
         'views/request_timesheet_line.xml',
         'views/request_mail_templates_menu.xml',
+        'views/project_task.xml',
         'wizard/request_wizard_close.xml',
         'wizard/request_wizard_assign.xml',
         'wizard/request_wizard_stop_work.xml',

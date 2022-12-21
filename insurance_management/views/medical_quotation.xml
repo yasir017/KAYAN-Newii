@@ -47,7 +47,7 @@
                             <field name="quotation_no"/>
                             <field name="email" invisible="1"/>
                             <field name="client_branch_id" invisible="1"/>
-                            <field name="quotation_file"/>
+                            <field name="quotation_file" string="Quotation File"/>
                             <button name="upload_quotation" type="object" string="Import" class="oe_highlight"/>
                             <field name="total_lines"/>
                         </group>

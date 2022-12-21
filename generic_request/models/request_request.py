@@ -1940,6 +1940,37 @@ class RequestRequest(models.Model):
         })
         return action
 
+    def action_open_task(self):
+        return {
+            'name': "Task",
+            'type': 'ir.actions.act_window',
+            'view_mode': 'tree,form',
+            'view_type': 'form',
+            'res_model': 'project.task',
+            # 'views': [(False, 'form')],
+            'context': {
+                'default_claim_request_id': self.id,
+                'default_partner_id': self.client_id.id,
+            },
+            'domain': [('claim_request_id', '=', self.id)],
+        }
+
+class Task(models.Model):
+    _inherit = "project.task"
+
+    claim_request_id = fields.Many2one('request.request', string='Claim Request')
+
+    def action_related_claim_request(self):
+        return {
+            'name': "Claim Request",
+            'type': 'ir.actions.act_window',
+            'view_mode': 'form',
+            'view_type': 'form',
+            'res_model': 'request.request',
+            'views': [(False, 'form')],
+            'res_id': self.claim_request_id.id,
+        }
+
 
 class AccountMove(models.Model):
     _inherit = 'account.move'

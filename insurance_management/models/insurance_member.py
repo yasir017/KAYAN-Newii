@@ -71,7 +71,7 @@ class client_branch(models.Model):
     sales_employee = fields.Many2one('hr.employee',string='Sales Employee')
     supervisor = fields.Many2one('hr.employee',string='Supervisor')
     country = fields.Many2one('res.country', string='Country')
-    state_id = fields.Many2one("res.country.state", string='State', ondelete='restrict',
+    state_id = fields.Many2one("res.country.state", string='Branch', ondelete='restrict',
                                domain="[('country_id', '=?', country)]")
     client_ids = fields.One2many('client.basic.info','branch_id',string='Clients')
     client_vehicle_ids = fields.One2many('client.vehicle.info','customer_branch_id',string='Vehicle Details')
@@ -905,7 +905,7 @@ class client_basic_info(models.Model):
     _inherit = ['mail.thread', 'mail.activity.mixin', 'mail.render.mixin']
     _description = 'client_basic_info'
 
-    member_id = fields.Char(string='Member ID')
+    member_id = fields.Char(string='Member ID',required=1)
     dependent_id = fields.Char(string='Dependent ID')
     name = fields.Char(string='Member Name (En)', tracking=True)
     client_image = fields.Binary(string='Client Image')

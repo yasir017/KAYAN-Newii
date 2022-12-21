@@ -32,13 +32,21 @@
                 </header>
                 <sheet>
                     <div class="oe_button_box" name="button_box">
-                        <button name="action_open_claim_documents" type="object"
-                            class="oe_stat_button" icon="fa-star">
-                            <div class="o_stat_info">
-                                <field name="total_document_number" class="o_stat_value"/>
-                                <span class="o_stat_text">Documents</span>
-                            </div>
-                        </button>
+                        <div class="oe_button_box" name="button_box">
+                            <button name="action_open_task" type="object"
+                                class="oe_stat_button" icon="fa-tasks">
+                                <div class="o_stat_info">
+                                    <span class="o_stat_text">Task</span>
+                                </div>
+                            </button>
+                        </div>
+<!--                        <button name="action_open_claim_documents" type="object"-->
+<!--                            class="oe_stat_button" icon="fa-star">-->
+<!--                            <div class="o_stat_info">-->
+<!--                                <field name="total_document_number" class="o_stat_value"/>-->
+<!--                                <span class="o_stat_text">Documents</span>-->
+<!--                            </div>-->
+<!--                        </button>-->
 <!--                        <button name="action_button_show_subrequests"-->
 <!--                                type="object"-->
 <!--                                class="oe_stat_button" icon="fa-sitemap">-->

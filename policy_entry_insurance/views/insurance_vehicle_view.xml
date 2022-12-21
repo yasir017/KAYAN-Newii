@@ -30,8 +30,8 @@
                                                     <field name="building_no" optional="hide"/>
                                                     <field name="additional_no" optional="hide"/>
                                                     <field name="street" optional="hide"/>
-                                                    <field name="country_id"/>
-                                                    <field name="city" domain="[('country_id', '=', country_id)]" optional="hide"/>
+                                                    <field name="country_id" invisible="1"/>
+                                                    <field name="city" domain="[('country_id', '=', country_id)]" optional="hide" invisible="1"/>
                                                     <field name="unit_no" optional="hide"/>
                                                 </group>
                                                 <group>
@@ -91,7 +91,7 @@
                                         <field name="vehicle_color" optional="hide"/>
                                         <field name="vehicle_make_id" optional="hide"/>
                                         <field name="vehicle_model_id"/>
-                                        <field name="country_id"/>
+                                        <field name="country_id" invisible="1"/>
                                         <field name="city" domain="[('country_id', '=', country_id)]"/>
                                         <field name="model_no" optional="hide"/>
                                         <field name="gcc_cover" optional="hide"/>

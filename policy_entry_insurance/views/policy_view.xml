@@ -427,7 +427,7 @@
                                         <field name="vehicle_color" optional="hide"/>
                                         <field name="vehicle_make_id" optional="hide"/>
                                         <field name="vehicle_model_id"/>
-                                        <field name="country_id"/>
+                                        <field name="country_id" invisible="1"/>
                                         <field name="city" domain="[('country_id', '=', country_id)]"/>
                                         <field name="model_no" optional="hide"/>
                                         <field name="gcc_cover" optional="hide"/>
@@ -465,7 +465,7 @@
                                                     <field name="building_no" optional="hide"/>
                                                     <field name="additional_no" optional="hide"/>
                                                     <field name="street" optional="hide"/>
-                                                    <field name="country_id"/>
+                                                    <field name="country_id" invisible="1"/>
                                                     <field name="city" domain="[('country_id', '=', country_id)]" optional="hide"/>
                                                     <field name="unit_no" optional="hide"/>
                                                 </group>
@@ -910,7 +910,7 @@
                 <tree string="Policy Entry">
                     <field name="partner_id"/>
                     <!--                    <field name="manager_id"/>-->
-                    <field name="country_id"/>
+                    <field name="country_id" invisible="1"/>
                     <field name="fed_state_id"/>
                     <field name="start_date"/>
                     <field name="expiry_date"/>

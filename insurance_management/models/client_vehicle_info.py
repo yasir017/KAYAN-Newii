@@ -28,7 +28,7 @@ class client_vehicle_info(models.Model):
     value = fields.Char(string='Sum Insured')
     owner_name = fields.Char(string='Owner Name')
     owner_id_no = fields.Char(string='Owner ID No')
-    custom_id = fields.Char(string='Custom ID')
+    custom_id = fields.Char(string='Customer ID',required=1)
     sequence_no = fields.Char(string='Sequence No')
     user_id_no = fields.Char(string='User ID No')
     user_name = fields.Char(string='User Name')
