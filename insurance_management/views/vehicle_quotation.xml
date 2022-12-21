@@ -76,6 +76,8 @@
                                     <field name="client_branch_id"/>
                                     <field name="related_vehicle_client_ids"/>
                                     <field name="vehicle_client_id" invisible="1"/>
+                                    <field name="create_policy"/>
+
                                     <button type="object" name="add_policy" string="Add To policy" class="oe_highlight" attrs="{'invisible':['|',('insurance_quotation_id.select','=',False),('create_policy','=',True)]}"/>
 
                                 </tree>
