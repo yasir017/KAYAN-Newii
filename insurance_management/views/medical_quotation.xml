@@ -55,6 +55,7 @@
                     <notebook>
                         <page string="Quotation Lines">
                             <field name="quotation_line_ids">
+                                <button type="object" name="add_policy" string="Add To policy" class="oe_highlight" attrs="{'invisible':['|',('insurance_quotation_id.select','=',False),('('create_policy','=',True)]}"/>
                                 <tree>
                                     <field name="name"/>
                                     <field name="arabic_name" optional="1"/>

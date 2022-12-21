@@ -308,6 +308,46 @@ class quotation_line(models.Model):
     bank_id = fields.Many2one('res.bank', string='Bank')
     branch_id = fields.Many2one('client.branch', string='Branch ID')
     create_policy = fields.Boolean('Create Policy',default=True)
+
+    def add_policy(self):
+        if self.insurance_quotation_id.client_branch_id.policy_id:
+            if self.insurance_quotation_id.client_branch_id.select==True:
+                employee_data = self.env['insurance.employee.data'].create({
+
+                    'policy_id': self.insurance_quotation_id.client_branch_id.policy_id.id,
+                    # 'group_id':client.group_id,
+                    'member_id': self.member_id,
+                    'dependent_id': self.dependent_id,
+                    'name': self.name,
+                    'client_image': self.client_image,
+                    'arabic_name': self.arabic_name,
+                    'gender': self.gender,
+                    'dob': self.dob,
+                    'dob_hijra': self.dob_hijra,
+                    'age': self.age,
+                    'member_type': self.member_type.id,
+                    'class_no': self.class_no.id,
+                    'age_category': self.age_category.id,
+                    'risk_no': self.risk_no,
+                    'nationality': self.nationality.id,
+                    'staff_no': self.staff_no,
+                    'member_category': self.member_category.id,
+                    'mobile1': self.mobile1,
+                    'mobile2': self.mobile2,
+                    'dep_no': self.dep_no,
+                    'sponser_id': self.sponser_id,
+                    'occupation': self.occupation.id,
+                    'marital_status': self.marital_status.id,
+                    # 'elm_relation':client.elm_relation,
+                    'vip': self.vip,
+                    'as_vip': self.as_vip,
+                    'bank_id': self.bank_id.id,
+                    'branch_id': self.branch_id.id,
+                    'rate': self.rate,
+                    'vat': self.vat,
+                    'total': self.total
+                })
+                self.create_policy=True
     @api.depends('vat','rate')
     def get_q_line_total(self):
         for rec in self:
@@ -600,6 +640,47 @@ class vehicle_quotation_line(models.Model):
     sum_insured = fields.Float("Sum Insured")
     create_policy = fields.Boolean('Create Policy',default=True)
 
+    def add_policy(self):
+
+        if self.vehicle_quotation_id.select==True:
+            if self.vehicle_quotation_id.client_branch_id.policy_id:
+                vehicle_data = self.env['insurance.vehicle'].create({
+                    'policy_id': self.vehicle_quotation_id.client_branch_id.policy_id.id,
+                    'vehicle_type_id': self.vehicle_type.id,
+                    'plate_no': self.plate_no,
+                    'model_no': self.model,
+                    'chassis': self.chasis_no,
+                    'capacity': self.capacity,
+                    'driver_insurance': self.driver_insurance,
+                    'covering_maintenance': self.covering_maintenance,
+                    'value': self.sum_insured,
+                    'owener_name': self.owner_name,
+                    'owner_id': self.owner_id_no,
+                    'custom_id': self.custom_id,
+                    'seq_no': self.sequence_no,
+                    'user_id_no': self.user_id_no,
+                    'user_name': self.user_name,
+                    'building_no': self.building_no,
+                    'additional_no': self.additional_no,
+                    'street': self.street,
+                    'city': self.city.id,
+                    'unit_no': self.unit_no,
+                    'po_box': self.po_box,
+                    'zip_code': self.zip_code,
+                    'neighbour_head': self.neighborhead,
+                    'mobile_no': self.mobile_no,
+                    'istamara_expiry': self.exp_date_istemara_hijry,
+                    'vehicle_color': self.vehicle_color,
+                    'gcc_cover': self.gcc_covering,
+                    'natural_peril_cover': self.natural_peril_cover,
+                    'dob_owner': self.dob_owner,
+                    'nationality': self.nationality.id,
+                    'vehicle_make_id': self.vehicle_make_id.id,
+                    'vehicle_model_id': self.vehicle_model_id.id,
+                    'premium': self.rate,
+                    'vat': self.vat
+                })
+                self.create_policy=True
     @api.onchange('vehicle_make_id')
     def set_model_wrt_vehicle_make_id(self):
         for rec in self:
