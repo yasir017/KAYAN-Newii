@@ -1,5 +1,17 @@
 <odoo>
 
+
+    <record id="view_medical_inherit" model="ir.ui.view">
+        <field name="name">insurance.employee.data.inherit</field>
+        <field name="model">insurance.employee.data</field>
+         <field name="inherit_id" ref="policy_entry_insurance.view_health_data_tree"/>
+         <field name="arch" type="xml">
+             <xpath expr="//field[@name='partner_id']" position="after">
+                 <field name="insurance_company_id"/>
+
+             </xpath>
+         </field>
+     </record>
     <record id="view_inherit_policy" model="ir.ui.view">
         <field name="name">insurance.policy.inherit</field>
         <field name="model">insurance.policy</field>

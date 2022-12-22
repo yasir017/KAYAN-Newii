@@ -431,3 +431,14 @@ class PolicyBenfits(models.Model):
     @api.onchange('benefit_id')
     def custom_benefit_name(self):
         self.benefit_name = self.benefit_id.name
+
+
+class EmployeeData(models.Model):
+    _inherit = 'insurance.employee.data'
+
+    insurance_company_id = fields.Many2one('insurance.company', string="Insurance Company",compute='_compute_insurance_company',store=1)
+
+    @api.depends('policy_id')
+    def _compute_insurance_company(self):
+        for rec in self:
+            rec.insurance_company_id = rec.policy_id.insurance_company_id.id
