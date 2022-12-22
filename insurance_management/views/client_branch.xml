@@ -315,7 +315,7 @@
                                     </group>
                                     <notebook>
                                         <page string="Quotation Lines">
-                                            <field name="quotation_line_ids" readonly="1">
+                                            <field name="quotation_line_ids" create="0" delete="0" edit="1" editable="bottom">
                                                 <tree>
                                                     <field name="name"/>
                                                     <field name="arabic_name" optional="1"/>
@@ -542,8 +542,8 @@
                                     </group>
                                     <notebook>
                                         <page string="Quotation Lines">
-                                            <field name="vehicle_quotation_line_ids" readonly="1">
-                                                <tree>
+                                            <field name="vehicle_quotation_line_ids">
+                                                <tree create="0" delete="0" edit="1" editable="bottom">
                                                     <field name="vehicle_type"/>
                                                     <field name="plate_no" placeholder="1234 A-B-C"/>
                                                     <field name="plate_no_ar"/>
