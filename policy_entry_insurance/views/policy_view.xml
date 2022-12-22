@@ -360,7 +360,7 @@
                                 <!--                                </group>-->
                             </page>
                             <page string="Health Endorsement" name="health_endors">
-                                <field name="health_endors_ids" domain="[('policy_id','=',prev_policy)]">
+                                <field name="health_endors_ids" attrs="{'readonly':[('state','!=','draft')]}" domain="[('policy_id','=',prev_policy)]">
 
                                     <tree editable="bottom">
                                         <field name="member_id" readonly="1"/>
@@ -401,7 +401,7 @@
                                 </field>
                             </page>
                             <page name="vehicle" string="Vehicle Detail">
-                                <field name="vehicle_detail">
+                                <field name="vehicle_detail" attrs="{'readonly':[('state','!=','draft')]}">
                                     <tree>
                                         <field name="vehicle_type_id"/>
                                         <field name="plate_no" placeholder="1234 A-B-C"/>
@@ -448,7 +448,7 @@
                                         <sheet>
                                             <group>
                                                 <group>
-                                                    <field name="vehicle_type_id"/>
+                                                    <field name="vehicle_type_id" />
                                                     <field name="plate_no" placeholder="1234 A-B-C"/>
                                                     <field name="plate_no_ar"/>
                                                     <field name="model_no"/>
@@ -522,14 +522,14 @@
                                                     <strong>Issuance Fee</strong>
                                                 </td>
                                                 <td style="border: 2px solid black;">
-                                                    <field name="issuance_fee_car" no_label="1"/>
+                                                    <field name="issuance_fee_car" attrs="{'readonly':[('state','!=','draft')]}" no_label="1"/>
                                                 </td>
 
                                                 <td style="border: 2px solid black;">
                                                     <strong>Zero Depreciation</strong>
                                                 </td>
                                                 <td style="border: 2px solid black;">
-                                                    <field name="zero_dep" no_label="1"/>
+                                                    <field name="zero_dep" attrs="{'readonly':[('state','!=','draft')]}" no_label="1"/>
                                                 </td>
 
                                             </tr>
@@ -539,14 +539,14 @@
                                                     <strong>Personal Accident For Driver</strong>
                                                 </td>
                                                 <td style="border: 2px solid black;">
-                                                    <field name="personal_accident_driver" no_label="1"/>
+                                                    <field name="personal_accident_driver" attrs="{'readonly':[('state','!=','draft')]}" no_label="1"/>
                                                 </td>
 
                                                 <td style="border: 2px solid black;">
                                                     <strong>Towing Vehicle</strong>
                                                 </td>
                                                 <td style="border: 2px solid black;">
-                                                    <field name="towing_vehicle" no_label="1"/>
+                                                    <field name="towing_vehicle" attrs="{'readonly':[('state','!=','draft')]}" no_label="1"/>
                                                 </td>
 
                                             </tr>
@@ -555,14 +555,14 @@
                                                     <strong>Personal Accident For Passengers</strong>
                                                 </td>
                                                 <td style="border: 2px solid black;">
-                                                    <field name="personal_accident_for_passenger" no_label="1"/>
+                                                    <field name="personal_accident_for_passenger" attrs="{'readonly':[('state','!=','draft')]}" no_label="1"/>
                                                 </td>
 
                                                 <td style="border: 2px solid black;">
                                                     <strong>Coverage for key loss or theft</strong>
                                                 </td>
                                                 <td style="border: 2px solid black;">
-                                                    <field name="key_loss_thef_coverage" no_label="1"/>
+                                                    <field name="key_loss_thef_coverage" attrs="{'readonly':[('state','!=','draft')]}" no_label="1"/>
                                                 </td>
                                             </tr>
 
@@ -571,14 +571,14 @@
                                                     <strong>Car Hire</strong>
                                                 </td>
                                                 <td style="border: 2px solid black;">
-                                                    <field name="car_hire" no_label="1"/>
+                                                    <field name="car_hire" attrs="{'readonly':[('state','!=','draft')]}" no_label="1"/>
                                                 </td>
 
                                                 <td style="border: 2px solid black;">
                                                     <strong>Glass Coverage</strong>
                                                 </td>
                                                 <td style="border: 2px solid black;">
-                                                    <field name="glass_coverage" no_label="1"/>
+                                                    <field name="glass_coverage" attrs="{'readonly':[('state','!=','draft')]}" no_label="1"/>
                                                 </td>
                                             </tr>
                                             <tr>
@@ -586,14 +586,14 @@
                                                     <strong>Geographical Extension</strong>
                                                 </td>
                                                 <td style="border: 2px solid black;">
-                                                    <field name="geo_ext" no_label="1"/>
+                                                    <field name="geo_ext" attrs="{'readonly':[('state','!=','draft')]}" no_label="1"/>
                                                 </td>
 
                                                 <td style="border: 2px solid black;">
                                                     <strong>Personal holdings in vehicle</strong>
                                                 </td>
                                                 <td style="border: 2px solid black;">
-                                                    <field name="personal_holding_in_vehicle" no_label="1"/>
+                                                    <field name="personal_holding_in_vehicle" attrs="{'readonly':[('state','!=','draft')]}" no_label="1"/>
                                                 </td>
                                             </tr>
 
@@ -602,7 +602,7 @@
                                 </group>
                             </page>
                             <page name="health" string="Health Detail">
-                                <field name="employee_ids" mode="tree,form" nolabel="1">
+                                <field name="employee_ids" attrs="{'readonly':[('state','!=','draft')]}" mode="tree,form" nolabel="1">
                                     <tree>
                                         <field name="member_id"/>
                                         <field name="dependent_id"/>
@@ -689,7 +689,7 @@
                             </page>
 
                             <page name="marine" string="Marine Detail">
-                                <field name="marine_ids">
+                                <field name="marine_ids" attrs="{'readonly':[('state','!=','draft')]}">
                                     <tree>
                                         <field name="cargo_description"/>
                                         <field name="vessel_name"/>
@@ -751,7 +751,7 @@
                                 </field>
                             </page>
                             <page name="endors_vehicle" string="Endorsement Vehicle">
-                                <field name="endors_vehicle_ids" domain="[('policy_id','=',prev_policy)]">
+                                <field name="endors_vehicle_ids" attrs="{'readonly':[('state','!=','draft')]}" domain="[('policy_id','=',prev_policy)]">
                                     <tree editable="bottom">
 
 
@@ -797,7 +797,7 @@
                                 </field>
                             </page>
                             <page string="Extra Benefits" attrs="{'invisible':[('is_extra_benfit','=',False)]}">
-                                <field name="benefits_ids">
+                                <field name="benefits_ids" attrs="{'readonly':[('state','!=','draft')]}">
                                     <tree editable="bottom">
                                         <field name="benefit_id"/>
                                         <field name="description"/>
@@ -823,7 +823,7 @@
                                     </tree>
                                 </field>
                                 <group class="oe_subtotal_footer oe_right">
-                                    <field name="total_policy_am_after_vat"/>
+                                    <field name="total_policy_am_after_vat" readonly="1"/>
                                     <field name="total_instalment_am" force_save="1" readonly="1" string="Total Premium After Vat"/>
                                     <field name="difference_instalment"/>
                                 </group>
