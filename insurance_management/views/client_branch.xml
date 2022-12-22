@@ -315,25 +315,25 @@
                                     </group>
                                     <notebook>
                                         <page string="Quotation Lines">
-                                            <field name="quotation_line_ids" create="0" delete="0" edit="1" editable="bottom">
-                                                <tree>
-                                                    <field name="name"/>
-                                                    <field name="arabic_name" optional="1"/>
-                                                    <field name="gender"/>
-                                                    <field name="dob" optional="1"/>
-                                                    <field name="age"/>
-                                                    <field name="member_type"/>
-                                                    <field name="nationality"/>
-                                                    <field name="member_category"/>
-                                                    <field name="mobile1" optional="1"/>
-                                                    <field name="occupation"/>
-                                                    <field name="marital_status" optional="1"/>
-<!--                                                    <field name="elm_relation" optional="1"/>-->
-                                                    <field name="vip"/>
+                                            <field name="quotation_line_ids">
+                                                <tree create="0" delete="0" edit="1" editable="bottom">
+                                                    <field name="name" readonly="1"/>
+                                                    <field name="arabic_name" optional="1" readonly="1"/>
+                                                    <field name="gender" readonly="1"/>
+                                                    <field name="dob" optional="1" readonly="1"/>
+                                                    <field name="age" readonly="1"/>
+                                                    <field name="member_type" readonly="1"/>
+                                                    <field name="nationality" readonly="1"/>
+                                                    <field name="member_category" readonly="1"/>
+                                                    <field name="mobile1" optional="1" readonly="1"/>
+                                                    <field name="occupation" readonly="1"/>
+                                                    <field name="marital_status" optional="1" readonly="1"/>
+<!--                                                    <field name="elm_relation" optional="1" readonly="1"/>-->
+                                                    <field name="vip" readonly="1"/>
                                                     <field name="rate"/>
                                                     <field name="vat"/>
                                                     <field name="total"/>
-                                                    <field name="as_vip" optional="1"/>
+                                                    <field name="as_vip" optional="1" readonly="1"/>
                                                     <field name="create_policy"/>
                                                     <button type="object" name="add_policy" string="Add To policy" class="oe_highlight" attrs="{'invisible':['|',('parent.select','=',False),('create_policy','=',True)]}"/>
 
@@ -544,40 +544,40 @@
                                         <page string="Quotation Lines">
                                             <field name="vehicle_quotation_line_ids">
                                                 <tree create="0" delete="0" edit="1" editable="bottom">
-                                                    <field name="vehicle_type"/>
-                                                    <field name="plate_no" placeholder="1234 A-B-C"/>
-                                                    <field name="plate_no_ar"/>
-                                                    <field name="chasis_no"/>
-                                                    <field name="capacity" optional="1"/>
-                                                    <field name="driver_insurance" optional="1"/>
-                                                    <field name="covering_maintenance" optional="1"/>
+                                                    <field name="vehicle_type" readonly="1"/>
+                                                    <field name="plate_no" placeholder="1234 A-B-C" readonly="1"/>
+                                                    <field name="plate_no_ar" readonly="1"/>
+                                                    <field name="chasis_no" readonly="1"/>
+                                                    <field name="capacity" optional="1" readonly="1"/>
+                                                    <field name="driver_insurance" optional="1" readonly="1"/>
+                                                    <field name="covering_maintenance" optional="1" readonly="1"/>
 <!--                                                    <field name="value"/>-->
-                                                    <field name="owner_name"/>
-                                                    <field name="owner_id_no"/>
-                                                    <field name="custom_id" optional="1"/>
-                                                    <field name="sequence_no" optional="1"/>
-                                                    <field name="user_id_no" optional="1"/>
-                                                    <field name="user_name"/>
-                                                    <field name="vehicle_make_id" optional="1"/>
-                                                    <field name="vehicle_model_id" optional="1"/>
-                                                    <field name="model" optional="1"/>
-                                                    <field name="building_no" optional="1"/>
-                                                    <field name="additional_no" optional="1"/>
-                                                    <field name="street" optional="1"/>
-                                                    <field name="country" invisible="1" optional="1"/>
-                                                    <field name="city" optional="1"/>
-                                                    <field name="unit_no" optional="1"/>
-                                                    <field name="po_box" optional="1"/>
-                                                    <field name="zip_code" optional="1"/>
-                                                    <field name="neighborhead" optional="1"/>
-                                                    <field name="mobile_no" optional="1"/>
-                                                    <field name="exp_date_istemara_hijry" optional="1"/>
-                                                    <field name="exp_date_en" optional="1"/>
-                                                    <field name="vehicle_color" optional="1"/>
-                                                    <field name="gcc_covering" optional="1"/>
-                                                    <field name="natural_peril_cover" optional="1"/>
-                                                    <field name="dob_owner" optional="1"/>
-                                                    <field name="nationality" optional="1"/>
+                                                    <field name="owner_name" readonly="1"/>
+                                                    <field name="owner_id_no" readonly="1"/>
+                                                    <field name="custom_id" optional="1" readonly="1"/>
+                                                    <field name="sequence_no" optional="1" readonly="1"/>
+                                                    <field name="user_id_no" optional="1" readonly="1"/>
+                                                    <field name="user_name" readonly="1"/>
+                                                    <field name="vehicle_make_id" optional="1" readonly="1"/>
+                                                    <field name="vehicle_model_id" optional="1" readonly="1"/>
+                                                    <field name="model" optional="1" readonly="1"/>
+                                                    <field name="building_no" optional="1" readonly="1"/>
+                                                    <field name="additional_no" optional="1" readonly="1"/>
+                                                    <field name="street" optional="1" readonly="1"/>
+                                                    <field name="country" invisible="1" optional="1" readonly="1"/>
+                                                    <field name="city" optional="1" readonly="1"/>
+                                                    <field name="unit_no" optional="1" readonly="1"/>
+                                                    <field name="po_box" optional="1" readonly="1"/>
+                                                    <field name="zip_code" optional="1" readonly="1"/>
+                                                    <field name="neighborhead" optional="1" readonly="1"/>
+                                                    <field name="mobile_no" optional="1" readonly="1"/>
+                                                    <field name="exp_date_istemara_hijry" optional="1" readonly="1"/>
+                                                    <field name="exp_date_en" optional="1" readonly="1"/>
+                                                    <field name="vehicle_color" optional="1" readonly="1"/>
+                                                    <field name="gcc_covering" optional="1" readonly="1"/>
+                                                    <field name="natural_peril_cover" optional="1" readonly="1"/>
+                                                    <field name="dob_owner" optional="1" readonly="1"/>
+                                                    <field name="nationality" optional="1" readonly="1"/>
                                                     <field name="rate"/>
                                                     <field name="vat"/>
                                                     <field name="total"/>
