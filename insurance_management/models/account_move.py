@@ -85,7 +85,7 @@ class AccountMove(models.Model):
                                 self.create_govt_fee(next_date,commission_am*(int(percentage)/100.0))
                 elif self.invoice_date_due:
                     commission_am = value* (self.policy_id.approve_percentage / 100.0)
-                    self.create_invoice_commsion(commission_am, self.invoice_due_date)
+                    self.create_invoice_commsion(commission_am, self.invoice_date_due)
                     self.create_govt_fee(self.invoice_date_due, commission_am * (int(percentage) / 100.0))
     def open_comssion_invoice(self,lst):
         return {
