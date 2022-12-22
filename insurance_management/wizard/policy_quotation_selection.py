@@ -196,6 +196,13 @@ class PolicySelectionQuotation(models.TransientModel):
                 'glass_coverage': quotation_vehicle.glass_coverage,
                 'personal_holding_in_vehicle': quotation_vehicle.personal_holding_in_vehicle
             })
+
+        context = self.env.context
+        # report_name = context.get('default_report_name')
+        active_ids = context.get('active_ids')
+        client_branch = self.env['client.branch'].browse(active_ids)
+        if client_branch:
+            client_branch.state='policy_issuance'
         # if self.medical_visibility_check == True:
         #     self.insurance_quotation_id.select = True
         #     self.insurance_quotation_id.state = "selected"

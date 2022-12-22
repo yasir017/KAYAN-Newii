@@ -920,6 +920,13 @@ class client_branch(models.Model):
 
 
     def cancel(self):
+        if self.policy_id:
+            if self.policy_id.state in ('draft','cancel'):
+                self.policy_id.state = 'cancel'
+                self.policy_id=False
+            else:
+                raise ValidationError("Please Cancel the policy first")
+
         self.state = 'cancel'
 
 class client_basic_info(models.Model):
