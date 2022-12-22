@@ -102,6 +102,7 @@ class client_branch(models.Model):
     list_required_docs_ids = fields.One2many(related='insurance_type_id.list_required_docs_ids')
     total_clients_number = fields.Integer(string='Total Lines',compute='get_total_clients')
     total_document_number = fields.Integer(string='Total Documents',compute='get_total_documents')
+    total_attachment_number = fields.Integer(string='Total Attachments',compute='get_total_attachments')
     total_medical_quotation = fields.Integer(string='Medical Quotations',compute='get_total_medical_quotation')
     total_vehicle_quotation = fields.Integer(string='Vehicle Quotations',compute='get_total_vehicle_quotation')
     total_medical_line = fields.Integer(string='Medical Lines',compute='get_total_medical_lines')
@@ -403,6 +404,18 @@ class client_branch(models.Model):
             'domain': [('res_id', '=', self.id),('res_model', '=', self._name)],
         }
 
+    def action_open_client_attachments(self):
+        return {
+            'name': _('Attachments'),
+            'type': 'ir.actions.act_window',
+            'res_model': 'customer.attachment',
+            'view_mode': 'tree,form',
+            'context': {
+                'default_client_branch_id': self.id,
+            },
+            'domain': [('client_branch_id', '=', self.id)],
+        }
+
     def action_open_crm(self):
         return {
             'name': _('CRM Lead'),
@@ -429,6 +442,9 @@ class client_branch(models.Model):
             },
             'domain': [('client_branch_id', '=', self.id)],
         }
+    def get_total_attachments(self):
+        for rec in self:
+            rec.total_attachment_number = len(rec.customer_attachment_ids)
 
     def get_total_documents(self):
         for rec in self:
