@@ -118,7 +118,7 @@
                                                 <field no_label="1" name="actual_sum_insured"/>
                                             </td>
                                             <td style="border: 2px solid black;">
-                                                <field name="difference_sum_insured" attrs="{'readonly':[('state','!=','draft')]}" no_label="1"/>
+                                                <field name="difference_sum_insured" readonly="1" no_label="1"/>
                                             </td>
                                         </tr>
                                         <tr>
@@ -129,11 +129,11 @@
                                                 <field no_label="1" name="basic_prem" attrs="{'readonly':[('state','!=','draft')]}"/>
                                             </td>
                                             <td style="border: 2px solid black;">
-                                                <field name="premium_actual" attrs="{'readonly':[('state','!=','draft')]}" no_label="1"/>
+                                                <field name="premium_actual" readonly="1" no_label="1"/>
 
                                             </td>
                                             <td style="border: 2px solid black;">
-                                                <field name="premium_difference" attrs="{'readonly':[('state','!=','draft')]}" no_label="1"/>
+                                                <field name="premium_difference" readonly="1" no_label="1"/>
                                             </td>
                                         </tr>
 
