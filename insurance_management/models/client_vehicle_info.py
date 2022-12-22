@@ -16,6 +16,9 @@ class client_vehicle_info(models.Model):
     _description = 'client_vehicle_info'
     _rec_name = 'owner_name'
 
+    def _default_get_country(self):
+        return self.env['res.country'].search([('is_saudiarabia','=',True)],limit=1)
+
     vehicle_image = fields.Binary(string='Vehicle Image')
     vehicle_type = fields.Many2one('vehicle.type',"Vehicle Type")
     plate_no = fields.Char(string='Plate No. (En)',placeholder="1234 A-B-C")
@@ -35,7 +38,7 @@ class client_vehicle_info(models.Model):
     building_no = fields.Char(string='Building No')
     additional_no = fields.Char(string='Additional No')
     street = fields.Char(string='Street')
-    country = fields.Many2one('res.country', 'Country')
+    country = fields.Many2one('res.country', 'Country',default=_default_get_country)
     city = fields.Many2one('res.country.state',string='City')
     unit_no = fields.Char(string='Unit No')
     po_box = fields.Char(string='PO. BOX')
