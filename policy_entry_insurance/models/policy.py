@@ -253,9 +253,15 @@ class Policy(models.Model):
     glass_coverage = fields.Float('Glass Coverage')
     personal_holding_in_vehicle = fields.Float('Personal holdings in vehicle')
     employee_ids = fields.One2many('insurance.employee.data','policy_id',"Health Data")
-    state = fields.Selection([('draft','Draft'),('submitted','Submitted'),('posted','Posted')],string='State',default='draft')
+    state = fields.Selection([('draft','Draft'),('submitted','Submitted'),('posted','Posted'),('cancel','Cancelled')],string='State',default='draft')
     total_premium_after_vat_ii = fields.Float("Total")
 
+
+    def action_cancel(self):
+        self.state='cancel'
+
+    def action_rest_to_draft(self):
+        self.state='draft'
     def action_submit(self):
         self.state= 'submitted'
 

@@ -19,6 +19,16 @@
                             type="object" class="oe_highlight"
                             />
 
+                        <button name="action_cancel"
+                            states="submitted,draft" string="Cancel"
+                            type="object" class="oe_highlight"
+                            />
+
+                        <button name="action_rest_to_draft"
+                            states="Cancel,submitted" string="Reset to Draft"
+                            type="object" class="oe_highlight"
+                            />
+
                     </header>
                     <sheet>
 
