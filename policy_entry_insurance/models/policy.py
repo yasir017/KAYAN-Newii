@@ -188,7 +188,7 @@ class Policy(models.Model):
                     elif amount.type_installement=='percentage':
                         instalment_am+=amount.amount_paid
                 rec.total_instalment_am=instalment_am
-            rec.difference_instalment=rec.total_premium_after_vat_ii-rec.total_instalment_am
+            rec.difference_instalment=rec.total_policy_am_after_vat-rec.total_instalment_am
 
     @api.constrains('start_date','expiry_date','issuance_date')
     def constrainst_date(self):
