@@ -113,7 +113,7 @@ class Policy(models.Model):
         print(country_id)
         return country_id
     country_id = fields.Many2one('res.country',"Country",default=default_coutry)
-    fed_state_id = fields.Many2one('res.country.state',"Branch ID",domain="[('country_id','=',country_id)]")
+    fed_state_id = fields.Many2one('res.country.state',"Branch ID",domain="[('country_id','=',192)]")
 
     govt_fee = fields.Float("Govt Feet", store=True, compute='_compute_govt_fee')
     sales_employee = fields.Many2one('hr.employee', string='Sales Employee')
