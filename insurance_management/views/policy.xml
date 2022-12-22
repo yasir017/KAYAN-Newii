@@ -95,7 +95,7 @@
                         </div>
               </xpath>
               <xpath expr="//field[@name='partner_id']" position="after">
-                     <field name="insurance_company_id" force_save="1" attrs="{'readonly':[('policy_type','=','endors')]}"/>
+                     <field name="insurance_company_id" force_save="1" attrs="{'readonly':['|',('state','=','posted'),('policy_type','=','endors')]}"/>
               </xpath>
               <xpath expr="//notebook/page[@name='vehicle']" position="attributes">
                    <attribute name="attrs">{'invisible':['|',('policy_type','=','endors'),('vehicle_boolean','=',False)]}</attribute>
@@ -117,17 +117,17 @@
                    <attribute name="attrs">{'invisible':['|',('policy_type','=','endors'),('medical_boolean','=',False)]}</attribute>
               </xpath>
               <xpath expr="//field[@name='policy_no']" position="after">
-                     <field name="insurance_type_id" force_save="1" attrs="{'readonly':[('policy_type','=','endors')]}"/>
-                  <field name="insurance_sub_type_id" force_save="1" attrs="{'readonly':[('policy_type','=','endors')]}"/>
-                  <field name="company_standard" string="Business Type" force_save="1" attrs="{'readonly':[('policy_type','=','endors')]}"/>
-                  <field name="type_of_business" string="Policy Type" force_save="1" attrs="{'readonly':[('policy_type','=','endors')]}"/>
+                     <field name="insurance_type_id" force_save="1" attrs="{'readonly':['|',('state','=','posted'),('policy_type','=','endors')]}"/>
+                  <field name="insurance_sub_type_id" force_save="1" attrs="{'readonly':['|',('state','=','posted'),('policy_type','=','endors')]}"/>
+                  <field name="company_standard" string="Business Type" force_save="1" attrs="{'readonly':['|',('state','=','posted'),('policy_type','=','endors')]}"/>
+                  <field name="type_of_business" string="Policy Type" force_save="1" attrs="{'readonly':['|',('state','=','posted'),('policy_type','=','endors')]}"/>
                   <field name="medical_boolean" invisible="1"/>
                   <field name="vehicle_boolean" invisible="1"/>
                   <field name="marine_boolean" invisible="1"/>
               </xpath>
               <xpath expr="//notebook" position="inside">
                   <page string="Benefits">
-                      <field name="benefits_custome_ids">
+                      <field name="benefits_custome_ids"  attrs="{'readonly':[('state','=','posted')]}">
                           <tree editable="bottom">
                                                      <field name="sequence" widget="handle"/>
                                                      <field name="display_type" invisible="1"/>

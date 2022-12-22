@@ -13,10 +13,10 @@ class AccountMove(models.Model):
     govt_boolean = fields.Boolean("Govt Bill")
     commission_boolean = fields.Boolean('Commission Invoice')
     policy_id = fields.Many2one('insurance.policy', "Policy",
-                                domain="[('policy_type','=','endors'),('insurance_partner','=',partner_id),('state','=','posted'),('policy_type','=','policy')]")
+                                domain="[('policy_type','=','endors'),('partner_id','=',partner_id),('state','=','posted'),('policy_type','=','policy')]")
 
     endorsment_id = fields.Many2one('insurance.policy', "Endoresment",
-                                    domain="[('policy_type','=','endors'),('insurance_partner','=',partner_id),('state','=','posted')]")
+                                    domain="[('policy_type','=','endors'),('partner_id','=',partner_id),('state','=','posted')]")
     def _count_commission(self):
         for rec in self:
             account_move = self.env['account.move'].search([('invoice_ref','=',self.id),('move_type','=','out_invoice')])
