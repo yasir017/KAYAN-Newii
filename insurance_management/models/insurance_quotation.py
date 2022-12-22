@@ -591,6 +591,9 @@ class vehicle_quotation_line(models.Model):
     _inherit = ['mail.thread', 'mail.activity.mixin', 'mail.render.mixin']
     _description = 'vehicle_quotation_lines'
 
+    def _default_get_country(self):
+        return self.env['res.country'].search([('is_saudiarabia','=',True)],limit=1)
+
 
     vehicle_quotation_id = fields.Many2one('vehicle.quotation',string='Vehicle Quotation')
     insurance_company_id = fields.Many2one(related='vehicle_quotation_id.insurance_company_id', string='Company', store=True)
@@ -621,7 +624,7 @@ class vehicle_quotation_line(models.Model):
     building_no = fields.Char(string='Building No')
     additional_no = fields.Char(string='Additional No')
     street = fields.Char(string='Street')
-    country = fields.Many2one('res.country', 'Country')
+    country = fields.Many2one('res.country', 'Country',default=_default_get_country)
     city = fields.Many2one('res.country.state','City',domain="[('country_id', '=', country)]")
     unit_no = fields.Char(string='Unit No')
     po_box = fields.Char(string='PO. BOX')

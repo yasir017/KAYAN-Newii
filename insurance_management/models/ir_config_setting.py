@@ -9,6 +9,12 @@ class ResConfigSettings(models.TransientModel):
     percentage = fields.Integer(string="Govt. Percentage",config_parameter="insurance_management.percentage")
     govt_bill_journal = fields.Many2one('account.journal',string="Journal",config_parameter="insurance_management.govt_bill_journal")
 
+class Country(models.Model):
+    _inherit = 'res.country'
+
+    is_saudiarabia = fields.Boolean(
+        string='Is Saudi Arabia')
+
     # def get_values(self):
     #     res = super(ResConfigSettings, self).get_values()
     #     params = self.env['ir.config_parameter'].sudo()

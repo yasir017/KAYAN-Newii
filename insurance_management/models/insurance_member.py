@@ -64,13 +64,16 @@ class client_branch(models.Model):
     #     encoded_file = base64.b64encode(file_temp)
     #     return encoded_file
 
+    def _default_get_country(self):
+        return self.env['res.country'].search([('is_saudiarabia','=',True)],limit=1)
+
     document_no = fields.Char(string='Document No')
     customer_id = fields.Many2one('res.partner',string='Customer',required='1')
     insurance_type_id = fields.Many2one('insurance.type',string='Insurance Type',required='1')
     insurance_sub_type_id = fields.Many2one('insurance.sub.type',string='Insurance Sub Type',domain="[('insurance_type_id','=',insurance_type_id)]")
     sales_employee = fields.Many2one('hr.employee',string='Sales Employee')
     supervisor = fields.Many2one('hr.employee',string='Supervisor')
-    country = fields.Many2one('res.country', string='Country')
+    country = fields.Many2one('res.country', string='Country',default=_default_get_country)
     state_id = fields.Many2one("res.country.state", string='Branch', ondelete='restrict',
                                domain="[('country_id', '=?', country)]")
     client_ids = fields.One2many('client.basic.info','branch_id',string='Clients')
@@ -1004,8 +1007,11 @@ class risk_location(models.Model):
     _inherit = ['mail.thread', 'mail.activity.mixin', 'mail.render.mixin']
     _description = 'risk_location'
 
+    def _default_get_country(self):
+        return self.env['res.country'].search([('is_saudiarabia','=',True)],limit=1)
+
     code = fields.Char(string='Code', tracking=True)
-    country = fields.Many2one('res.country', 'Country')
+    country = fields.Many2one('res.country', 'Country',default=_default_get_country)
     region = fields.Char(string='Region', tracking=True)
     city = fields.Many2one('res.country.state',string='City',domain="[('country_id', '=?', country)]")
     risk = fields.Char(string='Risk')

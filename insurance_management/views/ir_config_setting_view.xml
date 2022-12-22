@@ -1,4 +1,17 @@
 <odoo>
+
+    <record id="view_country_form_insurance" model="ir.ui.view">
+        <field name="name">res.country.form.ins.inherit</field>
+        <field name="model">res.country</field>
+        <field name="inherit_id" ref="base.view_country_form"/>
+        <field name="arch" type="xml">
+            <field name="code" position="after">
+                <field name="is_saudiarabia"/>
+            </field>
+        </field>
+    </record>
+
+
     <record id="res_config_settings_inherit_resignation" model="ir.ui.view">
         <field name="name">res_config_settings_inherit_resignation</field>
         <field name="model">res.config.settings</field>
