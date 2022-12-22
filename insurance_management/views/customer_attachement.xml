@@ -3,14 +3,14 @@
         <field name="name">customer.attachment.tree</field>
         <field name="model">customer.attachment</field>
         <field name="arch" type="xml">
-            <tree string="Customer Attachment"  delete="0">
-                <field name="name" invisible="1"/>
-                <field name="is_required" readonly="1"/>
-                <field name="file"/>
+            <tree editable="bottom">
+                <field name="name"/>
+                <field name="file_type"/>
+                <field name="list_required_docs_ids" widget="many2many_tags" invisible="1"/>
+                <field name="file" widget="binary" />
+                <field name="is_required"/>
                 <field name="state"/>
-                <field name="client_branch_id"/>
-<!--                <field name="benefit_value"/>-->
-                <field name="policy_id"/>
+                <field name="client_branch_id" invisible="1"/>
             </tree>
         </field>
     </record>

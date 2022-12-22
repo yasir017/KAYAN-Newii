@@ -12,6 +12,7 @@
                 <field name="insurance_company_id"/>
                 <field name="date"/>
                 <field name="quotation_no"/>
+                <field name="activity_ids" string="Next Activity" widget="list_activity" optional="show"/>
                 <field name="client_branch_id" invisible="1"/>
                 <field name="quotation_line_ids" invisible="1"/>
                 <field name="total_lines"/>
@@ -48,7 +49,7 @@
                             <field name="email" invisible="1"/>
                             <field name="client_branch_id" invisible="1"/>
                             <field name="quotation_file" string="Quotation File"/>
-                            <button name="upload_quotation" type="object" string="Import" class="oe_highlight"/>
+                            <button name="get_medical_quote_lines" type="object" string="Map Clients" class="oe_highlight"/>
                             <field name="total_lines"/>
                         </group>
                     </group>
@@ -233,6 +234,7 @@
                 <field name="vip"/>
                 <field name="insurance_quotation_id"/>
                 <field name="insurance_company_id"/>
+                <field name="activity_ids" string="Next Activity" widget="list_activity" optional="show"/>
                 <field name="rate"/>
                 <field name="vat"/>
                 <field name="total"/>
