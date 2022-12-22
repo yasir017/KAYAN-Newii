@@ -61,6 +61,11 @@ class EmployeeData(models.Model):
 
     # health_id = fields.Many2one('insurance.health','Health')
     policy_id = fields.Many2one('insurance.policy', 'Policy')
+    partner_id = fields.Many2one('res.partner', string='Customer',compute='_compute_partner',store=1)
+    @api.depends('policy_id')
+    def _compute_partner(self):
+        for rec in self:
+            rec.partner_id = rec.policy_id.partner_id.id
     member_id = fields.Char(string='Member ID')
     dependent_id = fields.Char(string='Dependent ID')
     name = fields.Char(string='Name', tracking=True)

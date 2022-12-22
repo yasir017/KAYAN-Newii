@@ -617,6 +617,7 @@
                                         <field name="member_id"/>
                                         <field name="dependent_id"/>
                                         <field name="name"/>
+                                        <field name="arabic_name"/>
                                         <field name="client_image"/>
                                         <field name="arabic_name"/>
                                         <field name="gender"/>

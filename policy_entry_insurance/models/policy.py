@@ -82,7 +82,7 @@ class Policy(models.Model):
 
     total_policy_am = fields.Float("Total Policy",readonly=1)
     total_policy_vat = fields.Float("Total Policy Vat",compute='_total_vat',store=True)
-    total_policy_am_after_vat=  fields.Float("Total Policy after Vat")
+    total_policy_am_after_vat=  fields.Float(store=True,compute="_calculate_total")
 
     move_ids = fields.One2many('account.move','policy_id',string="Invoices")
     journal_id = fields.Many2one('account.journal',string="Journal ")
@@ -305,9 +305,10 @@ class Policy(models.Model):
     def _onchange_prem_ded_issue(self):
         self.total_policy_am = (self.basic_prem+self.issuening_fee+self.additional_fee_am)-self.ded_fee_am
 
-    @api.onchange('total_premium_after_vat_ii','issuening_fee_total','additional_fee_am_total','ded_fee_am_total','premium_percent_am_total_ii')
+    @api.depends('total_premium_after_vat_ii','issuening_fee_total','additional_fee_am_total','ded_fee_am_total','premium_percent_am_total_ii')
     def _calculate_total(self):
-        self.total_policy_am_after_vat = (self.total_premium_after_vat_ii+self.issuening_fee_total+self.premium_percent_am_total_ii+self.additional_fee_am_total)-self.ded_fee_am_total
+        for rec in self:
+            rec.total_policy_am_after_vat = (rec.total_premium_after_vat_ii+rec.issuening_fee_total+rec.premium_percent_am_total_ii+rec.additional_fee_am_total)-rec.ded_fee_am_total
     @api.onchange('additional_fee_am','additional_fee_am_vat')
     def _onchange_addi_fee(self):
         if self.additional_fee_am_vat>0:

@@ -11,7 +11,7 @@ class AccountMove(models.Model):
 
     sales_person = fields.Many2one('hr.employee',string="Sales Person")
     policy_no = fields.Char("Internal Ref")
-    insurance_co_ref = fields.Char('Insurance Co.reference')
+    insurance_co_ref = fields.Char('Insurance Co.reference',required=1)
     saleperson_id = fields.Many2one('sale.person.commission')
     @api.onchange('invoice_type')
     def onchange_inv_type(self):
