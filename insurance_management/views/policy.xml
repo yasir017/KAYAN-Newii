@@ -127,7 +127,7 @@
               </xpath>
               <xpath expr="//notebook" position="inside">
                   <page string="Benefits">
-                      <field name="benefits_custome_ids" attrs="{'readonly':[('state','=','posted')]}">
+                      <field name="benefits_custome_ids"  attrs="{'readonly':[('state','=','posted')]}">
                           <tree editable="bottom">
                                                      <field name="sequence" widget="handle"/>
                                                      <field name="display_type" invisible="1"/>
