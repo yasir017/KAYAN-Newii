@@ -9,7 +9,7 @@
                                     <field name="policy_no" attrs="{'invisible':['|',('invoice_type','=','regular_inv'),('move_type','in',['in_invoice','in_refund','entry'])]}"/>
                   <field name="invoice_type" attrs="{'invisible':[('move_type','in',['in_invoice','in_refund','entry'])]}"/>
 <!--                  <field name="sales_person" attrs="{'invisible':[('invoice_type','=','regular_inv')]}"/>-->
-                  <field name="insurance_co_ref" attrs="{'invisible':['|',('move_type','=','entry'),('invoice_type','=','regular_inv')]}"/>
+                  <field name="insurance_co_ref" attrs="{'invisible':['|',('move_type','=','entry'),('invoice_type','=','regular_inv')],'required':[('invoice_type','=','regular_inv')]}"/>
                                <field name="policy_id" attrs="{'invisible':['|',('move_type','=','entry'),('invoice_type','!=','policy')]}"/>
                   <field name="endorsment_id" attrs="{'invisible':['|',('move_type','=','entry'),('invoice_type','!=','endors')]}"/>
 

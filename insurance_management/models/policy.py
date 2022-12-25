@@ -58,7 +58,7 @@ class Policy(models.Model):
     @api.depends('move_ids')
     def _count_invoices(self):
         for rec in self:
-            invoices = rec.move_ids.filtered(lambda b: b.move_type=='out_invoice')
+            invoices = rec.move_ids.filtered(lambda b: b.move_type=='out_invoice' and b.invoice_type=='policy')
             rec.invoice_count=len(invoices)
 
     @api.depends('health_endors_ids')
@@ -113,7 +113,7 @@ class Policy(models.Model):
                 # 'default_commission_boolean': True
 
             },
-            'domain': [('move_type','=','out_invoice'),('id', '=', self.move_ids.ids)],
+            'domain': [('move_type','=','out_invoice'),('invoice_type','=','policy'),('id', '=', self.move_ids.ids)],
         }
 
     def action_commission_invoices(self):
@@ -341,7 +341,7 @@ class Policy(models.Model):
             rec.health_count=len(rec.employee_ids)
     def _attachments(self):
         for rec in self:
-            total_attachment = self.env['customer.attachment'].search(['|',('policy_id','=',rec.id),('client_branch_id','=',rec.data_collect_id.id)])
+            total_attachment = self.env['customer.attachment'].search([('policy_id','=',rec.id)])
             rec.attachment_count = len(total_attachment)
     def action_open_attachment(self):
         return {

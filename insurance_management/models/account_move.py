@@ -34,7 +34,7 @@ class AccountMove(models.Model):
 
         if self.invoice_type=='policy':
             params = self.env['ir.config_parameter'].sudo()
-            value = sum(self.line_ids.mapped('price_subtotal'))
+            value = sum(self.invoice_line_ids.mapped('price_subtotal'))
             sign = value < 0 and -1 or 1
             percentage = params.get_param('insurance_management.percentage')
             if self.policy_id:
