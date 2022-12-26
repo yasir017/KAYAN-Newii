@@ -112,7 +112,7 @@ class EmployeeData(models.Model):
     vat = fields.Float("Vat",default=15.0)
     total = fields.Float("Total After Vat",compute='_compute_total',store=True)
     endorsment_am = fields.Float("Endorsement Amount")
-    endorsment_type = fields.Selection([('add','Upgrade'),('sub','Downgrade'),('remove','Cancel')],string='Operation Type')
+    endorsment_type = fields.Selection([('add','Upgrade'),('sub','Downgrade'),('remove','Delete'),('amend','Amendement')],default='amend',string='Operation Type')
     note = fields.Char("Notes")
     @api.depends('dob')
     def get_member_age(self):

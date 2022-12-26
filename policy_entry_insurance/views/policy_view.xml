@@ -72,7 +72,7 @@
                             <group>
                                 <h3>Policy Detail</h3>
                                 <!--                                <field name="policy_id"/>-->
-                                <field name="policy_no" attrs="{'readonly':[('state','!=','draft')],'invisible':[('policy_type','=','endors')],'required':[('policy_type','=','policy')]}"/>
+                                <field name="policy_no" attrs="{'readonly':[('state','!=','draft')],'required':[('policy_type','=','policy')]}"/>
                                 <field name="endorsment_ref" attrs="{'invisible':[('policy_type','=','policy')],'required':[('policy_type','=','endors')]}"/>
                                 <field name="prev_policy" domain="[('policy_type','=','policy')]"
                                        attrs="{'invisible':[('policy_type','=','policy')],'required':[('policy_type','=','endors')]}"/>
@@ -373,37 +373,38 @@
                                 <field name="health_endors_ids" attrs="{'readonly':[('state','!=','draft')]}" domain="[('policy_id','=',prev_policy)]">
 
                                     <tree editable="bottom">
-                                        <field name="member_id" readonly="1"/>
-                                        <field name="dependent_id" readonly="1"/>
-                                        <field name="name" readonly="1"/>
-                                        <field name="client_image" readonly="1"/>
-                                        <field name="arabic_name" readonly="1"/>
-                                        <field name="gender" readonly="1"/>
-                                        <field name="dob" readonly="1"/>
-                                        <field name="dob_hijra" readonly="1"/>
-                                        <field name="age" readonly="1"/>
+                                        <field name="policy_id" invisible="1"/>
+                                        <field name="member_id" attrs="{'readonly':['|',('endorsment_type','!=','amend'),('policy_id','!=',False)]}"/>
+                                        <field name="dependent_id" attrs="{'readonly':['|',('endorsment_type','!=','amend'),('policy_id','!=',False)]}"/>
+                                        <field name="name" attrs="{'readonly':['|',('endorsment_type','!=','amend'),('policy_id','!=',False)]}"/>
+                                        <field name="client_image" attrs="{'readonly':['|',('endorsment_type','!=','amend'),('policy_id','!=',False)]}"/>
+                                        <field name="arabic_name" attrs="{'readonly':['|',('endorsment_type','!=','amend'),('policy_id','!=',False)]}"/>
+                                        <field name="gender" attrs="{'readonly':['|',('endorsment_type','!=','amend'),('policy_id','!=',False)]}"/>
+                                        <field name="dob" attrs="{'readonly':['|',('endorsment_type','!=','amend'),('policy_id','!=',False)]}"/>
+                                        <field name="dob_hijra" attrs="{'readonly':['|',('endorsment_type','!=','amend'),('policy_id','!=',False)]}"/>
+                                        <field name="age" attrs="{'readonly':['|',('endorsment_type','!=','amend'),('policy_id','!=',False)]}"/>
                                         <!--                                        <field name="member_type" readonly="1"/>-->
                                         <!--                                        <field name="class_no" readonly="1"/>-->
-                                        <field name="rate" readonly="1"/>
-                                        <field name="vat" readonly="1"/>
+                                        <field name="rate" attrs="{'readonly':['|',('endorsment_type','!=','amend'),('policy_id','!=',False)]}"/>
+                                        <field name="vat" attrs="{'readonly':['|',('endorsment_type','!=','amend'),('policy_id','!=',False)]}"/>
                                         <field name="total"/>
 
                                         <field name="endorsment_am"/>
                                         <field name="endorsment_type"/>
                                         <!--                                        <field name="age_category" readonly="1" optional="hide"/>-->
-                                        <field name="risk_no" readonly="1" optional="hide"/>
-                                        <field name="nationality" readonly="1" optional="hide"/>
-                                        <field name="staff_no" readonly="1" optional="hide"/>
+                                        <field name="risk_no" attrs="{'readonly':['|',('endorsment_type','!=','amend'),('policy_id','!=',False)]}" optional="hide"/>
+                                        <field name="nationality" attrs="{'readonly':['|',('endorsment_type','!=','amend'),('policy_id','!=',False)]}" optional="hide"/>
+                                        <field name="staff_no" attrs="{'readonly':['|',('endorsment_type','!=','amend'),('policy_id','!=',False)]}" optional="hide"/>
 <!--                                        <field name="member_category" optional="hide"/>-->
-                                        <field name="mobile1" readonly="1" optional="hide"/>
-                                        <field name="mobile2" readonly="1" optional="hide"/>
-                                        <field name="dep_no" readonly="1" optional="hide"/>
-                                        <field name="sponser_id" readonly="1" optional="hide"/>
+                                        <field name="mobile1" attrs="{'readonly':['|',('endorsment_type','!=','amend'),('policy_id','!=',False)]}" optional="hide"/>
+                                        <field name="mobile2" attrs="{'readonly':['|',('endorsment_type','!=','amend'),('policy_id','!=',False)]}" optional="hide"/>
+                                        <field name="dep_no" attrs="{'readonly':['|',('endorsment_type','!=','amend'),('policy_id','!=',False)]}" optional="hide"/>
+                                        <field name="sponser_id" attrs="{'readonly':['|',('endorsment_type','!=','amend'),('policy_id','!=',False)]}" optional="hide"/>
                                         <!--                                        <field name="occupation" readonly="1" optional="hide"/>-->
-                                        <field name="marital_status" readonly="1" optional="hide"/>
-                                        <field name="elm_relation" readonly="1" optional="hide"/>
-                                        <field name="vip" readonly="1" optional="hide"/>
-                                        <field name="as_vip" readonly="1" optional="hide"/>
+                                        <field name="marital_status" attrs="{'readonly':['|',('endorsment_type','!=','amend'),('policy_id','!=',False)]}" optional="hide"/>
+                                        <field name="elm_relation" attrs="{'readonly':['|',('endorsment_type','!=','amend'),('policy_id','!=',False)]}" optional="hide"/>
+                                        <field name="vip" attrs="{'readonly':['|',('endorsment_type','!=','amend'),('policy_id','!=',False)]}" optional="hide"/>
+                                        <field name="as_vip" attrs="{'readonly':['|',('endorsment_type','!=','amend'),('policy_id','!=',False)]}" optional="hide"/>
                                         <!--                                        <field name="bank_id" readonly="1" optional="hide"/>-->
                                         <!--                                        <field name="branch_id" readonly="1" optional="hide"/>-->
 
@@ -765,45 +766,45 @@
                                 <field name="endors_vehicle_ids" attrs="{'readonly':[('state','!=','draft')]}" domain="[('policy_id','=',prev_policy)]">
                                     <tree editable="bottom">
 
-
-                                        <field name="vehicle_type_id" readonly="1"/>
-                                        <field name="plate_no" readonly="1"/>
-                                        <field name="plate_no_ar" readonly="1"/>
-                                        <field name="model_no" readonly="1"/>
-                                        <field name="chassis" readonly="1"/>
-                                        <field name="capacity" readonly="1"/>
-                                        <field name="driver_insurance" readonly="1"/>
-                                        <field name="covering_maintenance" readonly="1"/>
-                                        <field name="value" readonly="1"/>
-                                        <field name="premium" readonly="1"/>
-                                        <field name="vat" readonly="1"/>
+                                        <field name="policy_id" invisible="1"/>
+                                        <field name="vehicle_type_id" attrs="{'readonly':['|',('endorsment_type','!=','amend'),('policy_id','!=',False)]}"/>
+                                        <field name="plate_no" attrs="{'readonly':['|',('endorsment_type','!=','amend'),('policy_id','!=',False)]}"/>
+                                        <field name="plate_no_ar" attrs="{'readonly':['|',('endorsment_type','!=','amend'),('policy_id','!=',False)]}"/>
+                                        <field name="model_no" attrs="{'readonly':['|',('endorsment_type','!=','amend'),('policy_id','!=',False)]}"/>
+                                        <field name="chassis" attrs="{'readonly':['|',('endorsment_type','!=','amend'),('policy_id','!=',False)]}"/>
+                                        <field name="capacity" attrs="{'readonly':['|',('endorsment_type','!=','amend'),('policy_id','!=',False)]}"/>
+                                        <field name="driver_insurance" attrs="{'readonly':['|',('endorsment_type','!=','amend'),('policy_id','!=',False)]}"/>
+                                        <field name="covering_maintenance" attrs="{'readonly':['|',('endorsment_type','!=','amend'),('policy_id','!=',False)]}"/>
+                                        <field name="value" attrs="{'readonly':['|',('endorsment_type','!=','amend'),('policy_id','!=',False)]}"/>
+                                        <field name="premium" attrs="{'readonly':['|',('endorsment_type','!=','amend'),('policy_id','!=',False)]}"/>
+                                        <field name="vat" attrs="{'readonly':['|',('endorsment_type','!=','amend'),('policy_id','!=',False)]}"/>
                                         <field name="total"/>
                                         <field name="endorsment_am"/>
                                         <field name="endorsment_type"/>
-                                        <field name="owener_name" readonly="1"/>
-                                        <field name="owner_id" readonly="1" optional="hide"/>
-                                        <field name="custom_id" readonly="1" optional="hide"/>
-                                        <field name="seq_no" readonly="1" optional="hide"/>
-                                        <field name="user_id_no" readonly="1" optional="hide"/>
-                                        <field name="user_name" readonly="1" optional="hide"/>
-                                        <field name="building_no" readonly="1" optional="hide"/>
-                                        <field name="additional_no" readonly="1" optional="hide"/>
-                                        <field name="street" readonly="1" optional="hide"/>
+                                        <field name="owener_name" attrs="{'readonly':['|',('endorsment_type','!=','amend'),('policy_id','!=',False)]}"/>
+                                        <field name="owner_id" attrs="{'readonly':['|',('endorsment_type','!=','amend'),('policy_id','!=',False)]}" optional="hide"/>
+                                        <field name="custom_id" attrs="{'readonly':['|',('endorsment_type','!=','amend'),('policy_id','!=',False)]}" optional="hide"/>
+                                        <field name="seq_no" attrs="{'readonly':['|',('endorsment_type','!=','amend'),('policy_id','!=',False)]}" optional="hide"/>
+                                        <field name="user_id_no" attrs="{'readonly':['|',('endorsment_type','!=','amend'),('policy_id','!=',False)]}" optional="hide"/>
+                                        <field name="user_name" attrs="{'readonly':['|',('endorsment_type','!=','amend'),('policy_id','!=',False)]}" optional="hide"/>
+                                        <field name="building_no" attrs="{'readonly':['|',('endorsment_type','!=','amend'),('policy_id','!=',False)]}" optional="hide"/>
+                                        <field name="additional_no" attrs="{'readonly':['|',('endorsment_type','!=','amend'),('policy_id','!=',False)]}" optional="hide"/>
+                                        <field name="street" attrs="{'readonly':['|',('endorsment_type','!=','amend'),('policy_id','!=',False)]}" optional="hide"/>
 <!--                                        <field name="country_id " optional="hide"/>-->
 <!--                                        <field name="city" domain="[('country_id', '=', country_id)]" readonly="1" optional="hide"/>-->
-                                        <field name="unit_no" readonly="1" optional="hide"/>
-                                        <field name="po_box" readonly="1" optional="hide"/>
-                                        <field name="zip_code" readonly="1" optional="hide"/>
-                                        <field name="neighbour_head" readonly="1" optional="hide"/>
-                                        <field name="mobile_no" readonly="1" optional="hide"/>
-                                        <field name="istamara_expiry" readonly="1" optional="hide"/>
-                                        <field name="vehicle_color" readonly="1" optional="hide"/>
-                                        <field name="vehicle_make_id" readonly="1" optional="hide"/>
-                                        <field name="vehicle_model_id" readonly="1" optional="hide"/>
-                                        <field name="gcc_cover" readonly="1" optional="hide"/>
-                                        <field name="natural_peril_cover" readonly="1" optional="hide"/>
-                                        <field name="dob_owner" readonly="1" optional="hide"/>
-                                        <field name="nationality" readonly="1" optional="hide"/>
+                                        <field name="unit_no" attrs="{'readonly':['|',('endorsment_type','!=','amend'),('policy_id','!=',False)]}" optional="hide"/>
+                                        <field name="po_box" attrs="{'readonly':['|',('endorsment_type','!=','amend'),('policy_id','!=',False)]}" optional="hide"/>
+                                        <field name="zip_code" attrs="{'readonly':['|',('endorsment_type','!=','amend'),('policy_id','!=',False)]}" optional="hide"/>
+                                        <field name="neighbour_head" attrs="{'readonly':['|',('endorsment_type','!=','amend'),('policy_id','!=',False)]}" optional="hide"/>
+                                        <field name="mobile_no" attrs="{'readonly':['|',('endorsment_type','!=','amend'),('policy_id','!=',False)]}" optional="hide"/>
+                                        <field name="istamara_expiry" attrs="{'readonly':['|',('endorsment_type','!=','amend'),('policy_id','!=',False)]}" optional="hide"/>
+                                        <field name="vehicle_color" attrs="{'readonly':['|',('endorsment_type','!=','amend'),('policy_id','!=',False)]}" optional="hide"/>
+                                        <field name="vehicle_make_id" attrs="{'readonly':['|',('endorsment_type','!=','amend'),('policy_id','!=',False)]}" optional="hide"/>
+                                        <field name="vehicle_model_id" attrs="{'readonly':['|',('endorsment_type','!=','amend'),('policy_id','!=',False)]}" optional="hide"/>
+                                        <field name="gcc_cover" attrs="{'readonly':['|',('endorsment_type','!=','amend'),('policy_id','!=',False)]}" optional="hide"/>
+                                        <field name="natural_peril_cover" attrs="{'readonly':['|',('endorsment_type','!=','amend'),('policy_id','!=',False)]}" optional="hide"/>
+                                        <field name="dob_owner" attrs="{'readonly':['|',('endorsment_type','!=','amend'),('policy_id','!=',False)]}" optional="hide"/>
+                                        <field name="nationality" attrs="{'readonly':['|',('endorsment_type','!=','amend'),('policy_id','!=',False)]}" optional="hide"/>
                                     </tree>
                                 </field>
                             </page>
@@ -822,13 +823,13 @@
                                         <!--                                        <field name="cash_mode"/>-->
                                         <field name="installment_date"/>
                                         <field name="no_of_installment"/>
-<!--                                        <field name="type_installement"/>-->
+                                        <field name="type_installement"/>
 <!--                                        <field name="amount_paid"-->
 <!--                                               attrs="{'invisible':[('type_installement','=','fixed')]}"/>-->
                                         <field name="percentage"
-                                              />
+                                               attrs="{'readonly':[('type_installement','=','fixed')]}"/>
                                         <field name="fix_amount"
-                                              />
+                                              attrs="{'readonly':[('type_installement','=','percentage')]}"/>
                                         <field name="activity_ids" widget="list_activity"/>
 
                                     </tree>
@@ -896,6 +897,9 @@
                                         <field name="move_type" invisible="context.get('default_move_type', True)"/>
                                     </tree>
                                 </field>
+                            </page>
+                            <page string="Notes">
+                                <field name="note"/>
                             </page>
 
 

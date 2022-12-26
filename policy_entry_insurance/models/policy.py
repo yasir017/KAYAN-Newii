@@ -92,7 +92,7 @@ class Policy(models.Model):
     total_instalment_am = fields.Float('Total Installment after vat',compute='compute_installment')
     difference_instalment = fields.Float('Difference',compute='compute_installment')
     total_document_number = fields.Integer(string='Total Documents', compute='get_total_documents')
-
+    note = fields.Text("Notes")
     def action_open_task(self):
         return {
             'name': "Task",
@@ -272,6 +272,8 @@ class Policy(models.Model):
     def _onchange_sum_insured(self):
         if self.sum_insured>0 and self.basic_prem:
          self.premium_percent_am=self.sum_insured/self.basic_prem
+        else:
+            self.premium_percent_am=0.0
 
 
 
@@ -369,27 +371,31 @@ class Installment(models.Model):
 
     _inherit = ['mail.thread', 'mail.activity.mixin']
     policy_id = fields.Many2one('insurance.policy', 'REL')
-    type_installement = fields.Selection([('fixed','Fixed'),('percentage','Percentage')],string="Type",default='fixed')
+    type_installement = fields.Selection([('fixed','Fixed Amount'),('percentage','Percentage')],string="Type",default='fixed')
     cash_mode = fields.Many2one('cash.mode','Cash Mode')
     installment_date = fields.Date("Installment Date")
     amount_paid = fields.Float('Amount After  Percentage',store=True,compute='_compute_percentage')
     fix_amount = fields.Float('Fixed Amount')
-    percentage = fields.Float("Percentage %",compute='_compute_percentage')
+    percentage = fields.Float("Percentage %")
     no_of_installment = fields.Integer("No of Installment")
 
-    @api.depends('policy_id','fix_amount')
+    @api.onchange('type_installement','fix_amount')
     def _compute_percentage(self):
         for rec in self:
             percentage_am = 0.0
-            if rec.fix_amount:
-                if rec.policy_id.total_premium_after_vat_ii:
-                    percentage_am = (rec.fix_amount/rec.policy_id.total_premium_after_vat_ii)*100
+            if rec.type_installement=='fixed':
+                if rec.fix_amount:
+                    if rec.policy_id.total_premium_after_vat_ii:
+                        percentage_am = (rec.fix_amount/rec.policy_id.total_premium_after_vat_ii)*100
 
-            rec.percentage=percentage_am
-            # if rec.type_installement=='percentage':
-            #     if rec.percentage:
-            #         percentage_am = rec.policy_id.total_policy_am_after_vat*(rec.percentage/100)
-            #         rec.amount_paid=percentage_am
+                rec.percentage=percentage_am
+    @api.onchange('type_installement','percentage')
+    def onchange_percentage(self):
+            if self.type_installement=='percentage':
+                if self.percentage:
+                    if self.policy_id.total_premium_after_vat_ii:
+                        self.percentage = self.policy_id.total_premium_after_vat_ii*(self.percentage/100)
+                    # rec.amount_paid=percentage_am
             # else:
             #     rec.amount_paid=percentage_am
 class CashMode(models.Model):

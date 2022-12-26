@@ -219,6 +219,8 @@ class Policy(models.Model):
         self.fed_state_id = self.prev_policy.fed_state_id.id
         self.expiry_date = self.prev_policy.expiry_date
         self.start_date  = self.prev_policy.start_date
+        self.issuance_date = self.prev_policy.issuance_date
+        self.policy_no = self.prev_policy.policy_no
         for benefits in self.prev_policy.benefits_custome_ids:
             vals={
                 # 'policy_id': policy.id,
